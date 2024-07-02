@@ -43,7 +43,9 @@ class _OTPScreenState extends State<OTPScreen> {
         leading: canpop
             ? IconButton(
                 onPressed: () {
-                  Navigator.pop(context);
+                  if (Navigator.canPop(context)) {
+                    Navigator.pop(context);
+                  }
                 },
                 icon: Icon(Icons.arrow_back_ios_new_outlined),
               )

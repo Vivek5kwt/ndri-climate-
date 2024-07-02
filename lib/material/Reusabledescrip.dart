@@ -27,7 +27,6 @@ class Reusabledescription extends StatelessWidget {
             width: MediaQuery.of(context).size.width / 1.2,
             child: Text(
               desciption,
-              // softWrap: true,
               style: TextStyle(
                 fontSize: 14,
               ),

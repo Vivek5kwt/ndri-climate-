@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:ndri_climate/screen/Dashboard.dart';
+// import 'package:ndri_climate/auth/login_screen.dart';
+// import 'package:ndri_climate/auth/otp_screen.dart';
+import 'package:ndri_climate/auth/register_screen.dart';
+import 'package:ndri_climate/screen/English/homescreen.dart';
+import 'package:get/get.dart';
+import 'package:ndri_climate/screen/localStrings.dart';
 
-// import 'package:ndri_climate/auth/register_screen.dart';
 
 
 void main() {
-  runApp( MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -14,17 +18,19 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'NDRI Climate Service',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: Dashboard(),
-      
-      
-      // RegisterScreen(),
-    );
+    return GetMaterialApp(
+      translations: LocalString(),
+      locale: Locale('en','US'),
+        title: 'NDRI Climate Service',
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          useMaterial3: true,
+        ),
+        home: 
+        Home()
+
+        // RegisterScreen(),
+        );
   }
 }

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:ndri_climate/material/Validation/validation_services.dart';
 import 'package:ndri_climate/material/resuseabelButton.dart';
 import 'package:ndri_climate/material/reuseablefeild.dart';
-import 'package:ndri_climate/screen/homescreen.dart';
+import 'package:ndri_climate/screen/English/homescreen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -24,7 +24,9 @@ class _LoginScreenState extends State<LoginScreen> {
         automaticallyImplyLeading: false,
         leading: IconButton(
           onPressed: () {
-            Navigator.pop(context);
+            if (Navigator.canPop(context)) {
+              Navigator.pop(context);
+            }
           },
           icon: Icon(Icons.arrow_back_ios_new_outlined),
         ),
@@ -89,7 +91,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       child: ReuseableContainerButton(
                           onTap: () {
                             if (_formkey.currentState!.validate()) {
-                               Navigator.push(
+                              Navigator.push(
                                 context,
                                 MaterialPageRoute(
                                   builder: (context) => Home(),
