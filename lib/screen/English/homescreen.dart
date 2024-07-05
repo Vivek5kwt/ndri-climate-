@@ -1,6 +1,9 @@
 import 'dart:async';
 
+import 'package:adaptive_pop_scope/adaptive_pop_scope.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:ndri_climate/screen/English/Dialogue_page.dart';
 import 'package:ndri_climate/screen/English/dashboard2.dart';
 // import 'package:ndri_climate/screen/Dashboard.dart';
 
@@ -16,16 +19,19 @@ class _HomeState extends State<Home> {
 
   @override
   void initState() {
-    Timer(Duration(milliseconds: 1500), () {
-      Navigator.push(
+    Timer(Duration(seconds: 3), () {
+      Navigator.pushReplacement(
         context,
         MaterialPageRoute(
-          builder: (context) => Dashboard(),
+          builder: (context) => 
+          Dialogue_page(),
+          // Dashboard(selectdist:_,),
         ),
       );
     });
     super.initState();
   }
+
 
   @override
   Widget build(BuildContext context) {

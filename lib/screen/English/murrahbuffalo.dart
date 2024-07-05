@@ -34,10 +34,10 @@ class Murrah_buffalo extends StatelessWidget {
         child: Column(
           children: [
             Container(
-              padding: EdgeInsets.only(top: 20, bottom: 10),
+              padding: EdgeInsets.only(top: 30, bottom: 10),
               child: Text(
-                'Climate Resillient Murrah Buffalo Rearing practices'.tr,
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
+                'Climate Resilient Dairy Farming practices'.tr,
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700),
               ),
             ),
             Padding(
@@ -53,6 +53,7 @@ class Murrah_buffalo extends StatelessWidget {
                               builder: (context) => About_Murrah()));
                     },
                     child: Container(
+                      margin: EdgeInsets.only(top: 10),
                       padding: EdgeInsets.only(bottom: 15),
                       alignment: Alignment.bottomCenter,
                       height: 190,
@@ -66,7 +67,8 @@ class Murrah_buffalo extends StatelessWidget {
                             fit: BoxFit.cover),
                       ),
                       child: Text(
-                        'Murrah Buffalo'.tr,
+                        'Impact of climate change on dairy animal'.tr,
+                        textAlign: TextAlign.center,
                         style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.w800,
@@ -83,6 +85,7 @@ class Murrah_buffalo extends StatelessWidget {
                   ),
                   InkWell(
                     child: Container(
+                      margin: EdgeInsets.only(top: 10),
                       padding: EdgeInsets.only(bottom: 15),
                       alignment: Alignment.bottomCenter,
                       height: 190,
@@ -135,6 +138,7 @@ class Murrah_buffalo extends StatelessWidget {
                               builder: (context) => const Fodder()));
                     },
                     child: Container(
+                      margin: EdgeInsets.only(top: 10),
                       padding: EdgeInsets.only(bottom: 15),
                       alignment: Alignment.bottomCenter,
                       height: 190,
@@ -165,6 +169,7 @@ class Murrah_buffalo extends StatelessWidget {
                   ),
                   InkWell(
                     child: Container(
+                      margin: EdgeInsets.only(top: 10),
                       padding: EdgeInsets.only(bottom: 10, left: 40, right: 10),
                       alignment: Alignment.bottomCenter,
                       height: 190,
@@ -215,6 +220,7 @@ class Murrah_buffalo extends StatelessWidget {
                               builder: (context) => Managemental()));
                     },
                     child: Container(
+                      margin: EdgeInsets.only(top: 10),
                       padding: EdgeInsets.only(bottom: 15),
                       alignment: Alignment.bottomCenter,
                       height: 190,
@@ -252,6 +258,7 @@ class Murrah_buffalo extends StatelessWidget {
                               builder: (context) => Thermal_Stress()));
                     },
                     child: Container(
+                      margin: EdgeInsets.only(top: 10),
                       padding: EdgeInsets.only(bottom: 10, left: 40, right: 10),
                       alignment: Alignment.bottomCenter,
                       height: 190,

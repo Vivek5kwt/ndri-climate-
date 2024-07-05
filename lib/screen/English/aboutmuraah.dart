@@ -4,6 +4,7 @@ import 'package:ndri_climate/material/Reusabledescrip.dart';
 import 'package:ndri_climate/material/custom_drawer.dart';
 import 'package:ndri_climate/material/reusableappbar.dart';
 import 'package:get/get.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class About_Murrah extends StatefulWidget {
   const About_Murrah({super.key});
@@ -267,6 +268,15 @@ class _About_MurrahState extends State<About_Murrah> {
                 ],
               ),
             ),
+            SizedBox(height: 40,),
+            InkWell(
+              onTap: ()=>launchUrl(Uri(path:'',)),
+              child: Center(
+                child: Text('Click for Video',
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),),
+              ),
+            )
             ]),
           ),
         ),

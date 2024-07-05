@@ -42,9 +42,8 @@ class _Climate_servicesState extends State<Climate_services> {
             show_back_arrow: true,
             title: 'Climate Services For Murrah Buffalo'.tr,
           )),
-      body: Container(
-        height: MediaQuery.of(context).size.height,
-        width: MediaQuery.of(context).size.width,
+      body: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
         child: Column(
           children: [
             Container(
@@ -67,7 +66,7 @@ class _Climate_servicesState extends State<Climate_services> {
                           width: 5,
                         ),
                         Text(
-                          '$first_date - $second_date',
+                          '$first_date$second_date',
                           style: TextStyle(
                             fontSize: 14,
                             color: Color(0xFF1B3A69),
@@ -109,6 +108,7 @@ class _Climate_servicesState extends State<Climate_services> {
                     border: Border.all(color: Colors.grey),
                     borderRadius: BorderRadius.circular(10)),
                 child: Column(
+        
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
@@ -128,7 +128,7 @@ class _Climate_servicesState extends State<Climate_services> {
                     )
                   ],
                 )),
-            Container(
+             Container(
                 width: MediaQuery.of(context).size.width,
                 height: MediaQuery.of(context).size.height / 2,
                 margin: EdgeInsets.all(10),
@@ -141,7 +141,36 @@ class _Climate_servicesState extends State<Climate_services> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'ADVISORY SERVICES'.tr,
+                      'ADVISORY SERVICES FOR DAIRY ANIMALS'.tr,
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Text(
+                      'In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before the final copy is available.In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before the final copy is available.In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before the final copy is available.In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before the final copy is available.',
+                      style:
+                          TextStyle(fontSize: 13, fontWeight: FontWeight.w500),
+                    )
+                  ],
+                )),
+                Container(
+                width: MediaQuery.of(context).size.width,
+                height: MediaQuery.of(context).size.height / 2,
+                margin: EdgeInsets.all(10),
+                padding: EdgeInsets.all(15),
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    border: Border.all(color: Colors.grey),
+                    borderRadius: BorderRadius.circular(10)),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'ADVISORY SERVICES FOR MAJOR CROPS'.tr,
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.w700,

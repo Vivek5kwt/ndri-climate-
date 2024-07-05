@@ -3,23 +3,21 @@ import 'package:intl/intl.dart';
 import 'package:ndri_climate/apiservices/Forecast.dart';
 import 'package:ndri_climate/apiservices/api_provider.dart';
 import 'package:ndri_climate/material/bottom_sheet.dart';
-import 'package:ndri_climate/main.dart';
 import 'package:ndri_climate/material/custom_drawer.dart';
 import 'package:ndri_climate/material/reusableappbar.dart';
 import 'package:ndri_climate/model/Repo.dart';
 import 'package:ndri_climate/model/Weather_Forecast.dart';
-import 'package:ndri_climate/model/Weather_model.dart';
 import 'package:ndri_climate/screen/English/Climate_Services.dart';
-import 'package:ndri_climate/screen/English/cattle.dart';
-import 'package:ndri_climate/screen/English/consts.dart';
-import 'package:ndri_climate/screen/English/Feeding_management.dart';
 import 'package:ndri_climate/screen/English/murrahbuffalo.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 
 class Dashboard extends StatefulWidget {
-  const Dashboard({super.key});
+  final String selectdist;
+  final String selectstate;
+
+  const Dashboard({super.key, required this.selectdist, required this.selectstate});
 
   @override
   State<Dashboard> createState() => _DashboardState();
@@ -31,6 +29,19 @@ class _DashboardState extends State<Dashboard> {
   GlobalKey<FormState> _formkey = GlobalKey<FormState>();
   DateTime selectedDate1 = DateTime.now();
   DateTime selectedDate2 = DateTime.now().add(Duration(days: 7));
+    WeatherResponse? weatherResponse;
+    WeatherMetrics weatherMetrics=WeatherMetrics();
+    
+
+  // Weathermodel? weathermodel;
+  TextEditingController _stateController = TextEditingController();
+  TextEditingController _districtController = TextEditingController();
+  TextEditingController _languageController = TextEditingController();
+  List<String> init_distict_list = [];
+  ForecastData? _weatherdata;
+  String? id = '0';
+  Map<String, dynamic> ranges = {};
+  Repo _repo = Repo();
 
   Future<void> _selectDate1(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
@@ -46,30 +57,47 @@ class _DashboardState extends State<Dashboard> {
     }
   }
 
-  Future<void> _selectDate2(BuildContext context) async {
-    final DateTime? picked = await showDatePicker(
-        context: context,
-        initialDate: selectedDate2,
-        firstDate: DateTime(2015, 8),
-        lastDate: DateTime(2101));
-    if (picked != null && picked != selectedDate2) {
-      setState(() {
-        selectedDate2 = picked;
-      });
-    }
+  void calculateRanges(List<Map<String, dynamic>> dailyData) {
+    final tempMinValues = dailyData.map((day) => day['temp_min']).toList();
+    final tempMaxValues = dailyData.map((day) => day['temp_max']).toList();
+    final humidityValues = dailyData.map((day) => day['humidity']).toList();
+    final cloudCoverValues = dailyData.map((day) => day['clouds']).toList();
+    final precipitationValues = dailyData.map((day) => day['rain']).toList();
+    final windSpeedValues = dailyData.map((day) => day['wind_speed']).toList();
+    final windDirectionValues = dailyData.map((day) => day['wind_direction']).toList();
+    final rainfallValues = dailyData.map((day) => day['rainfall']).toList();
+    final THIValues = dailyData.map((day) => day['THI']).toList();
+    final RHValues = dailyData.map((day) => day['RH']).toList();
+
+    setState(() {
+      ranges = {
+        'Temperature Min': [tempMinValues.reduce((a, b) => a < b ? a : b), tempMinValues.reduce((a, b) => a > b ? a : b)],
+        'Temperature Max': [tempMaxValues.reduce((a, b) => a < b ? a : b), tempMaxValues.reduce((a, b) => a > b ? a : b)],
+        'Humidity': [humidityValues.reduce((a, b) => a < b ? a : b), humidityValues.reduce((a, b) => a > b ? a : b)],
+        'Cloud Cover': [cloudCoverValues.reduce((a, b) => a < b ? a : b), cloudCoverValues.reduce((a, b) => a > b ? a : b)],
+        'Wind Speed': [windSpeedValues.reduce((a, b) => a < b ? a : b), windSpeedValues.reduce((a, b) => a > b ? a : b)],
+        'Precipitation': [precipitationValues.reduce((a, b) => a < b ? a : b), precipitationValues.reduce((a, b) => a > b ? a : b)],
+        'Wind Direction': [windDirectionValues.reduce((a, b) => a < b ? a : b), windDirectionValues.reduce((a, b) => a > b ? a : b)],
+        'Rainfall': [rainfallValues.reduce((a, b) => a < b ? a : b), rainfallValues.reduce((a, b) => a > b ? a : b)],
+        'THI': [THIValues.reduce((a, b) => a < b ? a : b), THIValues.reduce((a, b) => a > b ? a : b)],
+        'RH': [RHValues.reduce((a, b) => a < b ? a : b), RHValues.reduce((a, b) => a > b ? a : b)],
+      };
+    });
   }
 
-  WeatherResponse? weatherResponse;
-  Weathermodel? weathermodel;
-  TextEditingController _stateController = TextEditingController();
-  TextEditingController _districtController = TextEditingController();
-  TextEditingController _languageController = TextEditingController();
-  List<String> init_distict_list = [];
-  ForecastData? _weatherdata;
-  String? id = '0';
+  void getweather()async{
+    
+   _repo.fetchWeatherData(district: _districtController.text).then((data){
+    calculateRanges(data ?? [{}]);
+    
+   });
+     
+  }
+
 
   @override
   void initState() {
+
     SharedPreferences.getInstance().then((value) {
       setState(() {
         id = value.getString('forecast_id');
@@ -77,9 +105,24 @@ class _DashboardState extends State<Dashboard> {
       ApiProvider().getWeatherData(id: id.toString()).then((data) {
         // Forecast _forecastdata = Forecast.fromJson(data);
         setState(() {
-          _weatherdata = ForecastData.fromJson(data);
+          _weatherdata = ForecastData.fromJson(data ?? {});
+         
         });
+        
       });
+
+       if (widget.selectstate.isNotEmpty&&widget.selectdist.isNotEmpty) {
+setState(() {
+            _districtController.text = widget.selectdist;
+            _stateController.text=widget.selectstate;
+getweather();
+
+  
+});     
+
+
+     }
+
     });
     super.initState();
   }
@@ -111,6 +154,7 @@ class _DashboardState extends State<Dashboard> {
               weatherResponse =
                   await Repo().getweather(_districtController.text);
               ApiProvider().storeWeatherData(
+                District: _districtController.text,
                 max_temp: weatherResponse?.list[1].main.tempMax ?? 0.0,
                 min_temp: weatherResponse?.list[1].main.tempMin ?? 0.0,
                 rainfall: weatherResponse?.list[1].rain?.h3 ?? 0.0,
@@ -148,6 +192,7 @@ class _DashboardState extends State<Dashboard> {
             });
             weatherResponse = await Repo().getweather(district);
             ApiProvider().storeWeatherData(
+              District: _districtController.text,
               max_temp: weatherResponse?.list[1].main.tempMax ?? 0.0,
               min_temp: weatherResponse?.list[1].main.tempMin ?? 0.0,
               rainfall: weatherResponse?.list[1].rain?.h3 ?? 0.0,
@@ -179,22 +224,20 @@ class _DashboardState extends State<Dashboard> {
             });
             weatherResponse = await Repo().getweather(_districtController.text);
             ApiProvider().storeWeatherData(
-              max_temp: weatherResponse?.list[1].main.tempMax ?? 0.0,
-              min_temp: weatherResponse?.list[1].main.tempMin ?? 0.0,
-              rainfall: weatherResponse?.list[1].rain?.h3 ?? 0.0,
+              District: _districtController.text,
+              max_temp: ranges['Temperature Max'][0]?? 0.0 - ranges['Temperature Max'][1]?? 0.0,
+              min_temp: ranges['Temperature Min'][0]?? 0.0 - ranges['Temperature Min'][1]?? 0.0,
+              rainfall: ranges['Rainfall'][0].ceil()?? 0.0 - ranges['Rainfall'][1].ceil()?? 0.0,
               relative_humidity:
-                  weatherResponse?.list[1].main.humidity.toDouble() ?? 0.0,
-              wind_speed: weatherResponse?.list[1].wind.speed ?? 0.0,
-              wind_direction:
-                  weatherResponse?.list[1].wind.deg.toDouble() ?? 0.0,
+                  ranges['RH'][0]?? 0.0 - ranges['RH'][1]?? 0.0,
+              wind_speed: ranges['Wind Speed'][0].ceil()?? 0.0 - ranges['Wind Speed'][1].ceil()?? 0.0,
+              wind_direction:ranges['Wind Direction'][0]?? 0.0 - ranges['Wind Direction'][1]?? 0.0
+                  ,
               cloud_cover:
-                  weatherResponse?.list[1].clouds.all.toDouble() ?? 0.0,
+                  ranges['Cloud Cover'][0]?? 0.0 - ranges['Cloud Cover'][1]?? 0.0,
               temp_humidity_index:
-                  weatherResponse?.list[1].main.humidity.toDouble() ?? 0.0,
+                  ranges['THI'][0].ceil()?? 0.0 - ranges['THI'][1].ceil()?? 0.0,
             );
-
-//                               Future.delayed(Duration(milliseconds: 800)).then((value) =>              Navigator.pop(context)
-// ,);
           },
         );
       },
@@ -331,13 +374,7 @@ class _DashboardState extends State<Dashboard> {
                                   keyboardType: TextInputType.none,
                                   readOnly: true,
                                   controller: _languageController,
-                                  // validator: (value) {
-                                  //   if (_districtController.text.isEmpty&& _stateController.text.isEmpty) {
-                                  //     return "Above fields are Required";
-                                  //   }
-                                  //   return null;
-
-                                  // },
+                                  
                                   onTap: () async {
                                     if (_formkey.currentState!.validate()) {
                                       _showLanguageBottomSheet(context);
@@ -378,6 +415,27 @@ class _DashboardState extends State<Dashboard> {
     );
   }
 
+  Future<bool> _showExitConfirmationDialog() async {
+    return await showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text('Exit Confirmation'),
+        content: Text('Are you sure you want to exit?'),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.of(context).pop(false), // Cancel
+            child: Text('No'),
+          ),
+          TextButton(
+            onPressed: () => Navigator.of(context).pop(true), // Confirm
+            child: Text('Yes'),
+          ),
+        ],
+      ),
+    ) ?? false;
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -395,19 +453,7 @@ class _DashboardState extends State<Dashboard> {
             title: 'Dashboard'.tr,
           )),
       body: SingleChildScrollView(
-        child: FutureBuilder(
-            future: ApiProvider().getWeatherData(id: id.toString()),
-            builder: (context, snapshot) {
-              if (snapshot.connectionState == ConnectionState.waiting) {
-                return Container(
-                  height: MediaQuery.of(context).size.height / 1.2,
-                  alignment: Alignment.center,
-                  child: CircularProgressIndicator(
-                    color: Colors.blueAccent,
-                  ),
-                );
-              }
-              return Container(
+        child: ranges.isNotEmpty? Container(
                 height: MediaQuery.of(context).size.height,
                 width: MediaQuery.of(context).size.width,
                 padding: EdgeInsets.all(0),
@@ -587,7 +633,7 @@ class _DashboardState extends State<Dashboard> {
                       color: Color(0xFF9BDBFF),
                       width: MediaQuery.of(context).size.width,
                       padding: EdgeInsets.all(10),
-                      height: 157,
+                      height: 180,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
@@ -672,7 +718,7 @@ class _DashboardState extends State<Dashboard> {
                             padding: EdgeInsets.symmetric(
                                 horizontal: 10, vertical: 5),
                             width: 390,
-                            height: 66,
+                            height: 73,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10),
                               color: Color(0xFF1B3A69),
@@ -681,6 +727,7 @@ class _DashboardState extends State<Dashboard> {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Column(
+                                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
@@ -700,7 +747,7 @@ class _DashboardState extends State<Dashboard> {
                                             fontSize: 10,
                                             fontWeight: FontWeight.w400,
                                             color: Colors.white)),
-                                    Text('THI(%)'.tr,
+                                    Text('THI'.tr,
                                         style: TextStyle(
                                             fontSize: 10,
                                             fontWeight: FontWeight.w400,
@@ -708,29 +755,30 @@ class _DashboardState extends State<Dashboard> {
                                   ],
                                 ),
                                 Column(
+                                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      '${weatherResponse?.list[0].main.tempMax ?? _weatherdata?.maxTemp ?? '0'}',
+                                      '${ranges['Temperature Max'][0]?? 0.0} - ${ranges['Temperature Max'][1]?? 0.0}',
                                       style: TextStyle(
                                           fontSize: 10,
                                           fontWeight: FontWeight.w400,
                                           color: Colors.white),
                                     ),
                                     Text(
-                                        '${weatherResponse?.list[0].main.tempMin ?? _weatherdata?.minTemp ?? '0'}',
+                                        '${ranges['Temperature Min'][0]?? 0.0} - ${ranges['Temperature Min'][1]?? 0.0}',
                                         style: TextStyle(
                                             fontSize: 10,
                                             fontWeight: FontWeight.w400,
                                             color: Colors.white)),
                                     Text(
-                                        '${weatherResponse?.list[0].rain?.h3 ?? _weatherdata?.rainfall ?? '0'}',
+                                        '${ranges['Rainfall'][0].ceil()?? 0.0} - ${ranges['Rainfall'][1].ceil()?? 0.0}',
                                         style: TextStyle(
                                             fontSize: 10,
                                             fontWeight: FontWeight.w400,
                                             color: Colors.white)),
                                     Text(
-                                        '${weatherResponse?.list[0].main.humidity ?? _weatherdata?.tempHumidityIndex ?? '0'}',
+                                        '${ranges['THI'][0].ceil()?? 0.0} - ${ranges['THI'][1].ceil()?? 0.0}',
                                         style: TextStyle(
                                             fontSize: 10,
                                             fontWeight: FontWeight.w400,
@@ -738,6 +786,7 @@ class _DashboardState extends State<Dashboard> {
                                   ],
                                 ),
                                 Column(
+                                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
@@ -757,7 +806,7 @@ class _DashboardState extends State<Dashboard> {
                                             fontSize: 10,
                                             fontWeight: FontWeight.w400,
                                             color: Colors.white)),
-                                    Text('Wind Direction():'.tr,
+                                    Text('Wind Direction (Degree)'.tr,
                                         style: TextStyle(
                                             fontSize: 10,
                                             fontWeight: FontWeight.w400,
@@ -765,29 +814,30 @@ class _DashboardState extends State<Dashboard> {
                                   ],
                                 ),
                                 Column(
+                                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      '${weatherResponse?.list[0].main.humidity ?? _weatherdata?.relativeHumidity ?? '0'}',
+                                      '${ranges['RH'][0]?? 0.0} - ${ranges['RH'][1]?? 0.0}',
                                       style: TextStyle(
                                           fontSize: 10,
                                           fontWeight: FontWeight.w400,
                                           color: Colors.white),
                                     ),
                                     Text(
-                                        '${weatherResponse?.list[0].wind.speed ?? _weatherdata?.windSpeed ?? '0'}',
+                                        '${ranges['Wind Speed'][0].ceil()?? 0.0} - ${ranges['Wind Speed'][1].ceil()?? 0.0}',
                                         style: TextStyle(
                                             fontSize: 10,
                                             fontWeight: FontWeight.w400,
                                             color: Colors.white)),
                                     Text(
-                                        '${weatherResponse?.list[0].clouds.all ?? _weatherdata?.cloudCover ?? '0'}',
+                                        '${ranges['Cloud Cover'][0]?? 0.0} - ${ranges['Cloud Cover'][1]?? 0.0}',
                                         style: TextStyle(
                                             fontSize: 10,
                                             fontWeight: FontWeight.w400,
                                             color: Colors.white)),
                                     Text(
-                                        '${weatherResponse?.list[0].wind.deg ?? _weatherdata?.windDirection ?? '0'}',
+                                        '${ranges['Wind Direction'][0].ceil()?? 0.0} - ${ranges['Wind Direction'][1].ceil()?? 0.0}',
                                         style: TextStyle(
                                             fontSize: 10,
                                             fontWeight: FontWeight.w400,
@@ -802,7 +852,7 @@ class _DashboardState extends State<Dashboard> {
                     ),
                     Container(
                         margin:
-                            EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                            EdgeInsets.symmetric(horizontal: 20, vertical: 20),
                         child: Text(
                           'Climate services for the period of '.tr+'${DateFormat('dd-MM-yyyy').format(selectedDate1)} - ' +
                               '${DateFormat('dd-MM-yyyy').format(selectedDate2)} ' 
@@ -835,7 +885,14 @@ class _DashboardState extends State<Dashboard> {
                                 style: TextStyle(
                                     fontSize: 16,
                                     fontWeight: FontWeight.w700,
-                                    color: Colors.white),
+                                    color: Colors.white,
+                                    shadows: [
+                            Shadow(
+                              blurRadius: 10.0,
+                              color: Colors.black,
+                              offset: Offset(2.0, 2.0),
+                            ),
+                          ],),
                               ),
                             ),
                             onTap: () {
@@ -843,7 +900,13 @@ class _DashboardState extends State<Dashboard> {
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) =>
-                                          const Murrah_buffalo()));
+                                          Climate_services(
+                                            Date1:
+                                                '${DateFormat('dd-MM-yyyy').format(selectedDate1)} - ',
+                                            Date2:
+                                                '${DateFormat('dd-MM-yyyy').format(selectedDate2)}',
+                                            District:
+                                                '${_districtController.text}',)));
                             },
                           ),
                           InkWell(
@@ -867,7 +930,14 @@ class _DashboardState extends State<Dashboard> {
                                 style: TextStyle(
                                     fontSize: 16,
                                     fontWeight: FontWeight.w700,
-                                    color: Colors.white),
+                                    color: Colors.white,
+                                    shadows: [
+                            Shadow(
+                              blurRadius: 10.0,
+                              color: Colors.black,
+                              offset: Offset(2.0, 2.0),
+                            ),
+                          ],),
                               ),
                             ),
                           ),
@@ -876,8 +946,9 @@ class _DashboardState extends State<Dashboard> {
                     ),
                   ],
                 ),
-              );
-            })
+              ): Container(
+                height: MediaQuery.of(context).size.height / 1.2,
+                child: Center(child: CircularProgressIndicator.adaptive()))
       ),
     );
   }

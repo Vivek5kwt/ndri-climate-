@@ -11,8 +11,8 @@ class LocalString extends Translations {
           'Dairy Animal and Climate Change':'डेयरी पशु और जलवायु परिवर्तन',
           'NDRI Climate Services':
               'राष्ट्रीय डेरी अनुसंधान संस्थान द्वारा जलवायु सेवाएं',
-          'An effort by ICAR-National Dairy Research Institute, Karnal to promote climate resilient dairy farming practices':
-              'जलवायु अनुकूल डेयरी फार्मिंग प्रथाओं को बढ़ावा देने के लिए आईसीएआर-राष्ट्रीय डेयरी अनुसंधान संस्थान, करनाल द्वारा एक प्रयास',
+          'Climate Resilient Dairy Farming practices':
+              'जलवायु अनुकूल डेयरी फार्मिंग अभ्यास',
           'Climate services by ICAR-National Dairy Research Institute (NDRI), Karnal':
               'राष्ट्रीय डेरी अनुसंधान संस्थान, करनाल द्वारा जलवायु सेवाएं',
           'Murrah Buffalo': 'मुर्रा भैंस',
@@ -35,13 +35,15 @@ class LocalString extends Translations {
           'Wind Direction (Degree)': 'हवा की दिशा (डिग्री)',
           'Cloud cover(octa)': 'मेघ आवरण (ऑक्टा)',
           'THI': 'तापमान आर्द्रता सूचकांक',
-          'Climate services for the period of': 'की अवधि के लिए जलवायु सेवाएँ',
+          'Climate services for the period of ': 'जलवायु सेवाएँ की अवधि के लिए ',
           'Major crops': 'प्रमुख फसलें',
           'Climate Services For Murrah Buffalo':
               'मुर्रा भैंस के लिए जलवायु सेवाएँ',
           'Date': 'दिनांक',
           'WEATHER SUMMARY': 'मौसम सारांश',
-          'ADVISORY SERVICES': 'सलाहकार सेवाएं',
+          'ADVISORY SERVICES FOR DAIRY ANIMALS': 'डेयरी पशुओं के लिए सलाहकार सेवाएं',
+          'ADVISORY SERVICES FOR MAJOR CROPS': 'प्रमुख फसलों के लिए सलाहकार सेवाएं',
+          'Impact of climate change on dairy animal':'डेयरी पशुओं पर जलवायु परिवर्तन का प्रभाव',
           'Climate services': 'जलवायु सेवाएं',
           'Feedback/Raise Your Question': 'प्रतिक्रिया/प्रश्न लिखें',
           'Name': 'नाम',

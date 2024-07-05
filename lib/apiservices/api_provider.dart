@@ -6,6 +6,7 @@ class ApiProvider {
   final String headUrl = "https://ndri.ampleteckdev.com";
 
   Future<dynamic> storeWeatherData({
+    required String District,
     required double max_temp,
     required double min_temp,
     required double rainfall,
