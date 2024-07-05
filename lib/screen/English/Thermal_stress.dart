@@ -48,6 +48,7 @@ class _Thermal_StressState extends State<Thermal_Stress> {
                         'Symptoms of Heat Stress'.tr,
                         style: TextStyle(
                           fontSize: 11.0,
+                          fontWeight: FontWeight.bold,
                           overflow: TextOverflow.ellipsis,
                         ),
                         maxLines: 2,
@@ -58,6 +59,7 @@ class _Thermal_StressState extends State<Thermal_Stress> {
                         'Use of water'.tr,
                         style: TextStyle(
                           fontSize: 11.0,
+                          fontWeight: FontWeight.bold,
                           overflow: TextOverflow.ellipsis,
                         ),
                         maxLines: 1,
@@ -68,6 +70,7 @@ class _Thermal_StressState extends State<Thermal_Stress> {
                         'Other Heat Stress Management Strategies'.tr,
                         style: TextStyle(
                           fontSize: 11.0,
+                          fontWeight: FontWeight.bold,
                           overflow: TextOverflow.ellipsis,
                         ),
                         maxLines: 2,
@@ -78,6 +81,7 @@ class _Thermal_StressState extends State<Thermal_Stress> {
                         'Managing Cold Stress'.tr,
                         style: TextStyle(
                           fontSize: 11.0,
+                          fontWeight: FontWeight.bold,
                           overflow: TextOverflow.ellipsis,
                         ),
                         maxLines: 2,

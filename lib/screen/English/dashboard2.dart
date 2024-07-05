@@ -17,6 +17,7 @@ import 'package:ndri_climate/screen/English/murrahbuffalo.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+
 class Dashboard extends StatefulWidget {
   const Dashboard({super.key});
 
@@ -29,7 +30,7 @@ class _DashboardState extends State<Dashboard> {
   // Weather? _weather;
   GlobalKey<FormState> _formkey = GlobalKey<FormState>();
   DateTime selectedDate1 = DateTime.now();
-  DateTime selectedDate2 = DateTime.now();
+  DateTime selectedDate2 = DateTime.now().add(Duration(days: 7));
 
   Future<void> _selectDate1(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
@@ -40,6 +41,7 @@ class _DashboardState extends State<Dashboard> {
     if (picked != null && picked != selectedDate1) {
       setState(() {
         selectedDate1 = picked;
+        selectedDate2=selectedDate1.add(Duration(days: 7));
       });
     }
   }
@@ -385,6 +387,9 @@ class _DashboardState extends State<Dashboard> {
       appBar: PreferredSize(
           preferredSize: Size(40, 60),
           child: ReuseAppbar(
+            onTap: () {
+              _showLanguageBottomSheet(context);
+            },
             scaffoldKey: _scaffoldKey,
             show_back_arrow: false,
             title: 'Dashboard'.tr,
@@ -430,9 +435,9 @@ class _DashboardState extends State<Dashboard> {
                           Container(
                             margin: EdgeInsets.only(
                                 top: 10, bottom: 10, left: 25, right: 10),
-                            padding: EdgeInsets.only(top: 10),
+                            padding: EdgeInsets.only(top: 0),
                             width: 146,
-                            height: 113,
+                            height: 114,
                             decoration: BoxDecoration(
                                 border: Border.all(
                                   width: 1,
@@ -441,41 +446,11 @@ class _DashboardState extends State<Dashboard> {
                                 borderRadius: BorderRadius.circular(10)),
                             child: Column(
                               children: [
-                                Container(
-                                  width: 126,
-                                  height: 77,
-                                  decoration: BoxDecoration(
-                                      image: DecorationImage(
-                                          image: AssetImage(
-                                              'assets/images/buffalo.png'),
-                                          fit: BoxFit.cover)),
-                                ),
-                                Text(
-                                  'Murrah Buffalo'.tr,
-                                  style: TextStyle(
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.w700),
-                                )
-                              ],
-                            ),
-                          ),
-                          InkWell(
-                            onTap: () {},
-                            child: Container(
-                              margin: EdgeInsets.only(
-                                  top: 10, bottom: 10, left: 25, right: 10),
-                              padding: EdgeInsets.only(top: 10),
-                              width: 146,
-                              height: 113,
-                              decoration: BoxDecoration(
-                                  border: Border.all(
-                                    width: 1,
-                                    color: Color(0xFFABABAB),
-                                  ),
-                                  borderRadius: BorderRadius.circular(10)),
-                              child: Column(
-                                children: [
-                                  Container(
+                                InkWell(
+                                  onTap: () {
+                                    Navigator.push(context, MaterialPageRoute(builder: (context)=>Murrah_buffalo()));
+                                  },
+                                  child: Container(
                                     width: 126,
                                     height: 77,
                                     decoration: BoxDecoration(
@@ -484,14 +459,15 @@ class _DashboardState extends State<Dashboard> {
                                                 'assets/images/buffalo.png'),
                                             fit: BoxFit.cover)),
                                   ),
-                                  Text(
-                                    'Cattle'.tr,
-                                    style: TextStyle(
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.w700),
-                                  )
-                                ],
-                              ),
+                                ),
+                                Text(
+                                  textAlign:TextAlign.center,
+                                  'Dairy Animal and Climate Change'.tr,
+                                  style: TextStyle(
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w700),
+                                )
+                              ],
                             ),
                           ),
                           InkWell(
@@ -611,7 +587,7 @@ class _DashboardState extends State<Dashboard> {
                       color: Color(0xFF9BDBFF),
                       width: MediaQuery.of(context).size.width,
                       padding: EdgeInsets.all(10),
-                      height: 152,
+                      height: 157,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
@@ -650,22 +626,11 @@ class _DashboardState extends State<Dashboard> {
                                             _selectDate1(context);
                                           },
                                           child: Text(
-                                            '${DateFormat('dd-MM-yyyy').format(selectedDate1)} - ',
+                                            '${DateFormat('dd-MM-yyyy').format(selectedDate1)} - '+'${DateFormat('dd-MM-yyyy').format(selectedDate2)}',
                                             style: TextStyle(
                                                 fontSize: 14,
                                                 color: Color(0xFF1B3A69),
                                                 fontWeight: FontWeight.w600),
-                                          )),
-                                      InkWell(
-                                          onTap: () {
-                                            _selectDate2(context);
-                                          },
-                                          child: Text(
-                                            '${DateFormat('dd-MM-yyyy').format(selectedDate2)}',
-                                            style: TextStyle(
-                                                fontSize: 14,
-                                                fontWeight: FontWeight.w600,
-                                                color: Color(0xFF1B3A69)),
                                           )),
                                       const SizedBox(
                                         height: 20.0,
@@ -707,7 +672,7 @@ class _DashboardState extends State<Dashboard> {
                             padding: EdgeInsets.symmetric(
                                 horizontal: 10, vertical: 5),
                             width: 390,
-                            height: 56,
+                            height: 66,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10),
                               color: Color(0xFF1B3A69),
@@ -731,6 +696,11 @@ class _DashboardState extends State<Dashboard> {
                                             fontWeight: FontWeight.w400,
                                             color: Colors.white)),
                                     Text('Rainfall(mm)'.tr,
+                                        style: TextStyle(
+                                            fontSize: 10,
+                                            fontWeight: FontWeight.w400,
+                                            color: Colors.white)),
+                                    Text('THI(%)'.tr,
                                         style: TextStyle(
                                             fontSize: 10,
                                             fontWeight: FontWeight.w400,
@@ -758,6 +728,12 @@ class _DashboardState extends State<Dashboard> {
                                         style: TextStyle(
                                             fontSize: 10,
                                             fontWeight: FontWeight.w400,
+                                            color: Colors.white)),
+                                    Text(
+                                        '${weatherResponse?.list[0].main.humidity ?? _weatherdata?.tempHumidityIndex ?? '0'}',
+                                        style: TextStyle(
+                                            fontSize: 10,
+                                            fontWeight: FontWeight.w400,
                                             color: Colors.white))
                                   ],
                                 ),
@@ -777,6 +753,11 @@ class _DashboardState extends State<Dashboard> {
                                             fontWeight: FontWeight.w400,
                                             color: Colors.white)),
                                     Text('Cloud cover(octa)'.tr,
+                                        style: TextStyle(
+                                            fontSize: 10,
+                                            fontWeight: FontWeight.w400,
+                                            color: Colors.white)),
+                                    Text('Wind Direction():'.tr,
                                         style: TextStyle(
                                             fontSize: 10,
                                             fontWeight: FontWeight.w400,
@@ -804,6 +785,12 @@ class _DashboardState extends State<Dashboard> {
                                         style: TextStyle(
                                             fontSize: 10,
                                             fontWeight: FontWeight.w400,
+                                            color: Colors.white)),
+                                    Text(
+                                        '${weatherResponse?.list[0].wind.deg ?? _weatherdata?.windDirection ?? '0'}',
+                                        style: TextStyle(
+                                            fontSize: 10,
+                                            fontWeight: FontWeight.w400,
                                             color: Colors.white))
                                   ],
                                 ),
@@ -817,9 +804,9 @@ class _DashboardState extends State<Dashboard> {
                         margin:
                             EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                         child: Text(
-                          '${DateFormat('dd-MM-yyyy').format(selectedDate1)} - ' +
-                              '${DateFormat('dd-MM-yyyy').format(selectedDate2)} ' +
-                              'Climate services for the period of'.tr,
+                          'Climate services for the period of '.tr+'${DateFormat('dd-MM-yyyy').format(selectedDate1)} - ' +
+                              '${DateFormat('dd-MM-yyyy').format(selectedDate2)} ' 
+                              ,
                           style: TextStyle(
                               fontSize: 15, fontWeight: FontWeight.w600),
                         )),
@@ -838,16 +825,16 @@ class _DashboardState extends State<Dashboard> {
                                 borderRadius: BorderRadius.circular(20),
                                 image: DecorationImage(
                                     filterQuality: FilterQuality.high,
-                                    opacity: 0.9,
+                                    opacity: 0.8,
                                     image:
                                         AssetImage('assets/images/murrah.jpeg'),
                                     fit: BoxFit.cover),
                               ),
                               child: Text(
-                                'Murrah Buffalo'.tr,
+                                'Dairy Animal'.tr,
                                 style: TextStyle(
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w600,
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w700,
                                     color: Colors.white),
                               ),
                             ),
@@ -870,7 +857,7 @@ class _DashboardState extends State<Dashboard> {
                                 borderRadius: BorderRadius.circular(20),
                                 image: DecorationImage(
                                     filterQuality: FilterQuality.high,
-                                    opacity: 0.9,
+                                    opacity: 0.8,
                                     image: AssetImage(
                                         'assets/images/sorghum.jpeg'),
                                     fit: BoxFit.cover),
@@ -878,8 +865,8 @@ class _DashboardState extends State<Dashboard> {
                               child: Text(
                                 'Major crops'.tr,
                                 style: TextStyle(
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w600,
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w700,
                                     color: Colors.white),
                               ),
                             ),
@@ -887,84 +874,10 @@ class _DashboardState extends State<Dashboard> {
                         ],
                       ),
                     ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Text(
-                          'Cattle'.tr,
-                          style: TextStyle(
-                              fontSize: 12, fontWeight: FontWeight.w600),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(11),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              InkWell(
-                                child: Container(
-                                  padding: EdgeInsets.only(bottom: 15),
-                                  alignment: Alignment.bottomCenter,
-                                  height: 190,
-                                  width: 190,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(20),
-                                    image: DecorationImage(
-                                        filterQuality: FilterQuality.high,
-                                        opacity: 0.9,
-                                        image: AssetImage(
-                                            'assets/images/murrah.jpeg'),
-                                        fit: BoxFit.cover),
-                                  ),
-                                  child: Text(
-                                    'Cattle'.tr,
-                                    style: TextStyle(
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.w600,
-                                        color: Colors.white),
-                                  ),
-                                ),
-                                onTap: () {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              const Cattle()));
-                                },
-                              ),
-                              InkWell(
-                                onTap: () {},
-                                child: Container(
-                                  padding: EdgeInsets.only(bottom: 15),
-                                  alignment: Alignment.bottomCenter,
-                                  height: 190,
-                                  width: 190,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(20),
-                                    image: DecorationImage(
-                                        filterQuality: FilterQuality.high,
-                                        opacity: 0.9,
-                                        image: AssetImage(
-                                            'assets/images/sorghum.jpeg'),
-                                        fit: BoxFit.cover),
-                                  ),
-                                  child: Text(
-                                    'Major crops'.tr,
-                                    style: TextStyle(
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.w600,
-                                        color: Colors.white),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
                   ],
                 ),
               );
-            }),
+            })
       ),
     );
   }

@@ -52,7 +52,8 @@ class _Feeding_managementState extends State<Feeding_management> {
                     Tab(
                       child: Text(
                         'Necessity'.tr,
-                        style: TextStyle(fontSize: 12.0),
+                        style: TextStyle(fontSize: 11.0,
+                        fontWeight: FontWeight.bold,),
                         overflow: TextOverflow.ellipsis,
                         maxLines: 1,
                       ),
@@ -60,7 +61,8 @@ class _Feeding_managementState extends State<Feeding_management> {
                     Tab(
                       child: Text(
                         'In Summers'.tr,
-                        style: TextStyle(fontSize: 12.0),
+                        style: TextStyle(fontSize: 12.0,
+                        fontWeight: FontWeight.bold,),
                         overflow: TextOverflow.ellipsis,
                         maxLines: 1,
                       ),
@@ -68,7 +70,8 @@ class _Feeding_managementState extends State<Feeding_management> {
                     Tab(
                       child: Text(
                         'In Winters'.tr,
-                        style: TextStyle(fontSize: 12.0),
+                        style: TextStyle(fontSize: 12.0,
+                        fontWeight: FontWeight.bold,),
                         overflow: TextOverflow.ellipsis,
                         maxLines: 1,
                       ),
@@ -76,7 +79,8 @@ class _Feeding_managementState extends State<Feeding_management> {
                     Tab(
                       child: Text(
                         'Climate Smart Practices'.tr,
-                        style: TextStyle(fontSize: 12.0),
+                        style: TextStyle(fontSize: 12.0,
+                        fontWeight: FontWeight.bold,),
                         overflow: TextOverflow.ellipsis,
                         maxLines: 2,
                       ),

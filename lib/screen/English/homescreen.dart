@@ -100,7 +100,7 @@ class _HomeState extends State<Home> {
                       margin: EdgeInsets.only(bottom: 10, left: 8),
                       alignment: Alignment.center,
                       child: Text(
-                        'जलवायु अनुकूल मुर्रा भैंस पालन अभ्यासओं को बढ़ावा देने के लिए भारतीय कृषि अनुसंधान परिषद-राष्ट्रीय डेरी अनुसंधान संस्थान,करनाल द्वारा एक प्रयास',
+                        'जलवायु अनुकूल डेयरी फार्मिंग अभ्यासओं को बढ़ावा देने के लिए भारतीय कृषि अनुसंधान परिषद-राष्ट्रीय डेरी अनुसंधान संस्थान,करनाल द्वारा एक प्रयास',
                         style: TextStyle(
                             fontSize: 13.5,
                             fontWeight: FontWeight.w600,
@@ -111,7 +111,7 @@ class _HomeState extends State<Home> {
                       margin: EdgeInsets.only(bottom: 20, left: 15),
                       alignment: Alignment.center,
                       child: Text(
-                        '(An effort by ICAR-National Dairy Research Institute, Karnal to promote climate resilient Murrah buffalo rearing practices)',
+                        '(An effort by ICAR-National Dairy Research Institute, Karnal to promote climate resilient dairy farming practices)',
                         style: TextStyle(
                           fontSize: 13,
                           fontWeight: FontWeight.w700,

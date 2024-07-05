@@ -86,7 +86,7 @@ class _Climate_servicesState extends State<Climate_services> {
                           size: 21,
                         ),
                         Text(
-                          district,
+                          district.tr,
                           style: TextStyle(
                             fontSize: 14,
                             color: Color(0xFF1B3A69),

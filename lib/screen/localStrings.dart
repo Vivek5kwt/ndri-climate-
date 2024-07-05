@@ -8,14 +8,16 @@ class LocalString extends Translations {
   Map<String, Map<String, String>> get keys => {
         'en_US': {},
         'hi_IN': {
+          'Dairy Animal and Climate Change':'डेयरी पशु और जलवायु परिवर्तन',
           'NDRI Climate Services':
               'राष्ट्रीय डेरी अनुसंधान संस्थान द्वारा जलवायु सेवाएं',
-          'An effort by ICAR-National Dairy Research Institute, Karnal to promote climate resilient Murrah buffalo rearing practices':
-              'जलवायु अनुकूल मुर्रा भैंस पालन प्रथाओं को बढ़ावा देने के लिए आईसीएआर-राष्ट्रीय डेयरी अनुसंधान संस्थान, करनाल द्वारा एक प्रयास',
+          'An effort by ICAR-National Dairy Research Institute, Karnal to promote climate resilient dairy farming practices':
+              'जलवायु अनुकूल डेयरी फार्मिंग प्रथाओं को बढ़ावा देने के लिए आईसीएआर-राष्ट्रीय डेयरी अनुसंधान संस्थान, करनाल द्वारा एक प्रयास',
           'Climate services by ICAR-National Dairy Research Institute (NDRI), Karnal':
               'राष्ट्रीय डेरी अनुसंधान संस्थान, करनाल द्वारा जलवायु सेवाएं',
           'Murrah Buffalo': 'मुर्रा भैंस',
           'Cattle': 'पशु',
+          'Dairy Animal':'डेयरी पशु ',
           'Dashboard': 'डैशबोर्ड',
           'Daily forecast': 'दैनिक पूर्वानुमान',
           'Climate Advisory': 'जलवायु सलाह',
@@ -997,11 +999,11 @@ class LocalString extends Translations {
 "Parameters":"पैरामीटर",
 "Quantity":"मात्रा",
 "Average Birth weight": "औसत जन्म भार",
-"Male calves 32 kg": "नर बछड़े 32 किग्रा",
-"Female calves 30 kg": "मादा बछड़े 30 किग्रा",
+"Male calves: 32 kg": "नर बछड़े : 32 किग्रा",
+"Female calves: 30 kg": "मादा बछड़े : 30 किग्रा",
 "Average Body weight of adult animal": "वयस्क पशु का औसत शारीरिक भार",
-"Male 567kg": "नर 567 किग्रा",
-"Female 516 kg": "मादा 516 किग्रा",
+"Male: 567 kg": "नर: 567 किग्रा",
+"Female: 516 kg": "मादा: 516 किग्रा",
 "Average age of first service": "पहली सेवा की औसत आयु",
 "943.4 days": "943.4 दिन",
 "Average age of first calving": "पहली ब्याने की औसत आयु",

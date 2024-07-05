@@ -48,6 +48,7 @@ class _ManagementalState extends State<Managemental> {
                         'Calf Management'.tr,
                         style: TextStyle(
                           fontSize: 11.0,
+                          fontWeight: FontWeight.bold,
                           overflow: TextOverflow.ellipsis,
                         ),
                         maxLines: 2,
@@ -58,6 +59,7 @@ class _ManagementalState extends State<Managemental> {
                         'Housing'.tr,
                         style: TextStyle(
                           fontSize: 11.0,
+                          fontWeight: FontWeight.bold,
                           overflow: TextOverflow.ellipsis,
                         ),
                         maxLines: 1,
@@ -68,6 +70,7 @@ class _ManagementalState extends State<Managemental> {
                         'Reproductive Management'.tr,
                         style: TextStyle(
                           fontSize: 11.0,
+                          fontWeight: FontWeight.bold,
                           overflow: TextOverflow.ellipsis,
                         ),
                         maxLines: 2,
@@ -77,6 +80,7 @@ class _ManagementalState extends State<Managemental> {
                       child: Text(
                         'Useful Tips'.tr,
                         style: TextStyle(
+                          fontWeight: FontWeight.bold,
                           fontSize: 11.0,
                           overflow: TextOverflow.ellipsis,
                         ),

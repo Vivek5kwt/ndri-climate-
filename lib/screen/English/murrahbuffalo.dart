@@ -25,7 +25,7 @@ class Murrah_buffalo extends StatelessWidget {
           child: ReuseAppbar(
             scaffoldKey: _scaffoldKey,
             show_back_arrow: true,
-            title: 'Murrah Buffalo'.tr,
+            title: 'Dairy Animal'.tr,
           )),
       body: Container(
         color: Colors.white,
@@ -47,7 +47,10 @@ class Murrah_buffalo extends StatelessWidget {
                 children: [
                   InkWell(
                     onTap: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context)=>About_Murrah()));
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => About_Murrah()));
                     },
                     child: Container(
                       padding: EdgeInsets.only(bottom: 15),
@@ -58,7 +61,7 @@ class Murrah_buffalo extends StatelessWidget {
                         borderRadius: BorderRadius.circular(20),
                         image: DecorationImage(
                             filterQuality: FilterQuality.high,
-                            opacity: 0.8,
+                            opacity: 0.7,
                             image: AssetImage('assets/images/murrah.jpeg'),
                             fit: BoxFit.cover),
                       ),
@@ -66,8 +69,15 @@ class Murrah_buffalo extends StatelessWidget {
                         'Murrah Buffalo'.tr,
                         style: TextStyle(
                             fontSize: 16,
-                            fontWeight: FontWeight.w600,
-                            color: Colors.white),
+                            fontWeight: FontWeight.w800,
+                            color: Colors.white,
+                            shadows: [
+                            Shadow(
+                              blurRadius: 10.0,
+                              color: Colors.black,
+                              offset: Offset(2.0, 2.0),
+                            ),
+                          ],),
                       ),
                     ),
                   ),
@@ -81,7 +91,7 @@ class Murrah_buffalo extends StatelessWidget {
                         borderRadius: BorderRadius.circular(20),
                         image: DecorationImage(
                             filterQuality: FilterQuality.high,
-                            opacity: 0.8,
+                            opacity: 0.7,
                             image: AssetImage(
                                 'assets/images/feeding_management.jpeg'),
                             fit: BoxFit.cover),
@@ -90,8 +100,15 @@ class Murrah_buffalo extends StatelessWidget {
                         'Feeding Management'.tr,
                         style: TextStyle(
                             fontSize: 16,
-                            fontWeight: FontWeight.w600,
-                            color: Colors.white),
+                            fontWeight: FontWeight.w800,
+                            color: Colors.white,
+                            shadows: [
+                            Shadow(
+                              blurRadius: 10.0,
+                              color: Colors.black,
+                              offset: Offset(2.0, 2.0),
+                            ),
+                          ],),
                       ),
                     ),
                     onTap: () {
@@ -115,10 +132,8 @@ class Murrah_buffalo extends StatelessWidget {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) =>
-                                  const Fodder()));
+                              builder: (context) => const Fodder()));
                     },
-
                     child: Container(
                       padding: EdgeInsets.only(bottom: 15),
                       alignment: Alignment.bottomCenter,
@@ -128,7 +143,7 @@ class Murrah_buffalo extends StatelessWidget {
                         borderRadius: BorderRadius.circular(20),
                         image: DecorationImage(
                             filterQuality: FilterQuality.high,
-                            opacity: 0.8,
+                            opacity: 0.7,
                             image: AssetImage('assets/images/fodder.jpeg'),
                             fit: BoxFit.cover),
                       ),
@@ -136,8 +151,15 @@ class Murrah_buffalo extends StatelessWidget {
                         'Fodder Management'.tr,
                         style: TextStyle(
                             fontSize: 16,
-                            fontWeight: FontWeight.w600,
-                            color: Colors.white),
+                            fontWeight: FontWeight.w800,
+                            color: Colors.white,
+                            shadows: [
+                            Shadow(
+                              blurRadius: 10.0,
+                              color: Colors.black,
+                              offset: Offset(2.0, 2.0),
+                            ),
+                          ],),
                       ),
                     ),
                   ),
@@ -151,7 +173,7 @@ class Murrah_buffalo extends StatelessWidget {
                         borderRadius: BorderRadius.circular(20),
                         image: DecorationImage(
                             filterQuality: FilterQuality.high,
-                            opacity: 0.8,
+                            opacity: 0.7,
                             image: AssetImage('assets/images/healthcare.jpeg'),
                             fit: BoxFit.cover),
                       ),
@@ -159,8 +181,15 @@ class Murrah_buffalo extends StatelessWidget {
                         'Health Care Management'.tr,
                         style: TextStyle(
                             fontSize: 16,
-                            fontWeight: FontWeight.w600,
-                            color: Colors.white),
+                            fontWeight: FontWeight.w800,
+                            color: Colors.white,
+                            shadows: [
+                            Shadow(
+                              blurRadius: 10.0,
+                              color: Colors.black,
+                              offset: Offset(2.0, 2.0),
+                            ),
+                          ],),
                       ),
                     ),
                     onTap: () {
@@ -179,8 +208,11 @@ class Murrah_buffalo extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   InkWell(
-                    onTap: (){
-                      Navigator.push(context,MaterialPageRoute(builder: (context)=>Managemental()));
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => Managemental()));
                     },
                     child: Container(
                       padding: EdgeInsets.only(bottom: 15),
@@ -191,7 +223,7 @@ class Murrah_buffalo extends StatelessWidget {
                         borderRadius: BorderRadius.circular(20),
                         image: DecorationImage(
                             filterQuality: FilterQuality.high,
-                            opacity: 0.8,
+                            opacity: 0.7,
                             image: AssetImage('assets/images/management.jpeg'),
                             fit: BoxFit.cover),
                       ),
@@ -199,14 +231,25 @@ class Murrah_buffalo extends StatelessWidget {
                         'Management Practices'.tr,
                         style: TextStyle(
                             fontSize: 16,
-                            fontWeight: FontWeight.w600,
-                            color: Colors.white),
+                            fontWeight: FontWeight.w800,
+                            color: Colors.white,
+                            shadows: [
+                            Shadow(
+                              blurRadius: 10.0,
+                              color: Colors.black,
+                              offset: Offset(2.0, 2.0),
+                            ),
+                          ],
+                            ),
                       ),
                     ),
                   ),
                   InkWell(
-                    onTap: (){
-                      Navigator.push(context,MaterialPageRoute(builder: (context)=>Thermal_Stress()));
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => Thermal_Stress()));
                     },
                     child: Container(
                       padding: EdgeInsets.only(bottom: 10, left: 40, right: 10),
@@ -217,7 +260,7 @@ class Murrah_buffalo extends StatelessWidget {
                         borderRadius: BorderRadius.circular(20),
                         image: DecorationImage(
                             filterQuality: FilterQuality.high,
-                            opacity: 0.8,
+                            opacity: 0.7,
                             image:
                                 AssetImage('assets/images/thermal_stress.jpeg'),
                             fit: BoxFit.cover),
@@ -225,9 +268,17 @@ class Murrah_buffalo extends StatelessWidget {
                       child: Text(
                         'Thermal Stress Management'.tr,
                         style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w600,
-                            color: Colors.white),
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                          shadows: [
+                            Shadow(
+                              blurRadius: 10.0,
+                              color: Colors.black,
+                              offset: Offset(2.0, 2.0),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ),

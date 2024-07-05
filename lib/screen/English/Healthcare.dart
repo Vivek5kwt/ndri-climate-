@@ -47,6 +47,7 @@ class _HealthcareState extends State<Healthcare> {
                         'Foot and Mouth disease'.tr,
                         style: TextStyle(
                           fontSize: 11.0,
+                          fontWeight: FontWeight.bold,
                           overflow: TextOverflow.ellipsis,
                         ),
                         maxLines: 2,
@@ -57,6 +58,7 @@ class _HealthcareState extends State<Healthcare> {
                         'Hemorrhagic Septicemia'.tr,
                         style: TextStyle(
                           fontSize: 11.0,
+                          fontWeight: FontWeight.bold,
                           overflow: TextOverflow.ellipsis,
                         ),
                         maxLines: 2,
@@ -67,6 +69,7 @@ class _HealthcareState extends State<Healthcare> {
                         'Mastitis'.tr,
                         style: TextStyle(
                           fontSize: 11.0,
+                          fontWeight: FontWeight.bold,
                           overflow: TextOverflow.ellipsis,
                         ),
                         maxLines: 2,
@@ -77,6 +80,7 @@ class _HealthcareState extends State<Healthcare> {
                         'Deworming and vaccination schedule'.tr.tr,
                         style: TextStyle(
                           fontSize: 11.0,
+                          fontWeight: FontWeight.bold,
                           overflow: TextOverflow.ellipsis,
                         ),
                         maxLines: 3,

@@ -7,6 +7,7 @@ class ReuseAppbar extends StatelessWidget {
   final bool show_back_arrow;
   final Widget? widget;
   final PreferredSizeWidget? bottom;
+  final Function()? onTap;
   final GlobalKey<ScaffoldState> scaffoldKey;
 
   ReuseAppbar({
@@ -15,7 +16,7 @@ class ReuseAppbar extends StatelessWidget {
     required this.show_back_arrow,
     this.widget,
     required this.scaffoldKey,
-    this.bottom,
+    this.bottom,  this.onTap,
   });
 
   @override
@@ -57,9 +58,7 @@ class ReuseAppbar extends StatelessWidget {
               ),
             ),
             InkWell(
-              onTap: () {
-              // LanguageBottomSheet(selected_language: '');
-              },
+              onTap:onTap,
               child: Container(
                 width: 20,
                 height: 20,

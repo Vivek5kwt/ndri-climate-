@@ -45,7 +45,8 @@ class _FodderState extends State<Fodder> {
                       child: Text(
                         'Sorghum'.tr,
                         style: TextStyle(
-                          fontSize: 11.0,
+                          fontSize: 12.0,
+                          fontWeight: FontWeight.bold,
                           overflow: TextOverflow.ellipsis,
                         ),
                         maxLines: 1,
@@ -55,7 +56,8 @@ class _FodderState extends State<Fodder> {
                       child: Text(
                         'Maize'.tr,
                         style: TextStyle(
-                          fontSize: 11.0,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 12.0,
                           overflow: TextOverflow.ellipsis,
                         ),
                         maxLines: 1,
@@ -65,7 +67,8 @@ class _FodderState extends State<Fodder> {
                       child: Text(
                         'Oats'.tr,
                         style: TextStyle(
-                          fontSize: 11.0,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 12.0,
                           overflow: TextOverflow.ellipsis,
                         ),
                         maxLines: 1,
@@ -75,7 +78,8 @@ class _FodderState extends State<Fodder> {
                       child: Text(
                         'Berseem'.tr,
                         style: TextStyle(
-                          fontSize: 11.0,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 12.0,
                           overflow: TextOverflow.ellipsis,
                         ),
                         maxLines: 1,

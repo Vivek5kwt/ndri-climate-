@@ -98,7 +98,7 @@ class _About_MurrahState extends State<About_Murrah> {
                       'Horns are short and tightly curled in a spiral form'.tr),
               Reusabledescription(
                   desciption:
-                      'Eyes are bright, active and prominent in females but slightly shrunken in males'),
+                      'Eyes are bright, active and prominent in females but slightly shrunken in males'.tr),
               Reusabledescription(desciption: 'Ears are short, thin and alert'.tr),
               Reusabledescription(
                   desciption:
