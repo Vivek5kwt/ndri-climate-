@@ -116,12 +116,12 @@ class _Dialogue_pageState extends State<Dialogue_page> {
             setState(() {
               _languageController.text = language.tr;
 WidgetsBinding.instance.addPostFrameCallback((v){
-  Navigator.push(context, MaterialPageRoute(builder: (context)=>Dashboard(
+  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>Dashboard(
     selectdist: _districtController.text,
     selectstate: _stateController.text,)));
 });
             });
-             weatherMetrics =await _repo.fetchWeatherData(district: _districtController.text);
+            // weatherMetrics =await _repo.fetchWeatherData(district: _districtController.text);
 
           }
             );
@@ -343,14 +343,14 @@ WidgetsBinding.instance.addPostFrameCallback((v){
                     _buildStateSelectionDialog(),
 
                     Container(
-                      margin: EdgeInsets.only(top: 60),
+                      margin: EdgeInsets.only(top: 40),
                       child: Image.asset(
                         'assets/icon/logo2.png',
                         scale: 1,
                       ),
                     ),
                     Container(
-                      margin: EdgeInsets.only(top: 65),
+                      margin: EdgeInsets.only(top: 50),
                       child: Image.asset(
                         'assets/images/text1.png',
                         scale: 1,

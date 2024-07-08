@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:ndri_climate/screen/English/Climate_Services.dart';
 import 'package:get/get.dart';
+import 'package:ndri_climate/screen/English/Feeding_management.dart';
+import 'package:ndri_climate/screen/English/Healthcare.dart';
+import 'package:ndri_climate/screen/English/Thermal_stress.dart';
+import 'package:ndri_climate/screen/English/managemental_practices.dart';
 
 class CustomDrawer extends StatelessWidget {
   @override
@@ -29,24 +33,32 @@ class CustomDrawer extends StatelessWidget {
             },
           ),
           ListTile(
-            leading: Icon(Icons.web),
-            title: Text('Open Google'.tr),
-            onTap: () {},
+            leading: ImageIcon(NetworkImage('https://cdn-icons-png.flaticon.com/128/16686/16686199.png')),
+            title: Text('Feeding Management'.tr),
+            onTap: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context)=> Feeding_management()));
+            },
           ),
           ListTile(
-            leading: Icon(Icons.code),
-            title: Text('Open GitHub'.tr),
-            onTap: () {},
+            leading: ImageIcon(NetworkImage('https://cdn-icons-png.flaticon.com/128/16924/16924841.png')),
+            title: Text('Health Care Management'.tr),
+            onTap: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context)=>Healthcare()));
+            },
           ),
           ListTile(
-            leading: Icon(Icons.folder),
-            title: Text('Open Documents'.tr),
-            onTap: () {},
+            leading: ImageIcon(NetworkImage('https://cdn-icons-png.flaticon.com/128/7521/7521598.png')),
+            title: Text('Management Practices'.tr),
+            onTap: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context)=>Managemental()));
+            },
           ),
           ListTile(
-            leading: Icon(Icons.file_copy),
-            title: Text('Open Important Document'.tr),
-            onTap: () {},
+            leading: ImageIcon(NetworkImage('https://cdn-icons-png.flaticon.com/128/10414/10414431.png')),
+            title: Text('Thermal Stress Management'.tr),
+            onTap: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context)=>Thermal_Stress()));
+            },
           ),
           ListTile(
             leading: Icon(Icons.terminal),

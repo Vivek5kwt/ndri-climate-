@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ndri_climate/main.dart';
+import 'package:ndri_climate/material/custom_drawer.dart';
 import 'package:ndri_climate/material/reusableappbar.dart';
 import 'package:get/get.dart';
 import 'package:ndri_climate/screen/English/dashboard2.dart';
@@ -35,6 +36,7 @@ class _Climate_servicesState extends State<Climate_services> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldKey,
+      drawer: CustomDrawer(),
       appBar: PreferredSize(
           preferredSize: Size(40, 60),
           child: ReuseAppbar(

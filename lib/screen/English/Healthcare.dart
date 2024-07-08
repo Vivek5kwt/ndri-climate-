@@ -2,6 +2,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 import 'package:ndri_climate/material/Reusabledescrip.dart';
+import 'package:ndri_climate/material/custom_drawer.dart';
 import 'package:ndri_climate/material/reusableappbar.dart';
 import 'package:get/get.dart';
 
@@ -21,6 +22,7 @@ class _HealthcareState extends State<Healthcare> {
         length: 4,
         child: Scaffold(
           key: _scaffoldKey,
+          drawer: CustomDrawer(),
           appBar: PreferredSize(
             preferredSize: Size(60, 60),
             child: ReuseAppbar(

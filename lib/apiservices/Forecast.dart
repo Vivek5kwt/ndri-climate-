@@ -59,8 +59,8 @@ class ForecastData {
       windDirection: json['wind_direction'] ?? '0',
       cloudCover: json['cloud_cover'] ?? '0',
       tempHumidityIndex: json['temp_humidity_index'] ?? '0',
-      updatedAt: DateTime.parse(json['updated_at']),
-      createdAt: DateTime.parse(json['created_at']),
+      updatedAt: DateTime.parse(json['updated_at']?? DateTime.now().toString()),
+      createdAt: DateTime.parse(json['created_at']?? DateTime.now().toString()),
       id: json['id'] ?? 0,
     );
   }
