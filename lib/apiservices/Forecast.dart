@@ -1,3 +1,4 @@
+
 class Forecast {
   final String message;
   final ForecastData data;
@@ -79,5 +80,73 @@ class ForecastData {
       'created_at': createdAt.toIso8601String(),
       'id': id,
     };
+  }
+}
+
+class Feedback {
+  final String message;
+  final FeedbackData data;
+
+  Feedback({
+    required this.message,
+    required this.data,
+  });
+
+  factory Feedback.fromJson(Map<String, dynamic> json) {
+    return Feedback(
+      message: json['message'],
+      data: FeedbackData.fromJson(json['data']),
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'message': message,
+      'data': data.toJson(),
+    };
+  }
+}
+class FeedbackData {
+ final int id;
+ final String phoneNumber;
+ final String customerName;
+ final String district;
+ final String message;
+ final String createdAt;
+ final String updatedAt;
+
+  FeedbackData(
+      {required this.id,
+      required this.phoneNumber,
+      required this.customerName,
+      required this.district,
+      required this.message,
+      required this.createdAt,
+      required this.updatedAt});
+
+   factory FeedbackData.fromJson(Map<String, dynamic> json) {
+     return FeedbackData(
+    id: json['id']??'0',
+    phoneNumber : json['phone_number']??'', 
+    customerName: json['customer_name']??'',
+    district : json['district']??'',
+    message : json['message']??'',
+    createdAt : json['created_at']??DateTime.now().toString(),
+    updatedAt : json['updated_at']??DateTime.now().toString(),
+     );
+  }
+
+  Map<String, dynamic> toJson() {
+   return{
+    'phone_number':phoneNumber,
+    'customer_name':customerName,
+    'district':district,
+    'message':message,
+    'updated_at': updatedAt.toString(),
+      'created_at': createdAt.toString(),
+      'id': id,
+
+
+   };
   }
 }

@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:ndri_climate/material/Validation/validation_services.dart';
 import 'package:ndri_climate/material/resuseabelButton.dart';
 import 'package:ndri_climate/material/reuseablefeild.dart';
-import 'package:ndri_climate/screen/English/homescreen.dart';
-
+import 'package:ndri_climate/screen/English/Feedback.dart';
+import 'package:get/get.dart';
 class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+  
+  const LoginScreen({super.key,
+  });
 
   @override
   State<LoginScreen> createState() => _LoginScreenState();
@@ -79,8 +81,8 @@ class _LoginScreenState extends State<LoginScreen> {
                           maxlength: 4,
                           controller: _otpcontroller,
                           validator: _valid.formvaild,
-                          lable: 'Enter OTP',
-                          hinttext: 'Enter OTP',
+                          lable: 'Enter OTP'.tr,
+                          hinttext: 'Enter OTP'.tr,
                           fillcolor: Colors.white,
                           textInputType: TextInputType.name,
                           color: true,
@@ -94,12 +96,12 @@ class _LoginScreenState extends State<LoginScreen> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => Home(),
+                                  builder: (context) => FeedBack(),
                                 ),
                               );
                             }
                           },
-                          text: 'Login',
+                          text: 'Login'.tr,
                           textcolor: Colors.white,
                           colors: [Colors.green, Colors.green],
                           alignment: Alignment.center,

@@ -23,7 +23,7 @@ class Cattle extends StatelessWidget {
           preferredSize: Size(40, 60),
           child: ReuseAppbar(
             scaffoldKey: _scaffoldKey,
-            show_back_arrow: true,
+            show_back_arrow: false,
             title: 'Cattle'.tr,
           )),
       body: Container(

@@ -23,13 +23,14 @@ class Murrah_buffalo extends StatelessWidget {
           preferredSize: Size(40, 60),
           child: ReuseAppbar(
             scaffoldKey: _scaffoldKey,
-            show_back_arrow: true,
-            title: 'Dairy Animal'.tr,
+            show_back_arrow: false,
+            title: 'Dairy Animal and Climate Change'.tr,
           )),
       body: Container(
         color: Colors.white,
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
+        padding: EdgeInsets.symmetric(horizontal: 17),
         child: Column(
           children: [
             Container(
@@ -39,257 +40,250 @@ class Murrah_buffalo extends StatelessWidget {
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.all(12),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  InkWell(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => About_Murrah()));
-                    },
-                    child: Container(
-                      margin: EdgeInsets.only(top: 10),
-                      padding: EdgeInsets.only(bottom: 15),
-                      alignment: Alignment.bottomCenter,
-                      height: 190,
-                      width: 190,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        image: DecorationImage(
-                            filterQuality: FilterQuality.high,
-                            opacity: 0.7,
-                            image: AssetImage('assets/images/murrah.jpeg'),
-                            fit: BoxFit.cover),
-                      ),
-                      child: Text(
-                        'Impact of climate change on dairy animal'.tr,
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w800,
-                            color: Colors.white,
-                            shadows: [
-                            Shadow(
-                              blurRadius: 10.0,
-                              color: Colors.black,
-                              offset: Offset(2.0, 2.0),
-                            ),
-                          ],),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                InkWell(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => About_Murrah()));
+                  },
+                  child: Container(
+                    margin: EdgeInsets.only(top: 20),
+                    padding: EdgeInsets.only(bottom: 15),
+                    alignment: Alignment.bottomCenter,
+                    height: 170,
+                    width: 170,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      image: DecorationImage(
+                          filterQuality: FilterQuality.high,
+                          opacity: 0.7,
+                          image: AssetImage('assets/images/murrah.jpeg'),
+                          fit: BoxFit.cover),
+                    ),
+                    child: Text(
+                      'Impact of climate change on dairy animal'.tr,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w800,
+                        color: Colors.white,
+                        shadows: [
+                          Shadow(
+                            blurRadius: 10.0,
+                            color: Colors.black,
+                            offset: Offset(2.0, 2.0),
+                          ),
+                        ],
                       ),
                     ),
                   ),
-                  InkWell(
-                    child: Container(
-                      margin: EdgeInsets.only(top: 10),
-                      padding: EdgeInsets.only(bottom: 15),
-                      alignment: Alignment.bottomCenter,
-                      height: 190,
-                      width: 190,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        image: DecorationImage(
-                            filterQuality: FilterQuality.high,
-                            opacity: 0.7,
-                            image: AssetImage(
-                                'assets/images/feeding_management.jpeg'),
-                            fit: BoxFit.cover),
-                      ),
-                      child: Text(
-                        'Feeding Management'.tr,
-                        style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w800,
-                            color: Colors.white,
-                            shadows: [
-                            Shadow(
-                              blurRadius: 10.0,
-                              color: Colors.black,
-                              offset: Offset(2.0, 2.0),
-                            ),
-                          ],),
+                ),
+                InkWell(
+                  child: Container(
+                    margin: EdgeInsets.only(top: 20),
+                    padding: EdgeInsets.only(bottom: 15),
+                    alignment: Alignment.bottomCenter,
+                    height: 170,
+                    width: 170,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      image: DecorationImage(
+                          filterQuality: FilterQuality.high,
+                          opacity: 0.7,
+                          image: AssetImage(
+                              'assets/images/feeding_management.jpeg'),
+                          fit: BoxFit.cover),
+                    ),
+                    child: Text(
+                      'Feeding Management'.tr,
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w800,
+                        color: Colors.white,
+                        shadows: [
+                          Shadow(
+                            blurRadius: 10.0,
+                            color: Colors.black,
+                            offset: Offset(2.0, 2.0),
+                          ),
+                        ],
                       ),
                     ),
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) =>
-                                  const Feeding_management()));
-                    },
                   ),
-                ],
-              ),
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const Feeding_management()));
+                  },
+                ),
+              ],
             ),
-            Padding(
-              padding: const EdgeInsets.only(bottom: 12, left: 12, right: 12),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  InkWell(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const Fodder()));
-                    },
-                    child: Container(
-                      margin: EdgeInsets.only(top: 10),
-                      padding: EdgeInsets.only(bottom: 15),
-                      alignment: Alignment.bottomCenter,
-                      height: 190,
-                      width: 190,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        image: DecorationImage(
-                            filterQuality: FilterQuality.high,
-                            opacity: 0.7,
-                            image: AssetImage('assets/images/fodder.jpeg'),
-                            fit: BoxFit.cover),
-                      ),
-                      child: Text(
-                        'Fodder Management'.tr,
-                        style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w800,
-                            color: Colors.white,
-                            shadows: [
-                            Shadow(
-                              blurRadius: 10.0,
-                              color: Colors.black,
-                              offset: Offset(2.0, 2.0),
-                            ),
-                          ],),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                InkWell(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const Fodder()));
+                  },
+                  child: Container(
+                    margin: EdgeInsets.only(top: 20),
+                    padding: EdgeInsets.only(bottom: 10, left: 30, right: 10),
+                    alignment: Alignment.bottomCenter,
+                    height: 170,
+                    width: 170,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      image: DecorationImage(
+                          filterQuality: FilterQuality.high,
+                          opacity: 0.7,
+                          image: AssetImage('assets/images/fodder.jpeg'),
+                          fit: BoxFit.cover),
+                    ),
+                    child: Text(
+                      'Fodder Management'.tr,
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w800,
+                        overflow: TextOverflow.clip,
+                        color: Colors.white,
+                        shadows: [
+                          Shadow(
+                            blurRadius: 10.0,
+                            color: Colors.black,
+                            offset: Offset(2.0, 2.0),
+                          ),
+                        ],
                       ),
                     ),
                   ),
-                  InkWell(
-                    child: Container(
-                      margin: EdgeInsets.only(top: 10),
-                      padding: EdgeInsets.only(bottom: 10, left: 40, right: 10),
-                      alignment: Alignment.bottomCenter,
-                      height: 190,
-                      width: 190,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        image: DecorationImage(
-                            filterQuality: FilterQuality.high,
-                            opacity: 0.7,
-                            image: AssetImage('assets/images/healthcare.jpeg'),
-                            fit: BoxFit.cover),
-                      ),
-                      child: Text(
-                        'Health Care Management'.tr,
-                        style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w800,
-                            color: Colors.white,
-                            shadows: [
-                            Shadow(
-                              blurRadius: 10.0,
-                              color: Colors.black,
-                              offset: Offset(2.0, 2.0),
-                            ),
-                          ],),
+                ),
+                InkWell(
+                  child: Container(
+                    margin: EdgeInsets.only(top: 20),
+                    padding: EdgeInsets.only(bottom: 10, left: 40, right: 10),
+                    alignment: Alignment.bottomCenter,
+                    height: 170,
+                    width: 170,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      image: DecorationImage(
+                          filterQuality: FilterQuality.high,
+                          opacity: 0.7,
+                          image: AssetImage('assets/images/healthcare.jpeg'),
+                          fit: BoxFit.cover),
+                    ),
+                    child: Text(
+                      'Health Care Management'.tr,
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w800,
+                        color: Colors.white,
+                        shadows: [
+                          Shadow(
+                            blurRadius: 10.0,
+                            color: Colors.black,
+                            offset: Offset(2.0, 2.0),
+                          ),
+                        ],
                       ),
                     ),
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => Healthcare()));
-                    },
                   ),
-                ],
-              ),
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => Healthcare()));
+                  },
+                ),
+              ],
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 12),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  InkWell(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => Managemental()));
-                    },
-                    child: Container(
-                      margin: EdgeInsets.only(top: 10),
-                      padding: EdgeInsets.only(bottom: 15),
-                      alignment: Alignment.bottomCenter,
-                      height: 190,
-                      width: 190,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        image: DecorationImage(
-                            filterQuality: FilterQuality.high,
-                            opacity: 0.7,
-                            image: AssetImage('assets/images/management.jpeg'),
-                            fit: BoxFit.cover),
-                      ),
-                      child: Text(
-                        'Management Practices'.tr,
-                        style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w800,
-                            color: Colors.white,
-                            shadows: [
-                            Shadow(
-                              blurRadius: 10.0,
-                              color: Colors.black,
-                              offset: Offset(2.0, 2.0),
-                            ),
-                          ],
-                            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                InkWell(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => Managemental()));
+                  },
+                  child: Container(
+                    margin: EdgeInsets.only(top: 20),
+                    padding: EdgeInsets.only(bottom: 15),
+                    alignment: Alignment.bottomCenter,
+                    height: 170,
+                    width: 170,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      image: DecorationImage(
+                          filterQuality: FilterQuality.high,
+                          opacity: 0.7,
+                          image: AssetImage('assets/images/management.jpeg'),
+                          fit: BoxFit.cover),
+                    ),
+                    child: Text(
+                      'Management Practices'.tr,
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w800,
+                        color: Colors.white,
+                        shadows: [
+                          Shadow(
+                            blurRadius: 10.0,
+                            color: Colors.black,
+                            offset: Offset(2.0, 2.0),
+                          ),
+                        ],
                       ),
                     ),
                   ),
-                  InkWell(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => Thermal_Stress()));
-                    },
-                    child: Container(
-                      margin: EdgeInsets.only(top: 10),
-                      padding: EdgeInsets.only(bottom: 10, left: 40, right: 10),
-                      alignment: Alignment.bottomCenter,
-                      height: 190,
-                      width: 190,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        image: DecorationImage(
-                            filterQuality: FilterQuality.high,
-                            opacity: 0.7,
-                            image:
-                                AssetImage('assets/images/thermal_stress.jpeg'),
-                            fit: BoxFit.cover),
-                      ),
-                      child: Text(
-                        'Thermal Stress Management'.tr,
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                          shadows: [
-                            Shadow(
-                              blurRadius: 10.0,
-                              color: Colors.black,
-                              offset: Offset(2.0, 2.0),
-                            ),
-                          ],
-                        ),
+                ),
+                InkWell(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => Thermal_Stress()));
+                  },
+                  child: Container(
+                    margin: EdgeInsets.only(top: 20),
+                    padding: EdgeInsets.only(bottom: 10, left: 40, right: 10),
+                    alignment: Alignment.bottomCenter,
+                    height: 170,
+                    width: 170,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      image: DecorationImage(
+                          filterQuality: FilterQuality.high,
+                          opacity: 0.7,
+                          image:
+                              AssetImage('assets/images/thermal_stress.jpeg'),
+                          fit: BoxFit.cover),
+                    ),
+                    child: Text(
+                      'Thermal Stress Management'.tr,
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                        shadows: [
+                          Shadow(
+                            blurRadius: 10.0,
+                            color: Colors.black,
+                            offset: Offset(2.0, 2.0),
+                          ),
+                        ],
                       ),
                     ),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ],
         ),

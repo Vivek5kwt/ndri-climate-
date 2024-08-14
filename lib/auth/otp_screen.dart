@@ -3,11 +3,12 @@ import 'package:ndri_climate/auth/login_screen.dart';
 import 'package:ndri_climate/material/Validation/validation_services.dart';
 import 'package:ndri_climate/material/resuseabelButton.dart';
 import 'package:ndri_climate/material/reuseablefeild.dart';
+import 'package:get/get.dart';
 
 class OTPScreen extends StatefulWidget {
   final String mob_no;
-  const OTPScreen({super.key, required this.mob_no});
-
+  const OTPScreen({super.key, required this.mob_no, 
+  });
   @override
   State<OTPScreen> createState() => _OTPScreenState();
 }
@@ -99,8 +100,8 @@ class _OTPScreenState extends State<OTPScreen> {
                           maxlength: 10,
                           controller: _mobilenocontroller,
                           validator: _valid.formvaild,
-                          lable: 'Mobile Number',
-                          hinttext: 'Enter your Mobile Number',
+                          lable: 'Mobile Number'.tr,
+                          hinttext: 'Enter your Mobile Number'.tr,
                           fillcolor: Colors.white,
                           textInputType: TextInputType.name,
                           color: true,
@@ -111,15 +112,16 @@ class _OTPScreenState extends State<OTPScreen> {
                       child: ReuseableContainerButton(
                           onTap: () {
                             if (_formkey.currentState!.validate()) {
-                              Navigator.push(
+                              Navigator.pushReplacement(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => LoginScreen(),
+                                  builder: (context) => LoginScreen(
+                                    ),
                                 ),
                               );
                             }
                           },
-                          text: 'Send OTP',
+                          text: 'Send OTP'.tr,
                           textcolor: Colors.white,
                           colors: [Colors.green, Colors.green],
                           alignment: Alignment.center,
@@ -133,7 +135,8 @@ class _OTPScreenState extends State<OTPScreen> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => LoginScreen(),
+                                builder: (context) => LoginScreen(
+                                  ),
                               ),
                             );
                             // ScaffoldMessenger.of(context).showSnackBar(
@@ -148,7 +151,7 @@ class _OTPScreenState extends State<OTPScreen> {
                             //   ),
                             // );
                           },
-                          text: 'Skip',
+                          text: 'Skip'.tr,
                           textcolor: Colors.green,
                           colors: [Colors.white, Colors.white],
                           alignment: Alignment.center,

@@ -81,18 +81,18 @@ class _HomeState extends State<Home> {
                       child: Text(
                         'राष्ट्रीय डेरी अनुसंधान संस्थान द्वारा जलवायु सेवाएं',
                         style: TextStyle(
-                            fontSize: 20,
+                            fontSize: 18,
                             fontWeight: FontWeight.w600,
                             color: Colors.black),
                       ),
                     ),
                     Container(
-                      margin: EdgeInsets.only(bottom: 45),
+                      // margin: EdgeInsets.only(bottom: 10),
                       alignment: Alignment.center,
                       child: Text(
                         'NDRI CLIMATE SERVICES',
                         style: TextStyle(
-                            fontSize: 25,
+                            fontSize: 20,
                             fontWeight: FontWeight.w800,
                             color: Colors.black),
                       ),
@@ -101,7 +101,7 @@ class _HomeState extends State<Home> {
                       margin: EdgeInsets.only(bottom: 10, left: 8),
                       alignment: Alignment.center,
                       child: Text(
-                        'जलवायु अनुकूल डेयरी फार्मिंग अभ्यासओं को बढ़ावा देने के लिए भारतीय कृषि अनुसंधान परिषद-राष्ट्रीय डेरी अनुसंधान संस्थान,करनाल द्वारा एक प्रयास',
+                        'जलवायु अनुकूल डेरी फार्मिंग अभ्यासओं को बढ़ावा देने के लिए भारतीय कृषि अनुसंधान परिषद-राष्ट्रीय डेरी अनुसंधान संस्थान,करनाल द्वारा एक प्रयास',
                         style: TextStyle(
                             fontSize: 13.5,
                             fontWeight: FontWeight.w600,
@@ -121,14 +121,14 @@ class _HomeState extends State<Home> {
                       ),
                     ),
                     Container(
-                      margin: EdgeInsets.only(top: 60),
+                      margin: EdgeInsets.only(top: 40),
                       child: Image.asset(
                         'assets/icon/logo2.png',
                         scale: 1,
                       ),
                     ),
                     Container(
-                      margin: EdgeInsets.only(top: 65),
+                      margin: EdgeInsets.only(top: 45),
                       child: Image.asset(
                         'assets/images/text1.png',
                         scale: 1,

@@ -7,6 +7,7 @@ import 'package:ndri_climate/material/custom_drawer.dart';
 import 'package:ndri_climate/material/reusableappbar.dart';
 // import 'package:ndri_climate/material/reusableappbar.dart';
 import 'package:get/get.dart';
+import 'package:ndri_climate/material/tables.dart';
 
 class Feeding_management extends StatefulWidget {
   const Feeding_management({super.key});
@@ -31,7 +32,7 @@ class _Feeding_managementState extends State<Feeding_management> {
             preferredSize: Size(60, 60),
             child: ReuseAppbar(
               scaffoldKey: _scaffoldKey,
-              title: 'About Murrah Buffalo'.tr,
+              title: 'Feeding Management'.tr,
               show_back_arrow: false,
             ),
           ),
@@ -200,7 +201,7 @@ class _Feeding_managementState extends State<Feeding_management> {
                       width: MediaQuery.of(context).size.width,
                       height: MediaQuery.of(context).size.height,
                       margin: EdgeInsets.all(10),
-                      padding: EdgeInsets.all(15),
+                      padding: EdgeInsets.all(12),
                       decoration: BoxDecoration(
                           color: Colors.white,
                           border: Border.all(color: Colors.grey),
@@ -276,50 +277,87 @@ class _Feeding_managementState extends State<Feeding_management> {
                           color: Colors.white,
                           border: Border.all(color: Colors.grey),
                           borderRadius: BorderRadius.circular(10)),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Climate Smart Feeding Practices'.tr,
-                            style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w700,
+                      child: SingleChildScrollView(
+                        scrollDirection: Axis.vertical,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Climate Smart Feeding Practices'.tr,
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w700,
+                              ),
                             ),
-                          ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          Container(
-                            width: 366,
-                            height: 218,
-                            decoration: BoxDecoration(
-                                image: DecorationImage(
-                                    image: AssetImage(
-                                        'assets/images/feeding_smart.jpg'),
-                                    fit: BoxFit.cover)),
-                          ),
-                          SizedBox(
-                            height: 20,
-                          ),
-                          Reusabledescription(
-                              desciption:
-                                  'Providing balanced ration with concentrate mixture having buffer (Sodium bi-carbonate or cation based mineral supplement) for high producing buffalo during heat stress period.'.tr),
-                          Reusabledescription(
-                              desciption:
-                                  'Mineral mixture supplementation with feed @ 50-100 gm per milch buffalo perday depending upon body weight and production performance.'.tr),
-                          Reusabledescription(
-                              desciption:
-                                  'Prefer grazing during early morning and late evening'.tr),
-                          Reusabledescription(
-                              desciption:
-                                  'Supplementation of dietary soluble carbohydrate may compensate the heat stress related reduction in milch buffalo without affecting chewing activity.'.tr),
-                          Reusabledescription(
-                              desciption:
-                                  'Supplementation of ‘Prill Fat’ (saturated fat) of 50-75 gm per lactating Murrah buffalo per day during heat stress may compensate reduced milk production.'.tr),
-                          Reusabledescription(
-                              desciption:
-                                  'Vitamin A, C, E and Zinc supplementation showed positive effects towards ameliorating environmental heat stress'.tr),
-                        ],
+                            SizedBox(
+                              height: 10,
+                            ),
+                            Container(
+                              width: 366,
+                              height: 218,
+                              decoration: BoxDecoration(
+                                  image: DecorationImage(
+                                      image: AssetImage(
+                                          'assets/images/feeding_smart.jpg'),
+                                      fit: BoxFit.cover)),
+                            ),
+                            SizedBox(
+                              height: 20,
+                            ),
+                            Reusabledescription(
+                                desciption:
+                                    'Providing balanced ration with concentrate mixture having buffer (Sodium bi-carbonate or cation based mineral supplement) for high producing buffalo during heat stress period.'.tr),
+                            Reusabledescription(
+                                desciption:
+                                    'Mineral mixture supplementation with feed @ 50-100 gm per milch buffalo perday depending upon body weight and production performance.'.tr),
+                            Reusabledescription(
+                                desciption:
+                                    'Prefer grazing during early morning and late evening'.tr),
+                            Reusabledescription(
+                                desciption:
+                                    'Supplementation of dietary soluble carbohydrate may compensate the heat stress related reduction in milch buffalo without affecting chewing activity.'.tr),
+                            Reusabledescription(
+                                desciption:
+                                    'Supplementation of ‘Prill Fat’ (saturated fat) of 50-75 gm per lactating Murrah buffalo per day during heat stress may compensate reduced milk production.'.tr),
+                            Reusabledescription(
+                                desciption:
+                                    'Vitamin A, C, E and Zinc supplementation showed positive effects towards ameliorating environmental heat stress'.tr),
+                                    SizedBox(height: 15,),
+                                    Text(
+                              'Ration Formulation for a lactating buffalo with body weight 450-500 Kg) during heat stress season'.tr,
+                              style: TextStyle(
+                                fontSize: 15,
+                                fontWeight: FontWeight.w700,
+                              ),
+                            ),
+                            SizedBox(height: 10,),
+                            MilkYieldTable(),
+                            SizedBox(height: 15,),
+                                    Text(
+                              '*Concentrate mixture formulation'.tr,
+                              style: TextStyle(
+                                fontSize: 15,
+                                fontWeight: FontWeight.w700,
+                              ),
+                            ),
+                            SizedBox(height: 10,),
+                            FormulationTable(),
+                            SizedBox(height: 15,),
+                            Text(
+                              'Note'.tr,
+                              style: TextStyle(
+                                fontSize: 15,
+                                fontWeight: FontWeight.w700,
+                              ),
+                            ),
+                            SizedBox(height: 10,),
+                            Reusabledescription(desciption: 'Provide additional 1.5 – 2 kg concentrate mixture during heat stress season'.tr),
+                            Reusabledescription(desciption: 'Provide additional 1 kg of concentrate mixture per 2.5 litre of milk production beyond 10/15 kg of milk production'.tr),
+                            Reusabledescription(desciption: 'Provide 500 gm of grain or 2.5 Kg cereal fodder for every 50 Kg increase in body weight beyond 500 Kg'.tr)
+                        
+                        
+                          ],
+                        ),
                       ),
                     ),
                   ),

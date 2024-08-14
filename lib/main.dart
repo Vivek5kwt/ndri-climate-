@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ndri_climate/screen/English/homescreen.dart';
 import 'package:get/get.dart';
-import 'package:ndri_climate/screen/localStrings.dart';
+import 'package:ndri_climate/screen/localStrings/hindi.dart';
 
 String api_key = '3c16971b948395ea13a34a7880b2a9d0';
 

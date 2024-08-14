@@ -25,7 +25,7 @@ class _FodderState extends State<Fodder> {
             preferredSize: Size(60, 60),
             child: ReuseAppbar(
               scaffoldKey: _scaffoldKey,
-              title: 'About Murrah Buffalo'.tr,
+              title: 'Fodder Management'.tr,
               show_back_arrow: false,
             ),
           ),
@@ -319,7 +319,7 @@ class _FodderState extends State<Fodder> {
                               mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text('Seed Rate and Sowing Time'.tr,style: TextStyle(fontSize: 16,fontWeight: FontWeight.w600),),
+                                Text('Seed Rate and Sowing Method'.tr,style: TextStyle(fontSize: 16,fontWeight: FontWeight.w600),),
                                 Text('40-50 kg seed/ha at 5 cm depth with 60 cm row to row spacing and 10 cm spacing between crops'.tr, style: TextStyle(
                                   fontSize: 14,
                                 ),

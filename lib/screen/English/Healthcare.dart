@@ -27,7 +27,7 @@ class _HealthcareState extends State<Healthcare> {
             preferredSize: Size(60, 60),
             child: ReuseAppbar(
               scaffoldKey: _scaffoldKey,
-              title: 'About Murrah Buffalo'.tr,
+              title: 'Health Care Management'.tr,
               show_back_arrow: false,
             ),
           ),

@@ -3,9 +3,12 @@ import 'package:ndri_climate/auth/otp_screen.dart';
 import 'package:ndri_climate/material/Validation/validation_services.dart';
 import 'package:ndri_climate/material/resuseabelButton.dart';
 import 'package:ndri_climate/material/reuseablefeild.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:get/get.dart';
 
 class RegisterScreen extends StatefulWidget {
-  const RegisterScreen({super.key});
+  final String district;
+  RegisterScreen({super.key, required this.district});
 
   @override
   State<RegisterScreen> createState() => _RegisterScreenState();
@@ -16,8 +19,22 @@ class _RegisterScreenState extends State<RegisterScreen> {
   TextEditingController _namecontroller = TextEditingController();
   TextEditingController _emailcontroller = TextEditingController();
   TextEditingController _mobilenocontroller = TextEditingController();
+   String name = '';
+   String mobile = '';
+  String district = '';
+
   Valid _valid = Valid();
   bool canpop = false;
+
+  Future<void> StoreData(BuildContext context) async {
+    SharedPreferences _prefs = await SharedPreferences.getInstance();
+    setState(() {
+      _prefs.setString('name', _namecontroller.text);
+      _prefs.setString('mobile', _mobilenocontroller.text);
+      _prefs.setString('district', widget.district);
+      print('name: $name');
+    });
+  }
 
   @override
   void dispose() {
@@ -82,8 +99,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           child: ReuseableFeild(
                               validator: _valid.formvaild,
                               controller: _namecontroller,
-                              lable: 'Full Name',
-                              hinttext: 'Enter your Full Name',
+                              lable: 'Full Name'.tr,
+                              hinttext: 'Enter your Full Name'.tr,
                               fillcolor: Colors.white,
                               textInputType: TextInputType.text,
                               color: true,
@@ -95,8 +112,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           child: ReuseableFeild(
                               controller: _emailcontroller,
                               validator: _valid.formvaild,
-                              lable: 'Email ID',
-                              hinttext: 'Enter your Email Id',
+                              lable: 'Email ID'.tr,
+                              hinttext: 'Enter your Email Id'.tr,
                               fillcolor: Colors.white,
                               textInputType: TextInputType.emailAddress,
                               color: true,
@@ -108,8 +125,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               maxlength: 10,
                               controller: _mobilenocontroller,
                               validator: _valid.formvaild,
-                              lable: 'Mobile Number',
-                              hinttext: 'Enter your Mobile Number',
+                              lable: 'Mobile Number'.tr,
+                              hinttext: 'Enter your Mobile Number'.tr,
                               fillcolor: Colors.white,
                               textInputType: TextInputType.name,
                               color: true,
@@ -120,19 +137,18 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     Container(
                       margin: EdgeInsets.only(top: 10),
                       child: ReuseableContainerButton(
-                          onTap: () {
+                          onTap: ()async {
                             if (_formkey.currentState!.validate()) {
+                             await StoreData(context);
                               Navigator.pushReplacement(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => OTPScreen(
-                                    mob_no: _mobilenocontroller.text,
-                                  ),
+                                  builder: (context) => OTPScreen(mob_no: _mobilenocontroller.text,),
                                 ),
                               );
                             }
                           },
-                          text: 'Register',
+                          text: 'Register'.tr,
                           textcolor: Colors.white,
                           colors: [Colors.green, Colors.green],
                           alignment: Alignment.center,
@@ -145,7 +161,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            'Already Have Account -',
+                            'Already Have Account - '.tr,
                             style: TextStyle(
                                 fontWeight: FontWeight.w600, fontSize: 14),
                           ),
@@ -153,16 +169,16 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             width: 10,
                           ),
                           InkWell(
-                            onTap: () => Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => OTPScreen(
-                                  mob_no: _mobilenocontroller.text,
+                            onTap: () async{
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => OTPScreen(mob_no: _mobilenocontroller.text,),
                                 ),
-                              ),
-                            ),
+                              );
+                            },
                             child: Text(
-                              'Login',
+                              'Login'.tr,
                               style: TextStyle(
                                   color: Colors.green.shade800,
                                   fontWeight: FontWeight.bold,

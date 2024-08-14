@@ -27,7 +27,7 @@ class _Thermal_StressState extends State<Thermal_Stress> {
             preferredSize: Size(60, 60),
             child: ReuseAppbar(
               scaffoldKey: _scaffoldKey,
-              title: 'About Murrah Buffalo'.tr,
+              title: 'Thermal Stress Management'.tr,
               show_back_arrow: false,
             ),
           ),

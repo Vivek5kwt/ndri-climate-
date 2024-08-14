@@ -94,7 +94,8 @@ class _StateBottomSheetState extends State<StateBottomSheet> {
                   children: [
                     Text(
                       'Please Select One'.tr,
-                      style: TextStyle(color: Colors.white,fontSize: 20),
+                      style: TextStyle(
+                        color: Colors.white,fontSize: 18),
                       textAlign: TextAlign.center,
                     ),
                     IconButton(
@@ -192,7 +193,8 @@ class _DistrictBottomSheetState extends State<DistrictBottomSheet> {
                   children: [
                     Text(
                       'Please Select One'.tr,
-                      style: TextStyle(color: Colors.white,fontSize: 20),
+                      style: TextStyle(
+                        color: Colors.white,fontSize: 18),
                       textAlign: TextAlign.center,
                     ),
                     IconButton(
@@ -267,7 +269,7 @@ class _LanguageBottomSheetState extends State<LanguageBottomSheet> {
                   children: [
                     Text(
                       'Please Select One'.tr,
-                      style: TextStyle(color: Colors.white,fontSize: 20),
+                      style: TextStyle(color: Colors.white,fontSize: 18),
                       textAlign: TextAlign.center,
                     ),
                     IconButton(
@@ -297,6 +299,24 @@ class _LanguageBottomSheetState extends State<LanguageBottomSheet> {
               Get.updateLocale(locale);
               widget.selected_language('English');
               Navigator.pop(context, 'English');
+            },
+          ),
+          ListTile(
+            title: Text('Punjabi'.tr),
+            onTap: () {
+              var locale=Locale('pa', 'IN');
+              Get.updateLocale(locale);
+              widget.selected_language('Punjabi');
+              Navigator.pop(context, 'Punjabi');
+            },
+          ),
+          ListTile(
+            title: Text('Bengali'.tr),
+            onTap: () {
+              var locale=Locale('bn', 'IN');
+              Get.updateLocale(locale);
+              widget.selected_language('Bengali');
+              Navigator.pop(context, 'Bengali');
             },
           ),
         ],

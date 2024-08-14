@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:ndri_climate/apiservices/advisory.dart';
+import 'package:ndri_climate/apiservices/api_provider.dart';
 import 'package:ndri_climate/material/custom_drawer.dart';
 import 'package:ndri_climate/material/reusableappbar.dart';
 import 'package:get/get.dart';
@@ -7,7 +9,8 @@ class Climate_services extends StatefulWidget {
    final String Date1;
   final String Date2;
   final String District;
-   Climate_services({super.key, required this.Date1, required this.Date2, required this.District});
+  final String title;
+   Climate_services({super.key, required this.Date1, required this.Date2, required this.District, required this.title});
 
   @override
   State<Climate_services> createState() => _Climate_servicesState();
@@ -26,6 +29,8 @@ class _Climate_servicesState extends State<Climate_services> {
       first_date = widget.Date1;
       second_date = widget.Date2;
       district =widget.District;
+      
+      
     });
     super.initState();
   }
@@ -39,11 +44,12 @@ class _Climate_servicesState extends State<Climate_services> {
           preferredSize: Size(40, 60),
           child: ReuseAppbar(
             scaffoldKey: _scaffoldKey,
-            show_back_arrow: true,
-            title: 'Climate Services For Murrah Buffalo'.tr,
+            show_back_arrow: false,
+            title: widget.title.tr,
           )),
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
+        physics: AlwaysScrollableScrollPhysics(),
         child: Column(
           children: [
             Container(
@@ -66,7 +72,7 @@ class _Climate_servicesState extends State<Climate_services> {
                           width: 5,
                         ),
                         Text(
-                          '$first_date$second_date',
+                          '$first_date $second_date',
                           style: TextStyle(
                             fontSize: 14,
                             color: Color(0xFF1B3A69),
@@ -98,94 +104,63 @@ class _Climate_servicesState extends State<Climate_services> {
                 ],
               ),
             ),
-            Container(
-                width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.height / 4,
-                margin: EdgeInsets.all(10),
-                padding: EdgeInsets.all(15),
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    border: Border.all(color: Colors.grey),
-                    borderRadius: BorderRadius.circular(10)),
-                child: Column(
-        
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'WEATHER SUMMARY'.tr,
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w700,
-                      ),
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Text(
-                      'In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before the final copy is available.',
-                      style:
-                          TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
-                    )
-                  ],
-                )),
+            
              Container(
-                width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.height / 2,
-                margin: EdgeInsets.all(10),
-                padding: EdgeInsets.all(15),
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    border: Border.all(color: Colors.grey),
-                    borderRadius: BorderRadius.circular(10)),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'ADVISORY SERVICES FOR DAIRY ANIMALS'.tr,
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w700,
-                      ),
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Text(
-                      'In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before the final copy is available.In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before the final copy is available.In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before the final copy is available.In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before the final copy is available.',
-                      style:
-                          TextStyle(fontSize: 13, fontWeight: FontWeight.w500),
-                    )
-                  ],
-                )),
-                Container(
-                width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.height / 2,
-                margin: EdgeInsets.all(10),
-                padding: EdgeInsets.all(15),
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    border: Border.all(color: Colors.grey),
-                    borderRadius: BorderRadius.circular(10)),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'ADVISORY SERVICES FOR MAJOR CROPS'.tr,
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w700,
-                      ),
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Text(
-                      'In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before the final copy is available.In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before the final copy is available.In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before the final copy is available.In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before the final copy is available.',
-                      style:
-                          TextStyle(fontSize: 13, fontWeight: FontWeight.w500),
-                    )
-                  ],
-                )),
+               child: FutureBuilder(
+                
+                future: ApiProvider().fetchAdvisory(),
+                builder: (context, snapshot) {
+                  if (snapshot.hasData) {
+                    final data = snapshot.data;
+                    List<Advisory>advisory_data = data?.reversed.toList() ?? [];
+                     return  Container(
+                      height: MediaQuery.of(context).size.height / 1.5,
+                       child: ListView.builder(
+                        itemCount: advisory_data.length,
+                        itemBuilder: (context, index) {
+                          Advisory _advisory = advisory_data[index];
+                         return Container(
+                                         width: MediaQuery.of(context).size.width,
+                                         // height: MediaQuery.of(context).size.height / 2,
+                                         margin: EdgeInsets.all(10),
+                                         padding: EdgeInsets.all(15),
+                                         decoration: BoxDecoration(
+                        color: Colors.white,
+                        border: Border.all(color: Colors.grey),
+                        borderRadius: BorderRadius.circular(10)),
+                                         child: Column(
+                                           crossAxisAlignment: CrossAxisAlignment.start,
+                                           children: [
+                        Text(
+                          _advisory.title,
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Text(
+                          _advisory.description, style:
+                              TextStyle(fontSize: 13, fontWeight: FontWeight.w500),
+                        )
+                                           ],
+                                         ));
+                       },),
+                     );
+                  } else if(snapshot.connectionState == ConnectionState.waiting) {
+                    Container(height: MediaQuery.of(context).size.height / 2,
+                    alignment: Alignment.center,
+                    child: CircularProgressIndicator.adaptive(),
+                    );
+                  }
+                 return Container();
+                },
+                ),
+              
+             ),
+              
           ],
         ),
       ),

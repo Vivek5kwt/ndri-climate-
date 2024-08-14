@@ -8,6 +8,7 @@ class ReuseAppbar extends StatelessWidget {
   final PreferredSizeWidget? bottom;
   final Function()? onTap;
   final GlobalKey<ScaffoldState> scaffoldKey;
+  final VoidCallback? onBackPress; //
 
   ReuseAppbar({
     super.key,
@@ -15,17 +16,18 @@ class ReuseAppbar extends StatelessWidget {
     required this.show_back_arrow,
     this.widget,
     required this.scaffoldKey,
-    this.bottom,  this.onTap,
+    this.bottom,  this.onTap, this.onBackPress,
   });
 
   @override
   Widget build(BuildContext context) {
     final bgcolor = Color(0xFF2C96D2);
     return AppBar(
+      centerTitle: true,
         actionsIconTheme: IconThemeData(color: Colors.white),
         automaticallyImplyLeading: false,
         backgroundColor: bgcolor,
-        leading: widget,
+        leading: show_back_arrow? IconButton(icon: Icon(Icons.arrow_back_ios),onPressed: onBackPress?? ()=>Navigator.pop(context),):null,
         bottom: bottom,
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
