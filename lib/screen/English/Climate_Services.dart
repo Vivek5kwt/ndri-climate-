@@ -110,11 +110,17 @@ class _Climate_servicesState extends State<Climate_services> {
                 
                 future: ApiProvider().fetchAdvisory(),
                 builder: (context, snapshot) {
+                  if(snapshot.connectionState == ConnectionState.waiting) {
+                    Container(height: MediaQuery.of(context).size.height / 2,
+                    alignment: Alignment.center,
+                    child: CircularProgressIndicator.adaptive(),
+                    );
+                  }
                   if (snapshot.hasData) {
                     final data = snapshot.data;
                     List<Advisory>advisory_data = data?.reversed.toList() ?? [];
                      return  Container(
-                      height: MediaQuery.of(context).size.height / 1.5,
+                      height: MediaQuery.of(context).size.height / 1.22,
                        child: ListView.builder(
                         itemCount: advisory_data.length,
                         itemBuilder: (context, index) {
@@ -149,12 +155,7 @@ class _Climate_servicesState extends State<Climate_services> {
                                          ));
                        },),
                      );
-                  } else if(snapshot.connectionState == ConnectionState.waiting) {
-                    Container(height: MediaQuery.of(context).size.height / 2,
-                    alignment: Alignment.center,
-                    child: CircularProgressIndicator.adaptive(),
-                    );
-                  }
+                  } 
                  return Container();
                 },
                 ),
