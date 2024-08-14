@@ -69,7 +69,7 @@ class Repo{
         'temp_max': _toDouble(entry['main']['temp_max']),
         'humidity': humidity,
         'wind_speed': _toDouble(entry['wind']['speed']),
-        'clouds': _toDouble(entry['clouds']['all']),
+        'clouds': _toDouble(entry['clouds']['all']/12.5),
         'rain': entry['rain'] != null ? _toDouble(entry['rain']['3h'] ?? 0.0) : 0.0,
         'wind_direction': _toDouble(entry['wind']['deg']),
         'rainfall': entry['rain'] != null ? _toDouble(entry['rain']['3h'] ?? 0.0) : 0.0,

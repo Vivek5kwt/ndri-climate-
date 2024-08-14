@@ -365,7 +365,6 @@ class WeatherMetrics {
         'clouds': _toDouble(entry['clouds']['all']),
         'wind_speed': _toDouble(entry['wind']['speed']),
         'rain': entry['rain'] != null ? _toDouble(entry['rain']['3h'] ?? 0.0) : 0.0,
-        'wind_speed': _toDouble(entry['wind']['speed']),
         'wind_direction': _toDouble(entry['wind']['deg']),
         'rainfall': entry['rain'] != null ? _toDouble(entry['rain']['3h'] ?? 0.0) : 0.0,
         'THI': (temp - ((0.55 - (0.55 * humidity / 100)) * (temp - 14.5))),  // Calculating THI

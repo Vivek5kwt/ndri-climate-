@@ -10,16 +10,17 @@ import 'package:ndri_climate/material/reusableappbar.dart';
 import 'package:ndri_climate/model/Repo.dart';
 import 'package:ndri_climate/model/Weather_Forecast.dart';
 import 'package:ndri_climate/screen/English/Climate_Services.dart';
+import 'package:ndri_climate/screen/English/Fodder_management.dart';
 import 'package:ndri_climate/screen/English/murrahbuffalo.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 
 class Dashboard extends StatefulWidget {
   final String selectdist;
   final String selectstate;
 
-  const Dashboard({super.key, required this.selectdist, required this.selectstate});
+  const Dashboard(
+      {super.key, required this.selectdist, required this.selectstate});
 
   @override
   State<Dashboard> createState() => _DashboardState();
@@ -31,9 +32,8 @@ class _DashboardState extends State<Dashboard> {
   GlobalKey<FormState> _formkey = GlobalKey<FormState>();
   DateTime selectedDate1 = DateTime.now();
   DateTime selectedDate2 = DateTime.now().add(Duration(days: 7));
-    WeatherResponse? weatherResponse;
-    WeatherMetrics weatherMetrics=WeatherMetrics();
-    
+  WeatherResponse? weatherResponse;
+  WeatherMetrics weatherMetrics = WeatherMetrics();
 
   // Weathermodel? weathermodel;
   TextEditingController _stateController = TextEditingController();
@@ -54,7 +54,7 @@ class _DashboardState extends State<Dashboard> {
     if (picked != null && picked != selectedDate1) {
       setState(() {
         selectedDate1 = picked;
-        selectedDate2=selectedDate1.add(Duration(days: 7));
+        selectedDate2 = selectedDate1.add(Duration(days: 7));
       });
     }
   }
@@ -66,40 +66,66 @@ class _DashboardState extends State<Dashboard> {
     final cloudCoverValues = dailyData.map((day) => day['clouds']).toList();
     final precipitationValues = dailyData.map((day) => day['rain']).toList();
     final windSpeedValues = dailyData.map((day) => day['wind_speed']).toList();
-    final windDirectionValues = dailyData.map((day) => day['wind_direction']).toList();
+    final windDirectionValues =
+        dailyData.map((day) => day['wind_direction']).toList();
     final rainfallValues = dailyData.map((day) => day['rainfall']).toList();
     final THIValues = dailyData.map((day) => day['THI']).toList();
     final RHValues = dailyData.map((day) => day['RH']).toList();
 
     setState(() {
       ranges = {
-        'Temperature Min': [tempMinValues.reduce((a, b) => a < b ? a : b), tempMinValues.reduce((a, b) => a > b ? a : b)],
-        'Temperature Max': [tempMaxValues.reduce((a, b) => a < b ? a : b), tempMaxValues.reduce((a, b) => a > b ? a : b)],
-        'Humidity': [humidityValues.reduce((a, b) => a < b ? a : b), humidityValues.reduce((a, b) => a > b ? a : b)],
-        'Cloud Cover': [cloudCoverValues.reduce((a, b) => a < b ? a : b), cloudCoverValues.reduce((a, b) => a > b ? a : b)],
-        'Wind Speed': [windSpeedValues.reduce((a, b) => a < b ? a : b), windSpeedValues.reduce((a, b) => a > b ? a : b)],
-        'Precipitation': [precipitationValues.reduce((a, b) => a < b ? a : b), precipitationValues.reduce((a, b) => a > b ? a : b)],
-        'Wind Direction': [windDirectionValues.reduce((a, b) => a < b ? a : b), windDirectionValues.reduce((a, b) => a > b ? a : b)],
-        'Rainfall': [rainfallValues.reduce((a, b) => a < b ? a : b), rainfallValues.reduce((a, b) => a > b ? a : b)],
-        'THI': [THIValues.reduce((a, b) => a < b ? a : b), THIValues.reduce((a, b) => a > b ? a : b)],
-        'RH': [RHValues.reduce((a, b) => a < b ? a : b), RHValues.reduce((a, b) => a > b ? a : b)],
+        'Temperature Min': [
+          tempMinValues.reduce((a, b) => a < b ? a : b),
+          tempMinValues.reduce((a, b) => a > b ? a : b)
+        ],
+        'Temperature Max': [
+          tempMaxValues.reduce((a, b) => a < b ? a : b),
+          tempMaxValues.reduce((a, b) => a > b ? a : b)
+        ],
+        'Humidity': [
+          humidityValues.reduce((a, b) => a < b ? a : b),
+          humidityValues.reduce((a, b) => a > b ? a : b)
+        ],
+        'Cloud Cover': [
+          cloudCoverValues.reduce((a, b) => a < b ? a : b),
+          cloudCoverValues.reduce((a, b) => a > b ? a : b)
+        ],
+        'Wind Speed': [
+          windSpeedValues.reduce((a, b) => a < b ? a : b),
+          windSpeedValues.reduce((a, b) => a > b ? a : b)
+        ],
+        'Precipitation': [
+          precipitationValues.reduce((a, b) => a < b ? a : b),
+          precipitationValues.reduce((a, b) => a > b ? a : b)
+        ],
+        'Wind Direction': [
+          windDirectionValues.reduce((a, b) => a < b ? a : b),
+          windDirectionValues.reduce((a, b) => a > b ? a : b)
+        ],
+        'Rainfall': [
+          rainfallValues.reduce((a, b) => a < b ? a : b),
+          rainfallValues.reduce((a, b) => a > b ? a : b)
+        ],
+        'THI': [
+          THIValues.reduce((a, b) => a < b ? a : b),
+          THIValues.reduce((a, b) => a > b ? a : b)
+        ],
+        'RH': [
+          RHValues.reduce((a, b) => a < b ? a : b),
+          RHValues.reduce((a, b) => a > b ? a : b)
+        ],
       };
     });
   }
 
-  void getweather()async{
-    
-   _repo.fetchWeatherData(district: _districtController.text).then((data){
-    calculateRanges(data ?? [{}]);
-    
-   });
-     
+  void getweather() async {
+    _repo.fetchWeatherData(district: _districtController.text).then((data) {
+      calculateRanges(data ?? [{}]);
+    });
   }
-
 
   @override
   void initState() {
-
     SharedPreferences.getInstance().then((value) {
       setState(() {
         id = value.getString('forecast_id');
@@ -108,23 +134,16 @@ class _DashboardState extends State<Dashboard> {
         // Forecast _forecastdata = Forecast.fromJson(data);
         setState(() {
           _weatherdata = ForecastData.fromJson(data ?? {});
-         
         });
-        
       });
 
-       if (widget.selectstate.isNotEmpty&&widget.selectdist.isNotEmpty) {
-setState(() {
-            _districtController.text = widget.selectdist;
-            _stateController.text=widget.selectstate;
-getweather();
-
-  
-});     
-
-
-     }
-
+      if (widget.selectstate.isNotEmpty && widget.selectdist.isNotEmpty) {
+        setState(() {
+          _districtController.text = widget.selectdist;
+          _stateController.text = widget.selectstate;
+          getweather();
+        });
+      }
     });
     super.initState();
   }
@@ -227,18 +246,29 @@ getweather();
             weatherResponse = await Repo().getweather(_districtController.text);
             ApiProvider().storeWeatherData(
               District: _districtController.text,
-              max_temp: ranges['Temperature Max'][0]?? 0.0 - ranges['Temperature Max'][1]?? 0.0,
-              min_temp: ranges['Temperature Min'][0]?? 0.0 - ranges['Temperature Min'][1]?? 0.0,
-              rainfall: ranges['Rainfall'][0].ceil()?? 0.0 - ranges['Rainfall'][1].ceil()?? 0.0,
+              max_temp: ranges['Temperature Max'][0] ??
+                  0.0 - ranges['Temperature Max'][1] ??
+                  0.0,
+              min_temp: ranges['Temperature Min'][0] ??
+                  0.0 - ranges['Temperature Min'][1] ??
+                  0.0,
+              rainfall: ranges['Rainfall'][0].ceil() ??
+                  0.0 - ranges['Rainfall'][1].ceil() ??
+                  0.0,
               relative_humidity:
-                  ranges['RH'][0]?? 0.0 - ranges['RH'][1]?? 0.0,
-              wind_speed: ranges['Wind Speed'][0].ceil()?? 0.0 - ranges['Wind Speed'][1].ceil()?? 0.0,
-              wind_direction:ranges['Wind Direction'][0]?? 0.0 - ranges['Wind Direction'][1]?? 0.0
-                  ,
-              cloud_cover:
-                  ranges['Cloud Cover'][0]?? 0.0 - ranges['Cloud Cover'][1]?? 0.0,
-              temp_humidity_index:
-                  ranges['THI'][0].ceil()?? 0.0 - ranges['THI'][1].ceil()?? 0.0,
+                  ranges['RH'][0] ?? 0.0 - ranges['RH'][1] ?? 0.0,
+              wind_speed: ranges['Wind Speed'][0].ceil() ??
+                  0.0 - ranges['Wind Speed'][1].ceil() ??
+                  0.0,
+              wind_direction: ranges['Wind Direction'][0] ??
+                  0.0 - ranges['Wind Direction'][1] ??
+                  0.0,
+              cloud_cover: ranges['Cloud Cover'][0] ??
+                  0.0 - ranges['Cloud Cover'][1] ??
+                  0.0,
+              temp_humidity_index: ranges['THI'][0].ceil() ??
+                  0.0 - ranges['THI'][1].ceil() ??
+                  0.0,
             );
           },
         );
@@ -376,7 +406,6 @@ getweather();
                                   keyboardType: TextInputType.none,
                                   readOnly: true,
                                   controller: _languageController,
-                                  
                                   onTap: () async {
                                     if (_formkey.currentState!.validate()) {
                                       _showLanguageBottomSheet(context);
@@ -419,35 +448,43 @@ getweather();
 
   Future<bool> _showExitConfirmationDialog() async {
     return await showDialog(
-      context: context,
-      builder: (context) => Container(
-        width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height,
-        child: AlertDialog(
-          actionsAlignment: MainAxisAlignment.center,
-          alignment: Alignment.topCenter,
-                  contentPadding:
-                      EdgeInsets.only(top: 20, bottom: 0, left: 0, right: 0),
-                  backgroundColor: Color(0xFF2C96D2),
-          title: Text('Exit Confirmation',style: TextStyle(color: Colors.white),textAlign: TextAlign.center,),
-          content: Text('Are you sure you want to Exit?',
-          style: TextStyle(fontSize: 18,color: Colors.white),textAlign: TextAlign.center,),
-          actions: [
-            TextButton(
-              onPressed: () => SystemNavigator.pop(), // Confirm
-              child: Text('Yes',style: TextStyle(fontSize: 16,color: Colors.white)),
+          context: context,
+          builder: (context) => Container(
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height,
+            child: AlertDialog(
+              actionsAlignment: MainAxisAlignment.center,
+              alignment: Alignment.topCenter,
+              contentPadding:
+                  EdgeInsets.only(top: 20, bottom: 0, left: 0, right: 0),
+              backgroundColor: Color(0xFF2C96D2),
+              title: Text(
+                'Exit Confirmation',
+                style: TextStyle(color: Colors.white),
+                textAlign: TextAlign.center,
+              ),
+              content: Text(
+                'Are you sure you want to Exit?',
+                style: TextStyle(fontSize: 18, color: Colors.white),
+                textAlign: TextAlign.center,
+              ),
+              actions: [
+                TextButton(
+                  onPressed: () => SystemNavigator.pop(), // Confirm
+                  child: Text('Yes',
+                      style: TextStyle(fontSize: 16, color: Colors.white)),
+                ),
+                TextButton(
+                  onPressed: () => Navigator.of(context).pop(false), // Cancel
+                  child: Text('No',
+                      style: TextStyle(fontSize: 16, color: Colors.white)),
+                ),
+              ],
             ),
-            TextButton(
-              onPressed: () => Navigator.of(context).pop(false), // Cancel
-              child: Text('No',style: TextStyle(fontSize: 16,color: Colors.white)),
-            ),
-            
-          ],
-        ),
-      ),
-    ) ?? false;
+          ),
+        ) ??
+        false;
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -468,85 +505,122 @@ getweather();
               title: 'Dashboard'.tr,
             )),
         body: SingleChildScrollView(
-          child: ranges.isNotEmpty? Container(
-                  height: MediaQuery.of(context).size.height,
-                  width: MediaQuery.of(context).size.width,
-                  padding: EdgeInsets.all(0),
-                  color: Colors.white,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Container(
-                        margin: EdgeInsets.only(
-                            top: 20, left: 30, right: 30, bottom: 5),
-                        alignment: Alignment.topCenter,
-                        child: Text(
-                          'Climate services by ICAR-National Dairy Research Institute (NDRI), Karnal'
-                              .tr,
-                          style: TextStyle(
-                            fontSize: 15,
-                            fontWeight: FontWeight.w700,
+            child: ranges.isNotEmpty
+                ? Container(
+                    height: MediaQuery.of(context).size.height,
+                    width: MediaQuery.of(context).size.width,
+                    padding: EdgeInsets.all(0),
+                    color: Colors.white,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Container(
+                          margin: EdgeInsets.only(
+                              top: 20, left: 30, right: 30, bottom: 5),
+                          alignment: Alignment.topCenter,
+                          child: Text(
+                            'Climate services by ICAR-National Dairy Research Institute (NDRI), Karnal'
+                                .tr,
+                            style: TextStyle(
+                              fontSize: 15,
+                              fontWeight: FontWeight.w700,
+                            ),
                           ),
                         ),
-                      ),
-                      SingleChildScrollView(
-                        scrollDirection: Axis.horizontal,
-                        child: Row(
-                          children: [
-                            Container(
-                              margin: EdgeInsets.only(
-                                  top: 10, bottom: 10, left: 25, right: 10),
-                              padding: EdgeInsets.only(top: 0),
-                              width: 146,
-                              height: 114,
-                              decoration: BoxDecoration(
-                                  border: Border.all(
-                                    width: 1,
-                                    color: Color(0xFFABABAB),
-                                  ),
-                                  borderRadius: BorderRadius.circular(10)),
-                              child: Column(
-                                children: [
-                                  InkWell(
-                                    onTap: () {
-                                      Navigator.push(context, MaterialPageRoute(builder: (context)=>Murrah_buffalo()));
-                                    },
-                                    child: Container(
-                                      width: 126,
-                                      height: 77,
-                                      decoration: BoxDecoration(
-                                          image: DecorationImage(
-                                              image: AssetImage(
-                                                  'assets/images/buffalo.png'),
-                                              fit: BoxFit.cover)),
+                        SingleChildScrollView(
+                          scrollDirection: Axis.horizontal,
+                          child: Row(
+                            children: [
+                              Container(
+                                margin: EdgeInsets.only(
+                                    top: 10, bottom: 10, left: 25, right: 10),
+                                padding: EdgeInsets.only(top: 0),
+                                width: 146,
+                                height: 114,
+                                decoration: BoxDecoration(
+                                    border: Border.all(
+                                      width: 1,
+                                      color: Color(0xFFABABAB),
                                     ),
-                                  ),
-                                  Text(
-                                    textAlign:TextAlign.center,
-                                    'Dairy Animal and Climate Change'.tr,
-                                    style: TextStyle(
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.w700),
-                                  )
-                                ],
+                                    borderRadius: BorderRadius.circular(10)),
+                                child: Column(
+                                  children: [
+                                    InkWell(
+                                      onTap: () {
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    Murrah_buffalo()));
+                                      },
+                                      child: Container(
+                                        width: 126,
+                                        height: 77,
+                                        decoration: BoxDecoration(
+                                            image: DecorationImage(
+                                                image: AssetImage(
+                                                    'assets/images/buffalo.png'),
+                                                fit: BoxFit.cover)),
+                                      ),
+                                    ),
+                                    Text(
+                                      textAlign: TextAlign.center,
+                                      'Dairy Animal and Climate Change'.tr,
+                                      style: TextStyle(
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.w700),
+                                    )
+                                  ],
+                                ),
                               ),
-                            ),
-                            InkWell(
-                              onTap: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => Climate_services(
-                                              Date1:
-                                                  '${DateFormat('dd-MM-yyyy').format(selectedDate1)} - ',
-                                              Date2:
-                                                  '${DateFormat('dd-MM-yyyy').format(selectedDate2)}',
-                                              District:
-                                                  '${_districtController.text}',
-                                            )));
-                              },
-                              child: Container(
-                                margin: EdgeInsets.all(10),
+                              InkWell(
+                                onTap: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              Climate_services(
+                                                Date1:
+                                                    '${DateFormat('dd-MM-yyyy').format(selectedDate1)} - ',
+                                                Date2:
+                                                    '${DateFormat('dd-MM-yyyy').format(selectedDate2)}',
+                                                District:
+                                                    '${_districtController.text}',
+                                              )));
+                                },
+                                child: Container(
+                                  margin: EdgeInsets.all(10),
+                                  width: 146,
+                                  height: 113,
+                                  padding: EdgeInsets.only(top: 10),
+                                  decoration: BoxDecoration(
+                                      border: Border.all(
+                                        width: 1,
+                                        color: Color(0xFFABABAB),
+                                      ),
+                                      borderRadius: BorderRadius.circular(10)),
+                                  child: Column(
+                                    children: [
+                                      Container(
+                                        width: 126,
+                                        height: 77,
+                                        decoration: BoxDecoration(
+                                            image: DecorationImage(
+                                                image: AssetImage(
+                                                    'assets/images/forecast.png'),
+                                                fit: BoxFit.cover)),
+                                      ),
+                                      Text(
+                                        'Climate Advisory'.tr,
+                                        style: TextStyle(
+                                            fontSize: 14,
+                                            fontWeight: FontWeight.w700),
+                                      )
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              Container(
                                 width: 146,
                                 height: 113,
                                 padding: EdgeInsets.only(top: 10),
@@ -568,7 +642,7 @@ getweather();
                                               fit: BoxFit.cover)),
                                     ),
                                     Text(
-                                      'Climate Advisory'.tr,
+                                      'Daily forecast'.tr,
                                       style: TextStyle(
                                           fontSize: 14,
                                           fontWeight: FontWeight.w700),
@@ -576,395 +650,389 @@ getweather();
                                   ],
                                 ),
                               ),
-                            ),
-                            Container(
-                              width: 146,
-                              height: 113,
-                              padding: EdgeInsets.only(top: 10),
-                              decoration: BoxDecoration(
-                                  border: Border.all(
-                                    width: 1,
-                                    color: Color(0xFFABABAB),
-                                  ),
-                                  borderRadius: BorderRadius.circular(10)),
-                              child: Column(
-                                children: [
-                                  Container(
-                                    width: 126,
-                                    height: 77,
-                                    decoration: BoxDecoration(
-                                        image: DecorationImage(
-                                            image: AssetImage(
-                                                'assets/images/forecast.png'),
-                                            fit: BoxFit.cover)),
-                                  ),
-                                  Text(
-                                    'Daily forecast'.tr,
-                                    style: TextStyle(
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.w700),
-                                  )
-                                ],
-                              ),
-                            ),
-                            Container(
-                              margin: EdgeInsets.all(10),
-                              padding: EdgeInsets.only(top: 10),
-                              width: 146,
-                              height: 113,
-                              decoration: BoxDecoration(
-                                  border: Border.all(
-                                    width: 1,
-                                    color: Color(0xFFABABAB),
-                                  ),
-                                  borderRadius: BorderRadius.circular(10)),
-                              child: Column(
-                                children: [
-                                  Container(
-                                    width: 126,
-                                    height: 77,
-                                    decoration: BoxDecoration(
-                                        image: DecorationImage(
-                                            image: AssetImage(
-                                                'assets/images/forecast.png'),
-                                            fit: BoxFit.cover)),
-                                  ),
-                                  Text(
-                                    'Past advisories'.tr,
-                                    style: TextStyle(
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.w700),
-                                  )
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Container(
-                        color: Color(0xFF9BDBFF),
-                        width: MediaQuery.of(context).size.width,
-                        padding: EdgeInsets.all(10),
-                        height: 180,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Text(
-                              'Weekly Weather Forecast'.tr,
-                              style: TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.w700,
-                              ),
-                            ),
-                            SizedBox(
-                              height: 5,
-                            ),
-                            Container(
-                              width: MediaQuery.of(context).size.width,
-                              padding: EdgeInsets.symmetric(horizontal: 10),
-                              margin: EdgeInsets.only(bottom: 10),
-                              height: 20,
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Container(
-                                    child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.start,
-                                      children: [
-                                        Icon(
-                                          Icons.calendar_month,
-                                          color: Color(0xFF1B3A69),
-                                          size: 21,
-                                        ),
-                                        SizedBox(
-                                          width: 5,
-                                        ),
-                                        InkWell(
-                                            onTap: () {
-                                              _selectDate1(context);
-                                            },
-                                            child: Text(
-                                              '${DateFormat('dd-MM-yyyy').format(selectedDate1)} - '+'${DateFormat('dd-MM-yyyy').format(selectedDate2)}',
-                                              style: TextStyle(
-                                                  fontSize: 14,
-                                                  color: Color(0xFF1B3A69),
-                                                  fontWeight: FontWeight.w600),
-                                            )),
-                                        const SizedBox(
-                                          height: 20.0,
-                                        ),
-                                      ],
+                              Container(
+                                margin: EdgeInsets.all(10),
+                                padding: EdgeInsets.only(top: 10),
+                                width: 146,
+                                height: 113,
+                                decoration: BoxDecoration(
+                                    border: Border.all(
+                                      width: 1,
+                                      color: Color(0xFFABABAB),
                                     ),
-                                  ),
-                                  Container(
-                                    child: Row(
-                                      children: [
-                                        InkWell(
-                                          child: Icon(
-                                            Icons.location_pin,
+                                    borderRadius: BorderRadius.circular(10)),
+                                child: Column(
+                                  children: [
+                                    Container(
+                                      width: 126,
+                                      height: 77,
+                                      decoration: BoxDecoration(
+                                          image: DecorationImage(
+                                              image: AssetImage(
+                                                  'assets/images/forecast.png'),
+                                              fit: BoxFit.cover)),
+                                    ),
+                                    Text(
+                                      'Past advisories'.tr,
+                                      style: TextStyle(
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.w700),
+                                    )
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Container(
+                          color: Color(0xFF9BDBFF),
+                          width: MediaQuery.of(context).size.width,
+                          padding: EdgeInsets.all(10),
+                          height: 180,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Text(
+                                'Weekly Weather Forecast'.tr,
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w700,
+                                ),
+                              ),
+                              SizedBox(
+                                height: 5,
+                              ),
+                              Container(
+                                width: MediaQuery.of(context).size.width,
+                                padding: EdgeInsets.symmetric(horizontal: 10),
+                                margin: EdgeInsets.only(bottom: 10),
+                                height: 20,
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Container(
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        children: [
+                                          Icon(
+                                            Icons.calendar_month,
                                             color: Color(0xFF1B3A69),
                                             size: 21,
                                           ),
-                                          onTap: () {
-                                            _showStateSelectionDialog();
-                                            // Navigator.push(context,MaterialPageRoute(builder: (context)=>Dialogue()));
-                                          },
+                                          SizedBox(
+                                            width: 5,
+                                          ),
+                                          InkWell(
+                                              onTap: () {
+                                                _selectDate1(context);
+                                              },
+                                              child: Text(
+                                                '${DateFormat('dd-MM-yyyy').format(selectedDate1)} - ' +
+                                                    '${DateFormat('dd-MM-yyyy').format(selectedDate2)}',
+                                                style: TextStyle(
+                                                    fontSize: 14,
+                                                    color: Color(0xFF1B3A69),
+                                                    fontWeight:
+                                                        FontWeight.w600),
+                                              )),
+                                          const SizedBox(
+                                            height: 20.0,
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    Container(
+                                      child: Row(
+                                        children: [
+                                          InkWell(
+                                            child: Icon(
+                                              Icons.location_pin,
+                                              color: Color(0xFF1B3A69),
+                                              size: 21,
+                                            ),
+                                            onTap: () {
+                                              _showStateSelectionDialog();
+                                              // Navigator.push(context,MaterialPageRoute(builder: (context)=>Dialogue()));
+                                            },
+                                          ),
+                                          Text(
+                                            '${_districtController.text.tr}',
+                                            style: TextStyle(
+                                              fontSize: 14,
+                                              color: Color(0xFF1B3A69),
+                                              fontWeight: FontWeight.w700,
+                                            ),
+                                          )
+                                        ],
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              Container(
+                                margin: EdgeInsets.only(
+                                    bottom: 10, left: 10, right: 10),
+                                padding: EdgeInsets.symmetric(
+                                    horizontal: 10, vertical: 5),
+                                width: 390,
+                                height: 73,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10),
+                                  color: Color(0xFF1B3A69),
+                                ),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceAround,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          'Tmax'.tr,
+                                          style: TextStyle(
+                                              fontSize: 10,
+                                              fontWeight: FontWeight.w400,
+                                              color: Colors.white),
+                                        ),
+                                        Text('Tmin'.tr,
+                                            style: TextStyle(
+                                                fontSize: 10,
+                                                fontWeight: FontWeight.w400,
+                                                color: Colors.white)),
+                                        Text('Rainfall(mm)'.tr,
+                                            style: TextStyle(
+                                                fontSize: 10,
+                                                fontWeight: FontWeight.w400,
+                                                color: Colors.white)),
+                                        Text('THI'.tr,
+                                            style: TextStyle(
+                                                fontSize: 10,
+                                                fontWeight: FontWeight.w400,
+                                                color: Colors.white))
+                                      ],
+                                    ),
+                                    Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceAround,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          '${ranges['Temperature Max'][0] ?? 0.0} - ${ranges['Temperature Max'][1] ?? 0.0}',
+                                          style: TextStyle(
+                                              fontSize: 10,
+                                              fontWeight: FontWeight.w400,
+                                              color: Colors.white),
                                         ),
                                         Text(
-                                          '${_districtController.text.tr}',
+                                            '${ranges['Temperature Min'][0] ?? 0.0} - ${ranges['Temperature Min'][1] ?? 0.0}',
+                                            style: TextStyle(
+                                                fontSize: 10,
+                                                fontWeight: FontWeight.w400,
+                                                color: Colors.white)),
+                                        Text(
+                                            '${ranges['Rainfall'][0].ceil() ?? 0.0} - ${ranges['Rainfall'][1].ceil() ?? 0.0}',
+                                            style: TextStyle(
+                                                fontSize: 10,
+                                                fontWeight: FontWeight.w400,
+                                                color: Colors.white)),
+                                        Text(
+                                            '${ranges['THI'][0].ceil() ?? 0.0} - ${ranges['THI'][1].ceil() ?? 0.0}',
+                                            style: TextStyle(
+                                                fontSize: 10,
+                                                fontWeight: FontWeight.w400,
+                                                color: Colors.white))
+                                      ],
+                                    ),
+                                    Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceAround,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          'RH(%)'.tr,
                                           style: TextStyle(
-                                            fontSize: 14,
-                                            color: Color(0xFF1B3A69),
-                                            fontWeight: FontWeight.w700,
-                                          ),
-                                        )
+                                              fontSize: 10,
+                                              fontWeight: FontWeight.w400,
+                                              color: Colors.white),
+                                        ),
+                                        Text('Wind Speed(kmph)'.tr,
+                                            style: TextStyle(
+                                                fontSize: 10,
+                                                fontWeight: FontWeight.w400,
+                                                color: Colors.white)),
+                                        Text('Cloud cover(octa)'.tr,
+                                            style: TextStyle(
+                                                fontSize: 10,
+                                                fontWeight: FontWeight.w400,
+                                                color: Colors.white)),
+                                        Text('Wind Direction (Degree)'.tr,
+                                            style: TextStyle(
+                                                fontSize: 10,
+                                                fontWeight: FontWeight.w400,
+                                                color: Colors.white))
+                                      ],
+                                    ),
+                                    Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceAround,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          '${ranges['RH'][0] ?? 0.0} - ${ranges['RH'][1] ?? 0.0}',
+                                          style: TextStyle(
+                                              fontSize: 10,
+                                              fontWeight: FontWeight.w400,
+                                              color: Colors.white),
+                                        ),
+                                        Text(
+                                            '${ranges['Wind Speed'][0].ceil() ?? 0.0} - ${ranges['Wind Speed'][1].ceil() ?? 0.0}',
+                                            style: TextStyle(
+                                                fontSize: 10,
+                                                fontWeight: FontWeight.w400,
+                                                color: Colors.white)),
+                                        Text(
+                                            '${ranges['Cloud Cover'][0] ?? 0.0} - ${ranges['Cloud Cover'][1] ?? 0.0}',
+                                            style: TextStyle(
+                                                fontSize: 10,
+                                                fontWeight: FontWeight.w400,
+                                                color: Colors.white)),
+                                        Text(
+                                            '${ranges['Wind Direction'][0].ceil() ?? 0.0} - ${ranges['Wind Direction'][1].ceil() ?? 0.0}',
+                                            style: TextStyle(
+                                                fontSize: 10,
+                                                fontWeight: FontWeight.w400,
+                                                color: Colors.white))
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Container(
+                            margin: EdgeInsets.symmetric(
+                                horizontal: 20, vertical: 20),
+                            child: Text(
+                              'Climate services for the period of '.tr +
+                                  '${DateFormat('dd-MM-yyyy').format(selectedDate1)} - ' +
+                                  '${DateFormat('dd-MM-yyyy').format(selectedDate2)} ',
+                              style: TextStyle(
+                                  fontSize: 15, fontWeight: FontWeight.w600),
+                            )),
+                        Padding(
+                          padding: const EdgeInsets.all(12),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              InkWell(
+                                child: Container(
+                                  padding: EdgeInsets.only(bottom: 15),
+                                  alignment: Alignment.bottomCenter,
+                                  height: 190,
+                                  width: 190,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(20),
+                                    image: DecorationImage(
+                                        filterQuality: FilterQuality.high,
+                                        opacity: 0.8,
+                                        image: AssetImage(
+                                            'assets/images/murrah.jpeg'),
+                                        fit: BoxFit.cover),
+                                  ),
+                                  child: Text(
+                                    'Dairy Animal'.tr,
+                                    style: TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w700,
+                                      color: Colors.white,
+                                      shadows: [
+                                        Shadow(
+                                          blurRadius: 10.0,
+                                          color: Colors.black,
+                                          offset: Offset(2.0, 2.0),
+                                        ),
                                       ],
                                     ),
                                   ),
-                                ],
+                                ),
+                                onTap: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              Climate_services(
+                                                Date1:
+                                                    '${DateFormat('dd-MM-yyyy').format(selectedDate1)} - ',
+                                                Date2:
+                                                    '${DateFormat('dd-MM-yyyy').format(selectedDate2)}',
+                                                District:
+                                                    '${_districtController.text}',
+                                              )));
+                                },
                               ),
-                            ),
-                            Container(
-                              margin: EdgeInsets.only(
-                                  bottom: 10, left: 10, right: 10),
-                              padding: EdgeInsets.symmetric(
-                                  horizontal: 10, vertical: 5),
-                              width: 390,
-                              height: 73,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                                color: Color(0xFF1B3A69),
+                              InkWell(
+                                onTap: () {},
+                                child: Container(
+                                  padding: EdgeInsets.only(bottom: 15),
+                                  alignment: Alignment.bottomCenter,
+                                  height: 190,
+                                  width: 190,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(20),
+                                    image: DecorationImage(
+                                        filterQuality: FilterQuality.high,
+                                        opacity: 0.8,
+                                        image: AssetImage(
+                                            'assets/images/sorghum.jpeg'),
+                                        fit: BoxFit.cover),
+                                  ),
+                                  child: InkWell(
+                                    onTap: () {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) => Fodder()));
+                                    },
+                                    child: Text(
+                                      'Major crops'.tr,
+                                      style: TextStyle(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w700,
+                                        color: Colors.white,
+                                        shadows: [
+                                          Shadow(
+                                            blurRadius: 10.0,
+                                            color: Colors.black,
+                                            offset: Offset(2.0, 2.0),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ),
                               ),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Column(
-                                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        'Tmax'.tr,
-                                        style: TextStyle(
-                                            fontSize: 10,
-                                            fontWeight: FontWeight.w400,
-                                            color: Colors.white),
-                                      ),
-                                      Text('Tmin'.tr,
-                                          style: TextStyle(
-                                              fontSize: 10,
-                                              fontWeight: FontWeight.w400,
-                                              color: Colors.white)),
-                                      Text('Rainfall(mm)'.tr,
-                                          style: TextStyle(
-                                              fontSize: 10,
-                                              fontWeight: FontWeight.w400,
-                                              color: Colors.white)),
-                                      Text('THI'.tr,
-                                          style: TextStyle(
-                                              fontSize: 10,
-                                              fontWeight: FontWeight.w400,
-                                              color: Colors.white))
-                                    ],
-                                  ),
-                                  Column(
-                                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        '${ranges['Temperature Max'][0]?? 0.0} - ${ranges['Temperature Max'][1]?? 0.0}',
-                                        style: TextStyle(
-                                            fontSize: 10,
-                                            fontWeight: FontWeight.w400,
-                                            color: Colors.white),
-                                      ),
-                                      Text(
-                                          '${ranges['Temperature Min'][0]?? 0.0} - ${ranges['Temperature Min'][1]?? 0.0}',
-                                          style: TextStyle(
-                                              fontSize: 10,
-                                              fontWeight: FontWeight.w400,
-                                              color: Colors.white)),
-                                      Text(
-                                          '${ranges['Rainfall'][0].ceil()?? 0.0} - ${ranges['Rainfall'][1].ceil()?? 0.0}',
-                                          style: TextStyle(
-                                              fontSize: 10,
-                                              fontWeight: FontWeight.w400,
-                                              color: Colors.white)),
-                                      Text(
-                                          '${ranges['THI'][0].ceil()?? 0.0} - ${ranges['THI'][1].ceil()?? 0.0}',
-                                          style: TextStyle(
-                                              fontSize: 10,
-                                              fontWeight: FontWeight.w400,
-                                              color: Colors.white))
-                                    ],
-                                  ),
-                                  Column(
-                                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        'RH(%)'.tr,
-                                        style: TextStyle(
-                                            fontSize: 10,
-                                            fontWeight: FontWeight.w400,
-                                            color: Colors.white),
-                                      ),
-                                      Text('Wind Speed(kmph)'.tr,
-                                          style: TextStyle(
-                                              fontSize: 10,
-                                              fontWeight: FontWeight.w400,
-                                              color: Colors.white)),
-                                      Text('Cloud cover(octa)'.tr,
-                                          style: TextStyle(
-                                              fontSize: 10,
-                                              fontWeight: FontWeight.w400,
-                                              color: Colors.white)),
-                                      Text('Wind Direction (Degree)'.tr,
-                                          style: TextStyle(
-                                              fontSize: 10,
-                                              fontWeight: FontWeight.w400,
-                                              color: Colors.white))
-                                    ],
-                                  ),
-                                  Column(
-                                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        '${ranges['RH'][0]?? 0.0} - ${ranges['RH'][1]?? 0.0}',
-                                        style: TextStyle(
-                                            fontSize: 10,
-                                            fontWeight: FontWeight.w400,
-                                            color: Colors.white),
-                                      ),
-                                      Text(
-                                          '${ranges['Wind Speed'][0].ceil()?? 0.0} - ${ranges['Wind Speed'][1].ceil()?? 0.0}',
-                                          style: TextStyle(
-                                              fontSize: 10,
-                                              fontWeight: FontWeight.w400,
-                                              color: Colors.white)),
-                                      Text(
-                                          '${ranges['Cloud Cover'][0]?? 0.0} - ${ranges['Cloud Cover'][1]?? 0.0}',
-                                          style: TextStyle(
-                                              fontSize: 10,
-                                              fontWeight: FontWeight.w400,
-                                              color: Colors.white)),
-                                      Text(
-                                          '${ranges['Wind Direction'][0].ceil()?? 0.0} - ${ranges['Wind Direction'][1].ceil()?? 0.0}',
-                                          style: TextStyle(
-                                              fontSize: 10,
-                                              fontWeight: FontWeight.w400,
-                                              color: Colors.white))
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
-                      ),
-                      Container(
-                          margin:
-                              EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-                          child: Text(
-                            'Climate services for the period of '.tr+'${DateFormat('dd-MM-yyyy').format(selectedDate1)} - ' +
-                                '${DateFormat('dd-MM-yyyy').format(selectedDate2)} ' 
-                                ,
-                            style: TextStyle(
-                                fontSize: 15, fontWeight: FontWeight.w600),
-                          )),
-                      Padding(
-                        padding: const EdgeInsets.all(12),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            InkWell(
-                              child: Container(
-                                padding: EdgeInsets.only(bottom: 15),
-                                alignment: Alignment.bottomCenter,
-                                height: 190,
-                                width: 190,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(20),
-                                  image: DecorationImage(
-                                      filterQuality: FilterQuality.high,
-                                      opacity: 0.8,
-                                      image:
-                                          AssetImage('assets/images/murrah.jpeg'),
-                                      fit: BoxFit.cover),
-                                ),
-                                child: Text(
-                                  'Dairy Animal'.tr,
-                                  style: TextStyle(
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w700,
-                                      color: Colors.white,
-                                      shadows: [
-                              Shadow(
-                                blurRadius: 10.0,
-                                color: Colors.black,
-                                offset: Offset(2.0, 2.0),
-                              ),
-                            ],),
-                                ),
-                              ),
-                              onTap: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            Climate_services(
-                                              Date1:
-                                                  '${DateFormat('dd-MM-yyyy').format(selectedDate1)} - ',
-                                              Date2:
-                                                  '${DateFormat('dd-MM-yyyy').format(selectedDate2)}',
-                                              District:
-                                                  '${_districtController.text}',)));
-                              },
-                            ),
-                            InkWell(
-                              onTap: () {},
-                              child: Container(
-                                padding: EdgeInsets.only(bottom: 15),
-                                alignment: Alignment.bottomCenter,
-                                height: 190,
-                                width: 190,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(20),
-                                  image: DecorationImage(
-                                      filterQuality: FilterQuality.high,
-                                      opacity: 0.8,
-                                      image: AssetImage(
-                                          'assets/images/sorghum.jpeg'),
-                                      fit: BoxFit.cover),
-                                ),
-                                child: Text(
-                                  'Major crops'.tr,
-                                  style: TextStyle(
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w700,
-                                      color: Colors.white,
-                                      shadows: [
-                              Shadow(
-                                blurRadius: 10.0,
-                                color: Colors.black,
-                                offset: Offset(2.0, 2.0),
-                              ),
-                            ],),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                ): Container(
-                  height: MediaQuery.of(context).size.height / 1.2,
-                  child: Center(child: CircularProgressIndicator.adaptive()))
-        ),
+                      ],
+                    ),
+                  )
+                : Container(
+                    height: MediaQuery.of(context).size.height / 1.2,
+                    child:
+                        Center(child: CircularProgressIndicator.adaptive()))),
       ),
     );
   }

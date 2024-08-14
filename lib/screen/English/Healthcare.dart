@@ -527,7 +527,7 @@ class _HealthcareState extends State<Healthcare> {
                                       Column(
                                         children: [
                                           Text(
-                                            'Repeat in every 21 days upto 2 months.'
+                                            'Repeat in every 21 days upto 2 months'
                                                 .tr,
                                             style: TextStyle(
                                                 fontSize: 12,
@@ -570,7 +570,7 @@ class _HealthcareState extends State<Healthcare> {
                                       Column(
                                         children: [
                                           Text(
-                                            'Every months.'.tr,
+                                            'Every month'.tr,
                                             style: TextStyle(
                                                 fontSize: 12,
                                                 fontWeight: FontWeight.w500),
@@ -613,7 +613,7 @@ class _HealthcareState extends State<Healthcare> {
                                       Column(
                                         children: [
                                           Text(
-                                            'Every 3 months.'.tr,
+                                            'Every 3 months'.tr,
                                             style: TextStyle(
                                                 fontSize: 12,
                                                 fontWeight: FontWeight.w500),
@@ -656,7 +656,7 @@ class _HealthcareState extends State<Healthcare> {
                                       Column(
                                         children: [
                                           Text(
-                                            'Twice in year preferably. before rainy and winter season.'
+                                            'Twice in year preferably before rainy and winter season'
                                                 .tr,
                                             style: TextStyle(
                                                 fontSize: 12,
@@ -745,7 +745,7 @@ class _HealthcareState extends State<Healthcare> {
                                           Column(
                                         children: [
                                           Text(
-                                            'Haemorrhagic speticemia'.tr,
+                                            'Hemorrhagic Septicemia'.tr,
                                             style: TextStyle(
                                                 fontSize: 12,
                                                 fontWeight: FontWeight.w500),

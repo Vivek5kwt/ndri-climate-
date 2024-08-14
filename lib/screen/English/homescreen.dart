@@ -1,11 +1,6 @@
 import 'dart:async';
-
-import 'package:adaptive_pop_scope/adaptive_pop_scope.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:ndri_climate/screen/English/Dialogue_page.dart';
-import 'package:ndri_climate/screen/English/dashboard2.dart';
-// import 'package:ndri_climate/screen/Dashboard.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:ndri_climate/main.dart';
 import 'package:ndri_climate/material/custom_drawer.dart';
 import 'package:ndri_climate/material/reusableappbar.dart';
 import 'package:ndri_climate/screen/English/Feeding_management.dart';

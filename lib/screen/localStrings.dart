@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 
 class LocalString extends Translations {
   @override
-  // TODO: implement keys
+  
   Map<String, Map<String, String>> get keys => {
         'en_US': {},
         'hi_IN': {
@@ -1040,6 +1040,7 @@ class LocalString extends Translations {
 "Hemorrhagic Septicemia in Buffalo": "भैंस में रक्तात्मक सेप्टिसीमिया",
 "Hemorrhagic Septicemia":"रक्तात्मक सेप्टिसीमिया",
 
+
 "Symptoms":"लक्षण",
 "Having a very high fever (up to 107⁰ F) and the animal dying within an hour to 24 hours or the animal being found dead without showing any symptoms to the farmer": "बहुत अधिक बुखार होना (107॰ F तक) और पशु का एक घंटे से लेकर 24 घंटे के भीतर मर जाना या किसान को कोई लक्षण नहीं दिखाता हुआ मृत पशु मिलना",
 "Profuse salivation": "अधिक से अधिक लार टपकना",
@@ -1078,19 +1079,19 @@ class LocalString extends Translations {
     "Dose": "खुराक",
   "Schedule": "अनुसूची",
   "3-7 days": "3-7 दिन",
-  "Piprazine": "पाइपराजीन",
+  "Piparazine": "पाइपराजीन",
   "5-10 ml per 10 kg of body weight": "5-10 मिलीलीटर प्रति 10 किलोग्राम वजन",
   "Repeat in every 21 days upto 2 months": "2 महीने तक हर 21 दिन में दोहराएं",
   "3-6 months": "3-6 महीने",
   "Albendazole": "एल्बेंडाज़ोल",
   "5 ml per kg of body weight": "5 मिलीलीटर प्रति किलोग्राम वजन",
-  "Every months": "हर महीने",
+  "Every month": "हर महीने",
   "6-18 months": "6-18 महीने",
   "Albendazole or Ivermetic injection": "एल्बेंडाज़ोल या इवरमेक्टिन इंजेक्शन",
   "Every 3 months": "हर 3 महीने",
   "Adult buffalo": "वयस्क भैंस",
   "Albendazole , Fendendazole or Ivermetic injection": "एल्बेंडाज़ोल, फेंडेन्डाजोल, या इवरमेक्टिन इंजेक्शन",
-  "Twice in year preferably before rainy and winter season": "साल में दो बार, preferably मानसून और सर्दी के मौसम से पहले",
+  "Twice in year preferably before rainy and winter season": "साल में दो बार, मानसून और सर्दी के मौसम से पहले",
   "Vaccination Schedule": "टीकाकरण अनुसूची",
   "Disease": "रोग",
   "Age and time of vaccination": "टीकाकरण की आयु और समय",

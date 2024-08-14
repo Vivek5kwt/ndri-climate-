@@ -60,16 +60,6 @@ class CustomDrawer extends StatelessWidget {
               Navigator.push(context, MaterialPageRoute(builder: (context)=>Thermal_Stress()));
             },
           ),
-          ListTile(
-            leading: Icon(Icons.terminal),
-            title: Text('Open Terminal'.tr),
-            onTap: () {},
-          ),
-          ListTile(
-            leading: Icon(Icons.power_settings_new),
-            title: Text('Shut Down'.tr),
-            onTap: () {},
-          ),
         ],
       ),
     );

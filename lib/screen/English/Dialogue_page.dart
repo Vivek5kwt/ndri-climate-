@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ndri_climate/material/bottom_sheet.dart';
-import 'package:ndri_climate/model/Repo.dart';
+// import 'package:ndri_climate/model/Repo.dart';
 import 'package:ndri_climate/model/Weather_Forecast.dart';
-import 'package:ndri_climate/screen/English/Feeding_management.dart';
-
 import 'package:ndri_climate/screen/English/dashboard2.dart';
 
 class Dialogue_page extends StatefulWidget {
@@ -19,9 +17,9 @@ class _Dialogue_pageState extends State<Dialogue_page> {
   TextEditingController _districtController = TextEditingController();
   TextEditingController _languageController = TextEditingController();
   List<String> init_distict_list = [];
-   bool _dialogShown = false;
+  //  bool _dialogShown = false;
    Map<String, dynamic> ranges = {};
-  Repo _repo = Repo();
+  // Repo _repo = Repo();
   WeatherMetrics weatherMetrics= WeatherMetrics();
   
   
@@ -341,14 +339,6 @@ WidgetsBinding.instance.addPostFrameCallback((v){
                       ),
                     ),
                     _buildStateSelectionDialog(),
-
-                    Container(
-                      margin: EdgeInsets.only(top: 40),
-                      child: Image.asset(
-                        'assets/icon/logo2.png',
-                        scale: 1,
-                      ),
-                    ),
                     Container(
                       margin: EdgeInsets.only(top: 50),
                       child: Image.asset(
