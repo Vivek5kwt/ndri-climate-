@@ -80,9 +80,6 @@ class ApiProvider {
       'Content-Type': 'application/json',
       'Accept': 'application/json',
     };
-
-    
-
     try {
       final response = await http.get(url, headers: headers);
       if (response.statusCode == 200) {
@@ -133,7 +130,7 @@ class ApiProvider {
     }
   }
 
-  Future<List<Advisory>> fetchAdvisory() async {
+  Future <List<Advisory>> fetchAdvisory() async {
   final response = await http.get(Uri.parse('$headUrl/api/advisories'));
 
   if (response.statusCode == 200) {

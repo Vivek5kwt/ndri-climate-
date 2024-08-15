@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:ndri_climate/apiservices/advisory.dart';
 import 'package:ndri_climate/apiservices/api_provider.dart';
+import 'package:ndri_climate/auth/register_screen.dart';
+import 'package:ndri_climate/material/bottom_sheet.dart';
 import 'package:ndri_climate/material/custom_drawer.dart';
 import 'package:ndri_climate/material/reusableappbar.dart';
 import 'package:get/get.dart';
@@ -21,20 +23,25 @@ class _Climate_servicesState extends State<Climate_services> {
   String first_date = '';
   String second_date = '';
   String district = '';
-
-
+  DateTime? date1;
+  DateTime? date2;
+  
   @override
   void initState() {
     setState(() {
       first_date = widget.Date1;
       second_date = widget.Date2;
       district =widget.District;
-      
+      ApiProvider().fetchAdvisory();
       
     });
     super.initState();
   }
-
+  void showDateBottomsheet(){
+    showModalBottomSheet(context: context, builder: (context) {
+      return filterDate();
+    },);
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -60,26 +67,31 @@ class _Climate_servicesState extends State<Climate_services> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Container(
-                    child: Row(
-                      children: [
-                        Icon(
-                          Icons.calendar_month,
-                          color: Color(0xFF1B3A69),
-                          size: 21,
-                        ),
-                        SizedBox(
-                          width: 5,
-                        ),
-                        Text(
-                          '$first_date $second_date',
-                          style: TextStyle(
-                            fontSize: 14,
+                  InkWell(
+                    onTap: () {
+                      showDateBottomsheet();
+                    },
+                    child: Container(
+                      child: Row(
+                        children: [
+                          Icon(
+                            Icons.calendar_month,
                             color: Color(0xFF1B3A69),
-                            fontWeight: FontWeight.w700,
+                            size: 21,
                           ),
-                        )
-                      ],
+                          SizedBox(
+                            width: 5,
+                          ),
+                          Text(
+                            '$first_date $second_date',
+                            style: TextStyle(
+                              fontSize: 14,
+                              color: Color(0xFF1B3A69),
+                              fontWeight: FontWeight.w700,
+                            ),
+                          )
+                        ],
+                      ),
                     ),
                   ),
                   Container(
@@ -104,10 +116,8 @@ class _Climate_servicesState extends State<Climate_services> {
                 ],
               ),
             ),
-            
              Container(
                child: FutureBuilder(
-                
                 future: ApiProvider().fetchAdvisory(),
                 builder: (context, snapshot) {
                   if(snapshot.connectionState == ConnectionState.waiting) {
@@ -120,39 +130,62 @@ class _Climate_servicesState extends State<Climate_services> {
                     final data = snapshot.data;
                     List<Advisory>advisory_data = data?.reversed.toList() ?? [];
                      return  Container(
-                      height: MediaQuery.of(context).size.height / 1.22,
+                      height: MediaQuery.of(context).size.height / 1.26,
                        child: ListView.builder(
                         itemCount: advisory_data.length,
                         itemBuilder: (context, index) {
                           Advisory _advisory = advisory_data[index];
-                         return Container(
-                                         width: MediaQuery.of(context).size.width,
-                                         // height: MediaQuery.of(context).size.height / 2,
-                                         margin: EdgeInsets.all(10),
-                                         padding: EdgeInsets.all(15),
-                                         decoration: BoxDecoration(
-                        color: Colors.white,
-                        border: Border.all(color: Colors.grey),
-                        borderRadius: BorderRadius.circular(10)),
-                                         child: Column(
-                                           crossAxisAlignment: CrossAxisAlignment.start,
-                                           children: [
-                        Text(
-                          _advisory.title,
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w700,
-                          ),
-                        ),
-                        SizedBox(
-                          height: 10,
-                        ),
-                        Text(
-                          _advisory.description, style:
-                              TextStyle(fontSize: 13, fontWeight: FontWeight.w500),
-                        )
-                                           ],
-                                         ));
+                          date1=_advisory.fromDate;
+                          date2=_advisory.toDate;
+                         return Column(
+                          mainAxisSize: MainAxisSize.min,
+                           children: [
+                             Container(
+                                             width: MediaQuery.of(context).size.width,
+                                             // height: MediaQuery.of(context).size.height / 2,
+                                             margin: EdgeInsets.all(10),
+                                             padding: EdgeInsets.all(15),
+                                             decoration: BoxDecoration(
+                                                     color: Colors.white,
+                                                     border: Border.all(color: Colors.grey),
+                                                     borderRadius: BorderRadius.circular(10)),
+                                             child: Column(
+                                               crossAxisAlignment: CrossAxisAlignment.start,
+                                               children: [
+                                                     Text(
+                              _advisory.title,
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w700,
+                              ),
+                                                     ),
+                                                     SizedBox(
+                              height: 10,
+                                                     ),
+                                                     Text(
+                              _advisory.description, style:
+                                  TextStyle(fontSize: 13, fontWeight: FontWeight.w500),
+                                                     )
+                                               ],
+                                             )),
+                                             if( index == advisory_data.length -1)
+                                             InkWell(
+                                              onTap: () {
+                                                Navigator.push(context, MaterialPageRoute(builder: (context) => RegisterScreen(district: district),));
+                                              },
+                                               child: Container(
+                                                             color: Colors.transparent,
+                                                              child: Chip(
+                                                               backgroundColor: Colors.transparent,
+                                                               color: WidgetStateProperty.all(Color(0xFF2C96D2)),
+                                                               label: Text('Feedback',style: TextStyle(
+                                                               fontSize: 18,fontWeight: FontWeight.bold,color: Colors.white
+                                                              ),)),
+                                                            ),
+                                             )
+                           ],
+                         );
+
                        },),
                      );
                   } 
@@ -161,6 +194,8 @@ class _Climate_servicesState extends State<Climate_services> {
                 ),
               
              ),
+             SizedBox(height: 30,),
+             
               
           ],
         ),

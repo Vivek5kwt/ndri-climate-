@@ -550,7 +550,7 @@ class _DashboardState extends State<Dashboard> {
                           children: [
                             Container(
                               margin: EdgeInsets.only(
-                                  top: 10, bottom: 10, left: 25, right: 10),
+                                  top: 10, bottom: 10, left: 10, right: 0),
                               padding: EdgeInsets.only(top: 0),
                               width: 146,
                               height: 114,
@@ -714,7 +714,7 @@ class _DashboardState extends State<Dashboard> {
                         color: Color(0xFF9BDBFF),
                         width: MediaQuery.of(context).size.width,
                         padding: EdgeInsets.all(10),
-                        height: 180,
+                        height: MediaQuery.of(context).size.height*0.29,
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
@@ -732,7 +732,7 @@ class _DashboardState extends State<Dashboard> {
                               width: MediaQuery.of(context).size.width,
                               padding: EdgeInsets.symmetric(horizontal: 10),
                               margin: EdgeInsets.only(bottom: 10),
-                              height: 20,
+                              height: MediaQuery.of(context).size.height*0.03,
                               child: Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
@@ -802,7 +802,7 @@ class _DashboardState extends State<Dashboard> {
                               padding: EdgeInsets.symmetric(
                                   horizontal: 10, vertical: 5),
                               width: 390,
-                              height: 73,
+                              height: MediaQuery.of(context).size.height/6,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10),
                                 color: Color(0xFF1B3A69),
@@ -966,7 +966,7 @@ class _DashboardState extends State<Dashboard> {
                             Padding(
                               padding: const EdgeInsets.all(12),
                               child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment: MainAxisAlignment.spaceAround,
                                 children: [
                                   InkWell(
                                     child: Container(

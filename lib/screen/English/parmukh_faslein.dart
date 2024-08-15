@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ndri_climate/auth/register_screen.dart';
 import 'package:ndri_climate/material/custom_drawer.dart';
 import 'package:ndri_climate/material/reusableappbar.dart';
 import 'package:get/get.dart';
@@ -159,6 +160,17 @@ class _Major_cropsState extends State<Major_crops> {
                     ),
                   ],
                 )),
+                SizedBox(height: 30,),
+             InkWell(
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => RegisterScreen(district: district),));
+              },
+               child: Chip(
+                color: WidgetStateProperty.all(Color(0xFF2C96D2)),
+                label: Text('Feedback',style: TextStyle(
+                fontSize: 18,fontWeight: FontWeight.bold,color: Colors.white
+               ),)),
+             )
           ],
         ),
       ),

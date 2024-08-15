@@ -103,35 +103,38 @@ class _Feeding_managementState extends State<Feeding_management> {
                           color: Colors.white,
                           border: Border.all(color: Colors.grey),
                           borderRadius: BorderRadius.circular(10)),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Necess of feeding Management in Summer and Winter'.tr,
-                            style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w700,
+                      child: SingleChildScrollView(
+                        scrollDirection: Axis.vertical,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Necess of feeding Management in Summer and Winter'.tr,
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w700,
+                              ),
                             ),
-                          ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          Reusabledescription(
-                              desciption:
-                                  'Temperature and humidity during April to middle of September are the cause of heat stress of the livestock. This heat stress results from the animal’s inability to dissipate sufficient heat to maintain its body temperature.'.tr),
-                          Reusabledescription(
-                              desciption:
-                                  'High ambient temperature, relative humidity and radiant energy compromise the ability of animals to dissipate heat.'.tr),
-                          Reusabledescription(
-                              desciption:
-                                  'Therefore, it increases in body temperature and reduces in productive performance particularly in milk production. This decrease can be either transitory or long term depending on the length and severity of heat stress.'.tr),
-                          Reusabledescription(
-                              desciption:
-                                  'The decrease in milk production may ranges from 10 to 25%. Therefore, it is utmost necessary to manage feeding practices during summer to alleviate heat stress of the dairy animals.'.tr),
-                          Reusabledescription(
-                              desciption:
-                                  'During winter season many animals often refuse to eat, become feverish and pneumonitic which in turn affects the milk production, health and reproduction of the animal. Severe cold surroundings result in increased energy loss, which has to be compensated by giving extra calorie-rich feed and special care.'.tr),
-                        ],
+                            SizedBox(
+                              height: 10,
+                            ),
+                            Reusabledescription(
+                                desciption:
+                                    'Temperature and humidity during April to middle of September are the cause of heat stress of the livestock. This heat stress results from the animal’s inability to dissipate sufficient heat to maintain its body temperature.'.tr),
+                            Reusabledescription(
+                                desciption:
+                                    'High ambient temperature, relative humidity and radiant energy compromise the ability of animals to dissipate heat.'.tr),
+                            Reusabledescription(
+                                desciption:
+                                    'Therefore, it increases in body temperature and reduces in productive performance particularly in milk production. This decrease can be either transitory or long term depending on the length and severity of heat stress.'.tr),
+                            Reusabledescription(
+                                desciption:
+                                    'The decrease in milk production may ranges from 10 to 25%. Therefore, it is utmost necessary to manage feeding practices during summer to alleviate heat stress of the dairy animals.'.tr),
+                            Reusabledescription(
+                                desciption:
+                                    'During winter season many animals often refuse to eat, become feverish and pneumonitic which in turn affects the milk production, health and reproduction of the animal. Severe cold surroundings result in increased energy loss, which has to be compensated by giving extra calorie-rich feed and special care.'.tr),
+                          ],
+                        ),
                       ),
                     ),
                   ),
