@@ -84,7 +84,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           lable: 'Enter OTP'.tr,
                           hinttext: 'Enter OTP'.tr,
                           fillcolor: Colors.white,
-                          textInputType: TextInputType.name,
+                          textInputType: TextInputType.number,
                           color: true,
                           hinttextcolor: Colors.black),
                     ),
@@ -93,7 +93,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       child: ReuseableContainerButton(
                           onTap: () {
                             if (_formkey.currentState!.validate()) {
-                              Navigator.push(
+                              Navigator.pushReplacement(
                                 context,
                                 MaterialPageRoute(
                                   builder: (context) => FeedBack(),

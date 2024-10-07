@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import 'package:ndri_climate/material/Reusabledescrip.dart';
 import 'package:ndri_climate/material/custom_drawer.dart';
+import 'package:ndri_climate/material/plugin/responsiveUtils.dart';
 import 'package:ndri_climate/material/reusableappbar.dart';
 import 'package:get/get.dart';
 
@@ -48,7 +49,7 @@ class _ManagementalState extends State<Managemental> {
                       child: Text(
                         'Calf Management'.tr,
                         style: TextStyle(
-                          fontSize: 11.0,
+                          fontSize: ResponsiveUtils.wp(1.8),
                           fontWeight: FontWeight.bold,
                           overflow: TextOverflow.ellipsis,
                         ),
@@ -59,7 +60,7 @@ class _ManagementalState extends State<Managemental> {
                       child: Text(
                         'Housing'.tr,
                         style: TextStyle(
-                          fontSize: 11.0,
+                          fontSize: ResponsiveUtils.wp(1.8),
                           fontWeight: FontWeight.bold,
                           overflow: TextOverflow.ellipsis,
                         ),
@@ -70,7 +71,7 @@ class _ManagementalState extends State<Managemental> {
                       child: Text(
                         'Reproductive Management'.tr,
                         style: TextStyle(
-                          fontSize: 11.0,
+                          fontSize: ResponsiveUtils.wp(1.8),
                           fontWeight: FontWeight.bold,
                           overflow: TextOverflow.ellipsis,
                         ),
@@ -82,7 +83,7 @@ class _ManagementalState extends State<Managemental> {
                         'Useful Tips'.tr,
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
-                          fontSize: 11.0,
+                          fontSize: ResponsiveUtils.wp(1.8),
                           overflow: TextOverflow.ellipsis,
                         ),
                         maxLines: 2,
@@ -112,7 +113,7 @@ class _ManagementalState extends State<Managemental> {
                             Text(
                               'Calf Management'.tr,
                               style: TextStyle(
-                                fontSize: 16,
+                                fontSize: ResponsiveUtils.wp(2.8),
                                 fontWeight: FontWeight.w700,
                               ),
                             ),
@@ -168,7 +169,7 @@ class _ManagementalState extends State<Managemental> {
                             Text(
                               'Housing'.tr,
                               style: TextStyle(
-                                fontSize: 16,
+                                fontSize: ResponsiveUtils.wp(2.8),
                                 fontWeight: FontWeight.w700,
                               ),
                             ),
@@ -229,7 +230,7 @@ class _ManagementalState extends State<Managemental> {
                             Text(
                               'Reproductive Management'.tr,
                               style: TextStyle(
-                                fontSize: 16,
+                                fontSize: ResponsiveUtils.wp(2.8),
                                 fontWeight: FontWeight.w700,
                               ),
                             ),
@@ -286,7 +287,7 @@ class _ManagementalState extends State<Managemental> {
                             Text(
                               'Useful Tips'.tr,
                               style: TextStyle(
-                                fontSize: 16,
+                                fontSize: ResponsiveUtils.wp(2.8),
                                 fontWeight: FontWeight.w700,
                               ),
                             ),

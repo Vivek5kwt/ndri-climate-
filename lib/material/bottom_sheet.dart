@@ -3,6 +3,9 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:ndri_climate/apiservices/advisory.dart';
 import 'package:ndri_climate/apiservices/api_provider.dart';
+import 'package:ndri_climate/material/plugin/responsiveUtils.dart';
+import 'package:ndri_climate/model/utils.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class StateBottomSheet extends StatefulWidget {
   final Function(String) selected_state;
@@ -1044,10 +1047,11 @@ class LanguageBottomSheet extends StatefulWidget {
 }
 
 class _LanguageBottomSheetState extends State<LanguageBottomSheet> {
+  String lang='';
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(bottom: 16.0, left: 0, right: 0),
+      padding: EdgeInsets.only(bottom: 16.0,),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
@@ -1068,7 +1072,7 @@ class _LanguageBottomSheetState extends State<LanguageBottomSheet> {
                   textAlign: TextAlign.center,
                 ),
                 IconButton(
-                  icon: Icon(Icons.close, color: Colors.white),
+                  icon: Icon(Icons.close, color: Colors.white,size: 18,),
                   onPressed: () {
                     Navigator.of(context).pop();
                   },
@@ -1082,9 +1086,11 @@ class _LanguageBottomSheetState extends State<LanguageBottomSheet> {
           ListTile(
             title: Text('Hindi'.tr),
             onTap: () {
+             
               var locale = Locale('hi', 'IN');
               Get.updateLocale(locale);
               widget.selected_language('Hindi');
+              lang='Hindi';
               Navigator.pop(context, 'Hindi');
             },
           ),
@@ -1094,6 +1100,7 @@ class _LanguageBottomSheetState extends State<LanguageBottomSheet> {
               var locale = Locale('en', 'US');
               Get.updateLocale(locale);
               widget.selected_language('English');
+              lang='English';
               Navigator.pop(context, 'English');
             },
           ),
@@ -1103,6 +1110,7 @@ class _LanguageBottomSheetState extends State<LanguageBottomSheet> {
               var locale = Locale('pa', 'IN');
               Get.updateLocale(locale);
               widget.selected_language('Punjabi');
+              lang='Punjabi';
               Navigator.pop(context, 'Punjabi');
             },
           ),
@@ -1112,6 +1120,7 @@ class _LanguageBottomSheetState extends State<LanguageBottomSheet> {
               var locale = Locale('bn', 'IN');
               Get.updateLocale(locale);
               widget.selected_language('Bengali');
+              lang='Bengali';
               Navigator.pop(context, 'Bengali');
             },
           ),
@@ -1122,8 +1131,9 @@ class _LanguageBottomSheetState extends State<LanguageBottomSheet> {
 }
 
 class filterDate extends StatefulWidget {
-  
-  filterDate({super.key,});
+  final Function(DateTime,DateTime,int) onTapcallback;
+  final int index;
+  filterDate({super.key, required this.onTapcallback, required this.index,});
 
   @override
   State<filterDate> createState() => _filterDateState();
@@ -1132,7 +1142,11 @@ class filterDate extends StatefulWidget {
 class _filterDateState extends State<filterDate> {
   int _selecteDate = 0;
   bool _selected=false;
-
+@override
+  void initState() {
+    _selecteDate=widget.index;
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -1186,8 +1200,9 @@ class _filterDateState extends State<filterDate> {
                   return Container(
                     height: MediaQuery.of(context).size.height / 1.22,
                     child: ListView.builder(
-                      itemCount: 3,
+                      itemCount: advisory_data.length,
                       itemBuilder: (context, index) {
+                        
                         Advisory _advisory = advisory_data[index];
                         return Container(
                           margin: EdgeInsets.symmetric(horizontal: 10),
@@ -1203,10 +1218,10 @@ class _filterDateState extends State<filterDate> {
                                   color: WidgetStateProperty.all(_selecteDate==index?Color(0xFF2C96D2):Colors.white),
                                   label: Text(
                                     textAlign: TextAlign.center,
-                                    '${DateFormat('dd/MM/yyyy').format(_advisory.fromDate)} - ${DateFormat('dd/MM/yyyy').format(_advisory.toDate)}',
+                                     formatDate(inputDate: _advisory.fromDate.toString()) + ' -> ' + formatDate(inputDate: _advisory.toDate.toString()),
                                     style: TextStyle(
                                       color: _selecteDate==index?Colors.white:Colors.black,
-                                        fontSize: 14, fontWeight: FontWeight.w500),
+                                        fontSize: ResponsiveUtils.wp(2.5), fontWeight: FontWeight.w500),
                                   ),
                                 ),
                               ],
@@ -1217,6 +1232,7 @@ class _filterDateState extends State<filterDate> {
                               setState(() {
                                 _selecteDate = value!;
                               });
+                              widget.onTapcallback(_advisory.fromDate,_advisory.toDate,_selecteDate);
                             },
                           ),
                         );

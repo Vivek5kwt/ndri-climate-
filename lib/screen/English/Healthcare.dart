@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import 'package:ndri_climate/material/Reusabledescrip.dart';
 import 'package:ndri_climate/material/custom_drawer.dart';
+import 'package:ndri_climate/material/plugin/responsiveUtils.dart';
 import 'package:ndri_climate/material/reusableappbar.dart';
 import 'package:get/get.dart';
 
@@ -48,7 +49,7 @@ class _HealthcareState extends State<Healthcare> {
                       child: Text(
                         'Foot and Mouth disease'.tr,
                         style: TextStyle(
-                          fontSize: 11.0,
+                          fontSize: ResponsiveUtils.wp(1.8),
                           fontWeight: FontWeight.bold,
                           overflow: TextOverflow.ellipsis,
                         ),
@@ -59,7 +60,7 @@ class _HealthcareState extends State<Healthcare> {
                       child: Text(
                         'Hemorrhagic Septicemia'.tr,
                         style: TextStyle(
-                          fontSize: 11.0,
+                          fontSize: ResponsiveUtils.wp(1.8),
                           fontWeight: FontWeight.bold,
                           overflow: TextOverflow.ellipsis,
                         ),
@@ -70,7 +71,7 @@ class _HealthcareState extends State<Healthcare> {
                       child: Text(
                         'Mastitis'.tr,
                         style: TextStyle(
-                          fontSize: 11.0,
+                          fontSize: ResponsiveUtils.wp(1.8),
                           fontWeight: FontWeight.bold,
                           overflow: TextOverflow.ellipsis,
                         ),
@@ -81,7 +82,7 @@ class _HealthcareState extends State<Healthcare> {
                       child: Text(
                         'Deworming and vaccination schedule'.tr.tr,
                         style: TextStyle(
-                          fontSize: 11.0,
+                          fontSize: ResponsiveUtils.wp(1.8),
                           fontWeight: FontWeight.bold,
                           overflow: TextOverflow.ellipsis,
                         ),
@@ -112,7 +113,7 @@ class _HealthcareState extends State<Healthcare> {
                             Text(
                               'Foot and Mouth disease in Buffalo'.tr,
                               style: TextStyle(
-                                fontSize: 16,
+                                fontSize: ResponsiveUtils.wp(2.8),
                                 fontWeight: FontWeight.w700,
                               ),
                             ),
@@ -131,7 +132,7 @@ class _HealthcareState extends State<Healthcare> {
                             Text(
                               'Symptoms'.tr,
                               style: TextStyle(
-                                fontSize: 14,
+                                fontSize: ResponsiveUtils.wp(2.5),
                                 fontWeight: FontWeight.w700,
                               ),
                             ),
@@ -164,7 +165,7 @@ class _HealthcareState extends State<Healthcare> {
                             Text(
                               'Control and Prevention'.tr,
                               style: TextStyle(
-                                fontSize: 14,
+                                fontSize: ResponsiveUtils.wp(2.5),
                                 fontWeight: FontWeight.w700,
                               ),
                             ),
@@ -219,7 +220,7 @@ class _HealthcareState extends State<Healthcare> {
                             Text(
                               'Hemorrhagic Septicemia in Buffalo'.tr,
                               style: TextStyle(
-                                fontSize: 16,
+                                fontSize: ResponsiveUtils.wp(2.8),
                                 fontWeight: FontWeight.w700,
                               ),
                             ),
@@ -238,7 +239,7 @@ class _HealthcareState extends State<Healthcare> {
                             Text(
                               'Symptoms'.tr,
                               style: TextStyle(
-                                fontSize: 14,
+                                fontSize: ResponsiveUtils.wp(2.5),
                                 fontWeight: FontWeight.w700,
                               ),
                             ),
@@ -273,7 +274,7 @@ class _HealthcareState extends State<Healthcare> {
                             Text(
                               'Control'.tr,
                               style: TextStyle(
-                                fontSize: 14,
+                                fontSize: ResponsiveUtils.wp(2.5),
                                 fontWeight: FontWeight.w700,
                               ),
                             ),
@@ -316,7 +317,7 @@ class _HealthcareState extends State<Healthcare> {
                             Text(
                               'Mastitis in Buffalo'.tr,
                               style: TextStyle(
-                                fontSize: 16,
+                                fontSize: ResponsiveUtils.wp(2.8),
                                 fontWeight: FontWeight.w700,
                               ),
                             ),
@@ -335,7 +336,7 @@ class _HealthcareState extends State<Healthcare> {
                             Text(
                               'Symptoms'.tr,
                               style: TextStyle(
-                                fontSize: 14,
+                                fontSize: ResponsiveUtils.wp(2.5),
                                 fontWeight: FontWeight.w700,
                               ),
                             ),
@@ -368,7 +369,7 @@ class _HealthcareState extends State<Healthcare> {
                             Text(
                               'Control'.tr,
                               style: TextStyle(
-                                fontSize: 14,
+                                fontSize: ResponsiveUtils.wp(2.5),
                                 fontWeight: FontWeight.w700,
                               ),
                             ),
@@ -432,7 +433,7 @@ class _HealthcareState extends State<Healthcare> {
                             Text(
                               'Deworming Schedule for Buffalo'.tr,
                               style: TextStyle(
-                                fontSize: 16,
+                                fontSize: ResponsiveUtils.wp(2.8),
                                 fontWeight: FontWeight.w700,
                               ),
                             ),
@@ -456,7 +457,7 @@ class _HealthcareState extends State<Healthcare> {
                                           Text(
                                             'Age of Buffalo'.tr,
                                             style: TextStyle(
-                                                fontSize: 14,
+                                                fontSize: ResponsiveUtils.wp(2.5),
                                                 fontWeight: FontWeight.w600),
                                           )
                                         ],
@@ -466,7 +467,7 @@ class _HealthcareState extends State<Healthcare> {
                                           Text(
                                             'Anthelmintic'.tr,
                                             style: TextStyle(
-                                                fontSize: 14,
+                                                fontSize: ResponsiveUtils.wp(2.5),
                                                 fontWeight: FontWeight.w600),
                                           )
                                         ],
@@ -476,7 +477,7 @@ class _HealthcareState extends State<Healthcare> {
                                           Text(
                                             'Dose'.tr,
                                             style: TextStyle(
-                                                fontSize: 14,
+                                                fontSize: ResponsiveUtils.wp(2.5),
                                                 fontWeight: FontWeight.w600),
                                           )
                                         ],
@@ -486,7 +487,7 @@ class _HealthcareState extends State<Healthcare> {
                                           Text(
                                             'Schedule'.tr,
                                             style: TextStyle(
-                                                fontSize: 14,
+                                                fontSize: ResponsiveUtils.wp(2.5),
                                                 fontWeight: FontWeight.w600),
                                           )
                                         ],
@@ -498,7 +499,7 @@ class _HealthcareState extends State<Healthcare> {
                                           Text(
                                             '3-7 days'.tr,
                                             style: TextStyle(
-                                                fontSize: 12,
+                                                fontSize: ResponsiveUtils.wp(2),
                                                 fontWeight: FontWeight.w500),
                                           )
                                         ],
@@ -508,7 +509,7 @@ class _HealthcareState extends State<Healthcare> {
                                           Text(
                                             'Piparazine'.tr,
                                             style: TextStyle(
-                                                fontSize: 12,
+                                                fontSize: ResponsiveUtils.wp(2),
                                                 fontWeight: FontWeight.w500),
                                           )
                                         ],
@@ -519,7 +520,7 @@ class _HealthcareState extends State<Healthcare> {
                                             '5-10 ml per 10 kg of body weight'
                                                 .tr,
                                             style: TextStyle(
-                                                fontSize: 12,
+                                                fontSize: ResponsiveUtils.wp(2),
                                                 fontWeight: FontWeight.w500),
                                           )
                                         ],
@@ -530,7 +531,7 @@ class _HealthcareState extends State<Healthcare> {
                                             'Repeat in every 21 days upto 2 months'
                                                 .tr,
                                             style: TextStyle(
-                                                fontSize: 12,
+                                                fontSize: ResponsiveUtils.wp(2),
                                                 fontWeight: FontWeight.w500),
                                           )
                                         ],
@@ -542,7 +543,7 @@ class _HealthcareState extends State<Healthcare> {
                                           Text(
                                             '3-6 months'.tr,
                                             style: TextStyle(
-                                                fontSize: 12,
+                                                fontSize: ResponsiveUtils.wp(2),
                                                 fontWeight: FontWeight.w500),
                                           )
                                         ],
@@ -552,7 +553,7 @@ class _HealthcareState extends State<Healthcare> {
                                           Text(
                                             'Albendazole'.tr,
                                             style: TextStyle(
-                                                fontSize: 12,
+                                                fontSize: ResponsiveUtils.wp(2),
                                                 fontWeight: FontWeight.w500),
                                           )
                                         ],
@@ -562,7 +563,7 @@ class _HealthcareState extends State<Healthcare> {
                                           Text(
                                             '5 ml per kg of body weight'.tr,
                                             style: TextStyle(
-                                                fontSize: 12,
+                                                fontSize: ResponsiveUtils.wp(2),
                                                 fontWeight: FontWeight.w500),
                                           )
                                         ],
@@ -572,7 +573,7 @@ class _HealthcareState extends State<Healthcare> {
                                           Text(
                                             'Every month'.tr,
                                             style: TextStyle(
-                                                fontSize: 12,
+                                                fontSize: ResponsiveUtils.wp(2),
                                                 fontWeight: FontWeight.w500),
                                           )
                                         ],
@@ -584,7 +585,7 @@ class _HealthcareState extends State<Healthcare> {
                                           Text(
                                             '6-18 months'.tr,
                                             style: TextStyle(
-                                                fontSize: 12,
+                                                fontSize: ResponsiveUtils.wp(2),
                                                 fontWeight: FontWeight.w500),
                                           )
                                         ],
@@ -595,7 +596,7 @@ class _HealthcareState extends State<Healthcare> {
                                             'Albendazole or Ivermetic injection'
                                                 .tr,
                                             style: TextStyle(
-                                                fontSize: 12,
+                                                fontSize: ResponsiveUtils.wp(2),
                                                 fontWeight: FontWeight.w500),
                                           )
                                         ],
@@ -605,7 +606,7 @@ class _HealthcareState extends State<Healthcare> {
                                           Text(
                                             '5 ml per kg of body weight'.tr,
                                             style: TextStyle(
-                                                fontSize: 12,
+                                                fontSize: ResponsiveUtils.wp(2),
                                                 fontWeight: FontWeight.w500),
                                           )
                                         ],
@@ -615,7 +616,7 @@ class _HealthcareState extends State<Healthcare> {
                                           Text(
                                             'Every 3 months'.tr,
                                             style: TextStyle(
-                                                fontSize: 12,
+                                                fontSize: ResponsiveUtils.wp(2),
                                                 fontWeight: FontWeight.w500),
                                           )
                                         ],
@@ -627,7 +628,7 @@ class _HealthcareState extends State<Healthcare> {
                                           Text(
                                             'Adult buffalo'.tr,
                                             style: TextStyle(
-                                                fontSize: 12,
+                                                fontSize: ResponsiveUtils.wp(2),
                                                 fontWeight: FontWeight.w500),
                                           )
                                         ],
@@ -638,7 +639,7 @@ class _HealthcareState extends State<Healthcare> {
                                             'Albendazole , Fendendazole or Ivermetic injection'
                                                 .tr,
                                             style: TextStyle(
-                                                fontSize: 12,
+                                                fontSize: ResponsiveUtils.wp(2),
                                                 fontWeight: FontWeight.w500),
                                           )
                                         ],
@@ -648,7 +649,7 @@ class _HealthcareState extends State<Healthcare> {
                                           Text(
                                             '5 ml per kg of body weight'.tr,
                                             style: TextStyle(
-                                                fontSize: 12,
+                                                fontSize: ResponsiveUtils.wp(2),
                                                 fontWeight: FontWeight.w500),
                                           )
                                         ],
@@ -659,7 +660,7 @@ class _HealthcareState extends State<Healthcare> {
                                             'Twice in year preferably before rainy and winter season'
                                                 .tr,
                                             style: TextStyle(
-                                                fontSize: 12,
+                                                fontSize: ResponsiveUtils.wp(2),
                                                 fontWeight: FontWeight.w500),
                                           )
                                         ],
@@ -675,7 +676,7 @@ class _HealthcareState extends State<Healthcare> {
                             Text(
                               'Vaccination Schedule'.tr,
                               style: TextStyle(
-                                fontSize: 14,
+                                fontSize: ResponsiveUtils.wp(2.5),
                                 fontWeight: FontWeight.w700,
                               ),
                             ),
@@ -699,7 +700,7 @@ class _HealthcareState extends State<Healthcare> {
                                           Text(
                                             'Disease'.tr,
                                             style: TextStyle(
-                                                fontSize: 14,
+                                                fontSize: ResponsiveUtils.wp(2.5),
                                                 fontWeight: FontWeight.w600),
                                           )
                                         ],
@@ -709,7 +710,7 @@ class _HealthcareState extends State<Healthcare> {
                                           Text(
                                             'Age and time of vaccination'.tr,
                                             style: TextStyle(
-                                                fontSize: 14,
+                                                fontSize: ResponsiveUtils.wp(2.5),
                                                 fontWeight: FontWeight.w600),
                                           )
                                         ],
@@ -723,7 +724,7 @@ class _HealthcareState extends State<Healthcare> {
                                           Text(
                                             'FMD'.tr,
                                             style: TextStyle(
-                                                fontSize: 12,
+                                                fontSize: ResponsiveUtils.wp(2),
                                                 fontWeight: FontWeight.w500),
                                           )
                                         ],
@@ -733,7 +734,7 @@ class _HealthcareState extends State<Healthcare> {
                                           Text(
                                             'First dose at 4 months of age and booster dose at 6 months of age.Repeat every six months interval preferably during March-April and September-October'.tr,
                                             style: TextStyle(
-                                                fontSize: 12,
+                                                fontSize: ResponsiveUtils.wp(2),
                                                 fontWeight: FontWeight.w500),
                                           )
                                         ],
@@ -747,7 +748,7 @@ class _HealthcareState extends State<Healthcare> {
                                           Text(
                                             'Hemorrhagic Septicemia'.tr,
                                             style: TextStyle(
-                                                fontSize: 12,
+                                                fontSize: ResponsiveUtils.wp(2),
                                                 fontWeight: FontWeight.w500),
                                           )
                                         ],
@@ -757,7 +758,7 @@ class _HealthcareState extends State<Healthcare> {
                                           Text(
                                             'First dose at 4-6 months of age and booster dose should be repeated every year preferably before rainy season in the months of May-June'.tr,
                                             style: TextStyle(
-                                                fontSize: 12,
+                                                fontSize: ResponsiveUtils.wp(2),
                                                 fontWeight: FontWeight.w500),
                                           )
                                         ],
@@ -771,7 +772,7 @@ class _HealthcareState extends State<Healthcare> {
                                           Text(
                                             'Black quarter'.tr,
                                             style: TextStyle(
-                                                fontSize: 12,
+                                                fontSize: ResponsiveUtils.wp(2),
                                                 fontWeight: FontWeight.w500),
                                           )
                                         ],
@@ -781,7 +782,7 @@ class _HealthcareState extends State<Healthcare> {
                                           Text(
                                             'First dose at 6 months of age and booster dose should be repeated every year preferably before rainy season in the months of May-June'.tr,
                                             style: TextStyle(
-                                                fontSize: 12,
+                                                fontSize: ResponsiveUtils.wp(2),
                                                 fontWeight: FontWeight.w500),
                                           )
                                         ],
@@ -795,7 +796,7 @@ class _HealthcareState extends State<Healthcare> {
                                           Text(
                                             'Brucellosis'.tr,
                                             style: TextStyle(
-                                                fontSize: 12,
+                                                fontSize: ResponsiveUtils.wp(2),
                                                 fontWeight: FontWeight.w500),
                                           )
                                         ],
@@ -805,7 +806,7 @@ class _HealthcareState extends State<Healthcare> {
                                           Text(
                                             'Single dose for female calf at the age of 4-8 months'.tr,
                                             style: TextStyle(
-                                                fontSize: 12,
+                                                fontSize: ResponsiveUtils.wp(2),
                                                 fontWeight: FontWeight.w500),
                                           )
                                         ],

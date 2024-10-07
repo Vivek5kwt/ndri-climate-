@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import 'package:ndri_climate/material/Reusabledescrip.dart';
 import 'package:ndri_climate/material/custom_drawer.dart';
+import 'package:ndri_climate/material/plugin/responsiveUtils.dart';
 import 'package:ndri_climate/material/reusableappbar.dart';
 import 'package:get/get.dart';
 
@@ -48,7 +49,7 @@ class _Thermal_StressState extends State<Thermal_Stress> {
                       child: Text(
                         'Symptoms of Heat Stress'.tr,
                         style: TextStyle(
-                          fontSize: 11.0,
+                          fontSize: ResponsiveUtils.wp(1.8),
                           fontWeight: FontWeight.bold,
                           overflow: TextOverflow.ellipsis,
                         ),
@@ -59,7 +60,7 @@ class _Thermal_StressState extends State<Thermal_Stress> {
                       child: Text(
                         'Use of water'.tr,
                         style: TextStyle(
-                          fontSize: 11.0,
+                          fontSize: ResponsiveUtils.wp(1.8),
                           fontWeight: FontWeight.bold,
                           overflow: TextOverflow.ellipsis,
                         ),
@@ -70,7 +71,7 @@ class _Thermal_StressState extends State<Thermal_Stress> {
                       child: Text(
                         'Other Heat Stress Management Strategies'.tr,
                         style: TextStyle(
-                          fontSize: 11.0,
+                          fontSize: ResponsiveUtils.wp(1.8),
                           fontWeight: FontWeight.bold,
                           overflow: TextOverflow.ellipsis,
                         ),
@@ -81,7 +82,7 @@ class _Thermal_StressState extends State<Thermal_Stress> {
                       child: Text(
                         'Managing Cold Stress'.tr,
                         style: TextStyle(
-                          fontSize: 11.0,
+                          fontSize: ResponsiveUtils.wp(1.8),
                           fontWeight: FontWeight.bold,
                           overflow: TextOverflow.ellipsis,
                         ),
@@ -112,7 +113,7 @@ class _Thermal_StressState extends State<Thermal_Stress> {
                             Text(
                               'Symptoms of Heat Stress'.tr,
                               style: TextStyle(
-                                fontSize: 16,
+                                fontSize: ResponsiveUtils.wp(2.8),
                                 fontWeight: FontWeight.w700,
                               ),
                             ),
@@ -158,7 +159,7 @@ class _Thermal_StressState extends State<Thermal_Stress> {
                             Text(
                               'Use of Water to Mitigate Heat Stress'.tr,
                               style: TextStyle(
-                                fontSize: 16,
+                                fontSize: ResponsiveUtils.wp(2.8),
                                 fontWeight: FontWeight.w700,
                               ),
                             ),
@@ -212,7 +213,7 @@ class _Thermal_StressState extends State<Thermal_Stress> {
                             Text(
                               'Other Heat Stress Management Strategies'.tr,
                               style: TextStyle(
-                                fontSize: 16,
+                                fontSize: ResponsiveUtils.wp(2.8),
                                 fontWeight: FontWeight.w700,
                               ),
                             ),
@@ -275,7 +276,7 @@ class _Thermal_StressState extends State<Thermal_Stress> {
                             Text(
                               'Managing Cold Stress'.tr,
                               style: TextStyle(
-                                fontSize: 16,
+                                fontSize: ResponsiveUtils.wp(2.8),
                                 fontWeight: FontWeight.w700,
                               ),
                             ),

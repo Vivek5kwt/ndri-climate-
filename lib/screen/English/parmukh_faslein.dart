@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ndri_climate/auth/register_screen.dart';
 import 'package:ndri_climate/material/custom_drawer.dart';
+import 'package:ndri_climate/material/plugin/responsiveUtils.dart';
 import 'package:ndri_climate/material/reusableappbar.dart';
 import 'package:get/get.dart';
 
@@ -48,61 +49,63 @@ class _Major_cropsState extends State<Major_crops> {
         physics: AlwaysScrollableScrollPhysics(),
         child: Column(
           children: [
-            Container(
-              width: MediaQuery.of(context).size.width,
-              height: 61,
-              padding: EdgeInsets.all(20),
-              color: Color(0xFF9BDBFF),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Container(
-                    child: Row(
-                      children: [
-                        Icon(
-                          Icons.calendar_month,
-                          color: Color(0xFF1B3A69),
-                          size: 21,
-                        ),
-                        SizedBox(
-                          width: 5,
-                        ),
-                        Text(
-                          '$first_date - $second_date',
-                          style: TextStyle(
-                            fontSize: 14,
+            FittedBox(
+              fit: BoxFit.scaleDown,
+              child: Container(
+                width: MediaQuery.of(context).size.width,
+                height: 61,
+                padding: EdgeInsets.all(20),
+                color: Color(0xFF9BDBFF),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                      child: Row(
+                        children: [
+                          Icon(
+                            Icons.calendar_month,
                             color: Color(0xFF1B3A69),
-                            fontWeight: FontWeight.w700,
+                            size: 21,
                           ),
-                        )
-                      ],
+                          SizedBox(
+                            width: 5,
+                          ),
+                          Text(
+                            '$first_date-$second_date',
+                            style: TextStyle(
+                              fontSize: ResponsiveUtils.wp(2.3),
+                              color: Color(0xFF1B3A69),
+                              fontWeight: FontWeight.w700,
+                            ),
+                          )
+                        ],
+                      ),
                     ),
-                  ),
-                  Container(
-                    child: Row(
-                      children: [
-                        Icon(
-                          Icons.location_pin,
-                          color: Color(0xFF1B3A69),
-                          size: 21,
-                        ),
-                        Text(
-                          district.tr,
-                          style: TextStyle(
-                            fontSize: 14,
+                    Container(
+                      child: Row(
+                        children: [
+                          Icon(
+                            Icons.location_pin,
                             color: Color(0xFF1B3A69),
-                            fontWeight: FontWeight.w700,
+                            size: 21,
                           ),
-                        )
-                      ],
+                          Text(
+                            district.tr,
+                            style: TextStyle(
+                              fontSize: ResponsiveUtils.wp(2.5),
+                              color: Color(0xFF1B3A69),
+                              fontWeight: FontWeight.w700,
+                            ),
+                          )
+                        ],
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
             Container(
                 width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.height / 4,
                 margin: EdgeInsets.all(10),
                 padding: EdgeInsets.all(15),
                 decoration: BoxDecoration(
@@ -116,7 +119,7 @@ class _Major_cropsState extends State<Major_crops> {
                     Text(
                       'WEATHER SUMMARY'.tr,
                       style: TextStyle(
-                        fontSize: 16,
+                        fontSize: ResponsiveUtils.wp(2.8),
                         fontWeight: FontWeight.w700,
                       ),
                     ),
@@ -126,7 +129,7 @@ class _Major_cropsState extends State<Major_crops> {
                     Text(
                       'In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before the final copy is available.',
                       style:
-                          TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
+                          TextStyle(fontSize: ResponsiveUtils.wp(2.7), fontWeight: FontWeight.w500),
                     )
                   ],
                 )),
@@ -146,7 +149,7 @@ class _Major_cropsState extends State<Major_crops> {
                     Text(
                       'ADVISORY SERVICES FOR MAJOR CROPS'.tr,
                       style: TextStyle(
-                        fontSize: 16,
+                        fontSize: ResponsiveUtils.wp(2.8),
                         fontWeight: FontWeight.w700,
                       ),
                     ),
@@ -156,7 +159,7 @@ class _Major_cropsState extends State<Major_crops> {
                     Text(
                       'In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before the final copy is available.In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before the final copy is available.In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before the final copy is available.In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before the final copy is available.',
                       style:
-                          TextStyle(fontSize: 13, fontWeight: FontWeight.w500),
+                          TextStyle(fontSize: ResponsiveUtils.wp(2.5), fontWeight: FontWeight.w500),
                     ),
                   ],
                 )),
@@ -168,7 +171,7 @@ class _Major_cropsState extends State<Major_crops> {
                child: Chip(
                 color: WidgetStateProperty.all(Color(0xFF2C96D2)),
                 label: Text('Feedback',style: TextStyle(
-                fontSize: 18,fontWeight: FontWeight.bold,color: Colors.white
+                fontSize: ResponsiveUtils.wp(3),fontWeight: FontWeight.bold,color: Colors.white
                ),)),
              )
           ],

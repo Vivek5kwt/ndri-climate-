@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:ndri_climate/material/plugin/responsiveUtils.dart';
 
 // ignore: must_be_immutable
 class ReusableField extends StatelessWidget {
@@ -73,7 +74,7 @@ class ReusableField extends StatelessWidget {
           hintText: hinttext,
           hintStyle: GoogleFonts.lexend(
               color: hinttextcolor,
-              fontSize: 14,
+              fontSize: ResponsiveUtils.wp(2.5),
               fontWeight: FontWeight.w400,
               letterSpacing: -0.3),
           focusedBorder: CircleBorder

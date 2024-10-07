@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 // import 'package:ndri_climate/material/Appbarwithtabs.dart';
 import 'package:ndri_climate/material/Reusabledescrip.dart';
 import 'package:ndri_climate/material/custom_drawer.dart';
+import 'package:ndri_climate/material/plugin/responsiveUtils.dart';
 import 'package:ndri_climate/material/reusableappbar.dart';
 // import 'package:ndri_climate/material/reusableappbar.dart';
 import 'package:get/get.dart';
@@ -53,7 +54,7 @@ class _Feeding_managementState extends State<Feeding_management> {
                     Tab(
                       child: Text(
                         'Necessity'.tr,
-                        style: TextStyle(fontSize: 11.0,
+                        style: TextStyle(fontSize: ResponsiveUtils.wp(1.8),
                         fontWeight: FontWeight.bold,),
                         overflow: TextOverflow.ellipsis,
                         maxLines: 1,
@@ -111,7 +112,7 @@ class _Feeding_managementState extends State<Feeding_management> {
                             Text(
                               'Necess of feeding Management in Summer and Winter'.tr,
                               style: TextStyle(
-                                fontSize: 16,
+                                fontSize: ResponsiveUtils.wp(2.8),
                                 fontWeight: FontWeight.w700,
                               ),
                             ),
@@ -156,7 +157,7 @@ class _Feeding_managementState extends State<Feeding_management> {
                           Text(
                             'Feeding Management During Summer'.tr,
                             style: TextStyle(
-                              fontSize: 16,
+                              fontSize: ResponsiveUtils.wp(2.8),
                               fontWeight: FontWeight.w700,
                             ),
                           ),
@@ -216,7 +217,7 @@ class _Feeding_managementState extends State<Feeding_management> {
                             Text(
                               'Feeding Management During Winter'.tr,
                               style: TextStyle(
-                                fontSize: 16,
+                                fontSize: ResponsiveUtils.wp(2.8),
                                 fontWeight: FontWeight.w700,
                               ),
                             ),
@@ -288,7 +289,7 @@ class _Feeding_managementState extends State<Feeding_management> {
                             Text(
                               'Climate Smart Feeding Practices'.tr,
                               style: TextStyle(
-                                fontSize: 16,
+                                fontSize: ResponsiveUtils.wp(2.8),
                                 fontWeight: FontWeight.w700,
                               ),
                             ),
@@ -329,7 +330,7 @@ class _Feeding_managementState extends State<Feeding_management> {
                                     Text(
                               'Ration Formulation for a lactating buffalo with body weight 450-500 Kg) during heat stress season'.tr,
                               style: TextStyle(
-                                fontSize: 15,
+                                fontSize: ResponsiveUtils.wp(2.7),
                                 fontWeight: FontWeight.w700,
                               ),
                             ),
@@ -339,7 +340,7 @@ class _Feeding_managementState extends State<Feeding_management> {
                                     Text(
                               '*Concentrate mixture formulation'.tr,
                               style: TextStyle(
-                                fontSize: 15,
+                                fontSize: ResponsiveUtils.wp(2.7),
                                 fontWeight: FontWeight.w700,
                               ),
                             ),
@@ -349,7 +350,7 @@ class _Feeding_managementState extends State<Feeding_management> {
                             Text(
                               'Note'.tr,
                               style: TextStyle(
-                                fontSize: 15,
+                                fontSize: ResponsiveUtils.wp(2.7),
                                 fontWeight: FontWeight.w700,
                               ),
                             ),

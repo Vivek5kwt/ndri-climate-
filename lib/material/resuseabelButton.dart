@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ndri_climate/material/plugin/responsiveUtils.dart';
 
 class ReuseableContainerButton extends StatelessWidget {
   final Color textcolor;
@@ -40,7 +41,7 @@ class ReuseableContainerButton extends StatelessWidget {
         child: Text(
           text,
           style: TextStyle(
-              fontSize: 16, color: textcolor, fontWeight: FontWeight.w600),
+              fontSize: ResponsiveUtils.wp(2.8), color: textcolor, fontWeight: FontWeight.w600),
         ),
       ),
     );

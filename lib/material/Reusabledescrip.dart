@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ndri_climate/material/plugin/responsiveUtils.dart';
 
 class Reusabledescription extends StatelessWidget {
   final String desciption;
@@ -28,7 +29,7 @@ class Reusabledescription extends StatelessWidget {
             child: Text(
               desciption,
               style: TextStyle(
-                fontSize: 14,
+                fontSize: ResponsiveUtils.wp(2.5),
               ),
             ),
           )

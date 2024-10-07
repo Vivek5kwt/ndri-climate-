@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:ndri_climate/material/plugin/responsiveUtils.dart';
 import 'package:ndri_climate/screen/English/Dialogue_page.dart';
 
 class Home extends StatefulWidget {
@@ -14,6 +15,9 @@ class _HomeState extends State<Home> {
 
   @override
   void initState() {
+    WidgetsFlutterBinding.ensureInitialized().addPostFrameCallback((v) {
+      ResponsiveUtils().init(context);
+    },);
     Timer(Duration(seconds: 3), () {
       Navigator.pushReplacement(
         context,
@@ -81,7 +85,7 @@ class _HomeState extends State<Home> {
                       child: Text(
                         'राष्ट्रीय डेरी अनुसंधान संस्थान द्वारा जलवायु सेवाएं',
                         style: TextStyle(
-                            fontSize: 18,
+                            fontSize: 16,
                             fontWeight: FontWeight.w600,
                             color: Colors.black),
                       ),
@@ -92,7 +96,7 @@ class _HomeState extends State<Home> {
                       child: Text(
                         'NDRI CLIMATE SERVICES',
                         style: TextStyle(
-                            fontSize: 20,
+                            fontSize:20,
                             fontWeight: FontWeight.w800,
                             color: Colors.black),
                       ),

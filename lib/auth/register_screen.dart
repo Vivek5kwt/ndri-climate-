@@ -128,7 +128,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               lable: 'Mobile Number'.tr,
                               hinttext: 'Enter your Mobile Number'.tr,
                               fillcolor: Colors.white,
-                              textInputType: TextInputType.name,
+                              textInputType: TextInputType.number,
                               color: true,
                               hinttextcolor: Colors.black),
                         )

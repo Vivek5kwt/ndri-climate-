@@ -1,14 +1,18 @@
 import 'package:adaptive_pop_scope/adaptive_pop_scope.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 import 'package:ndri_climate/apiservices/api_provider.dart';
 import 'package:ndri_climate/material/bottom_sheet.dart';
 import 'package:ndri_climate/material/custom_drawer.dart';
+import 'package:ndri_climate/material/plugin/responsiveUtils.dart';
 import 'package:ndri_climate/material/reusableappbar.dart';
+import 'package:ndri_climate/material/reusablecontainer.dart';
 import 'package:ndri_climate/model/Repo.dart';
 import 'package:ndri_climate/model/Weather_Forecast.dart';
 import 'package:ndri_climate/screen/English/Climate_Services.dart';
+import 'package:ndri_climate/screen/English/PastAdvisories.dart';
 import 'package:ndri_climate/screen/English/daily_forecast.dart';
 import 'package:ndri_climate/screen/English/murrahbuffalo.dart';
 import 'package:get/get.dart';
@@ -18,9 +22,13 @@ import 'package:shared_preferences/shared_preferences.dart';
 class Dashboard extends StatefulWidget {
   final String selectdist;
   final String selectstate;
+  final String selectlang;
 
   const Dashboard(
-      {super.key, required this.selectdist, required this.selectstate});
+      {super.key,
+      required this.selectdist,
+      required this.selectstate,
+      required this.selectlang});
 
   @override
   State<Dashboard> createState() => _DashboardState();
@@ -42,6 +50,7 @@ class _DashboardState extends State<Dashboard> {
   String? id = '0';
   Map<String, dynamic> ranges = {};
   Repo _repo = Repo();
+  String? lang;
 
   Future<void> _selectDate1(BuildContext context) async {
     SharedPreferences _prefs = await SharedPreferences.getInstance();
@@ -54,8 +63,10 @@ class _DashboardState extends State<Dashboard> {
       setState(() {
         selectedDate1 = picked;
         selectedDate2 = selectedDate1.add(Duration(days: 7));
-        _prefs.setString('date1', DateFormat('dd-MM-yyyy').format(selectedDate1).toString());
-        _prefs.setString('date2', DateFormat('dd-MM-yyyy').format(selectedDate2).toString());
+        _prefs.setString(
+            'date1', DateFormat('dd-MM-yyyy').format(selectedDate1).toString());
+        _prefs.setString(
+            'date2', DateFormat('dd-MM-yyyy').format(selectedDate2).toString());
       });
     }
   }
@@ -117,24 +128,24 @@ class _DashboardState extends State<Dashboard> {
         ],
       };
       ApiProvider().storeWeatherData(
-                District: _districtController.text,
-                max_temp_high: ranges['Temperature Max'][1].ceil(),
-                max_temp_low: ranges['Temperature Max'][0].ceil(),
-                min_temp_high: ranges['Temperature Min'][1].ceil(),
-                min_temp_low: ranges['Temperature Min'][0].ceil(),
-                rainfall_high: ranges['Rainfall'][1].ceil(),
-                rainfall_low: ranges['Rainfall'][0].ceil(),
-                relative_humidity_high: ranges['RH'][1].ceil(),
-                relative_humidity_low: ranges['RH'][0].ceil(),
-                wind_speed_high: ranges['Wind Speed'][1].ceil(),
-                wind_speed_low: ranges['Wind Speed'][0].ceil(),
-                wind_direction_high: ranges['Wind Direction'][1].ceil(),
-                wind_direction_low: ranges['Wind Direction'][0].ceil(),
-                cloud_cover_high: ranges['Cloud Cover'][1].ceil(),
-                cloud_cover_low: ranges['Cloud Cover'][0].ceil(),
-                temp_humidity_index_high: ranges['THI'][1].ceil(),
-                temp_humidity_index_low: ranges['THI'][0].ceil(),
-              );
+        District: _districtController.text,
+        max_temp_high: ranges['Temperature Max'][1].ceil(),
+        max_temp_low: ranges['Temperature Max'][0].ceil(),
+        min_temp_high: ranges['Temperature Min'][1].ceil(),
+        min_temp_low: ranges['Temperature Min'][0].ceil(),
+        rainfall_high: ranges['Rainfall'][1].ceil(),
+        rainfall_low: ranges['Rainfall'][0].ceil(),
+        relative_humidity_high: ranges['RH'][1].ceil(),
+        relative_humidity_low: ranges['RH'][0].ceil(),
+        wind_speed_high: ranges['Wind Speed'][1].ceil(),
+        wind_speed_low: ranges['Wind Speed'][0].ceil(),
+        wind_direction_high: ranges['Wind Direction'][1].ceil(),
+        wind_direction_low: ranges['Wind Direction'][0].ceil(),
+        cloud_cover_high: ranges['Cloud Cover'][1].ceil(),
+        cloud_cover_low: ranges['Cloud Cover'][0].ceil(),
+        temp_humidity_index_high: ranges['THI'][1].ceil(),
+        temp_humidity_index_low: ranges['THI'][0].ceil(),
+      );
     });
   }
 
@@ -149,23 +160,31 @@ class _DashboardState extends State<Dashboard> {
     SharedPreferences.getInstance().then((value) {
       setState(() {
         id = value.getString('forecast_id');
-        value.setString('date1', DateFormat('dd-MM-yyyy').format(selectedDate1).toString());
-        value.setString('date2', DateFormat('dd-MM-yyyy').format(selectedDate2).toString());
+        value.setString(
+            'date1', DateFormat('dd-MM-yyyy').format(selectedDate1).toString());
+        value.setString(
+            'date2', DateFormat('dd-MM-yyyy').format(selectedDate2).toString());
       });
       // ApiProvider().getWeatherData(id: id.toString()).then((data) {
-        
+
       //   setState(() {
       //     _weatherdata = ForecastData.fromJson(data ?? {});
       //   });
       // });
-
+     SharedPreferences.getInstance().then((v){
+       setState(() {
+         _languageController.text=v.getString('language')??widget.selectlang;
+       });
+     });
       if (widget.selectstate.isNotEmpty || widget.selectdist.isNotEmpty) {
         setState(() {
           _districtController.text = widget.selectdist;
           _stateController.text = widget.selectstate;
+
           getweather();
         });
       }
+      
     });
     super.initState();
   }
@@ -197,23 +216,23 @@ class _DashboardState extends State<Dashboard> {
               weatherResponse =
                   await Repo().getweather(_districtController.text);
               ApiProvider().storeWeatherData(
-                 District: _districtController.text,
-            max_temp_high:ranges['Temperature Max'][1].ceil() ,
-            max_temp_low:ranges['Temperature Max'][0].ceil() ,
-            min_temp_high: ranges['Temperature Min'][1].ceil(),
-            min_temp_low: ranges['Temperature Min'][0].ceil(),
-            rainfall_high: ranges['Rainfall'][1].ceil(),
-            rainfall_low: ranges['Rainfall'][0].ceil(),
-            relative_humidity_high: ranges['RH'][1].ceil(),
-            relative_humidity_low:ranges['RH'][0].ceil() ,
-            wind_speed_high:ranges['Wind Speed'][1].ceil() ,
-            wind_speed_low:ranges['Wind Speed'][0].ceil() ,
-            wind_direction_high: ranges['Wind Direction'][1].ceil(),
-            wind_direction_low: ranges['Wind Direction'][0].ceil(),
-            cloud_cover_high: ranges['Cloud Cover'][1].ceil(),
-            cloud_cover_low:ranges['Cloud Cover'][0].ceil() ,
-            temp_humidity_index_high:ranges['THI'][1].ceil(),
-            temp_humidity_index_low:ranges['THI'][0].ceil() ,
+                District: _districtController.text,
+                max_temp_high: ranges['Temperature Max'][1].ceil(),
+                max_temp_low: ranges['Temperature Max'][0].ceil(),
+                min_temp_high: ranges['Temperature Min'][1].ceil(),
+                min_temp_low: ranges['Temperature Min'][0].ceil(),
+                rainfall_high: ranges['Rainfall'][1].ceil(),
+                rainfall_low: ranges['Rainfall'][0].ceil(),
+                relative_humidity_high: ranges['RH'][1].ceil(),
+                relative_humidity_low: ranges['RH'][0].ceil(),
+                wind_speed_high: ranges['Wind Speed'][1].ceil(),
+                wind_speed_low: ranges['Wind Speed'][0].ceil(),
+                wind_direction_high: ranges['Wind Direction'][1].ceil(),
+                wind_direction_low: ranges['Wind Direction'][0].ceil(),
+                cloud_cover_high: ranges['Cloud Cover'][1].ceil(),
+                cloud_cover_low: ranges['Cloud Cover'][0].ceil(),
+                temp_humidity_index_high: ranges['THI'][1].ceil(),
+                temp_humidity_index_low: ranges['THI'][0].ceil(),
               );
             }
           },
@@ -244,35 +263,38 @@ class _DashboardState extends State<Dashboard> {
     );
   }
 
-  void _showLanguageBottomSheet(BuildContext context) {
+  void  _showLanguageBottomSheet(BuildContext context) {
     showModalBottomSheet(
       context: context,
       builder: (BuildContext context) {
         return LanguageBottomSheet(
           selected_language: (language) async {
+            SharedPreferences _prefs= await SharedPreferences.getInstance();
             setState(() {
+
               _languageController.text = language.tr;
+              _prefs.setString('language', language);
               // Navigator.pop(context);
             });
             weatherResponse = await Repo().getweather(_districtController.text);
-          await  ApiProvider().storeWeatherData(
-            District: _districtController.text,
-            max_temp_high:ranges['Temperature Max'][1].ceil() ,
-            max_temp_low:ranges['Temperature Max'][0].ceil() ,
-            min_temp_high: ranges['Temperature Min'][1].ceil(),
-            min_temp_low: ranges['Temperature Min'][0].ceil(),
-            rainfall_high: ranges['Rainfall'][1].ceil(),
-            rainfall_low: ranges['Rainfall'][0].ceil(),
-            relative_humidity_high: ranges['RH'][1].ceil(),
-            relative_humidity_low:ranges['RH'][0].ceil() ,
-            wind_speed_high:ranges['Wind Speed'][1].ceil() ,
-            wind_speed_low:ranges['Wind Speed'][0].ceil() ,
-            wind_direction_high: ranges['Wind Direction'][1].ceil(),
-            wind_direction_low: ranges['Wind Direction'][0].ceil(),
-            cloud_cover_high: ranges['Cloud Cover'][1].ceil(),
-            cloud_cover_low:ranges['Cloud Cover'][0].ceil() ,
-            temp_humidity_index_high:ranges['THI'][1].ceil(),
-            temp_humidity_index_low:ranges['THI'][0].ceil() ,
+            await ApiProvider().storeWeatherData(
+              District: _districtController.text,
+              max_temp_high: ranges['Temperature Max'][1].ceil(),
+              max_temp_low: ranges['Temperature Max'][0].ceil(),
+              min_temp_high: ranges['Temperature Min'][1].ceil(),
+              min_temp_low: ranges['Temperature Min'][0].ceil(),
+              rainfall_high: ranges['Rainfall'][1].ceil(),
+              rainfall_low: ranges['Rainfall'][0].ceil(),
+              relative_humidity_high: ranges['RH'][1].ceil(),
+              relative_humidity_low: ranges['RH'][0].ceil(),
+              wind_speed_high: ranges['Wind Speed'][1].ceil(),
+              wind_speed_low: ranges['Wind Speed'][0].ceil(),
+              wind_direction_high: ranges['Wind Direction'][1].ceil(),
+              wind_direction_low: ranges['Wind Direction'][0].ceil(),
+              cloud_cover_high: ranges['Cloud Cover'][1].ceil(),
+              cloud_cover_low: ranges['Cloud Cover'][0].ceil(),
+              temp_humidity_index_high: ranges['THI'][1].ceil(),
+              temp_humidity_index_low: ranges['THI'][0].ceil(),
             );
           },
         );
@@ -286,30 +308,34 @@ class _DashboardState extends State<Dashboard> {
       builder: (BuildContext context) {
         return StatefulBuilder(
           builder: (context, setState) {
+            SharedPreferences.getInstance().then((v){
+                _languageController.text=v.getString('language')??widget.selectlang;
+            });
             return Container(
+              alignment: Alignment.center,
               width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height,
               child: AlertDialog(
-                alignment: Alignment.topCenter,
                 contentPadding:
                     EdgeInsets.only(top: 20, bottom: 0, left: 0, right: 0),
                 backgroundColor: Color(0xFF2C96D2),
-                title: SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  physics: NeverScrollableScrollPhysics(),
+                title: Container(
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
                         'Please Select One'.tr,
                         style: TextStyle(
                           color: Colors.white,
-                          fontSize: 18,
-                          ),
+                          fontSize: ResponsiveUtils.wp(3),
+                        ),
                         textAlign: TextAlign.center,
                       ),
+                      
                       IconButton(
-                        icon: Icon(Icons.close, color: Colors.white,),
+                        icon: Icon(
+                          Icons.close,
+                          color: Colors.white,
+                        ),
                         onPressed: () {
                           Navigator.of(context).pop();
                         },
@@ -476,19 +502,19 @@ class _DashboardState extends State<Dashboard> {
               ),
               content: Text(
                 'Are you sure you want to Exit?',
-                style: TextStyle(fontSize: 18, color: Colors.white),
+                style: TextStyle(fontSize: ResponsiveUtils.wp(3), color: Colors.white),
                 textAlign: TextAlign.center,
               ),
               actions: [
                 TextButton(
                   onPressed: () => SystemNavigator.pop(), // Confirm
                   child: Text('Yes',
-                      style: TextStyle(fontSize: 16, color: Colors.white)),
+                      style: TextStyle(fontSize: ResponsiveUtils.wp(2.8), color: Colors.white)),
                 ),
                 TextButton(
                   onPressed: () => Navigator.of(context).pop(false), // Cancel
                   child: Text('No',
-                      style: TextStyle(fontSize: 16, color: Colors.white)),
+                      style: TextStyle(fontSize: ResponsiveUtils.wp(2.8), color: Colors.white)),
                 ),
               ],
             ),
@@ -502,19 +528,12 @@ class _DashboardState extends State<Dashboard> {
     return AdaptivePopScope(
       onWillPop: _showExitConfirmationDialog,
       child: Scaffold(
-        resizeToAvoidBottomInset: true,
+        // resizeToAvoidBottomInset: true,
         key: _scaffoldKey,
-        drawer: CustomDrawer(
-         
-        ),
+        drawer: CustomDrawer(),
         appBar: PreferredSize(
             preferredSize: Size(40, 60),
             child: ReuseAppbar(
-              onTap: () {
-                setState(() {
-                   _showLanguageBottomSheet(context);
-                });
-              },
               scaffoldKey: _scaffoldKey,
               show_back_arrow: false,
               title: 'Dashboard'.tr,
@@ -527,7 +546,7 @@ class _DashboardState extends State<Dashboard> {
                 color: Colors.white,
                 child: SingleChildScrollView(
                   scrollDirection: Axis.vertical,
-                  physics: NeverScrollableScrollPhysics(),
+                  physics: ScrollPhysics(),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -539,7 +558,7 @@ class _DashboardState extends State<Dashboard> {
                           'Climate services by ICAR-National Dairy Research Institute (NDRI), Karnal'
                               .tr,
                           style: TextStyle(
-                            fontSize: 15,
+                            fontSize: ResponsiveUtils.wp(2.8),
                             fontWeight: FontWeight.w700,
                           ),
                         ),
@@ -548,161 +567,66 @@ class _DashboardState extends State<Dashboard> {
                         scrollDirection: Axis.horizontal,
                         child: Row(
                           children: [
-                            Container(
-                              margin: EdgeInsets.only(
-                                  top: 10, bottom: 10, left: 10, right: 0),
-                              padding: EdgeInsets.only(top: 0),
-                              width: 146,
-                              height: 114,
-                              decoration: BoxDecoration(
-                                  border: Border.all(
-                                    width: 1,
-                                    color: Color(0xFFABABAB),
-                                  ),
-                                  borderRadius: BorderRadius.circular(10)),
-                              child: Column(
-                                children: [
-                                  InkWell(
-                                    onTap: () {
-                                      Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  Murrah_buffalo()));
-                                    },
-                                    child: Container(
-                                      width: 126,
-                                      height: 77,
-                                      decoration: BoxDecoration(
-                                          image: DecorationImage(
-                                              image: AssetImage(
-                                                  'assets/images/buffalo.png'),
-                                              fit: BoxFit.cover)),
-                                    ),
-                                  ),
-                                  Text(
-                                    textAlign: TextAlign.center,
-                                    'Dairy Animal and Climate Change'.tr,
-                                    style: TextStyle(
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.w700),
-                                  )
-                                ],
-                              ),
-                            ),
-                            InkWell(
-                              onTap: () {
+                            topcontainer('Dairy Animal and Climate Change',
+                                'assets/images/buffalo.png', () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => Murrah_buffalo()));
+                            }),
+                            topcontainer(
+                              'Climate Advisory',
+                              'assets/images/forecast.png',
+                              () {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) =>
-                                            Climate_services(
+                                        builder: (context) => Climate_services(
                                               Date1:
                                                   '${DateFormat('dd-MM-yyyy').format(selectedDate1)} - ',
                                               Date2:
                                                   '${DateFormat('dd-MM-yyyy').format(selectedDate2)}',
                                               District:
                                                   '${_districtController.text}',
-                                                  title: 'Climate Advisory'.tr,
+                                              title: 'Climate Advisory'.tr,
+                                              Language:
+                                                  _languageController.text,
                                             )));
                               },
-                              child: Container(
-                                margin: EdgeInsets.all(10),
-                                width: 146,
-                                height: 113,
-                                padding: EdgeInsets.only(top: 10),
-                                decoration: BoxDecoration(
-                                    border: Border.all(
-                                      width: 1,
-                                      color: Color(0xFFABABAB),
-                                    ),
-                                    borderRadius: BorderRadius.circular(10)),
-                                child: Column(
-                                  children: [
-                                    Container(
-                                      width: 126,
-                                      height: 77,
-                                      decoration: BoxDecoration(
-                                          image: DecorationImage(
-                                              image: AssetImage(
-                                                  'assets/images/forecast.png'),
-                                              fit: BoxFit.cover)),
-                                    ),
-                                    Text(
-                                      'Climate Advisory'.tr,
-                                      style: TextStyle(
-                                          fontSize: 14,
-                                          fontWeight: FontWeight.w700),
-                                    )
-                                  ],
-                                ),
-                              ),
                             ),
-                            InkWell(
-                              onTap: () {
-                                Navigator.push(context, MaterialPageRoute(builder: (context) => Daily_Forecast(district:'${_districtController.text}' , date:'${DateFormat('MMMM dd, yyyy').format(selectedDate1)}' ),));
+                            topcontainer(
+                              'Daily forecast',
+                              'assets/images/forecast.png',
+                              () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => Daily_Forecast(
+                                          district:
+                                              '${_districtController.text}',
+                                          date:
+                                              '${DateFormat('MMMM dd, yyyy').format(selectedDate1)}'),
+                                    ));
                               },
-                              child: Container(
-                                width: 146,
-                                height: 113,
-                                padding: EdgeInsets.only(top: 10),
-                                decoration: BoxDecoration(
-                                    border: Border.all(
-                                      width: 1,
-                                      color: Color(0xFFABABAB),
-                                    ),
-                                    borderRadius: BorderRadius.circular(10)),
-                                child: Column(
-                                  children: [
-                                    Container(
-                                      width: 126,
-                                      height: 77,
-                                      decoration: BoxDecoration(
-                                          image: DecorationImage(
-                                              image: AssetImage(
-                                                  'assets/images/forecast.png'),
-                                              fit: BoxFit.cover)),
-                                    ),
-                                    Text(
-                                      'Daily forecast'.tr,
-                                      style: TextStyle(
-                                          fontSize: 14,
-                                          fontWeight: FontWeight.w700),
-                                    )
-                                  ],
-                                ),
-                              ),
                             ),
-                            Container(
-                              margin: EdgeInsets.all(10),
-                              padding: EdgeInsets.only(top: 10),
-                              width: 146,
-                              height: 113,
-                              decoration: BoxDecoration(
-                                  border: Border.all(
-                                    width: 1,
-                                    color: Color(0xFFABABAB),
-                                  ),
-                                  borderRadius: BorderRadius.circular(10)),
-                              child: Column(
-                                children: [
-                                  Container(
-                                    width: 126,
-                                    height: 77,
-                                    decoration: BoxDecoration(
-                                        image: DecorationImage(
-                                            image: AssetImage(
-                                                'assets/images/forecast.png'),
-                                            fit: BoxFit.cover)),
-                                  ),
-                                  Text(
-                                    'Past advisories'.tr,
-                                    style: TextStyle(
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.w700),
-                                  )
-                                ],
-                              ),
+                            topcontainer(
+                              'Past advisories',
+                              'assets/images/forecast.png',
+                              () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => Past_Advisories(
+                                        Date1:
+                                            '${DateFormat('dd-MM-yyyy').format(selectedDate1)}',
+                                        Date2:
+                                            '${DateFormat('dd-MM-yyyy').format(selectedDate2)}',
+                                        District: '${_districtController.text}',
+                                        title: 'Past advisories'.tr,
+                                        Language: _languageController.text,
+                                      ),
+                                    ));
+                              },
                             ),
                           ],
                         ),
@@ -713,87 +637,88 @@ class _DashboardState extends State<Dashboard> {
                       Container(
                         color: Color(0xFF9BDBFF),
                         width: MediaQuery.of(context).size.width,
-                        padding: EdgeInsets.all(10),
-                        height: MediaQuery.of(context).size.height*0.29,
+                        height: ResponsiveUtils.hp(28),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             Text(
                               'Weekly Weather Forecast'.tr,
                               style: TextStyle(
-                                fontSize: 18,
+                                fontSize: ResponsiveUtils.wp(2.8),
                                 fontWeight: FontWeight.w700,
                               ),
                             ),
                             SizedBox(
                               height: 5,
                             ),
-                            Container(
-                              width: MediaQuery.of(context).size.width,
-                              padding: EdgeInsets.symmetric(horizontal: 10),
-                              margin: EdgeInsets.only(bottom: 10),
-                              height: MediaQuery.of(context).size.height*0.03,
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Container(
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      children: [
-                                        Icon(
-                                          Icons.calendar_month,
-                                          color: Color(0xFF1B3A69),
-                                          size: 21,
-                                        ),
-                                        SizedBox(
-                                          width: 5,
-                                        ),
-                                        InkWell(
-                                            onTap: () {
-                                              _selectDate1(context);
-                                            },
-                                            child: Text(
-                                              '${DateFormat('dd-MM-yyyy').format(selectedDate1)} - ' +
-                                                  '${DateFormat('dd-MM-yyyy').format(selectedDate2)}',
-                                              style: TextStyle(
-                                                  fontSize: 14,
-                                                  color: Color(0xFF1B3A69),
-                                                  fontWeight:
-                                                      FontWeight.w600),
-                                            )),
-                                        const SizedBox(
-                                          height: 20.0,
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  Container(
-                                    child: Row(
-                                      children: [
-                                        InkWell(
-                                          child: Icon(
-                                            Icons.location_pin,
+                            FittedBox(
+                              fit: BoxFit.scaleDown,
+                              child: Container(
+                                width: ResponsiveUtils.screenWidth,
+                                padding: EdgeInsets.symmetric(horizontal: 10),
+                                margin: EdgeInsets.only(bottom: 10),
+                                height: ResponsiveUtils.hp(2),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Container(
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        children: [
+                                          Icon(
+                                            Icons.calendar_month,
                                             color: Color(0xFF1B3A69),
                                             size: 21,
                                           ),
-                                          onTap: () {
-                                            _showStateSelectionDialog();
-                                          },
-                                        ),
-                                        Text(
-                                          '${_districtController.text.tr}',
-                                          style: TextStyle(
-                                            fontSize: 14,
-                                            color: Color(0xFF1B3A69),
-                                            fontWeight: FontWeight.w700,
+                                          SizedBox(
+                                            width: 5,
                                           ),
-                                        )
-                                      ],
+                                          InkWell(
+                                              onTap: () {
+                                                _selectDate1(context);
+                                              },
+                                              child: Text(
+                                                '${DateFormat('dd-MM-yyyy').format(selectedDate1)} - ' +
+                                                    '${DateFormat('dd-MM-yyyy').format(selectedDate2)}',
+                                                style: TextStyle(
+                                                    fontSize: ResponsiveUtils.wp(2.5),
+                                                    color: Color(0xFF1B3A69),
+                                                    fontWeight: FontWeight.w600),
+                                              )),
+                                          const SizedBox(
+                                            height: 20.0,
+                                          ),
+                                        ],
+                                      ),
                                     ),
-                                  ),
-                                ],
+                                    InkWell(
+                                      onTap: () {
+                                                _showStateSelectionDialog();
+                                              },
+                                      child: Container(
+                                        child: Row(
+                                          children: [
+                                            Icon(
+                                              Icons.location_pin,
+                                              color: Color(0xFF1B3A69),
+                                              size: 21,
+                                            ),
+                                            Text(
+                                              '${_districtController.text.tr}',
+                                              style: TextStyle(
+                                                fontSize: ResponsiveUtils.wp(2.5),
+                                                color: Color(0xFF1B3A69),
+                                                fontWeight: FontWeight.w700,
+                                              ),
+                                            )
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
                             Container(
@@ -801,8 +726,8 @@ class _DashboardState extends State<Dashboard> {
                                   bottom: 10, left: 10, right: 10),
                               padding: EdgeInsets.symmetric(
                                   horizontal: 10, vertical: 5),
-                              width: 390,
-                              height: MediaQuery.of(context).size.height/6,
+                              width: ResponsiveUtils.wp(90),
+                              height: ResponsiveUtils.hp(15),
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10),
                                 color: Color(0xFF1B3A69),
@@ -817,28 +742,10 @@ class _DashboardState extends State<Dashboard> {
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
-                                      Text(
-                                        'Tmax'.tr,
-                                        style: TextStyle(
-                                            fontSize: 10,
-                                            fontWeight: FontWeight.w400,
-                                            color: Colors.white),
-                                      ),
-                                      Text('Tmin'.tr,
-                                          style: TextStyle(
-                                              fontSize: 10,
-                                              fontWeight: FontWeight.w400,
-                                              color: Colors.white)),
-                                      Text('Rainfall(mm)'.tr,
-                                          style: TextStyle(
-                                              fontSize: 10,
-                                              fontWeight: FontWeight.w400,
-                                              color: Colors.white)),
-                                      Text('THI'.tr,
-                                          style: TextStyle(
-                                              fontSize: 10,
-                                              fontWeight: FontWeight.w400,
-                                              color: Colors.white))
+                                      Reusabletext('Tmax'.tr,),
+                                      Reusabletext('Tmin'.tr,),
+                                      Reusabletext('Rainfall(mm)'.tr,),
+                                      Reusabletext('THI'.tr,),
                                     ],
                                   ),
                                   Column(
@@ -847,31 +754,14 @@ class _DashboardState extends State<Dashboard> {
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
-                                      Text(
-                                        '${ranges['Temperature Max'][0].ceil() ?? 0.0} - ${ranges['Temperature Max'][1].ceil() ?? 0.0}',
-                                        style: TextStyle(
-                                            fontSize: 10,
-                                            fontWeight: FontWeight.w400,
-                                            color: Colors.white),
-                                      ),
-                                      Text(
-                                          '${ranges['Temperature Min'][0].ceil() ?? 0.0} - ${ranges['Temperature Min'][1].ceil() ?? 0.0}',
-                                          style: TextStyle(
-                                              fontSize: 10,
-                                              fontWeight: FontWeight.w400,
-                                              color: Colors.white)),
-                                      Text(
-                                          '${ranges['Rainfall'][0].ceil() ?? 0.0} - ${ranges['Rainfall'][1].ceil() ?? 0.0}',
-                                          style: TextStyle(
-                                              fontSize: 10,
-                                              fontWeight: FontWeight.w400,
-                                              color: Colors.white)),
-                                      Text(
-                                          '${ranges['THI'][0].ceil() ?? 0.0} - ${ranges['THI'][1].ceil() ?? 0.0}',
-                                          style: TextStyle(
-                                              fontSize: 10,
-                                              fontWeight: FontWeight.w400,
-                                              color: Colors.white))
+                                      Reusabletext(
+                                        '${ranges['Temperature Max'][0].ceil() ?? 0.0} - ${ranges['Temperature Max'][1].ceil() ?? 0.0}',),
+                                      Reusabletext(
+                                          '${ranges['Temperature Min'][0].ceil() ?? 0.0} - ${ranges['Temperature Min'][1].ceil() ?? 0.0}',),
+                                      Reusabletext(
+                                          '${ranges['Rainfall'][0].ceil() ?? 0.0} - ${ranges['Rainfall'][1].ceil() ?? 0.0}',),
+                                      Reusabletext(
+                                          '${ranges['THI'][0].ceil() ?? 0.0} - ${ranges['THI'][1].ceil() ?? 0.0}',)
                                     ],
                                   ),
                                   Column(
@@ -880,28 +770,10 @@ class _DashboardState extends State<Dashboard> {
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
-                                      Text(
-                                        'RH(%)'.tr,
-                                        style: TextStyle(
-                                            fontSize: 10,
-                                            fontWeight: FontWeight.w400,
-                                            color: Colors.white),
-                                      ),
-                                      Text('Wind Speed(kmph)'.tr,
-                                          style: TextStyle(
-                                              fontSize: 10,
-                                              fontWeight: FontWeight.w400,
-                                              color: Colors.white)),
-                                      Text('Cloud cover(octa)'.tr,
-                                          style: TextStyle(
-                                              fontSize: 10,
-                                              fontWeight: FontWeight.w400,
-                                              color: Colors.white)),
-                                      Text('Wind Direction (Degree)'.tr,
-                                          style: TextStyle(
-                                              fontSize: 10,
-                                              fontWeight: FontWeight.w400,
-                                              color: Colors.white))
+                                      Reusabletext('RH(%)'.tr,),
+                                      Reusabletext('Wind Speed(kmph)'.tr,),
+                                      Reusabletext('Cloud cover(octa)'.tr,),
+                                      Reusabletext('Wind Direction (Degree)'.tr,)
                                     ],
                                   ),
                                   Column(
@@ -910,31 +782,11 @@ class _DashboardState extends State<Dashboard> {
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
-                                      Text(
-                                        '${ranges['RH'][0] ?? 0.0} - ${ranges['RH'][1] ?? 0.0}',
-                                        style: TextStyle(
-                                            fontSize: 10,
-                                            fontWeight: FontWeight.w400,
-                                            color: Colors.white),
-                                      ),
-                                      Text(
-                                          '${ranges['Wind Speed'][0].ceil() ?? 0.0} - ${ranges['Wind Speed'][1].ceil() ?? 0.0}',
-                                          style: TextStyle(
-                                              fontSize: 10,
-                                              fontWeight: FontWeight.w400,
-                                              color: Colors.white)),
-                                      Text(
-                                          '${ranges['Cloud Cover'][0] ?? 0.0} - ${ranges['Cloud Cover'][1] ?? 0.0}',
-                                          style: TextStyle(
-                                              fontSize: 10,
-                                              fontWeight: FontWeight.w400,
-                                              color: Colors.white)),
-                                      Text(
-                                          '${ranges['Wind Direction'][0].ceil() ?? 0.0} - ${ranges['Wind Direction'][1].ceil() ?? 0.0}',
-                                          style: TextStyle(
-                                              fontSize: 10,
-                                              fontWeight: FontWeight.w400,
-                                              color: Colors.white))
+                                      Reusabletext(
+                                        '${ranges['RH'][0] ?? 0.0} - ${ranges['RH'][1] ?? 0.0}',),
+                                      Reusabletext('${ranges['Wind Speed'][0].ceil() ?? 0.0} - ${ranges['Wind Speed'][1].ceil() ?? 0.0}',),
+                                      Reusabletext('${ranges['Cloud Cover'][0] ?? 0.0} - ${ranges['Cloud Cover'][1] ?? 0.0}', ),
+                                      Reusabletext( '${ranges['Wind Direction'][0].ceil() ?? 0.0} - ${ranges['Wind Direction'][1].ceil() ?? 0.0}',)
                                     ],
                                   ),
                                 ],
@@ -944,12 +796,15 @@ class _DashboardState extends State<Dashboard> {
                         ),
                       ),
                       Container(
-                        height: MediaQuery.of(context).size.height/1.823,
-                      decoration: ShapeDecoration(shape: RoundedRectangleBorder(),image: DecorationImage(image: 
-                      AssetImage('assets/images/agri.jpg',),
-                      fit: BoxFit.cover,
-                      opacity: 0.5
-                      )),
+                        height: MediaQuery.of(context).size.height / 1.823,
+                        decoration: ShapeDecoration(
+                            shape: RoundedRectangleBorder(),
+                            image: DecorationImage(
+                                image: AssetImage(
+                                  'assets/images/agri.jpg',
+                                ),
+                                fit: BoxFit.cover,
+                                opacity: 0.5)),
                         child: Column(
                           children: [
                             Container(
@@ -960,46 +815,17 @@ class _DashboardState extends State<Dashboard> {
                                       ' ${DateFormat('dd-MM-yyyy').format(selectedDate1)} - ' +
                                       '${DateFormat('dd-MM-yyyy').format(selectedDate2)} ',
                                   style: TextStyle(
-                                    color: Colors.black,
-                                      fontSize: 14, fontWeight: FontWeight.w600),
+                                      color: Colors.black,
+                                      fontSize: ResponsiveUtils.wp(2.5),
+                                      fontWeight: FontWeight.w600),
                                 )),
                             Padding(
                               padding: const EdgeInsets.all(12),
                               child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
                                 children: [
-                                  InkWell(
-                                    child: Container(
-                                      padding: EdgeInsets.only(bottom: 15),
-                                      alignment: Alignment.bottomCenter,
-                                      height: 170,
-                                      width: 170,
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(20),
-                                        image: DecorationImage(
-                                            filterQuality: FilterQuality.high,
-                                            opacity: 0.8,
-                                            image: AssetImage(
-                                                'assets/images/murrah.jpeg'),
-                                            fit: BoxFit.cover),
-                                      ),
-                                      child: Text(
-                                        'Dairy Animal'.tr,
-                                        style: TextStyle(
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.w700,
-                                          color: Colors.white,
-                                          shadows: [
-                                            Shadow(
-                                              blurRadius: 10.0,
-                                              color: Colors.black,
-                                              offset: Offset(2.0, 2.0),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                    onTap: () {
+                                  ReusableContainer(title: 'Dairy Animal', image: 'assets/images/murrah.jpeg', onTap: () {
                                       Navigator.push(
                                           context,
                                           MaterialPageRoute(
@@ -1011,58 +837,26 @@ class _DashboardState extends State<Dashboard> {
                                                         '${DateFormat('dd-MM-yyyy').format(selectedDate2)}',
                                                     District:
                                                         '${_districtController.text}',
-                                                        title: 'Dairy Animal'.tr,
+                                                    title: 'Dairy Animal'.tr,
+                                                    Language:
+                                                        _languageController
+                                                            .text,
                                                   )));
-                                    },
-                                  ),
-                                  InkWell(
-                                    onTap: () {},
-                                    child: InkWell(
-                                      onTap: () {
+                                    },),
+                                  ReusableContainer(title: 'Major crops', image: 'assets/images/sorghum.jpeg', onTap: () {
                                         Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                  builder: (context) => Major_crops(
-                                                     Date1:
-                                                        '${DateFormat('dd-MM-yyyy').format(selectedDate1)} - ',
-                                                    Date2:
-                                                        '${DateFormat('dd-MM-yyyy').format(selectedDate2)}',
-                                                    District:
-                                                        '${_districtController.text}',
-                                                  )));
-                                      },
-                                      child: Container(
-                                        padding: EdgeInsets.only(bottom: 15),
-                                        alignment: Alignment.bottomCenter,
-                                        height: 170,
-                                        width: 170,
-                                        decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(20),
-                                          image: DecorationImage(
-                                              filterQuality: FilterQuality.high,
-                                              opacity: 0.8,
-                                              image: AssetImage(
-                                                  'assets/images/sorghum.jpeg'),
-                                              fit: BoxFit.cover),
-                                        ),
-                                        child: Text(
-                                          'Major crops'.tr,
-                                          style: TextStyle(
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.w700,
-                                            color: Colors.white,
-                                            shadows: [
-                                              Shadow(
-                                                blurRadius: 10.0,
-                                                color: Colors.black,
-                                                offset: Offset(2.0, 2.0),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    Major_crops(
+                                                      Date1:
+                                                          '${DateFormat('dd-MM-yyyy').format(selectedDate1)} - ',
+                                                      Date2:
+                                                          '${DateFormat('dd-MM-yyyy').format(selectedDate2)}',
+                                                      District:
+                                                          '${_districtController.text}',
+                                                    )));
+                                      },),
                                 ],
                               ),
                             ),
@@ -1075,9 +869,61 @@ class _DashboardState extends State<Dashboard> {
               )
             : Container(
                 height: MediaQuery.of(context).size.height / 1.2,
-                child:
-                    Center(child: CircularProgressIndicator.adaptive())),
+                child: Center(child: CircularProgressIndicator.adaptive())),
       ),
+    );
+  }
+
+  Widget topcontainer(String Title, String Image, Function() onTap) {
+    return Container(
+      margin: EdgeInsets.only(
+        top: 10,
+        bottom: 10,
+        left: 10,
+      ),
+      padding: EdgeInsets.only(top: 0),
+      width: ResponsiveUtils.wp(38),
+      height: ResponsiveUtils.hp(14),
+      decoration: BoxDecoration(
+          border: Border.all(
+            width: 1,
+            color: Color(0xFFABABAB),
+          ),
+          borderRadius: BorderRadius.circular(10)),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          InkWell(
+            onTap: onTap,
+            child: Container(
+              width: ResponsiveUtils.wp(30),
+              height: ResponsiveUtils.hp(10),
+              decoration: BoxDecoration(
+                  image: DecorationImage(
+                      image: AssetImage(Image), fit: BoxFit.cover)),
+            ),
+          ),
+          AutoSizeText(
+            overflow: TextOverflow.ellipsis,
+            maxFontSize: 12,
+            maxLines: 2,
+            minFontSize: 10,
+            textAlign: TextAlign.center,
+            Title.tr,
+            style: TextStyle(fontSize: ResponsiveUtils.wp(2.2), fontWeight: FontWeight.w700),
+          )
+        ],
+      ),
+    );
+  }
+
+  Widget Reusabletext(String text) {
+    return AutoSizeText(
+      maxFontSize: 10,
+      minFontSize: 8,
+      text,
+      style: TextStyle(
+          fontSize: ResponsiveUtils.wp(1.5), fontWeight: FontWeight.w400, color: Colors.white),
     );
   }
 }

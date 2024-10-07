@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:ndri_climate/material/custom_drawer.dart';
+import 'package:ndri_climate/material/plugin/responsiveUtils.dart';
 import 'package:ndri_climate/material/reusableappbar.dart';
 import 'package:get/get.dart';
 import 'package:ndri_climate/model/Repo.dart';
@@ -94,21 +95,17 @@ class _Daily_ForecastState extends State<Daily_Forecast> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              InkWell(
-                  onTap: () {
-                    print('date:'+ finalDate[0].tr);
-                  },
-                  child: Text(
-                    District.tr,
-                    style: TextStyle(
-                        fontSize: 30,
-                        fontWeight: FontWeight.w500,
-                        color: Colors.black),
-                  )),
+              Text(
+                District.tr,
+                style: TextStyle(
+                    fontSize: ResponsiveUtils.wp(5),
+                    fontWeight: FontWeight.w500,
+                    color: Colors.black),
+              ),
               Text(
                 finalDate[0].tr +" "+ finalDate[1] + " "+finalDate[2],
                 style: TextStyle(
-                    fontSize: 20,
+                    fontSize: ResponsiveUtils.wp(4),
                     fontWeight: FontWeight.w400,
                     color: Colors.black),
               ),
@@ -120,14 +117,14 @@ class _Daily_ForecastState extends State<Daily_Forecast> {
                 children: [
                   Image.network(
                     'https://cdn-icons-png.flaticon.com/128/2469/2469994.png',
-                    width: 70,
-                    height: 70,
+                    width: ResponsiveUtils.wp(20),
+                    height: ResponsiveUtils.hp(10),
                     fit: BoxFit.cover,
                   ),
                   Text(
                     _temp+'°C',
                     style: TextStyle(
-                        fontSize: 50,
+                        fontSize: ResponsiveUtils.wp(9),
                         fontWeight: FontWeight.w600,
                         color: Colors.black),
                   ),
@@ -140,8 +137,8 @@ class _Daily_ForecastState extends State<Daily_Forecast> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Container(
-                    width: 100,
-                    height: 100,
+                    width: ResponsiveUtils.wp(25),
+                    height: ResponsiveUtils.hp(12),
                     padding: EdgeInsets.all(10),
                     alignment: Alignment.center,
                     decoration: BoxDecoration(
@@ -151,13 +148,13 @@ class _Daily_ForecastState extends State<Daily_Forecast> {
                       children: [
                         Image.network(
                           'https://cdn-icons-png.flaticon.com/128/4005/4005767.png',
-                          width: 50,
-                          height: 50,
+                          width: ResponsiveUtils.wp(12),
+                    height: ResponsiveUtils.hp(6),
                         ),
                         Text(
                           '${_weatherdata[0].wind.speed} ' +'kmps'.tr,
                           style: TextStyle(
-                              fontSize: 16,
+                              fontSize: ResponsiveUtils.wp(2.6),
                               fontWeight: FontWeight.w400,
                               color: Colors.black),
                         ),
@@ -165,8 +162,8 @@ class _Daily_ForecastState extends State<Daily_Forecast> {
                     ),
                   ),
                   Container(
-                    width: 100,
-                    height: 100,
+                     width: ResponsiveUtils.wp(25),
+                    height: ResponsiveUtils.hp(12),
                     padding: EdgeInsets.all(10),
                     alignment: Alignment.center,
                     decoration: BoxDecoration(
@@ -176,13 +173,13 @@ class _Daily_ForecastState extends State<Daily_Forecast> {
                       children: [
                         Image.network(
                           'https://cdn-icons-png.flaticon.com/128/414/414927.png',
-                          width: 50,
-                          height: 50,
+                           width: ResponsiveUtils.wp(12),
+                    height: ResponsiveUtils.hp(6),
                         ),
                         Text(
                           '${_weatherdata[0].clouds.all}'+'(octa)'.tr,
                           style: TextStyle(
-                              fontSize: 16,
+                              fontSize: ResponsiveUtils.wp(2.8),
                               fontWeight: FontWeight.w400,
                               color: Colors.black),
                         ),
@@ -190,8 +187,8 @@ class _Daily_ForecastState extends State<Daily_Forecast> {
                     ),
                   ),
                   Container(
-                    width: 100,
-                    height: 101,
+                     width: ResponsiveUtils.wp(25),
+                    height: ResponsiveUtils.hp(12),
                     padding: EdgeInsets.all(15),
                     alignment: Alignment.center,
                     decoration: BoxDecoration(
@@ -207,7 +204,7 @@ class _Daily_ForecastState extends State<Daily_Forecast> {
                         Text(
                           '${_weatherdata[0].rain?.h3 ??0.0}'+'mm'.tr,
                           style: TextStyle(
-                              fontSize: 14,
+                              fontSize: ResponsiveUtils.wp(2.5),
                               fontWeight: FontWeight.w400,
                               color: Colors.black),
                         ),
@@ -222,7 +219,7 @@ class _Daily_ForecastState extends State<Daily_Forecast> {
               Text(
                 'Today'.tr,
                 style: TextStyle(
-                    fontSize: 20,
+                    fontSize: ResponsiveUtils.wp(4),
                     fontWeight: FontWeight.w400,
                     color: Colors.black),
               ),
@@ -230,7 +227,7 @@ class _Daily_ForecastState extends State<Daily_Forecast> {
                 height: 10,
               ),
               Container(
-                height: 200,
+                    height: ResponsiveUtils.hp(24),
                 child: ListView.builder(
                   itemCount: 6,
                   scrollDirection: Axis.horizontal,
@@ -239,7 +236,7 @@ class _Daily_ForecastState extends State<Daily_Forecast> {
                     String time = formatTime(_data.dtTxt);
                     String temp = kelvinToCelsius(_data.main.temp);
                     return Container(
-                      width: 150,
+                      width:ResponsiveUtils.wp(36),
                       margin: EdgeInsets.only(right: 15),
                       padding: EdgeInsets.all(10),
                       decoration: BoxDecoration(
@@ -252,20 +249,20 @@ class _Daily_ForecastState extends State<Daily_Forecast> {
                           Text(
                             time,
                             style: TextStyle(
-                                fontSize: 16,
+                                fontSize: ResponsiveUtils.wp(2.8),
                                 fontWeight: FontWeight.w500,
                                 color: Colors.black),
                           ),
                           Image.network(
                             'https://cdn-icons-png.flaticon.com/128/1163/1163657.png',
-                            height: 60,
-                            width: 60,
+                            width: ResponsiveUtils.wp(18),
+                    height: ResponsiveUtils.hp(8),
                             fit: BoxFit.cover,
                           ),
                           Text(
                             temp + '°C'.tr,
                             style: TextStyle(
-                                fontSize: 16,
+                                fontSize: ResponsiveUtils.wp(2.8),
                                 fontWeight: FontWeight.w500,
                                 color: Colors.black),
                           ),
@@ -281,7 +278,7 @@ class _Daily_ForecastState extends State<Daily_Forecast> {
               Text(
                 'Next Days'.tr,
                 style: TextStyle(
-                    fontSize: 20,
+                    fontSize: ResponsiveUtils.wp(4),
                     fontWeight: FontWeight.w400,
                     color: Colors.black),
               ),
@@ -289,7 +286,7 @@ class _Daily_ForecastState extends State<Daily_Forecast> {
                 height: 20,
               ),
               Container(
-                height: 350,
+                height: ResponsiveUtils.hp(40),
                 decoration: BoxDecoration(
                     color: Colors.lightBlue.shade100,
                     borderRadius: BorderRadius.circular(15)),
@@ -309,20 +306,20 @@ class _Daily_ForecastState extends State<Daily_Forecast> {
                           Text(
                             days[index].tr,
                             style: TextStyle(
-                                fontSize: 16,
+                                fontSize: ResponsiveUtils.wp(2.8),
                                 fontWeight: FontWeight.w500,
                                 color: Colors.black),
                           ),
                           Image.network(
                             'https://cdn-icons-png.flaticon.com/128/1163/1163657.png',
-                            height: 40,
-                            width: 40,
+                            width: ResponsiveUtils.wp(10),
+                    height: ResponsiveUtils.hp(5),
                             fit: BoxFit.cover,
                           ),
                           Text(
                             '$tempmax'+'°C'.tr,
                             style: TextStyle(
-                                fontSize: 16,
+                                fontSize: ResponsiveUtils.wp(2.8),
                                 fontWeight: FontWeight.w500,
                                 color: Colors.black),
                           ),
@@ -340,4 +337,4 @@ class _Daily_ForecastState extends State<Daily_Forecast> {
   }
 }
 
-List<String> days = ['MON', 'TUE', 'WED', 'THURS', 'FRI', 'SAT', 'SUN'];
+List<String> days = ['MON', 'TUE', 'WED', 'THUR', 'FRI', 'SAT', 'SUN'];

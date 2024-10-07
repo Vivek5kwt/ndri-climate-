@@ -118,8 +118,9 @@ class ApiProvider {
       final response = await http.post(url, headers: headers, body: body);
       if (response.statusCode == 201) {
         final jsonData = json.decode(response.body);
-        print(jsonData);
         return jsonData;
+      
+
       } else {
         print('Error: ${response.statusCode} - ${response.reasonPhrase}');
         return null;

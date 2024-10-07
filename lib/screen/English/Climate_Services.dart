@@ -2,17 +2,27 @@ import 'package:flutter/material.dart';
 import 'package:ndri_climate/apiservices/advisory.dart';
 import 'package:ndri_climate/apiservices/api_provider.dart';
 import 'package:ndri_climate/auth/register_screen.dart';
-import 'package:ndri_climate/material/bottom_sheet.dart';
 import 'package:ndri_climate/material/custom_drawer.dart';
+import 'package:ndri_climate/material/plugin/responsiveUtils.dart';
 import 'package:ndri_climate/material/reusableappbar.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Climate_services extends StatefulWidget {
-   final String Date1;
+  final String Date1;
   final String Date2;
   final String District;
+  final String Language;
   final String title;
-   Climate_services({super.key, required this.Date1, required this.Date2, required this.District, required this.title});
+
+  Climate_services({
+    super.key,
+    required this.Date1,
+    required this.Date2,
+    required this.District,
+    required this.title,
+    required this.Language,
+  });
 
   @override
   State<Climate_services> createState() => _Climate_servicesState();
@@ -20,40 +30,72 @@ class Climate_services extends StatefulWidget {
 
 class _Climate_servicesState extends State<Climate_services> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-  String first_date = '';
-  String second_date = '';
+  String firstDate = '';
+  String secondDate = '';
   String district = '';
-  DateTime? date1;
-  DateTime? date2;
-  
+  String language = '';
+  List<Advisory> advisoryData = [];
+  bool isLoading = true;
+  bool hasError = false;
+
   @override
   void initState() {
-    setState(() {
-      first_date = widget.Date1;
-      second_date = widget.Date2;
-      district =widget.District;
-      ApiProvider().fetchAdvisory();
-      
-    });
     super.initState();
+    firstDate = widget.Date1;
+    secondDate = widget.Date2;
+    district = widget.District;
+    SharedPreferences.getInstance().then((v){
+       setState(() {
+       language=v.getString('language')??widget.Language;
+       });
+     });
+    _fetchAdvisoryData();
   }
-  void showDateBottomsheet(){
-    showModalBottomSheet(context: context, builder: (context) {
-      return filterDate();
-    },);
+
+  void _fetchAdvisoryData() async {
+    try {
+      final response = await ApiProvider().fetchAdvisory();
+      setState(() {
+        advisoryData = response.reversed.toList();
+        isLoading = false;
+      });
+    } catch (error) {
+      setState(() {
+        hasError = true;
+        isLoading = false;
+      });
+    }
   }
+
+  // void showDateBottomsheet() {
+  //   showModalBottomSheet(
+  //     context: context,
+  //     builder: (context) {
+  //       return filterDate(onTapcallback: (p0, p1) {
+          
+  //       },);
+  //     },
+  //   );
+  // }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldKey,
       drawer: CustomDrawer(),
       appBar: PreferredSize(
-          preferredSize: Size(40, 60),
-          child: ReuseAppbar(
-            scaffoldKey: _scaffoldKey,
-            show_back_arrow: false,
-            title: widget.title.tr,
-          )),
+        preferredSize: Size(40, 60),
+        child: ReuseAppbar(
+          scaffoldKey: _scaffoldKey,
+          show_back_arrow: false,
+          title: widget.title.tr,
+          onselected: (lang) {
+            setState(() {
+              language=lang;
+            });
+          },
+        ),
+      ),
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         physics: AlwaysScrollableScrollPhysics(),
@@ -61,17 +103,14 @@ class _Climate_servicesState extends State<Climate_services> {
           children: [
             Container(
               width: MediaQuery.of(context).size.width,
-              height: 61,
+              height: ResponsiveUtils.hp(7),
               padding: EdgeInsets.all(20),
               color: Color(0xFF9BDBFF),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  InkWell(
-                    onTap: () {
-                      showDateBottomsheet();
-                    },
-                    child: Container(
+              child: Flexible(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
                       child: Row(
                         children: [
                           Icon(
@@ -83,9 +122,9 @@ class _Climate_servicesState extends State<Climate_services> {
                             width: 5,
                           ),
                           Text(
-                            '$first_date $second_date',
+                            '$firstDate$secondDate',
                             style: TextStyle(
-                              fontSize: 14,
+                              fontSize: ResponsiveUtils.wp(2.5),
                               color: Color(0xFF1B3A69),
                               fontWeight: FontWeight.w700,
                             ),
@@ -93,110 +132,142 @@ class _Climate_servicesState extends State<Climate_services> {
                         ],
                       ),
                     ),
-                  ),
-                  Container(
-                    child: Row(
-                      children: [
-                        Icon(
-                          Icons.location_pin,
-                          color: Color(0xFF1B3A69),
-                          size: 21,
-                        ),
-                        Text(
-                          district.tr,
-                          style: TextStyle(
-                            fontSize: 14,
+                    Container(
+                      child: Row(
+                        children: [
+                          Icon(
+                            Icons.location_pin,
                             color: Color(0xFF1B3A69),
-                            fontWeight: FontWeight.w700,
+                            size: 21,
                           ),
-                        )
-                      ],
+                          Text(
+                            district.tr,
+                            style: TextStyle(
+                              fontSize: ResponsiveUtils.wp(2.5),
+                              color: Color(0xFF1B3A69),
+                              fontWeight: FontWeight.w700,
+                            ),
+                          )
+                        ],
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
-             Container(
-               child: FutureBuilder(
-                future: ApiProvider().fetchAdvisory(),
-                builder: (context, snapshot) {
-                  if(snapshot.connectionState == ConnectionState.waiting) {
-                    Container(height: MediaQuery.of(context).size.height / 2,
+            isLoading
+                ? Container(
+                    height: MediaQuery.of(context).size.height / 2,
                     alignment: Alignment.center,
                     child: CircularProgressIndicator.adaptive(),
-                    );
-                  }
-                  if (snapshot.hasData) {
-                    final data = snapshot.data;
-                    List<Advisory>advisory_data = data?.reversed.toList() ?? [];
-                     return  Container(
-                      height: MediaQuery.of(context).size.height / 1.26,
-                       child: ListView.builder(
-                        itemCount: advisory_data.length,
-                        itemBuilder: (context, index) {
-                          Advisory _advisory = advisory_data[index];
-                          date1=_advisory.fromDate;
-                          date2=_advisory.toDate;
-                         return Column(
-                          mainAxisSize: MainAxisSize.min,
-                           children: [
-                             Container(
-                                             width: MediaQuery.of(context).size.width,
-                                             // height: MediaQuery.of(context).size.height / 2,
-                                             margin: EdgeInsets.all(10),
-                                             padding: EdgeInsets.all(15),
-                                             decoration: BoxDecoration(
-                                                     color: Colors.white,
-                                                     border: Border.all(color: Colors.grey),
-                                                     borderRadius: BorderRadius.circular(10)),
-                                             child: Column(
-                                               crossAxisAlignment: CrossAxisAlignment.start,
-                                               children: [
-                                                     Text(
-                              _advisory.title,
-                              style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.w700,
-                              ),
-                                                     ),
-                                                     SizedBox(
-                              height: 10,
-                                                     ),
-                                                     Text(
-                              _advisory.description, style:
-                                  TextStyle(fontSize: 13, fontWeight: FontWeight.w500),
-                                                     )
-                                               ],
-                                             )),
-                                             if( index == advisory_data.length -1)
-                                             InkWell(
-                                              onTap: () {
-                                                Navigator.push(context, MaterialPageRoute(builder: (context) => RegisterScreen(district: district),));
-                                              },
-                                               child: Container(
-                                                             color: Colors.transparent,
-                                                              child: Chip(
-                                                               backgroundColor: Colors.transparent,
-                                                               color: WidgetStateProperty.all(Color(0xFF2C96D2)),
-                                                               label: Text('Feedback',style: TextStyle(
-                                                               fontSize: 18,fontWeight: FontWeight.bold,color: Colors.white
-                                                              ),)),
-                                                            ),
-                                             )
-                           ],
-                         );
+                  )
+                : hasError
+                    ? Center(
+                        child: Text(
+                          'Error fetching data',
+                          style: TextStyle(
+                            fontSize: ResponsiveUtils.wp(2.8),
+                            color: Colors.red,
+                          ),
+                        ),
+                      )
+                    : Container(
+                        height: MediaQuery.of(context).size.height / 1.26,
+                        child: ListView.builder(
+                          itemCount: advisoryData.length,
+                          itemBuilder: (context, index) {
+                            Advisory advisory = advisoryData[index];
+                            String description;
 
-                       },),
-                     );
-                  } 
-                 return Container();
-                },
-                ),
-              
-             ),
-             SizedBox(height: 30,),
-             
-              
+                            // Determine the description based on the language
+                            switch (language.toLowerCase()) {
+                              case ('hindi'||'हिंदी'||'ਹਿੰਦੀ'||'হিন্দি'):
+                                description = advisory.descriptionHi;
+                                break;
+                                case ('english'||'अंग्रेज़ी'||'ਅੰਗਰੇਜ਼ੀ'||'ইংরেজি'):
+                                description = advisory.descriptionEn;
+                                break;
+                                case ('bengali'||'बंगाली'||'ਬੰਗਾਲੀ'||'বাংলা'):
+                                description = advisory.descriptionBn;
+                                break;
+                                case ('punjabi'||'ਪੰਜਾਬੀ'||'पंजाबी'||'পাঞ্জাবি'):
+                                description = advisory.descriptionPa;
+                                break;
+                              default:
+                                description = advisory.descriptionEn;
+                                break;
+                            }
+                            return Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Container(
+                                  width: MediaQuery.of(context).size.width,
+                                  margin: EdgeInsets.all(10),
+                                  padding: EdgeInsets.all(15),
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    border: Border.all(color: Colors.grey),
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        advisory.title,
+                                        style: TextStyle(
+                                          fontSize: ResponsiveUtils.wp(2.8),
+                                          fontWeight: FontWeight.w700,
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        height: 10,
+                                      ),
+                                      Text(
+                                        description,
+                                        style: TextStyle(
+                                          fontSize: ResponsiveUtils.wp(2.5),
+                                          fontWeight: FontWeight.w500,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                if (index == advisoryData.length - 1)
+                                  InkWell(
+                                    onTap: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) => RegisterScreen(
+                                            district: district,
+                                          ),
+                                        ),
+                                      );
+                                    },
+                                    child: Container(
+                                      color: Colors.transparent,
+                                      child: Chip(
+                                        backgroundColor: Colors.transparent,
+                                        label: Text(
+                                          'Feedback'.tr,
+                                          style: TextStyle(
+                                            fontSize: ResponsiveUtils.wp(3),
+                                            fontWeight: FontWeight.bold,
+                                            color: Color(0xFF2C96D2),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                              ],
+                            );
+                          },
+                        ),
+                      ),
+            SizedBox(
+              height: 30,
+            ),
           ],
         ),
       ),

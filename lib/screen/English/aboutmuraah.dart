@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ndri_climate/material/custom_drawer.dart';
+import 'package:ndri_climate/material/plugin/responsiveUtils.dart';
 import 'package:ndri_climate/material/reusableappbar.dart';
 import 'package:get/get.dart';
 
@@ -32,7 +33,7 @@ class _About_MurrahState extends State<About_Murrah> {
               Text(
                 title,
                 style: TextStyle(
-                  fontSize: 16,
+                  fontSize: ResponsiveUtils.wp(2.8),
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -42,7 +43,7 @@ class _About_MurrahState extends State<About_Murrah> {
               Text(
                 description,
                 style: TextStyle(
-                  fontSize: 14,
+                  fontSize: ResponsiveUtils.wp(2.5),
                 ),
               ),
         ],
@@ -60,7 +61,7 @@ class _About_MurrahState extends State<About_Murrah> {
           child: ReuseAppbar(
             scaffoldKey: _scaffoldKey,
             show_back_arrow: false,
-            title: 'Climate Change and Dairy Farming'.tr,
+            title: 'Impact of climate change on dairy animal'.tr,
           )),
       body: Container(
         width: MediaQuery.of(context).size.width,

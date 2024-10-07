@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ndri_climate/material/bottom_sheet.dart';
+import 'package:ndri_climate/material/plugin/responsiveUtils.dart';
 import 'package:ndri_climate/model/Repo.dart';
 import 'package:ndri_climate/model/Weather_Forecast.dart';
 import 'package:ndri_climate/screen/English/dashboard2.dart';
@@ -164,8 +165,10 @@ class _Dialogue_pageState extends State<Dialogue_page> {
       context: context,
       builder: (BuildContext context) {
         return LanguageBottomSheet(selected_language: (language) async {
+          SharedPreferences _prefs = await SharedPreferences.getInstance();
           setState(() {
             _languageController.text = language.tr;
+             _prefs.setString('language', _languageController.text);
             WidgetsBinding.instance.addPostFrameCallback((v) {
               Navigator.pushReplacement(
                   context,
@@ -173,6 +176,7 @@ class _Dialogue_pageState extends State<Dialogue_page> {
                       builder: (context) => Dashboard(
                             selectdist: _districtController.text,
                             selectstate: _stateController.text,
+                            selectlang: language,
                           )));
             });
           });
@@ -190,7 +194,7 @@ class _Dialogue_pageState extends State<Dialogue_page> {
 
   Widget _buildStateSelectionDialog() {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 38.0),
+      padding: const EdgeInsets.symmetric(horizontal: 30.0),
       child: AlertDialog(
         alignment: Alignment.topCenter,
         contentPadding: EdgeInsets.only(top: 10, bottom: 0, left: 0, right: 0),
@@ -390,7 +394,7 @@ class _Dialogue_pageState extends State<Dialogue_page> {
                       child: Text(
                         'राष्ट्रीय डेरी अनुसंधान संस्थान द्वारा जलवायु सेवाएं',
                         style: TextStyle(
-                            fontSize: 14,
+                            fontSize: ResponsiveUtils.wp(2.5),
                             fontWeight: FontWeight.w600,
                             color: Colors.black),
                       ),
@@ -401,7 +405,7 @@ class _Dialogue_pageState extends State<Dialogue_page> {
                       child: Text(
                         'NDRI CLIMATE SERVICES',
                         style: TextStyle(
-                            fontSize: 16,
+                            fontSize: ResponsiveUtils.wp(2.8),
                             fontWeight: FontWeight.w800,
                             color: Colors.black),
                       ),

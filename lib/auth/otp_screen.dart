@@ -103,7 +103,7 @@ class _OTPScreenState extends State<OTPScreen> {
                           lable: 'Mobile Number'.tr,
                           hinttext: 'Enter your Mobile Number'.tr,
                           fillcolor: Colors.white,
-                          textInputType: TextInputType.name,
+                          textInputType: TextInputType.number,
                           color: true,
                           hinttextcolor: Colors.black),
                     ),
