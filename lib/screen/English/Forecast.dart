@@ -69,7 +69,7 @@ class _ForecastState extends State<Forecast> {
         'wind_speed': _toDouble(entry['wind']['speed']),
         'wind_direction': _toDouble(entry['wind']['deg']),
         'rainfall': entry['rain'] != null ? _toDouble(entry['rain']['3h'] ?? 0.0) : 0.0,
-        'THI': temp - ((0.55 - (0.55 * humidity / 100)) * (temp - 14.5)),  // Calculating THI
+        'THI': temp - ((0.55 - (0.55 * humidity / 100)) * (temp - 14.5)),
         'RH': humidity,
       });
     }
@@ -93,10 +93,10 @@ class _ForecastState extends State<Forecast> {
         'clouds': cloudCoverValues.reduce((a, b) => a < b ? a : b),
         'rain': precipitationValues.reduce((a, b) => a < b ? a : b),
         'wind_speed': windSpeedValues.reduce((a, b) => a + b),
-        'wind_direction': windDirectionValues.reduce((a, b) => a + b) / windDirectionValues.length, // Average wind direction
-        'rainfall': rainfallValues.reduce((a, b) => a + b), // Total rainfall
-        'THI': THIValues.reduce((a, b) => a + b) / THIValues.length, // Average THI
-        'RH': RHValues.reduce((a, b) => a < b ? a : b), // Minimum RH
+        'wind_direction': windDirectionValues.reduce((a, b) => a + b) / windDirectionValues.length,
+        'rainfall': rainfallValues.reduce((a, b) => a + b),
+        'THI': THIValues.reduce((a, b) => a + b) / THIValues.length,
+        'RH': RHValues.reduce((a, b) => a < b ? a : b),
       };
     }).toList();
   }
@@ -125,16 +125,46 @@ class _ForecastState extends State<Forecast> {
 
     setState(() {
       ranges = {
-        'Temperature Min': [tempMinValues.reduce((a, b) => a < b ? a : b), tempMinValues.reduce((a, b) => a > b ? a : b)],
-        'Temperature Max': [tempMaxValues.reduce((a, b) => a < b ? a : b), tempMaxValues.reduce((a, b) => a > b ? a : b)],
-        'Humidity': [humidityValues.reduce((a, b) => a < b ? a : b), humidityValues.reduce((a, b) => a > b ? a : b)],
-        'Cloud Cover': [cloudCoverValues.reduce((a, b) => a < b ? a : b), cloudCoverValues.reduce((a, b) => a > b ? a : b)],
-        'Precipitation': [precipitationValues.reduce((a, b) => a < b ? a : b), precipitationValues.reduce((a, b) => a > b ? a : b)],
-        'Wind Speed': [windSpeedValues.reduce((a, b) => a < b ? a : b), windSpeedValues.reduce((a, b) => a > b ? a : b)],
-        'Wind Direction': [windDirectionValues.reduce((a, b) => a < b ? a : b), windDirectionValues.reduce((a, b) => a > b ? a : b)],
-        'Rainfall': [rainfallValues.reduce((a, b) => a < b ? a : b), rainfallValues.reduce((a, b) => a > b ? a : b)],
-        'THI': [THIValues.reduce((a, b) => a < b ? a : b), THIValues.reduce((a, b) => a > b ? a : b)],
-        'RH': [RHValues.reduce((a, b) => a < b ? a : b), RHValues.reduce((a, b) => a > b ? a : b)],
+        'Temperature Min (°C)': [
+          tempMinValues.reduce((a, b) => a < b ? a : b),
+          tempMinValues.reduce((a, b) => a > b ? a : b)
+        ],
+        'Temperature Max (°C)': [
+          tempMaxValues.reduce((a, b) => a < b ? a : b),
+          tempMaxValues.reduce((a, b) => a > b ? a : b)
+        ],
+        'Humidity (%)': [
+          humidityValues.reduce((a, b) => a < b ? a : b),
+          humidityValues.reduce((a, b) => a > b ? a : b)
+        ],
+        'Cloud Cover (%)': [
+          cloudCoverValues.reduce((a, b) => a < b ? a : b),
+          cloudCoverValues.reduce((a, b) => a > b ? a : b)
+        ],
+        'Precipitation (mm)': [
+          precipitationValues.reduce((a, b) => a < b ? a : b),
+          precipitationValues.reduce((a, b) => a > b ? a : b)
+        ],
+        'Wind Speed (m/s)': [
+          windSpeedValues.reduce((a, b) => a < b ? a : b),
+          windSpeedValues.reduce((a, b) => a > b ? a : b)
+        ],
+        'Wind Direction (°)': [
+          windDirectionValues.reduce((a, b) => a < b ? a : b),
+          windDirectionValues.reduce((a, b) => a > b ? a : b)
+        ],
+        'Rainfall (mm)': [
+          rainfallValues.reduce((a, b) => a < b ? a : b),
+          rainfallValues.reduce((a, b) => a > b ? a : b)
+        ],
+        'THI': [
+          THIValues.reduce((a, b) => a < b ? a : b),
+          THIValues.reduce((a, b) => a > b ? a : b)
+        ],
+        'RH (%)': [
+          RHValues.reduce((a, b) => a < b ? a : b),
+          RHValues.reduce((a, b) => a > b ? a : b)
+        ],
       };
       isLoading = false;
     });
@@ -142,21 +172,65 @@ class _ForecastState extends State<Forecast> {
 
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+    double fontSize = width * 0.045;
+
     return Scaffold(
       appBar: AppBar(
-        title: Text('7-Day Weather Forecast for $cityName'),
+        title: Text(
+          '7-Day Weather Forecast for $cityName',
+          style: TextStyle(fontSize: fontSize + 2),
+        ),
       ),
       body: isLoading
           ? Center(child: CircularProgressIndicator())
           : errorMessage.isNotEmpty
-              ? Center(child: Text(errorMessage))
-              : ListView(
-                  children: ranges.entries.map((entry) {
-                    return ListTile(
-                      title: Text('${entry.key}: ${entry.value[0]} - ${entry.value[1]}'),
-                    );
-                  }).toList(),
+          ? Center(
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: width * 0.08),
+          child: Text(
+            errorMessage,
+            textAlign: TextAlign.center,
+            style: TextStyle(fontSize: fontSize),
+          ),
+        ),
+      )
+          : Padding(
+        padding: EdgeInsets.symmetric(
+          horizontal: width * 0.04,
+          vertical: width * 0.02,
+        ),
+        child: Card(
+          elevation: 3,
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12)),
+          child: ListView.separated(
+            shrinkWrap: true,
+            itemCount: ranges.length,
+            separatorBuilder: (_, __) => Divider(height: 1),
+            itemBuilder: (context, idx) {
+              String key = ranges.keys.elementAt(idx);
+              var val = ranges[key];
+              return ListTile(
+                contentPadding: EdgeInsets.symmetric(
+                    horizontal: width * 0.06, vertical: width * 0.03),
+                title: Text(
+                  key,
+                  style: TextStyle(
+                      fontSize: fontSize, fontWeight: FontWeight.w600),
                 ),
+                subtitle: Text(
+                  '${val[0].toStringAsFixed(1)}  -  ${val[1].toStringAsFixed(1)}',
+                  style: TextStyle(
+                      fontSize: fontSize * 0.92,
+                      fontWeight: FontWeight.w400,
+                      color: Colors.blueGrey[700]),
+                ),
+              );
+            },
+          ),
+        ),
+      ),
     );
   }
 }

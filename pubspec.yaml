@@ -48,6 +48,7 @@ dependencies:
   google_fonts: ^6.2.1
   device_preview: ^1.2.0
   auto_size_text: ^3.0.0
+  flutter_screenutil: ^5.9.3
   
 
 dev_dependencies:
@@ -71,8 +72,8 @@ flutter_launcher_icons:
   android: true
   remove_alpha_ios: true
   ios: true
-  image_path: "assets/icon/logo1.png"
-  adaptive_icon_foreground: "assets/icon/launcher.png"
+  image_path: "assets/icon/logo1.webp"
+  adaptive_icon_foreground: "assets/icon/launcher.webp"
   adaptive_icon_background: "#ffffff"
 
 # The following section is specific to Flutter packages.

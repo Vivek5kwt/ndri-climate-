@@ -22,7 +22,7 @@ class Reusabledescription extends StatelessWidget {
             height: 20,
             decoration: BoxDecoration(
                 image:
-                    DecorationImage(image: AssetImage('assets/icon/tick.png'))),
+                    DecorationImage(image: AssetImage('assets/icon/tick.webp'))),
           ),
           Container(
             width: MediaQuery.of(context).size.width / 1.25,

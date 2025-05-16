@@ -4,16 +4,15 @@ import 'package:ndri_climate/material/plugin/responsiveUtils.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class ReuseAppbar extends StatefulWidget {
+class ReuseAppbar extends StatefulWidget implements PreferredSizeWidget {
   final String title;
-  // final String language
   final bool show_back_arrow;
   final Widget? widget;
   final PreferredSizeWidget? bottom;
   final Function()? onTap;
   final Function(String)? onselected;
   final GlobalKey<ScaffoldState> scaffoldKey;
-  final VoidCallback? onBackPress; //
+  final VoidCallback? onBackPress;
 
   ReuseAppbar({
     super.key,
@@ -21,18 +20,24 @@ class ReuseAppbar extends StatefulWidget {
     required this.show_back_arrow,
     this.widget,
     required this.scaffoldKey,
-    this.bottom,  this.onTap, this.onBackPress, this.onselected,
+    this.bottom,
+    this.onTap,
+    this.onBackPress,
+    this.onselected,
   });
 
   @override
   State<ReuseAppbar> createState() => _ReuseAppbarState();
+
+  @override
+  Size get preferredSize => Size.fromHeight(
+    bottom == null ? kToolbarHeight : kToolbarHeight + bottom!.preferredSize.height,
+  );
 }
 
 class _ReuseAppbarState extends State<ReuseAppbar> {
-
-
-void  _showLanguageBottomSheet(BuildContext context) async{
-  SharedPreferences _prefs = await SharedPreferences.getInstance();
+  void _showLanguageBottomSheet(BuildContext context) async {
+    SharedPreferences _prefs = await SharedPreferences.getInstance();
     showModalBottomSheet(
       context: context,
       builder: (BuildContext context) {
@@ -41,10 +46,9 @@ void  _showLanguageBottomSheet(BuildContext context) async{
             setState(() {
               _prefs.setString('language', language);
             });
-           if (widget.onselected!=null) {
-            widget.onselected!(language);
-             
-           }
+            if (widget.onselected != null) {
+              widget.onselected!(language);
+            }
           },
         );
       },
@@ -54,54 +58,75 @@ void  _showLanguageBottomSheet(BuildContext context) async{
   @override
   Widget build(BuildContext context) {
     final bgcolor = Color(0xFF2C96D2);
+
+    // Responsive sizes
+    final double iconSize = ResponsiveUtils.wp(6); // about 24 at 400px
+    final double sidePadding = ResponsiveUtils.wp(2.5);
+
     return AppBar(
+      backgroundColor: bgcolor,
+      automaticallyImplyLeading: false,
+      elevation: 0,
+      bottom: widget.bottom,
       centerTitle: true,
-        actionsIconTheme: IconThemeData(color: Colors.white),
-        automaticallyImplyLeading: false,
-        backgroundColor: bgcolor,
-        leading: widget.show_back_arrow? IconButton(icon: Icon(Icons.arrow_back_ios),onPressed: widget.onBackPress?? ()=>Navigator.pop(context),):null,
-        bottom: widget.bottom,
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Container(
-              child: Row(
-                children: [
-                  InkWell(
-                    child: Icon(
-                      Icons.menu,
-                      color: Colors.white,
-                      size: 20,
-                    ),
-                    onTap: () {
-                      widget.scaffoldKey.currentState?.openDrawer();
-                    },
-                  ),
-                  SizedBox(
-                    width: 20,
-                  ),
-                  Text(
-                    widget.title,
-                    style: TextStyle(
-                        fontSize: ResponsiveUtils.wp(2.7),
-                        fontWeight: FontWeight.w700,
-                        color: Colors.white),
-                  ),
-                ],
+      leading: widget.show_back_arrow
+          ? IconButton(
+        icon: Icon(Icons.arrow_back_ios, size: iconSize),
+        onPressed: widget.onBackPress ?? () => Navigator.pop(context),
+      )
+          : null,
+      title: Row(
+        crossAxisAlignment: CrossAxisAlignment.center, // Center all children vertically
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          // Menu Icon
+          InkWell(
+            borderRadius: BorderRadius.circular(iconSize),
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: sidePadding),
+              child: Icon(Icons.menu, color: Colors.white, size: iconSize),
+            ),
+            onTap: () {
+              widget.scaffoldKey.currentState?.openDrawer();
+            },
+          ),
+          // Centered Title
+          Expanded(
+            child: Align(
+              alignment: Alignment.center,
+              child: Text(
+                widget.title,
+                style: TextStyle(
+                  fontSize: ResponsiveUtils.wp(4.5),
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                textAlign: TextAlign.center,
               ),
             ),
-            InkWell(
-              onTap:(){_showLanguageBottomSheet(context);},
-              child: Container(
-                width: 20,
-                height: 20,
-                decoration: BoxDecoration(
-                    image: DecorationImage(
-                        image: AssetImage('assets/icon/translate.png'),
-                        fit: BoxFit.cover)),
+          ),
+          // Language Icon
+          InkWell(
+            borderRadius: BorderRadius.circular(iconSize),
+            onTap: () {
+              _showLanguageBottomSheet(context);
+            },
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: sidePadding),
+              child: SizedBox(
+                width: iconSize,
+                height: iconSize,
+                child: Image.asset(
+                  'assets/icon/translate.webp',
+                  fit: BoxFit.contain,
+                ),
               ),
-            )
-          ],
-        ));
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }

@@ -9,6 +9,7 @@ class Repo{
   getweather( String? district) async{
     var url=
     "https://api.openweathermap.org/data/2.5/forecast?q=$district&cnt=7&appid=$api_key";
+    print('dsdjsdjsjh ${url}');
 
     final res= await http.get(Uri.parse(url));
     final resBody=res.body;

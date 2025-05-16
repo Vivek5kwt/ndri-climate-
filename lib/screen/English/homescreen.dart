@@ -1,153 +1,173 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ndri_climate/material/plugin/responsiveUtils.dart';
 import 'package:ndri_climate/screen/English/Dialogue_page.dart';
 
 class Home extends StatefulWidget {
-  const Home({super.key});
+  const Home({Key? key}) : super(key: key);
 
   @override
   State<Home> createState() => _HomeState();
 }
 
 class _HomeState extends State<Home> {
-  GlobalKey<FormState> _formkey = GlobalKey<FormState>();
-
   @override
   void initState() {
-    WidgetsFlutterBinding.ensureInitialized().addPostFrameCallback((v) {
+    super.initState();
+
+    WidgetsBinding.instance.addPostFrameCallback((_) {
       ResponsiveUtils().init(context);
-    },);
-    Timer(Duration(seconds: 3), () {
+    });
+
+    Timer(const Duration(seconds: 3), () {
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(
-          builder: (context) => 
-          Dialogue_page(),
-          // Dashboard(selectdist:_,),
-        ),
+        MaterialPageRoute(builder: (_) => const Dialogue_page()),
       );
     });
-    super.initState();
   }
-
 
   @override
   Widget build(BuildContext context) {
+    final double screenWidth = 1.sw;
+
     return Scaffold(
-      // appBar: PreferredSize(preferredSize: Size(40,60),child: ReuseAppbar(title: 'Dasboard',backgroundColor: Colors.transparent,)),
-      resizeToAvoidBottomInset: true,
       extendBodyBehindAppBar: true,
       body: Stack(
-        fit: StackFit.passthrough,
         children: [
-          Container(
-            height: MediaQuery.of(context).size.height,
-            width: MediaQuery.of(context).size.width,
-            decoration: ShapeDecoration(
-              shape: RoundedRectangleBorder(),
-              image: DecorationImage(
-                  filterQuality: FilterQuality.high,
-                  opacity: 0.4,
-                  image: AssetImage('assets/images/background.png'),
-                  fit: BoxFit.cover),
+          Positioned.fill(
+            child: Image.asset(
+              'assets/images/background.webp',
+              fit: BoxFit.cover,
+              filterQuality: FilterQuality.high,
+              color: Colors.white.withOpacity(0.4),
+              colorBlendMode: BlendMode.srcOver,
             ),
           ),
-          Container(
-            width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height,
-            margin: EdgeInsets.symmetric(vertical: 35),
-            child: SingleChildScrollView(
-              // physics: NeverScrollableScrollPhysics(),
-              child: Form(
-                key: _formkey,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
+          SafeArea(
+            child: Column(
+              children: [
+                Column(
                   children: [
+                    SizedBox(height: 20.h),
                     Container(
-                      margin: EdgeInsets.only(top: 10, bottom: 50),
+                      height: 140.w,
+                      width: 140.w,
+                      decoration: const BoxDecoration(
+                        shape: BoxShape.circle,
+                        gradient: LinearGradient(
+                          begin: Alignment.bottomCenter,
+                          end: Alignment.topRight,
+                          colors: [Colors.white70, Colors.white],
+                        ),
+                      ),
                       alignment: Alignment.center,
-                      height: 140,
-                      width: 140,
-                      decoration: BoxDecoration(
-                          gradient: LinearGradient(
-                              begin: Alignment.bottomCenter,
-                              end: Alignment.topRight,
-                              colors: [Colors.white70, Colors.white]),
-                          shape: BoxShape.circle),
                       child: Image.asset(
-                        'assets/icon/logo1.png',
-                        scale: 1.25,
+                        'assets/icon/logo1.webp',
+                        fit: BoxFit.contain,
+                        width: 100.w,
+                        height: 100.w,
                       ),
                     ),
-                    Container(
-                      alignment: Alignment.center,
+                    SizedBox(height: 30.h),
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 16.w),
                       child: Text(
-                        'राष्ट्रीय डेरी अनुसंधान संस्थान द्वारा जलवायु सेवाएं',
+                        'राष्ट्रीय डेरी अनुसंधान संस्थान\nद्वारा जलवायु सेवाएं',
+                        textAlign: TextAlign.center,
                         style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w600,
-                            color: Colors.black),
-                      ),
-                    ),
-                    Container(
-                      // margin: EdgeInsets.only(bottom: 10),
-                      alignment: Alignment.center,
-                      child: Text(
-                        'NDRI CLIMATE SERVICES',
-                        style: TextStyle(
-                            fontSize:20,
-                            fontWeight: FontWeight.w800,
-                            color: Colors.black),
-                      ),
-                    ),
-                    Container(
-                      margin: EdgeInsets.only(bottom: 10, left: 8),
-                      alignment: Alignment.center,
-                      child: Text(
-                        'जलवायु अनुकूल डेरी फार्मिंग अभ्यासओं को बढ़ावा देने के लिए भारतीय कृषि अनुसंधान परिषद-राष्ट्रीय डेरी अनुसंधान संस्थान,करनाल द्वारा एक प्रयास',
-                        style: TextStyle(
-                            fontSize: 13.5,
-                            fontWeight: FontWeight.w600,
-                            color: Colors.black),
-                      ),
-                    ),
-                    Container(
-                      margin: EdgeInsets.only(bottom: 20, left: 15),
-                      alignment: Alignment.center,
-                      child: Text(
-                        '(An effort by ICAR-National Dairy Research Institute, Karnal to promote climate resilient dairy farming practices)',
-                        style: TextStyle(
-                          fontSize: 13,
+                          fontSize: 18.sp,
                           fontWeight: FontWeight.w700,
+                          height: 1.3,
                           color: Colors.black,
                         ),
                       ),
                     ),
-                    Container(
-                      margin: EdgeInsets.only(top: 40),
-                      child: Image.asset(
-                        'assets/icon/logo2.png',
-                        scale: 1,
+                    SizedBox(height: 6.h),
+                    Text(
+                      'NDRI CLIMATE SERVICES',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 22.sp,
+                        fontWeight: FontWeight.w800,
+                        letterSpacing: 0.15,
+                        color: Colors.black,
                       ),
                     ),
-                    Container(
-                      margin: EdgeInsets.only(top: 45),
-                      child: Image.asset(
-                        'assets/images/text1.png',
-                        scale: 1,
+                    SizedBox(height: 20.h),
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 20.w),
+                      child: Text(
+                        '(जलवायु अनुकूल मुर्राह भैंस पालन अभ्यासों को बढ़ावा देने के लिए '
+                            'भारतीय कृषि अनुसंधान परिषद-राष्ट्रीय डेरी अनुसंधान संस्थान, करनाल द्वारा एक प्रयास)',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 14.sp,
+                          fontWeight: FontWeight.w600,
+                          height: 1.4,
+                          color: Colors.black,
+                        ),
                       ),
                     ),
-                    Container(
-                      margin: EdgeInsets.only(top: 15),
-                      child: Image.asset(
-                        'assets/images/text2.png',
-                        scale: 1.1,
+                    SizedBox(height: 12.h),
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 20.w),
+                      child: Text(
+                        '(An effort by ICAR-National Dairy Research Institute, Karnal to '
+                            'promote climate resilient Murrah buffalo rearing practices)',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 14.sp,
+                          fontWeight: FontWeight.w700,
+                          height: 1.4,
+                          color: Colors.black,
+                        ),
                       ),
-                    )
+                    ),
                   ],
                 ),
-              ),
+                Expanded(
+                  child: Center(
+                    child: Image.asset(
+                      'assets/icon/logo2.webp',
+                      width: screenWidth * 0.25,
+                      fit: BoxFit.contain,
+                    ),
+                  ),
+                ),
+                Column(
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 24.w),
+                      child: Text(
+                        'भा कृ अनु प-राष्ट्रीय डेरी अनुसंधान संस्थान\n'
+                            'करनाल-132001, हरियाणा',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 15.sp,
+                          fontWeight: FontWeight.w700,
+                          height: 1.3,
+                          color: Colors.black,
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 18.h),
+                    Text(
+                      'ICAR-National Dairy Research Institute\n'
+                          'Karnal – 132001, Haryana',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 15.sp,
+                        fontWeight: FontWeight.w700,
+                        height: 1.3,
+                        color: Colors.black,
+                      ),
+                    ),
+                    SizedBox(height: 24.h),
+                  ],
+                ),
+              ],
             ),
           ),
         ],

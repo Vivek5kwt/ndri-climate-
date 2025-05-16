@@ -3,10 +3,10 @@ import 'package:ndri_climate/apiservices/advisory.dart';
 import 'package:ndri_climate/apiservices/api_provider.dart';
 import 'package:ndri_climate/auth/register_screen.dart';
 import 'package:ndri_climate/material/custom_drawer.dart';
-import 'package:ndri_climate/material/plugin/responsiveUtils.dart';
 import 'package:ndri_climate/material/reusableappbar.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class Climate_services extends StatefulWidget {
   final String Date1;
@@ -44,11 +44,11 @@ class _Climate_servicesState extends State<Climate_services> {
     firstDate = widget.Date1;
     secondDate = widget.Date2;
     district = widget.District;
-    SharedPreferences.getInstance().then((v){
-       setState(() {
-       language=v.getString('language')??widget.Language;
-       });
-     });
+    SharedPreferences.getInstance().then((v) {
+      setState(() {
+        language = v.getString('language') ?? widget.Language;
+      });
+    });
     _fetchAdvisoryData();
   }
 
@@ -67,209 +67,203 @@ class _Climate_servicesState extends State<Climate_services> {
     }
   }
 
-  // void showDateBottomsheet() {
-  //   showModalBottomSheet(
-  //     context: context,
-  //     builder: (context) {
-  //       return filterDate(onTapcallback: (p0, p1) {
-          
-  //       },);
-  //     },
-  //   );
-  // }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldKey,
       drawer: CustomDrawer(),
       appBar: PreferredSize(
-        preferredSize: Size(40, 60),
+        preferredSize: Size.fromHeight(70.h),
         child: ReuseAppbar(
           scaffoldKey: _scaffoldKey,
           show_back_arrow: false,
           title: widget.title.tr,
           onselected: (lang) {
             setState(() {
-              language=lang;
+              language = lang;
             });
           },
         ),
       ),
-      body: SingleChildScrollView(
-        scrollDirection: Axis.vertical,
-        physics: AlwaysScrollableScrollPhysics(),
-        child: Column(
-          children: [
-            Container(
-              width: MediaQuery.of(context).size.width,
-              height: ResponsiveUtils.hp(7),
-              padding: EdgeInsets.all(20),
-              color: Color(0xFF9BDBFF),
-              child: Flexible(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      body: Column(
+        children: [
+          Container(
+            width: 1.sw,
+            height: 55.h,
+            padding: EdgeInsets.symmetric(horizontal: 20.w),
+            color: const Color(0xFF9BDBFF),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Icon(
+                  Icons.calendar_month,
+                  color: const Color(0xFF1B3A69),
+                  size: 22.sp,
+                ),
+                SizedBox(width: 5.w),
+                Text(
+                  '$firstDate $secondDate',
+                  style: TextStyle(
+                    fontSize: 16.sp,
+                    color: const Color(0xFF1B3A69),
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Row(
                   children: [
-                    Container(
-                      child: Row(
-                        children: [
-                          Icon(
-                            Icons.calendar_month,
-                            color: Color(0xFF1B3A69),
-                            size: 21,
-                          ),
-                          SizedBox(
-                            width: 5,
-                          ),
-                          Text(
-                            '$firstDate$secondDate',
-                            style: TextStyle(
-                              fontSize: ResponsiveUtils.wp(2.5),
-                              color: Color(0xFF1B3A69),
-                              fontWeight: FontWeight.w700,
-                            ),
-                          )
-                        ],
-                      ),
+                    Icon(
+                      Icons.location_pin,
+                      color: const Color(0xFF1B3A69),
+                      size: 22.sp,
                     ),
-                    Container(
-                      child: Row(
-                        children: [
-                          Icon(
-                            Icons.location_pin,
-                            color: Color(0xFF1B3A69),
-                            size: 21,
-                          ),
-                          Text(
-                            district.tr,
-                            style: TextStyle(
-                              fontSize: ResponsiveUtils.wp(2.5),
-                              color: Color(0xFF1B3A69),
-                              fontWeight: FontWeight.w700,
-                            ),
-                          )
-                        ],
+                    Text(
+                      district.tr,
+                      style: TextStyle(
+                        fontSize: 16.sp,
+                        color: const Color(0xFF1B3A69),
+                        fontWeight: FontWeight.bold,
                       ),
-                    ),
+                    )
                   ],
                 ),
-              ),
+              ],
             ),
-            isLoading
-                ? Container(
-                    height: MediaQuery.of(context).size.height / 2,
-                    alignment: Alignment.center,
-                    child: CircularProgressIndicator.adaptive(),
-                  )
+          ),
+          Expanded(
+            child: isLoading
+                ? Center(child: CircularProgressIndicator.adaptive())
                 : hasError
-                    ? Center(
-                        child: Text(
-                          'Error fetching data',
-                          style: TextStyle(
-                            fontSize: ResponsiveUtils.wp(2.8),
-                            color: Colors.red,
+                ? Center(
+              child: Padding(
+                padding: EdgeInsets.symmetric(vertical: 32.h),
+                child: Text(
+                  'Error fetching data',
+                  style: TextStyle(
+                    fontSize: 15.sp,
+                    color: Colors.red,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            )
+                : advisoryData.isEmpty
+                ? Center(
+              child: Padding(
+                padding: EdgeInsets.symmetric(vertical: 32.h),
+                child: Text(
+                  'No data found',
+                  style: TextStyle(
+                    fontSize: 15.sp,
+                    color: Colors.grey,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            )
+                : ListView.builder(
+              padding: EdgeInsets.only(top: 8.h, bottom: 20.h),
+              itemCount: advisoryData.length,
+              itemBuilder: (context, index) {
+                Advisory advisory = advisoryData[index];
+                String description;
+
+                switch (language.toLowerCase()) {
+                  case 'hindi':
+                  case 'हिंदी':
+                  case 'ਹਿੰਦੀ':
+                  case 'হিন্দি':
+                    description = advisory.descriptionHi;
+                    break;
+                  case 'english':
+                  case 'अंग्रेज़ी':
+                  case 'ਅੰਗਰੇਜ਼ੀ':
+                  case 'ইংরেজি':
+                    description = advisory.descriptionEn;
+                    break;
+                  case 'bengali':
+                  case 'বেঙ্গলি':
+                  case 'বাঙালি':
+                  case 'বাংলা':
+                    description = advisory.descriptionBn;
+                    break;
+                  case 'punjabi':
+                  case 'ਪੰਜਾਬੀ':
+                  case 'पंजाबी':
+                  case 'পাঞ্জাবি':
+                    description = advisory.descriptionPa;
+                    break;
+                  default:
+                    description = advisory.descriptionEn;
+                    break;
+                }
+                return Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Container(
+                      width: 1.sw,
+                      margin: EdgeInsets.symmetric(
+                          horizontal: 10.w, vertical: 8.h),
+                      padding: EdgeInsets.all(14.w),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        border: Border.all(color: Colors.grey),
+                        borderRadius: BorderRadius.circular(12.r),
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            advisory.title,
+                            style: TextStyle(
+                              fontSize: 18.sp,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          SizedBox(height: 8.h),
+                          Text(
+                            description,
+                            style: TextStyle(
+                              fontSize: 15.sp,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    if (index == advisoryData.length - 1)
+                      InkWell(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  RegisterScreen(district: district),
+                            ),
+                          );
+                        },
+                        child: Container(
+                          color: Colors.transparent,
+                          padding:
+                          EdgeInsets.symmetric(vertical: 5.h),
+                          child: Chip(
+                            backgroundColor: Colors.transparent,
+                            label: Text(
+                              'Feedback'.tr,
+                              style: TextStyle(
+                                fontSize: 17.sp,
+                                fontWeight: FontWeight.bold,
+                                color: const Color(0xFF2C96D2),
+                              ),
+                            ),
                           ),
                         ),
-                      )
-                    : Container(
-                        height: MediaQuery.of(context).size.height / 1.26,
-                        child: ListView.builder(
-                          itemCount: advisoryData.length,
-                          itemBuilder: (context, index) {
-                            Advisory advisory = advisoryData[index];
-                            String description;
-
-                            // Determine the description based on the language
-                            switch (language.toLowerCase()) {
-                              case ('hindi'||'हिंदी'||'ਹਿੰਦੀ'||'হিন্দি'):
-                                description = advisory.descriptionHi;
-                                break;
-                                case ('english'||'अंग्रेज़ी'||'ਅੰਗਰੇਜ਼ੀ'||'ইংরেজি'):
-                                description = advisory.descriptionEn;
-                                break;
-                                case ('bengali'||'बंगाली'||'ਬੰਗਾਲੀ'||'বাংলা'):
-                                description = advisory.descriptionBn;
-                                break;
-                                case ('punjabi'||'ਪੰਜਾਬੀ'||'पंजाबी'||'পাঞ্জাবি'):
-                                description = advisory.descriptionPa;
-                                break;
-                              default:
-                                description = advisory.descriptionEn;
-                                break;
-                            }
-                            return Column(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                Container(
-                                  width: MediaQuery.of(context).size.width,
-                                  margin: EdgeInsets.all(10),
-                                  padding: EdgeInsets.all(15),
-                                  decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    border: Border.all(color: Colors.grey),
-                                    borderRadius: BorderRadius.circular(10),
-                                  ),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        advisory.title,
-                                        style: TextStyle(
-                                          fontSize: ResponsiveUtils.wp(2.8),
-                                          fontWeight: FontWeight.w700,
-                                        ),
-                                      ),
-                                      SizedBox(
-                                        height: 10,
-                                      ),
-                                      Text(
-                                        description,
-                                        style: TextStyle(
-                                          fontSize: ResponsiveUtils.wp(2.5),
-                                          fontWeight: FontWeight.w500,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                if (index == advisoryData.length - 1)
-                                  InkWell(
-                                    onTap: () {
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) => RegisterScreen(
-                                            district: district,
-                                          ),
-                                        ),
-                                      );
-                                    },
-                                    child: Container(
-                                      color: Colors.transparent,
-                                      child: Chip(
-                                        backgroundColor: Colors.transparent,
-                                        label: Text(
-                                          'Feedback'.tr,
-                                          style: TextStyle(
-                                            fontSize: ResponsiveUtils.wp(3),
-                                            fontWeight: FontWeight.bold,
-                                            color: Color(0xFF2C96D2),
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                              ],
-                            );
-                          },
-                        ),
                       ),
-            SizedBox(
-              height: 30,
+                  ],
+                );
+              },
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

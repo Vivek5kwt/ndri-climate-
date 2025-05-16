@@ -45,7 +45,7 @@ class _LoginScreenState extends State<LoginScreen> {
               image: DecorationImage(
                   filterQuality: FilterQuality.high,
                   opacity: 0.4,
-                  image: AssetImage('assets/images/background.png'),
+                  image: AssetImage('assets/images/background.webp'),
                   fit: BoxFit.cover),
             ),
           ),
@@ -71,7 +71,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               colors: [Colors.white70, Colors.white]),
                           shape: BoxShape.circle),
                       child: Image.asset(
-                        'assets/icon/logo1.png',
+                        'assets/icon/logo1.webp',
                         scale: 1.25,
                       ),
                     ),
@@ -111,21 +111,21 @@ class _LoginScreenState extends State<LoginScreen> {
                     Container(
                       margin: EdgeInsets.only(top: 50),
                       child: Image.asset(
-                        'assets/icon/logo2.png',
+                        'assets/icon/logo2.webp',
                         scale: 1.3,
                       ),
                     ),
                     Container(
                       margin: EdgeInsets.only(top: 30),
                       child: Image.asset(
-                        'assets/images/text1.png',
+                        'assets/images/text1.webp',
                         scale: 1,
                       ),
                     ),
                     Container(
                       margin: EdgeInsets.only(top: 15),
                       child: Image.asset(
-                        'assets/images/text2.png',
+                        'assets/images/text2.webp',
                         scale: 1.1,
                       ),
                     )

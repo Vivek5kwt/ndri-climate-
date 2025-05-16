@@ -6,6 +6,8 @@ import 'package:ndri_climate/material/reuseablefeild.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:get/get.dart';
 
+import '../screen/English/Feedback.dart';
+
 class RegisterScreen extends StatefulWidget {
   final String district;
   RegisterScreen({super.key, required this.district});
@@ -60,7 +62,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
               image: DecorationImage(
                   filterQuality: FilterQuality.high,
                   opacity: 0.4,
-                  image: AssetImage('assets/images/background.png'),
+                  image: AssetImage('assets/images/background.webp'),
                   fit: BoxFit.cover),
             ),
           ),
@@ -86,7 +88,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               colors: [Colors.white70, Colors.white]),
                           shape: BoxShape.circle),
                       child: Image.asset(
-                        'assets/icon/logo1.png',
+                        'assets/icon/logo1.webp',
                         scale: 1.25,
                       ),
                     ),
@@ -140,12 +142,20 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           onTap: ()async {
                             if (_formkey.currentState!.validate()) {
                              await StoreData(context);
-                              Navigator.pushReplacement(
+                             /* Navigator.pushReplacement(
                                 context,
                                 MaterialPageRoute(
                                   builder: (context) => OTPScreen(mob_no: _mobilenocontroller.text,),
                                 ),
-                              );
+                              );*/
+                             if (_formkey.currentState!.validate()) {
+                               Navigator.pushReplacement(
+                                 context,
+                                 MaterialPageRoute(
+                                   builder: (context) => FeedBack(),
+                                 ),
+                               );
+                             }
                             }
                           },
                           text: 'Register'.tr,
@@ -161,7 +171,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            'Already Have Account - '.tr,
+                            'Already Have Accounts - '.tr,
                             style: TextStyle(
                                 fontWeight: FontWeight.w600, fontSize: 14),
                           ),
@@ -170,12 +180,20 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           ),
                           InkWell(
                             onTap: () async{
-                              Navigator.push(
+                             /* Navigator.push(
                                 context,
                                 MaterialPageRoute(
                                   builder: (context) => OTPScreen(mob_no: _mobilenocontroller.text,),
                                 ),
-                              );
+                              );*/
+                              if (_formkey.currentState!.validate()) {
+                                Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => FeedBack(),
+                                  ),
+                                );
+                              }
                             },
                             child: Text(
                               'Login'.tr,
@@ -191,21 +209,21 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     Container(
                       margin: EdgeInsets.only(top: 30),
                       child: Image.asset(
-                        'assets/icon/logo2.png',
+                        'assets/icon/logo2.webp',
                         scale: 1.3,
                       ),
                     ),
                     Container(
                       margin: EdgeInsets.only(top: 30),
                       child: Image.asset(
-                        'assets/images/text1.png',
+                        'assets/images/text1.webp',
                         scale: 1,
                       ),
                     ),
                     Container(
                       margin: EdgeInsets.only(top: 15),
                       child: Image.asset(
-                        'assets/images/text2.png',
+                        'assets/images/text2.webp',
                         scale: 1.1,
                       ),
                     )

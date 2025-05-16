@@ -16,7 +16,7 @@ class Past_Advisories extends StatefulWidget {
   final String Language;
   final String title;
 
-  Past_Advisories({
+  const Past_Advisories({
     super.key,
     required this.Date1,
     required this.Date2,
@@ -31,18 +31,18 @@ class Past_Advisories extends StatefulWidget {
 
 class _Past_AdvisoriesState extends State<Past_Advisories> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-  String firstDate = '';
-  String secondDate = '';
-  String district = '';
-  String language = '';
+  late String firstDate;
+  late String secondDate;
+  late String district;
+  late String language;
   List<Advisory> advisoryData = [];
-  List<Advisory> filterData = []; 
-  List<Advisory> allData = []; 
+  List<Advisory> filterData = [];
+  List<Advisory> allData = [];
   bool isLoading = true;
   bool show = false;
   bool hasError = false;
-  bool _filterApplied = false; 
-  int _index=0;
+  bool _filterApplied = false;
+  int _index = 0;
 
   @override
   void initState() {
@@ -58,11 +58,12 @@ class _Past_AdvisoriesState extends State<Past_Advisories> {
     try {
       final response = await ApiProvider().fetchAdvisory();
       allData = response;
-       List<Advisory> currentWeekAdvisories = allData.where((advisory) {
-      return formatDate(inputDate: advisory.fromDate.toString()) == firstDate && formatDate(inputDate: advisory.toDate.toString()) == secondDate;
-    }).toList();
+      List<Advisory> currentWeekAdvisories = allData.where((advisory) {
+        return formatDate(inputDate: advisory.fromDate.toString()) == firstDate &&
+            formatDate(inputDate: advisory.toDate.toString()) == secondDate;
+      }).toList();
       setState(() {
-        advisoryData=currentWeekAdvisories;
+        advisoryData = currentWeekAdvisories;
         isLoading = false;
       });
     } catch (error) {
@@ -79,24 +80,23 @@ class _Past_AdvisoriesState extends State<Past_Advisories> {
       builder: (context) {
         return filterDate(
           index: _index,
-          onTapcallback: (from_date, to_date,index) {
+          onTapcallback: (from_date, to_date, index) {
             filterData.clear();
-            filterData=allData.where((data){
-              return from_date==data.fromDate&&to_date==data.toDate;
+            filterData = allData.where((data) {
+              return from_date == data.fromDate && to_date == data.toDate;
             }).toList();
-            
+
             if (filterData.isNotEmpty) {
               setState(() {
                 _filterApplied = true;
-                show=true;
-                _index=index;
+                show = true;
+                _index = index;
               });
               Navigator.pop(context);
             }
             if (mounted) {
-  setState(() {
-  });
-}
+              setState(() {});
+            }
           },
         );
       },
@@ -105,11 +105,14 @@ class _Past_AdvisoriesState extends State<Past_Advisories> {
 
   @override
   Widget build(BuildContext context) {
+    double sidePad = ResponsiveUtils.wp(3);
+    double containerPad = ResponsiveUtils.wp(3);
+
     return Scaffold(
       key: _scaffoldKey,
       drawer: CustomDrawer(),
       appBar: PreferredSize(
-        preferredSize: Size(40, 60),
+        preferredSize: const Size(40, 60),
         child: ReuseAppbar(
           scaffoldKey: _scaffoldKey,
           show_back_arrow: false,
@@ -118,215 +121,265 @@ class _Past_AdvisoriesState extends State<Past_Advisories> {
       ),
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
-        physics: AlwaysScrollableScrollPhysics(),
+        physics: const AlwaysScrollableScrollPhysics(),
         child: Column(
           children: [
             Container(
-              width: MediaQuery.of(context).size.width,
-              height: 61,
-              padding: EdgeInsets.all(20),
-              color: Color(0xFF9BDBFF),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              width: double.infinity,
+              padding: EdgeInsets.symmetric(horizontal: sidePad, vertical: 16),
+              color: const Color(0xFF9BDBFF),
+              child: Wrap(
+                alignment: WrapAlignment.spaceBetween,
+                crossAxisAlignment: WrapCrossAlignment.center,
+                runSpacing: 8,
                 children: [
-                  Container(
-                    child: Row(
-                      children: [
-                        Icon(
-                          Icons.calendar_month,
-                          color: Color(0xFF1B3A69),
-                          size: 21,
+                  Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      const Icon(Icons.calendar_month, color: Color(0xFF1B3A69), size: 21),
+                      const SizedBox(width: 5),
+                      Text(
+                        '$firstDate - $secondDate',
+                        style: TextStyle(
+                          fontSize: ResponsiveUtils.wp(2.3),
+                          color: const Color(0xFF1B3A69),
+                          fontWeight: FontWeight.w700,
                         ),
-                        SizedBox(
-                          width: 5,
+                      ),
+                    ],
+                  ),
+                  Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      const Icon(Icons.location_pin, color: Color(0xFF1B3A69), size: 21),
+                      const SizedBox(width: 4),
+                      Text(
+                        district.tr,
+                        style: TextStyle(
+                          fontSize: ResponsiveUtils.wp(2.3),
+                          color: const Color(0xFF1B3A69),
+                          fontWeight: FontWeight.w700,
                         ),
-                        Text(
-                          '$firstDate -$secondDate',
-                          style: TextStyle(
-                            fontSize: ResponsiveUtils.wp(2.5),
-                            color: Color(0xFF1B3A69),
-                            fontWeight: FontWeight.w700,
-                          ),
-                        )
-                      ],
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+
+            if (isLoading)
+              SizedBox(
+                height: MediaQuery.of(context).size.height / 2,
+                child: const Center(child: CircularProgressIndicator.adaptive()),
+              )
+            else if (hasError)
+              Center(
+                child: Padding(
+                  padding: EdgeInsets.symmetric(vertical: ResponsiveUtils.hp(3)),
+                  child: Text(
+                    'Error fetching data',
+                    style: TextStyle(
+                      fontSize: ResponsiveUtils.wp(2.8),
+                      color: Colors.red,
                     ),
                   ),
-                  Container(
-                    child: Row(
-                      children: [
-                        Icon(
-                          Icons.location_pin,
-                          color: Color(0xFF1B3A69),
-                          size: 21,
-                        ),
-                        Text(
-                          district.tr,
+                ),
+              )
+            else ...[
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: sidePad, vertical: 10),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      show
+                          ? Chip(
+                        deleteIcon: const Icon(Icons.close, size: 14, color: Colors.black),
+                        onDeleted: () {
+                          filterData.clear();
+                          setState(() {
+                            show = false;
+                            _filterApplied = false;
+                          });
+                        },
+                        backgroundColor: const Color(0xFF9BDBFF),
+                        label: Text(
+                          'Remove Filter',
                           style: TextStyle(
-                            fontSize: ResponsiveUtils.wp(2.5),
-                            color: Color(0xFF1B3A69),
-                            fontWeight: FontWeight.w700,
+                            fontSize: ResponsiveUtils.wp(2.3),
+                            fontWeight: FontWeight.w400,
+                            color: Colors.black,
                           ),
-                        )
-                      ],
+                        ),
+                      )
+                          : const SizedBox.shrink(),
+                      InkWell(
+                        borderRadius: BorderRadius.circular(5),
+                        onTap: showDateBottomsheet,
+                        child: Row(
+                          children: [
+                            Text(
+                              'Filter',
+                              style: TextStyle(
+                                  fontSize: ResponsiveUtils.wp(2.5),
+                                  fontWeight: FontWeight.w500,
+                                  color: Colors.black),
+                            ),
+                            const SizedBox(width: 6),
+                            const Icon(Icons.sort, size: 22, color: Colors.black),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: sidePad),
+                  child: advisoryListWidget(context),
+                ),
+              ],
+            SizedBox(height: ResponsiveUtils.hp(2)),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget advisoryListWidget(BuildContext context) {
+    final listToShow = _filterApplied ? filterData : advisoryData;
+
+    if (listToShow.isEmpty) {
+      return Padding(
+        padding: EdgeInsets.symmetric(vertical: ResponsiveUtils.hp(6)),
+        child: Center(
+          child: Text(
+            'No advisories available for this period.',
+            style: TextStyle(
+              fontSize: ResponsiveUtils.wp(2.4),
+              color: Colors.grey.shade600,
+            ),
+          ),
+        ),
+      );
+    }
+
+    return ListView.builder(
+      shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
+      itemCount: listToShow.length,
+      itemBuilder: (context, index) {
+        Advisory advisory = listToShow[index];
+        String description;
+
+        switch (language.toLowerCase()) {
+          case 'hindi':
+          case 'हिंदी':
+          case 'ਹਿੰਦੀ':
+          case 'হিন্দি':
+            description = advisory.descriptionHi;
+            break;
+          case 'english':
+          case 'अंग्रेज़ी':
+          case 'ਅੰਗਰੇਜ਼ੀ':
+          case 'ইংরেজি':
+            description = advisory.descriptionEn;
+            break;
+          case 'bengali':
+          case 'বঙ্গালি':
+          case 'बंगाली':
+          case 'ਬੰਗਾਲੀ':
+          case 'বাংলা':
+            description = advisory.descriptionBn;
+            break;
+          case 'punjabi':
+          case 'ਪੰਜਾਬੀ':
+          case 'पंजाबी':
+          case 'পাঞ্জাবি':
+            description = advisory.descriptionPa;
+            break;
+          default:
+            description = advisory.descriptionEn;
+            break;
+        }
+
+        return Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Container(
+              width: double.infinity,
+              margin: const EdgeInsets.only(bottom: 12),
+              padding: EdgeInsets.all(ResponsiveUtils.wp(3)),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                border: Border.all(color: Colors.grey.shade300),
+                borderRadius: BorderRadius.circular(10),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.shade100,
+                    blurRadius: 6,
+                    offset: const Offset(0, 2),
+                  ),
+                ],
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    advisory.title,
+                    style: TextStyle(
+                      fontSize: ResponsiveUtils.wp(2.7),
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                  const SizedBox(height: 8),
+                  Text(
+                    description,
+                    style: TextStyle(
+                      fontSize: ResponsiveUtils.wp(2.2),
+                      fontWeight: FontWeight.w500,
+                      color: Colors.black87,
                     ),
                   ),
                 ],
               ),
             ),
-            isLoading
-                ? Container(
-                    height: MediaQuery.of(context).size.height / 2,
-                    alignment: Alignment.center,
-                    child: CircularProgressIndicator.adaptive(),
-                  )
-                : hasError
-                    ? Center(
-                        child: Text(
-                          'Error fetching data',
-                          style: TextStyle(
-                            fontSize: ResponsiveUtils.wp(2.8),
-                            color: Colors.red,
-                          ),
+            if (index == listToShow.length - 1)
+              Center(
+                child: InkWell(
+                  borderRadius: BorderRadius.circular(40),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => RegisterScreen(
+                          district: district,
                         ),
-                      )
-                    : Container(
-                      height: MediaQuery.of(context).size.height,
-                      padding: EdgeInsets.symmetric(horizontal: 15,vertical: 5),
-                      child: Column(
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              show?
-                              Chip(deleteIcon: Icon(Icons.close,size: 14,color: Colors.black,),
-                              onDeleted: () {
-                                filterData.clear();
-                                
-                                setState(() {
-                                  show=false;
-                                _filterApplied=false;
-                                });
-                              },
-                                backgroundColor:Color(0xFF9BDBFF) ,
-                                label: Text('Remove Filter', style: TextStyle(fontSize: ResponsiveUtils.wp(2.5),fontWeight: FontWeight.w400,color: Colors.black),)):Container(),
-                              InkWell(
-                                onTap: () {
-                                      showDateBottomsheet();
-                                    },
-                                child: Row(
-                                  children: [
-                                    Text('Filter',style: TextStyle(fontSize: ResponsiveUtils.wp(2.8),fontWeight: FontWeight.w500,color: Colors.black),),
-                                    SizedBox(width: 10,),
-                                    Icon(Icons.sort,size: 25,color: Colors.black,),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                          Container(
-                              height: MediaQuery.of(context).size.height / 1.26,
-                              child: ListView.builder(
-                                itemCount:_filterApplied?filterData.length: advisoryData.length,
-                                itemBuilder: (context, index) {
-                                  Advisory advisory = _filterApplied? filterData[index]: 
-                                  advisoryData[index];
-                                  String description;
-                          
-                                  // Determine the description based on the language
-                                  switch (language.toLowerCase()) {
-                                    case ('hindi'||'हिंदी'||'ਹਿੰਦੀ'||'হিন্দি'):
-                                      description = advisory.descriptionHi;
-                                      break;
-                                      case ('english'||'अंग्रेज़ी'||'ਅੰਗਰੇਜ਼ੀ'||'ইংরেজি'):
-                                      description = advisory.descriptionEn;
-                                      break;
-                                      case ('bengali'||'बंगाली'||'ਬੰਗਾਲੀ'||'বাংলা'):
-                                      description = advisory.descriptionBn;
-                                      break;
-                                      case ('punjabi'||'ਪੰਜਾਬੀ'||'पंजाबी'||'পাঞ্জাবি'):
-                                      description = advisory.descriptionPa;
-                                      break;
-                                    default:
-                                      description = advisory.descriptionEn;
-                                      break;
-                                  }
-                                  return Column(
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: [
-                                      Container(
-                                        width: MediaQuery.of(context).size.width,
-                                        margin: EdgeInsets.only(bottom: 10),
-                                        padding: EdgeInsets.all(15),
-                                        decoration: BoxDecoration(
-                                          color: Colors.white,
-                                          border: Border.all(color: Colors.grey),
-                                          borderRadius: BorderRadius.circular(10),
-                                        ),
-                                        child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              advisory.title,
-                                              style: TextStyle(
-                                                fontSize: ResponsiveUtils.wp(2.8),
-                                                fontWeight: FontWeight.w700,
-                                              ),
-                                            ),
-                                            SizedBox(
-                                              height: 10,
-                                            ),
-                                            Text(
-                                              description,
-                                              style: TextStyle(
-                                                fontSize: ResponsiveUtils.wp(2.5),
-                                                fontWeight: FontWeight.w500,
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                      if (index == advisoryData.length - 1)
-                                        InkWell(
-                                          onTap: () {
-                                            Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                builder: (context) => RegisterScreen(
-                                                  district: district,
-                                                ),
-                                              ),
-                                            );
-                                          },
-                                          child: Container(
-                                            color: Colors.transparent,
-                                            child: Chip(
-                                              backgroundColor: Colors.transparent,
-                                              label: Text(
-                                                'Feedback'.tr,
-                                                style: TextStyle(
-                                                  fontSize: ResponsiveUtils.wp(3),
-                                                  fontWeight: FontWeight.bold,
-                                                  color: Color(0xFF2C96D2),
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                    ],
-                                  );
-                                },
-                              ),
-                            ),
-                        ],
+                      ),
+                    );
+                  },
+                  child: Chip(
+                    color: WidgetStateProperty.all(const Color(0xFF2C96D2)),
+                    label: Padding(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: ResponsiveUtils.wp(3),
+                        vertical: ResponsiveUtils.hp(0.8),
+                      ),
+                      child: Text(
+                        'Feedback',
+                        style: TextStyle(
+                          fontSize: ResponsiveUtils.wp(2.4),
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                          letterSpacing: 0.2,
+                        ),
                       ),
                     ),
-            SizedBox(
-              height: 30,
-            ),
+                  ),
+                ),
+              ),
           ],
-        ),
-      ),
+        );
+      },
     );
   }
 }

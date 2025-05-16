@@ -16,99 +16,216 @@ class CustomDrawer extends StatefulWidget {
   @override
   State<CustomDrawer> createState() => _CustomDrawerState();
 }
+
 class _CustomDrawerState extends State<CustomDrawer> {
   String? district = '';
-  String? date1='';
-  String? date2='';
-  String? language='';
-
+  String? date1 = '';
+  String? date2 = '';
+  String? language = '';
 
   @override
   void initState() {
-   SharedPreferences.getInstance().then((value) {
+    SharedPreferences.getInstance().then((value) {
       setState(() {
         district = value.getString('district');
-        date1=value.getString('date1');
-        date2=value.getString('date2');
-        language=value.getString('date2');
+        date1 = value.getString('date1');
+        date2 = value.getString('date2');
+        language = value.getString('language'); // Corrected here
       });
     });
     super.initState();
   }
+
+  Widget buildDrawerIcon(Widget icon) {
+    // For responsive icon container
+    return Container(
+      width: ResponsiveUtils.wp(7.2), // Responsive width
+      height: ResponsiveUtils.wp(7.2),
+      alignment: Alignment.center,
+      child: icon,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
+    final sidePadding = ResponsiveUtils.wp(2.5);
+
     return Drawer(
       child: ListView(
         padding: EdgeInsets.zero,
         children: <Widget>[
           DrawerHeader(
             decoration: BoxDecoration(
-              color:Color(0xFF2C96D2),
+              color: Color(0xFF2C96D2),
             ),
-            child: Text(
-              'NDRI, Karnal'.tr,
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: ResponsiveUtils.wp(4.5),
+            child: Center(
+              child: Text(
+                'NDRI, Karnal'.tr,
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: ResponsiveUtils.wp(4.8),
+                  fontWeight: FontWeight.bold,
+                  letterSpacing: 0.5,
+                ),
+                textAlign: TextAlign.center,
               ),
             ),
           ),
+          // About NDRI
           ListTile(
-            leading: Icon(CupertinoIcons.building_2_fill,),
-            title: Text('About NDRI, Karnal'.tr,style: TextStyle(fontSize: ResponsiveUtils.wp(3),fontWeight: FontWeight.w500),),
+            contentPadding: EdgeInsets.symmetric(horizontal: sidePadding, vertical: ResponsiveUtils.hp(1)),
+            leading: buildDrawerIcon(
+                Icon(CupertinoIcons.building_2_fill, size: ResponsiveUtils.wp(6.4))),
+            title: Text(
+              'About NDRI, Karnal'.tr,
+              style: TextStyle(
+                fontSize: ResponsiveUtils.wp(3.4),
+                fontWeight: FontWeight.w500,
+              ),
+            ),
             onTap: () {
-              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>AboutNdri()));
+              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => AboutNdri()));
             },
           ),
+          // Home
           ListTile(
-            leading: Icon(Icons.home_filled),
-            title: Text('Home'.tr,style: TextStyle(fontSize: ResponsiveUtils.wp(3),fontWeight: FontWeight.w500),),
+            contentPadding: EdgeInsets.symmetric(horizontal: sidePadding, vertical: ResponsiveUtils.hp(1)),
+            leading: buildDrawerIcon(
+                Icon(Icons.home_filled, size: ResponsiveUtils.wp(6.4))),
+            title: Text(
+              'Home'.tr,
+              style: TextStyle(
+                fontSize: ResponsiveUtils.wp(3.4),
+                fontWeight: FontWeight.w500,
+              ),
+            ),
             onTap: () {
-              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>Dashboard(selectdist: district.toString(), selectstate: '',selectlang: language.toString(),)));
+              Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => Dashboard(
+                          selectdist: district.toString(),
+                          selectstate: '',
+                          selectlang: language.toString())));
             },
           ),
+          // Open Climate Advisory
           ListTile(
-            leading: Icon(Icons.cloud),
-            title: Text('Open Climate Advisory'.tr,style: TextStyle(fontSize: ResponsiveUtils.wp(3),fontWeight: FontWeight.w500),),
+            contentPadding: EdgeInsets.symmetric(horizontal: sidePadding, vertical: ResponsiveUtils.hp(1)),
+            leading: buildDrawerIcon(
+                Icon(Icons.cloud, size: ResponsiveUtils.wp(6.4))),
+            title: Text(
+              'Open Climate Advisory'.tr,
+              style: TextStyle(
+                fontSize: ResponsiveUtils.wp(3.4),
+                fontWeight: FontWeight.w500,
+              ),
+            ),
             onTap: () {
               Navigator.push(context, MaterialPageRoute(builder: (context)=>Climate_services(Date1: date1.toString(),Date2: date2.toString(), District: district.toString(),title: 'Climate Services'.tr,Language: language!,)));
             },
           ),
+          // Feeding Management
           ListTile(
-            leading: ImageIcon(NetworkImage('https://cdn-icons-png.flaticon.com/128/16686/16686199.png')),
-            title: Text('Feeding Management'.tr,style: TextStyle(fontSize: ResponsiveUtils.wp(3),fontWeight: FontWeight.w500),),
+            contentPadding: EdgeInsets.symmetric(horizontal: sidePadding, vertical: ResponsiveUtils.hp(1)),
+            leading: buildDrawerIcon(
+              ImageIcon(
+                NetworkImage('https://cdn-icons-png.flaticon.com/128/16686/16686199.png'),
+                size: ResponsiveUtils.wp(6.4),
+              ),
+            ),
+            title: Text(
+              'Feeding Management'.tr,
+              style: TextStyle(
+                fontSize: ResponsiveUtils.wp(3.4),
+                fontWeight: FontWeight.w500,
+              ),
+            ),
             onTap: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context)=> Feeding_management()));
+              Navigator.push(context, MaterialPageRoute(builder: (context) => Feeding_management()));
             },
           ),
+          // Health Care Management
           ListTile(
-            leading: ImageIcon(NetworkImage('https://cdn-icons-png.flaticon.com/128/16924/16924841.png')),
-            title: Text('Health Care Management'.tr,style: TextStyle(fontSize: ResponsiveUtils.wp(3),fontWeight: FontWeight.w500),),
+            contentPadding: EdgeInsets.symmetric(horizontal: sidePadding, vertical: ResponsiveUtils.hp(1)),
+            leading: buildDrawerIcon(
+              ImageIcon(
+                NetworkImage('https://cdn-icons-png.flaticon.com/128/16924/16924841.png'),
+                size: ResponsiveUtils.wp(6.4),
+              ),
+            ),
+            title: Text(
+              'Health Care Management'.tr,
+              style: TextStyle(
+                fontSize: ResponsiveUtils.wp(3.4),
+                fontWeight: FontWeight.w500,
+              ),
+            ),
             onTap: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context)=>Healthcare()));
+              Navigator.push(context, MaterialPageRoute(builder: (context) => Healthcare()));
             },
           ),
+          // Management Practices
           ListTile(
-            leading: ImageIcon(NetworkImage('https://cdn-icons-png.flaticon.com/128/7521/7521598.png')),
-            title: Text('Management Practices'.tr,style: TextStyle(fontSize: ResponsiveUtils.wp(3),fontWeight: FontWeight.w500),),
+            contentPadding: EdgeInsets.symmetric(horizontal: sidePadding, vertical: ResponsiveUtils.hp(1)),
+            leading: buildDrawerIcon(
+              ImageIcon(
+                NetworkImage('https://cdn-icons-png.flaticon.com/128/7521/7521598.png'),
+                size: ResponsiveUtils.wp(6.4),
+              ),
+            ),
+            title: Text(
+              'Management Practices'.tr,
+              style: TextStyle(
+                fontSize: ResponsiveUtils.wp(3.4),
+                fontWeight: FontWeight.w500,
+              ),
+            ),
             onTap: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context)=>Managemental()));
+              Navigator.push(context, MaterialPageRoute(builder: (context) => Managemental()));
             },
           ),
+          // Thermal Stress Management
           ListTile(
-            leading: ImageIcon(NetworkImage('https://cdn-icons-png.flaticon.com/128/10414/10414431.png')),
-            title: Text('Thermal Stress Management'.tr,style: TextStyle(fontSize: ResponsiveUtils.wp(3),fontWeight: FontWeight.w500),),
+            contentPadding: EdgeInsets.symmetric(horizontal: sidePadding, vertical: ResponsiveUtils.hp(1)),
+            leading: buildDrawerIcon(
+              ImageIcon(
+                NetworkImage('https://cdn-icons-png.flaticon.com/128/10414/10414431.png'),
+                size: ResponsiveUtils.wp(6.4),
+              ),
+            ),
+            title: Text(
+              'Thermal Stress Management'.tr,
+              style: TextStyle(
+                fontSize: ResponsiveUtils.wp(3.4),
+                fontWeight: FontWeight.w500,
+              ),
+            ),
             onTap: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context)=>Thermal_Stress()));
+              Navigator.push(context, MaterialPageRoute(builder: (context) => Thermal_Stress()));
             },
           ),
+          // Feedback
           ListTile(
-            leading: ImageIcon(NetworkImage('https://cdn-icons-png.flaticon.com/128/17276/17276633.png')),
-            title: Text('Feedback'.tr,style: TextStyle(fontSize: ResponsiveUtils.wp(3),fontWeight: FontWeight.w500),),
+            contentPadding: EdgeInsets.symmetric(horizontal: sidePadding, vertical: ResponsiveUtils.hp(1)),
+            leading: buildDrawerIcon(
+              ImageIcon(
+                NetworkImage('https://cdn-icons-png.flaticon.com/128/17276/17276633.png'),
+                size: ResponsiveUtils.wp(6.4),
+              ),
+            ),
+            title: Text(
+              'Feedback'.tr,
+              style: TextStyle(
+                fontSize: ResponsiveUtils.wp(3.4),
+                fontWeight: FontWeight.w500,
+              ),
+            ),
             onTap: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context)=>RegisterScreen(district:district.toString() ,)));
+              Navigator.push(context, MaterialPageRoute(builder: (context) => RegisterScreen(district: district.toString())));
             },
           ),
+          SizedBox(height: ResponsiveUtils.hp(2)),
         ],
       ),
     );
