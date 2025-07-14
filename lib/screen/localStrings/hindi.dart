@@ -54,6 +54,8 @@ class LocalString extends Translations {
               'मुर्रा भैंस के लिए जलवायु सेवाएँ',
           'Date': 'दिनांक',
           'WEATHER SUMMARY': 'मौसम सारांश',
+          'Weather Summary/Warning:': 'मौसम सारांश/चेतावनी:',
+          'Climate Advisory for Dairy Animal': 'डेरी पशुओं के लिए जलवायु सलाह',
           'ADVISORY SERVICES FOR DAIRY ANIMALS':
               'डेरी पशुओं के लिए सलाहकार सेवाएं',
           'ADVISORY SERVICES FOR MAJOR CROPS':
@@ -95,6 +97,7 @@ class LocalString extends Translations {
           'Punjabi':'पंजाबी',
           'As per IMD forecast, the temperature is likely to be comfortable and based on the calculated temperature humidity index, the environment for dairy animals will be comfortable to moderately stressful.':'आईएमडी के पूर्वानुमान के अनुसार, तापमान आरामदायक रहने की संभावना है और गणना किए गए तापमान आर्द्रता सूचकांक के आधार पर, डेयरी पशुओं के लिए वातावरण आरामदायक से मध्यम तनावपूर्ण रहेगा।',
           'The weather is likely to remain dry in the coming days in the district area. Maximum temperature is likely to be 38°C-43°C, minimum temperature is likely to be 24°C-26°C and temperature humidity index is likely to be 68.22 to 87.47.':'आगामी दिनों में जिला क्षेत्र में मौसम शुष्क रहने की संभावना है। अधिकतम तापमान 38°C-43°C, न्यूनतम तापमान 24°C-26°C तथा तापमान आर्द्रता सूचकांक 68.22 से 87.47 रहने की संभावना है।',
+          'Due to changing weather and rising temperature during the day, animals should be kept in sheds with fans during the scorching heat of the day. Clean the shed and surrounding area to avoid infestation of house flies and others. To keep the animal healthy, give 50 grams of iodised salt and 50 to 100 grams of mineral mixture daily along with adequate concentrates and green fodder. Provide adequate clean, fresh and cool drinking water to keep the animals hydrated. Ensure bathing of buffaloes at least twice a day to reduce heat load on animals. Look for signs of mastitis in lactating animals and treat it immediately. Pregnant animals (more than 6 months) should be given extra feed.':'मौसम में बदलाव और दिन के समय बढ़ते तापमान के कारण, तेज गर्मी में पशुओं को पंखों वाले शेड में रखें। मक्खियों आदि के संक्रमण से बचने के लिए शेड और आसपास के क्षेत्र को साफ रखें। पशुओं को स्वस्थ रखने के लिए प्रतिदिन 50 ग्राम आयोडाइज्ड नमक और 50 से 100 ग्राम खनिज मिश्रण पर्याप्त सांद्र आहार और हरे चारे के साथ दें। पशुओं को हाइड्रेट रखने के लिए पर्याप्त साफ, ताजा और ठंडा पानी उपलब्ध कराएं। गर्मी का भार कम करने के लिए भैंसों को दिन में कम से कम दो बार नहलाएं। दुग्ध देने वाले पशुओं में मास्टाइटिस के लक्षण देखें और तुरंत इलाज करें। छह महीने से अधिक गर्भधारण वाली पशुओं को अतिरिक्त चारा दें।',
   'Bengali':'बंगाली',
           'Type your District': 'अपना जिला टाइप करें',
           'Type your State': 'अपना राज्य टाइप करें',
