@@ -39,6 +39,8 @@ Map<String, String> pbi = {
   'Climate Services For Murrah Buffalo': 'ਮੁਰਰਾ ਮੱਝਾਂ  ਲਈ ਮੌਸਮ ਸੇਵਾਵਾਂ',
   'Date': 'ਮਿਤੀ',
   'WEATHER SUMMARY': 'ਮੌਸਮ ਸਾਰ',
+  'Weather Summary/Warning:': 'ਮੌਸਮ ਸਾਰ/ਚੇਤਾਵਨੀ:',
+  'Climate Advisory for Dairy Animal': 'ਡੇਰੀ ਪਸ਼ੂ ਲਈ ਮੌਸਮ ਸਲਾਹ',
   'ADVISORY SERVICES FOR DAIRY ANIMALS': 'ਡੇਰੀ  ਪਸ਼ੂਆਂ ਲਈ ਸਲਾਹਕਾਰੀ ਸੇਵਾਵਾਂ',
   'ADVISORY SERVICES FOR MAJOR CROPS': 'ਮੁੱਖ ਫਸਲਾਂ ਲਈ ਸਲਾਹਕਾਰੀ ਸੇਵਾਵਾਂ',
   'Impact of climate change on dairy animal':
@@ -1348,7 +1350,8 @@ Map<String, String> pbi = {
     'Wind Dir': 'ਵਿੰਡ ਡਾਇਰ',
     'Cloud Cover': 'ਬੱਦਲ ਕਵਰ',
     'As per IMD forecast, the temperature is likely to be comfortable and based on the calculated temperature humidity index, the environment for dairy animals will be comfortable to moderately stressful.':'ਆਈਐਮਡੀ ਦੀ ਭਵਿੱਖਬਾਣੀ ਦੇ ਅਨੁਸਾਰ, ਤਾਪਮਾਨ ਆਰਾਮਦਾਇਕ ਹੋਣ ਦੀ ਸੰਭਾਵਨਾ ਹੈ ਅਤੇ ਗਣਨਾ ਕੀਤੇ ਗਏ ਤਾਪਮਾਨ ਨਮੀ ਸੂਚਕਾਂਕ ਦੇ ਅਧਾਰ ਤੇ, ਡੇਅਰੀ ਜਾਨਵਰਾਂ ਲਈ ਵਾਤਾਵਰਣ ਆਰਾਮਦਾਇਕ ਤੋਂ ਦਰਮਿਆਨੀ ਤਣਾਅਪੂਰਨ ਹੋਵੇਗਾ।',
-    'The weather is likely to remain dry in the coming days in the district area. Maximum temperature is likely to be 38°C-43°C, minimum temperature is likely to be 24°C-26°C and temperature humidity index is likely to be 68.22 to 87.47.':'ਆਉਣ ਵਾਲੇ ਦਿਨਾਂ ਵਿੱਚ ਜ਼ਿਲ੍ਹਾ ਖੇਤਰ ਵਿੱਚ ਮੌਸਮ ਖੁਸ਼ਕ ਰਹਿਣ ਦੀ ਸੰਭਾਵਨਾ ਹੈ। ਵੱਧ ਤੋਂ ਵੱਧ ਤਾਪਮਾਨ 38°C-43°C, ਘੱਟੋ-ਘੱਟ ਤਾਪਮਾਨ 24°C-26°C ਅਤੇ ਤਾਪਮਾਨ ਨਮੀ ਸੂਚਕਾਂਕ 68.22 ਤੋਂ 87.47 ਰਹਿਣ ਦੀ ਸੰਭਾਵਨਾ ਹੈ।',
+  'The weather is likely to remain dry in the coming days in the district area. Maximum temperature is likely to be 38°C-43°C, minimum temperature is likely to be 24°C-26°C and temperature humidity index is likely to be 68.22 to 87.47.':'ਆਉਣ ਵਾਲੇ ਦਿਨਾਂ ਵਿੱਚ ਜ਼ਿਲ੍ਹਾ ਖੇਤਰ ਵਿੱਚ ਮੌਸਮ ਖੁਸ਼ਕ ਰਹਿਣ ਦੀ ਸੰਭਾਵਨਾ ਹੈ। ਵੱਧ ਤੋਂ ਵੱਧ ਤਾਪਮਾਨ 38°C-43°C, ਘੱਟੋ-ਘੱਟ ਤਾਪਮਾਨ 24°C-26°C ਅਤੇ ਤਾਪਮਾਨ ਨਮੀ ਸੂਚਕਾਂਕ 68.22 ਤੋਂ 87.47 ਰਹਿਣ ਦੀ ਸੰਭਾਵਨਾ ਹੈ।',
+  'Due to changing weather and rising temperature during the day, animals should be kept in sheds with fans during the scorching heat of the day. Clean the shed and surrounding area to avoid infestation of house flies and others. To keep the animal healthy, give 50 grams of iodised salt and 50 to 100 grams of mineral mixture daily along with adequate concentrates and green fodder. Provide adequate clean, fresh and cool drinking water to keep the animals hydrated. Ensure bathing of buffaloes at least twice a day to reduce heat load on animals. Look for signs of mastitis in lactating animals and treat it immediately. Pregnant animals (more than 6 months) should be given extra feed.':'ਮੌਸਮ ਵਿੱਚ ਬਦਲਾਅ ਅਤੇ ਦਿਨ ਦੇ ਤਾਪਮਾਨ ਵਿੱਚ ਵਾਧੇ ਕਾਰਨ, ਦਿਨ ਦੀ ਤਿੱਖੀ ਗਰਮੀ ਦੌਰਾਨ ਪਸ਼ੂਆਂ ਨੂੰ ਪੱਖਿਆਂ ਵਾਲੇ ਸ਼ੈਡ ਵਿੱਚ ਰੱਖੋ। ਮੱਖੀਆਂ ਆਦਿ ਤੋਂ ਬਚਣ ਲਈ ਸ਼ੈਡ ਅਤੇ ਆਲੇ-ਦੁਆਲੇ ਦਾ ਖੇਤਰ ਸਾਫ਼ ਰੱਖੋ। ਪਸ਼ੂਆਂ ਨੂੰ ਸਿਹਤਮੰਦ ਰੱਖਣ ਲਈ 50 ਗ੍ਰਾਮ ਆਈਓਡਾਈਜ਼ਡ ਨਮਕ ਅਤੇ 50 ਤੋਂ 100 ਗ੍ਰਾਮ ਖਣਿਜ ਮਿਸ਼ਰਣ ਰੋਜ਼ਾਨਾ ਯਥੇਸ਼ਟ ਸੰਘਣੇ ਅਤੇ ਹਰੇ ਚਾਰੇ ਨਾਲ ਦਿਓ। ਪਸ਼ੂਆਂ ਨੂੰ ਹਾਈਡਰੇਟ ਰੱਖਣ ਲਈ ਪ੍ਰਚੁਰ ਸਾਫ਼, ਤਾਜ਼ਾ ਅਤੇ ਠੰਢਾ ਪੀਣ ਵਾਲਾ ਪਾਣੀ ਦਿਓ। ਭੈਂਸਾਂ ਨੂੰ ਦਿਨ ਵਿੱਚ ਘੱਟੋ-ਘੱਟ ਦੋ ਵਾਰੀ ਨਹਲਾਉਣ ਨੂੰ ਯਕੀਨੀ ਬਣਾਓ ਤਾਂ ਜੋ ਉਨ੍ਹਾਂ 'ਤੇ ਗਰਮੀ ਦਾ ਬੋਝ ਘਟ ਸਕੇ। ਦੁਧਾਰੂ ਪਸ਼ੂਆਂ ਵਿੱਚ ਮਾਸਟਾਈਟਿਸ ਦੇ ਲੱਛਣ ਵੇਖੋ ਅਤੇ ਤੁਰੰਤ ਇਲਾਜ ਕਰੋ। 6 ਮਹੀਨੇ ਤੋਂ ਵੱਧ ਗਰਭਧਾਰਣ ਵਾਲੇ ਪਸ਼ੂਆਂ ਨੂੰ ਵਾਧੂ ਚਾਰਾ ਦਿਓ.',
     'Provide additional 1.5 – 2 kg concentrate mixture during heat stress season': 'ਗਰਮੀ ਦੇ ਤਣਾਅ ਦੇ ਮੌਸਮ ਦੌਰਾਨ ਵਾਧੂ 1.5 - 2 ਕਿਲੋਗ੍ਰਾਮ ਸੰਘਣਾ ਮਿਸ਼ਰਣ ਪ੍ਰਦਾਨ ਕਰੋ',
     'Provide additional 1 kg of concentrate mixture per 2.5 litre of milk production beyond 10/15 kg of milk production': '10/15 ਕਿਲੋਗ੍ਰਾਮ ਦੁੱਧ ਉਤਪਾਦਨ ਤੋਂ ਵੱਧ ਲਈ ਪ੍ਰਤੀ 2.5 ਲੀਟਰ ਦੁੱਧ ਉਤਪਾਦਨ `ਤੇ ਵਾਧੂ 1 ਕਿਲੋਗ੍ਰਾਮ ਸੰਘਣਾ ਮਿਸ਼ਰਣ ਪ੍ਰਦਾਨ ਕਰੋ',
     'Provide 500 gm of grain or 2.5 Kg cereal fodder for every 50 Kg increase in body weight beyond 500 Kg': '500 ਕਿਲੋਗ੍ਰਾਮ ਤੋਂ ਵੱਧ ਸਰੀਰ ਦੇ ਭਾਰ ਵਿੱਚ ਪ੍ਰਤੀ 50 ਕਿਲੋਗ੍ਰਾਮ ਵਾਧੇ ਲਈ 500 ਗ੍ਰਾਮ ਅਨਾਜ ਜਾਂ 2.5 ਕਿਲੋਗ੍ਰਾਮ ਅਨਾਜ ਦਾ ਚਾਰਾ ਪ੍ਰਦਾਨ ਕਰੋ',

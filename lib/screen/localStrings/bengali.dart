@@ -41,6 +41,8 @@ Map<String, String> bengali = {
   'Climate Services For Murrah Buffalo': 'মুররাহ মহিষের জন্য জলবায়ু সেবা',
   'Date': 'তারিখ',
   'WEATHER SUMMARY': 'আবহাওয়ার সারাংশ',
+  'Weather Summary/Warning:': 'আবহাওয়ার সারাংশ/সতর্কতা:',
+  'Climate Advisory for Dairy Animal': 'ডেইরি প্রাণীর জন্য জলবায়ু পরামর্শ',
   'ADVISORY SERVICES FOR DAIRY ANIMALS':
       'ডেইরি প্রাণীর জন্য পরামর্শমূলক পরিষেবা',
   'ADVISORY SERVICES FOR MAJOR CROPS': 'প্রধান শস্যের জন্য পরামর্শমূলক পরিষেবা',
@@ -81,6 +83,9 @@ Map<String, String> bengali = {
   'Hindi': 'হিন্দি',
   'Punjabi': 'পাঞ্জাবি',
   'Bengali': 'বাংলা',
+  'As per IMD forecast, the temperature is likely to be comfortable and based on the calculated temperature humidity index, the environment for dairy animals will be comfortable to moderately stressful.':'আইএমডির পূর্বাভাস অনুযায়ী, তাপমাত্রা আরামদায়ক থাকার সম্ভাবনা রয়েছে এবং গণনা করা তাপমাত্রা-আদ্রতা সূচকের ভিত্তিতে, গবাদি পশুর জন্য পরিবেশ আরামদায়ক থেকে মাঝারি মাত্রায় চাপযুক্ত থাকবে।',
+  'The weather is likely to remain dry in the coming days in the district area. Maximum temperature is likely to be 38°C-43°C, minimum temperature is likely to be 24°C-26°C and temperature humidity index is likely to be 68.22 to 87.47.':'জেলার এলাকায় আগামী কয়েক দিনে আবহাওয়া শুষ্ক থাকার সম্ভাবনা রয়েছে। সর্বোচ্চ তাপমাত্রা প্রায় ৩৮°C-৪৩°C এবং সর্বনিম্ন তাপমাত্রা প্রায় ২৪°C-২৬°C হতে পারে, তাপমাত্রা-আদ্রতা সূচক ৬৮.২২ থেকে ৮৭.৪৭ থাকার সম্ভাবনা রয়েছে।',
+  'Due to changing weather and rising temperature during the day, animals should be kept in sheds with fans during the scorching heat of the day. Clean the shed and surrounding area to avoid infestation of house flies and others. To keep the animal healthy, give 50 grams of iodised salt and 50 to 100 grams of mineral mixture daily along with adequate concentrates and green fodder. Provide adequate clean, fresh and cool drinking water to keep the animals hydrated. Ensure bathing of buffaloes at least twice a day to reduce heat load on animals. Look for signs of mastitis in lactating animals and treat it immediately. Pregnant animals (more than 6 months) should be given extra feed.':'পরিবর্তিত আবহাওয়া ও দিনের বেলা তাপমাত্রা বাড়ার ফলে, তীব্র গরমের সময় পশুদের ফ্যানযুক্ত শেডে রাখতে হবে। মশা-মাছি ইত্যাদির উপদ্রব এড়াতে শেড ও আশেপাশের এলাকা পরিষ্কার রাখুন। পশুদের সুস্থ রাখতে প্রতিদিন ৫০ গ্রাম আয়োডাইজড লবণ এবং ৫০ থেকে ১০০ গ্রাম খনিজ মিশ্রণ পর্যাপ্ত কনসেনট্রেট ও সবুজ চারের সঙ্গে দিন। পশুদের জলবাহিত রাখতে পর্যাপ্ত পরিষ্কার, ঠান্ডা ও তাজা পানীয় জল সরবরাহ করুন। পশুদের উপর তাপের চাপ কমাতে মহিষকে দিনে অন্তত দুবার গোসল করান। দুধ দেওয়া পশুদের মধ্যে মাষ্টাইটিসের লক্ষণ দেখলে সাথে সাথে চিকিৎসা করুন। গর্ভবতী (৬ মাসের বেশি) পশুদের অতিরিক্ত খাদ্য দিন।',
   'Type your District': 'আপনার জেলা টাইপ করুন',
   'Type your State': 'আপনার রাজ্য টাইপ করুন',
   'Necessity of feeding Management in Summer and Winter':

@@ -56,6 +56,7 @@ class _DairyAnimalState extends State<DairyAnimal> {
         scaffoldKey: _scaffoldKey,
         show_back_arrow: false,
         title: 'Dairy Animal'.tr,
+        onselected: (_) => setState(() {}),
       ),
       body: SingleChildScrollView(
         padding: EdgeInsets.only(bottom: 24.h),
@@ -117,7 +118,12 @@ class _DairyAnimalState extends State<DairyAnimal> {
                       ),
                       SizedBox(height: 8.h),
                       Text(
-                        'The weather is likely to remain dry in the coming days in the district area. Maximum temperature is likely to be 38°C-43°C, minimum temperature is likely to be 24°C-26°C and temperature humidity index is likely to be 68.22 to 87.47.\n\nAs per IMD forecast, the temperature is likely to be comfortable and based on the calculated temperature humidity index, the environment for dairy animals will be comfortable to moderately stressful.',
+                        'The weather is likely to remain dry in the coming days in the district area. Maximum temperature is likely to be 38°C-43°C, minimum temperature is likely to be 24°C-26°C and temperature humidity index is likely to be 68.22 to 87.47.'.tr,
+                        style: TextStyle(fontSize: 14.sp),
+                      ),
+                      SizedBox(height: 8.h),
+                      Text(
+                        'As per IMD forecast, the temperature is likely to be comfortable and based on the calculated temperature humidity index, the environment for dairy animals will be comfortable to moderately stressful.'.tr,
                         style: TextStyle(fontSize: 14.sp),
                       ),
                     ],
@@ -145,7 +151,7 @@ class _DairyAnimalState extends State<DairyAnimal> {
                       ),
                       SizedBox(height: 8.h),
                       Text(
-                        'Due to changing weather and rising temperature during the day, animals should be kept in sheds with fans during the scorching heat of the day. Clean the shed and surrounding area to avoid infestation of house flies and others. To keep the animal healthy, give 50 grams of iodised salt and 50 to 100 grams of mineral mixture daily along with adequate concentrates and green fodder. Provide adequate clean, fresh and cool drinking water to keep the animals hydrated. Ensure bathing of buffaloes at least twice a day to reduce heat load on animals. Look for signs of mastitis in lactating animals and treat it immediately. Pregnant animals (more than 6 months) should be given extra feed.',
+                        'Due to changing weather and rising temperature during the day, animals should be kept in sheds with fans during the scorching heat of the day. Clean the shed and surrounding area to avoid infestation of house flies and others. To keep the animal healthy, give 50 grams of iodised salt and 50 to 100 grams of mineral mixture daily along with adequate concentrates and green fodder. Provide adequate clean, fresh and cool drinking water to keep the animals hydrated. Ensure bathing of buffaloes at least twice a day to reduce heat load on animals. Look for signs of mastitis in lactating animals and treat it immediately. Pregnant animals (more than 6 months) should be given extra feed.'.tr,
                         style: TextStyle(fontSize: 14.sp),
                       ),
                     ],
