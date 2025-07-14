@@ -31,6 +31,7 @@ class ClimateServices extends StatefulWidget {
 }
 
 class _ClimateServicesState extends State<ClimateServices> {
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   late String firstDate;
   late String secondDate;
   late String state;
@@ -100,10 +101,10 @@ class _ClimateServicesState extends State<ClimateServices> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      key: GlobalKey<ScaffoldState>(),
+      key: _scaffoldKey,
       drawer: CustomDrawer(),
       appBar: ReuseAppbar(
-        scaffoldKey: GlobalKey<ScaffoldState>(),
+        scaffoldKey: _scaffoldKey,
         show_back_arrow: false,
         title: widget.title.tr,
         onselected: (lang) => setState(() => language = lang),
