@@ -93,6 +93,8 @@ class LocalString extends Translations {
           'English': 'अंग्रेज़ी',
           'Hindi': 'हिंदी',
           'Punjabi':'पंजाबी',
+          'As per IMD forecast, the temperature is likely to be comfortable and based on the calculated temperature humidity index, the environment for dairy animals will be comfortable to moderately stressful.':'आईएमडी के पूर्वानुमान के अनुसार, तापमान आरामदायक रहने की संभावना है और गणना किए गए तापमान आर्द्रता सूचकांक के आधार पर, डेयरी पशुओं के लिए वातावरण आरामदायक से मध्यम तनावपूर्ण रहेगा।',
+          'The weather is likely to remain dry in the coming days in the district area. Maximum temperature is likely to be 38°C-43°C, minimum temperature is likely to be 24°C-26°C and temperature humidity index is likely to be 68.22 to 87.47.':'आगामी दिनों में जिला क्षेत्र में मौसम शुष्क रहने की संभावना है। अधिकतम तापमान 38°C-43°C, न्यूनतम तापमान 24°C-26°C तथा तापमान आर्द्रता सूचकांक 68.22 से 87.47 रहने की संभावना है।',
   'Bengali':'बंगाली',
           'Type your District': 'अपना जिला टाइप करें',
           'Type your State': 'अपना राज्य टाइप करें',
@@ -102,7 +104,7 @@ class LocalString extends Translations {
           'In Summers': 'गर्मियों में',
           'Necessity': 'ज़रूरत',
           'Climate Smart Practices': 'जलवायु स्मार्ट प्रथाएँ',
-          'Temperature and humidity during April to middle of September are the cause of heat stress of the livestock. This heat stress results from the animal’s inability to dissipate sufficient heat to maintain its body temperature.':
+          'Temperature and humidity during April to middle of September cause heat stress in livestock, as animals cannot dissipate enough heat to maintain body temperature.':
               'अप्रैल से मध्य सितंबर के दौरान तापमान और आर्द्रता गर्मी का कारण हैं पशुधन का तनाव. यह ताप तनाव पशु की नष्ट होने में असमर्थता के कारण उत्पन्न होता है उसके शरीर के तापमान को बनाए रखने के लिए पर्याप्त गर्मी।',
           'High ambient temperature, relative humidity and radiant energy compromise the ability of animals to dissipate heat.':
               'उच्च परिवेश का तापमान, सापेक्ष आर्द्रता और दीप्तिमान ऊर्जा समझौता करती है जानवरों की गर्मी नष्ट करने की क्षमता।',
@@ -1422,6 +1424,13 @@ class LocalString extends Translations {
     'Salt': 'नमक',
     'Total': 'कुल',
     'Note': 'नोट',
+    'Max Temp': 'अधिकतम तापमान',
+    'Min Temp': 'न्यूनतम तापमान',
+    'Rainfall': 'नवर्षा',
+            "Humidity": "नमी",
+            "Wind Speed": "हवा की गति",
+            "Wind Dir": "पवन दिर",
+            "Cloud Cover": "बादल मूंदना",
     'Provide additional 1.5 – 2 kg concentrate mixture during heat stress season': 'गर्मी के तनाव के मौसम में अतिरिक्त 1.5 - 2 किग्रा सांद्र मिश्रण प्रदान करें',
     'Provide additional 1 kg of concentrate mixture per 2.5 litre of milk production beyond 10/15 kg of milk production': '10/15 किग्रा दूध उत्पादन से अधिक के लिए प्रति 2.5 लीटर दूध उत्पादन पर अतिरिक्त 1 किग्रा सांद्र मिश्रण प्रदान करें',
     'Provide 500 gm of grain or 2.5 Kg cereal fodder for every 50 Kg increase in body weight beyond 500 Kg': '500 किग्रा से अधिक शरीर के वजन में प्रति 50 किग्रा वृद्धि के लिए 500 ग्राम अनाज या 2.5 किग्रा अनाज का चारा प्रदान करें',

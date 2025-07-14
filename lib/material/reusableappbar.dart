@@ -31,7 +31,9 @@ class ReuseAppbar extends StatefulWidget implements PreferredSizeWidget {
 
   @override
   Size get preferredSize => Size.fromHeight(
-    bottom == null ? kToolbarHeight : kToolbarHeight + bottom!.preferredSize.height,
+    bottom == null
+        ? kToolbarHeight
+        : kToolbarHeight + bottom!.preferredSize.height,
   );
 }
 
@@ -57,29 +59,32 @@ class _ReuseAppbarState extends State<ReuseAppbar> {
 
   @override
   Widget build(BuildContext context) {
-    final bgcolor = Color(0xFF2C96D2);
+    final Color bgcolor = const Color(0xFF2C96D2);
 
-    // Responsive sizes
-    final double iconSize = ResponsiveUtils.wp(6); // about 24 at 400px
+    final double iconSize = ResponsiveUtils.wp(6); // roughly 24px at 400px width
     final double sidePadding = ResponsiveUtils.wp(2.5);
 
     return AppBar(
       backgroundColor: bgcolor,
+      elevation: 4, // slight shadow for depth
       automaticallyImplyLeading: false,
-      elevation: 0,
       bottom: widget.bottom,
       centerTitle: true,
+      titleSpacing: 0, // remove default left padding
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(
+          bottom: Radius.circular(12),
+        ),
+      ),
       leading: widget.show_back_arrow
           ? IconButton(
-        icon: Icon(Icons.arrow_back_ios, size: iconSize),
+        icon: Icon(Icons.arrow_back_ios, size: iconSize, color: Colors.white),
         onPressed: widget.onBackPress ?? () => Navigator.pop(context),
       )
           : null,
       title: Row(
-        crossAxisAlignment: CrossAxisAlignment.center, // Center all children vertically
-        mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          // Menu Icon
+          // Menu Icon without extra leading space
           InkWell(
             borderRadius: BorderRadius.circular(iconSize),
             child: Padding(
@@ -90,21 +95,18 @@ class _ReuseAppbarState extends State<ReuseAppbar> {
               widget.scaffoldKey.currentState?.openDrawer();
             },
           ),
-          // Centered Title
+          // Expanded title centered
           Expanded(
-            child: Align(
-              alignment: Alignment.center,
-              child: Text(
-                widget.title,
-                style: TextStyle(
-                  fontSize: ResponsiveUtils.wp(4.5),
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
-                ),
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-                textAlign: TextAlign.center,
+            child: Text(
+              widget.title.tr,
+              style: TextStyle(
+                fontSize: ResponsiveUtils.wp(4),
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
               ),
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+              textAlign: TextAlign.center,
             ),
           ),
           // Language Icon

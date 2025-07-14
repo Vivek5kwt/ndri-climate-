@@ -8,32 +8,34 @@ import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class Climate_services extends StatefulWidget {
-  final String Date1;
-  final String Date2;
-  final String District;
-  final String Language;
+class ClimateServices extends StatefulWidget {
+  final String date1;
+  final String date2;
+  final String initialState;
+  final String initialDistrict;
+  final String initialLanguage;
   final String title;
 
-  Climate_services({
-    super.key,
-    required this.Date1,
-    required this.Date2,
-    required this.District,
+  const ClimateServices({
+    Key? key,
+    required this.date1,
+    required this.date2,
+    required this.initialState,
+    required this.initialDistrict,
     required this.title,
-    required this.Language,
-  });
+    required this.initialLanguage,
+  }) : super(key: key);
 
   @override
-  State<Climate_services> createState() => _Climate_servicesState();
+  _ClimateServicesState createState() => _ClimateServicesState();
 }
 
-class _Climate_servicesState extends State<Climate_services> {
-  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-  String firstDate = '';
-  String secondDate = '';
-  String district = '';
-  String language = '';
+class _ClimateServicesState extends State<ClimateServices> {
+  late String firstDate;
+  late String secondDate;
+  late String state;
+  late String district;
+  late String language;
   List<Advisory> advisoryData = [];
   bool isLoading = true;
   bool hasError = false;
@@ -41,230 +43,287 @@ class _Climate_servicesState extends State<Climate_services> {
   @override
   void initState() {
     super.initState();
-    firstDate = widget.Date1;
-    secondDate = widget.Date2;
-    district = widget.District;
-    SharedPreferences.getInstance().then((v) {
+    firstDate = widget.date1.trim();
+    secondDate = widget.date2.trim();
+    state = widget.initialState.trim();
+    district = widget.initialDistrict.trim();
+    language = widget.initialLanguage;
+
+    SharedPreferences.getInstance().then((prefs) {
       setState(() {
-        language = v.getString('language') ?? widget.Language;
+        language = prefs.getString('selected_lang') ?? widget.initialLanguage;
       });
     });
-    _fetchAdvisoryData();
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => _fetchAdvisoryData());
   }
 
-  void _fetchAdvisoryData() async {
+  Future<void> _fetchAdvisoryData() async {
+    setState(() {
+      isLoading = true;
+      hasError = false;
+    });
     try {
-      final response = await ApiProvider().fetchAdvisory();
+      final data = await ApiProvider().fetchAdvisory(
+        state: state,
+        district: district,
+      );
       setState(() {
-        advisoryData = response.reversed.toList();
+        advisoryData = data.reversed.toList();
         isLoading = false;
       });
-    } catch (error) {
+    } catch (_) {
       setState(() {
+        isLoading = false;
         hasError = true;
-        isLoading = false;
       });
+    }
+  }
+
+  Future<void> _showLocationDialog() async {
+    final result = await showDialog<_LocationResult>(
+      context: context,
+      builder: (_) => _LocationDialog(
+        initialState: state,
+        initialDistrict: district,
+      ),
+    );
+    if (result != null) {
+      setState(() {
+        state = result.state;
+        district = result.district;
+      });
+      await _fetchAdvisoryData();
     }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      key: _scaffoldKey,
+      key: GlobalKey<ScaffoldState>(),
       drawer: CustomDrawer(),
-      appBar: PreferredSize(
-        preferredSize: Size.fromHeight(70.h),
-        child: ReuseAppbar(
-          scaffoldKey: _scaffoldKey,
-          show_back_arrow: false,
-          title: widget.title.tr,
-          onselected: (lang) {
-            setState(() {
-              language = lang;
-            });
-          },
-        ),
+      appBar: ReuseAppbar(
+        scaffoldKey: GlobalKey<ScaffoldState>(),
+        show_back_arrow: false,
+        title: widget.title.tr,
+        onselected: (lang) => setState(() => language = lang),
       ),
       body: Column(
         children: [
           Container(
-            width: 1.sw,
-            height: 55.h,
-            padding: EdgeInsets.symmetric(horizontal: 20.w),
-            color: const Color(0xFF9BDBFF),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            width: double.infinity,
+            padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
+            decoration: BoxDecoration(
+              color: Color(0xFF9BDBFF),
+              borderRadius: BorderRadius.vertical(bottom: Radius.circular(12.r)),
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Icon(
-                  Icons.calendar_month,
-                  color: const Color(0xFF1B3A69),
-                  size: 22.sp,
-                ),
-                SizedBox(width: 5.w),
-                Text(
-                  '$firstDate $secondDate',
-                  style: TextStyle(
-                    fontSize: 16.sp,
-                    color: const Color(0xFF1B3A69),
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
                 Row(
                   children: [
-                    Icon(
-                      Icons.location_pin,
-                      color: const Color(0xFF1B3A69),
-                      size: 22.sp,
-                    ),
+                    Icon(Icons.calendar_today, size: 20.sp, color: Color(0xFF1B3A69)),
+                    SizedBox(width: 8.w),
                     Text(
-                      district.tr,
+                      '$firstDate - $secondDate',
                       style: TextStyle(
-                        fontSize: 16.sp,
-                        color: const Color(0xFF1B3A69),
+                        color: Color(0xFF1B3A69),
                         fontWeight: FontWeight.bold,
+                        fontSize: 14.sp,
                       ),
-                    )
+                    ),
                   ],
+                ),
+                SizedBox(height: 8.h),
+                SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    children: [
+                      Chip(
+                        label: Text(state.tr, style: TextStyle(color: Colors.white)),
+                        avatar: Icon(Icons.map, color: Colors.white, size: 18.sp),
+                        backgroundColor: Color(0xFF2C96D2),
+                      ),
+                      SizedBox(width: 8.w),
+                      Chip(
+                        label: Text(district.tr, style: TextStyle(color: Colors.white)),
+                        avatar: Icon(Icons.location_on, color: Colors.white, size: 18.sp),
+                        backgroundColor: Color(0xFF1976D2),
+                      ),
+                      SizedBox(width: 8.w),
+                      IconButton(
+                        icon: Icon(Icons.edit, color: Color(0xFF1B3A69), size: 20.sp),
+                        onPressed: _showLocationDialog,
+                        tooltip: 'Change'.tr,
+                      ),
+                    ],
+                  ),
                 ),
               ],
             ),
           ),
           Expanded(
-            child: isLoading
-                ? Center(child: CircularProgressIndicator.adaptive())
-                : hasError
-                ? Center(
-              child: Padding(
-                padding: EdgeInsets.symmetric(vertical: 32.h),
-                child: Text(
-                  'Error fetching data',
-                  style: TextStyle(
-                    fontSize: 15.sp,
-                    color: Colors.red,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-            )
-                : advisoryData.isEmpty
-                ? Center(
-              child: Padding(
-                padding: EdgeInsets.symmetric(vertical: 32.h),
-                child: Text(
-                  'No data found',
-                  style: TextStyle(
-                    fontSize: 15.sp,
-                    color: Colors.grey,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-            )
-                : ListView.builder(
-              padding: EdgeInsets.only(top: 8.h, bottom: 20.h),
-              itemCount: advisoryData.length,
-              itemBuilder: (context, index) {
-                Advisory advisory = advisoryData[index];
-                String description;
-
-                switch (language.toLowerCase()) {
-                  case 'hindi':
-                  case 'हिंदी':
-                  case 'ਹਿੰਦੀ':
-                  case 'হিন্দি':
-                    description = advisory.descriptionHi;
-                    break;
-                  case 'english':
-                  case 'अंग्रेज़ी':
-                  case 'ਅੰਗਰੇਜ਼ੀ':
-                  case 'ইংরেজি':
-                    description = advisory.descriptionEn;
-                    break;
-                  case 'bengali':
-                  case 'বেঙ্গলি':
-                  case 'বাঙালি':
-                  case 'বাংলা':
-                    description = advisory.descriptionBn;
-                    break;
-                  case 'punjabi':
-                  case 'ਪੰਜਾਬੀ':
-                  case 'पंजाबी':
-                  case 'পাঞ্জাবি':
-                    description = advisory.descriptionPa;
-                    break;
-                  default:
-                    description = advisory.descriptionEn;
-                    break;
-                }
-                return Column(
+            child: RefreshIndicator(
+              onRefresh: _fetchAdvisoryData,
+              child: isLoading
+                  ? Center(child: CircularProgressIndicator())
+                  : hasError
+                  ? Center(child: Text('Error loading advisories'.tr, style: TextStyle(color: Colors.red, fontSize: 16.sp)))
+                  : advisoryData.isEmpty
+                  ? Center(
+                child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Container(
-                      width: 1.sw,
-                      margin: EdgeInsets.symmetric(
-                          horizontal: 10.w, vertical: 8.h),
-                      padding: EdgeInsets.all(14.w),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        border: Border.all(color: Colors.grey),
-                        borderRadius: BorderRadius.circular(12.r),
-                      ),
+                    Icon(Icons.info_outline, size: 48.sp, color: Colors.grey),
+                    SizedBox(height: 12.h),
+                    Text('No advisories available'.tr, style: TextStyle(fontSize: 16.sp, color: Colors.grey)),
+                  ],
+                ),
+              )
+                  : ListView.builder(
+                padding: EdgeInsets.all(8.w),
+                itemCount: advisoryData.length,
+                itemBuilder: (_, i) {
+                  final adv = advisoryData[i];
+                  final desc = (language.toLowerCase() == 'hindi')
+                      ? adv.descriptionHi
+                      : (language.toLowerCase() == 'bengali')
+                      ? adv.descriptionBn
+                      : (language.toLowerCase() == 'punjabi')
+                      ? adv.descriptionPa
+                      : adv.descriptionEn;
+                  return Card(
+                    margin: EdgeInsets.symmetric(vertical: 6.h),
+                    elevation: 2,
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.r)),
+                    child: Padding(
+                      padding: EdgeInsets.all(12.w),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
-                            advisory.title,
-                            style: TextStyle(
-                              fontSize: 18.sp,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
+                          Text(adv.title.tr, style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.bold)),
                           SizedBox(height: 8.h),
-                          Text(
-                            description,
-                            style: TextStyle(
-                              fontSize: 15.sp,
-                              fontWeight: FontWeight.w500,
+                          Text(desc, style: TextStyle(fontSize: 14.sp)),
+                          if (i == advisoryData.length - 1)
+                            Align(
+                              alignment: Alignment.centerRight,
+                              child: TextButton(
+                                onPressed: () => Navigator.push(
+                                  context,
+                                  MaterialPageRoute(builder: (_) => RegisterScreen(district: district)),
+                                ),
+                                child: Text('Feedback'.tr),
+                              ),
                             ),
-                          ),
                         ],
                       ),
                     ),
-                    if (index == advisoryData.length - 1)
-                      InkWell(
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) =>
-                                  RegisterScreen(district: district),
-                            ),
-                          );
-                        },
-                        child: Container(
-                          color: Colors.transparent,
-                          padding:
-                          EdgeInsets.symmetric(vertical: 5.h),
-                          child: Chip(
-                            backgroundColor: Colors.transparent,
-                            label: Text(
-                              'Feedback'.tr,
-                              style: TextStyle(
-                                fontSize: 17.sp,
-                                fontWeight: FontWeight.bold,
-                                color: const Color(0xFF2C96D2),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                  ],
-                );
-              },
+                  );
+                },
+              ),
             ),
           ),
         ],
       ),
     );
   }
+}
+
+class _LocationDialog extends StatefulWidget {
+  final String initialState;
+  final String initialDistrict;
+  const _LocationDialog({required this.initialState, required this.initialDistrict});
+  @override
+  __LocationDialogState createState() => __LocationDialogState();
+}
+
+class __LocationDialogState extends State<_LocationDialog> {
+  List<String> _states = [];
+  Map<String, String> _stateIds = {};
+  List<String> _districts = [];
+  late String selectedState;
+  late String selectedDistrict;
+  bool loadingStates = true;
+  bool loadingDistricts = false;
+
+  @override
+  void initState() {
+    super.initState();
+    selectedState = widget.initialState;
+    selectedDistrict = widget.initialDistrict;
+    _loadStates();
+  }
+
+  void _loadStates() async {
+    setState(() => loadingStates = true);
+    final raw = await ApiProvider().getStates();
+    setState(() {
+      _states = raw.map((e) => e['state_name'] as String).toList()..sort();
+      for (var e in raw) _stateIds[e['state_name']] = e['state_id'].toString();
+      selectedState = _states.contains(selectedState) ? selectedState : _states.first;
+      loadingStates = false;
+    });
+    _loadDistricts();
+  }
+
+  void _loadDistricts() async {
+    setState(() => loadingDistricts = true);
+    final stateId = _stateIds[selectedState]!;
+    final districts = await ApiProvider().getDistrictsByStateId(stateId);
+    setState(() {
+      _districts = districts..sort();
+      if (_districts.isNotEmpty) {
+        selectedDistrict = _districts.contains(selectedDistrict) ? selectedDistrict : _districts.first;
+      } else {
+        selectedDistrict = '';
+      }
+      loadingDistricts = false;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return AlertDialog(
+      title: Text('Select State & District'.tr),
+      content: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          DropdownButtonFormField<String>(
+            isExpanded: true,
+            value: selectedState.isNotEmpty ? selectedState : null,
+            items: _states.map((s) => DropdownMenuItem(value: s, child: Text(s.tr))).toList(),
+            onChanged: (val) {
+              if (val != null) {
+                setState(() => selectedState = val);
+                _loadDistricts();
+              }
+            },
+            decoration: InputDecoration(labelText: 'State'.tr),
+          ),
+          SizedBox(height: 12.h),
+          loadingDistricts
+              ? CircularProgressIndicator()
+              : DropdownButtonFormField<String>(
+            isExpanded: true,
+            value: selectedDistrict.isNotEmpty ? selectedDistrict : null,
+            items: _districts.map((d) => DropdownMenuItem(value: d, child: Text(d.tr))).toList(),
+            onChanged: (val) {
+              if (val != null) setState(() => selectedDistrict = val);
+            },
+            decoration: InputDecoration(labelText: 'District'.tr),
+          ),
+        ],
+      ),
+      actions: [
+        TextButton(onPressed: () => Navigator.pop(context), child: Text('Cancel'.tr)),
+        TextButton(onPressed: () => Navigator.pop(context, _LocationResult(state: selectedState, district: selectedDistrict)), child: Text('OK'.tr)),
+      ],
+    );
+  }
+}
+
+class _LocationResult {
+  final String state;
+  final String district;
+  _LocationResult({required this.state, required this.district});
 }

@@ -1,63 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:intl/intl.dart';
 import 'package:ndri_climate/apiservices/advisory.dart';
 import 'package:ndri_climate/apiservices/api_provider.dart';
 import 'package:ndri_climate/material/plugin/responsiveUtils.dart';
 import 'package:ndri_climate/model/utils.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
+/// A bottom sheet that lets the user type to filter Indian states and pick one.
+///
+/// Once a state is tapped, it calls:
+///   widget.selected_state(chosenState);
+///   widget.onStateSelected(chosenState, districtsForThatState);
+///
 class StateBottomSheet extends StatefulWidget {
   final Function(String) selected_state;
   final Function(String, List<String>) onStateSelected;
 
-  StateBottomSheet(
-      {super.key, required this.selected_state, required this.onStateSelected});
-  @override
-  _StateBottomSheetState createState() => _StateBottomSheetState();
-}
+  const StateBottomSheet({
+    super.key,
+    required this.selected_state,
+    required this.onStateSelected,
+  });
 
-class _StateBottomSheetState extends State<StateBottomSheet> {
-  TextEditingController searchController = TextEditingController();
-  List<String> indianStates = [
-    'Andaman and Nicobar Islands',
-    'Andhra Pradesh',
-    'Arunachal Pradesh',
-    'Assam',
-    'Bihar',
-    'Chandigarh',
-    'Chhattisgarh',
-    'Dadra and Nagar Haveli and Daman and Diu',
-    'Delhi',
-    'Goa',
-    'Gujarat',
-    'Haryana',
-    'Himachal Pradesh',
-    'Jammu and Kashmir',
-    'Jharkhand',
-    'Karnataka',
-    'Kerala',
-    'Ladakh',
-    'Lakshadweep',
-    'Madhya Pradesh',
-    'Maharashtra',
-    'Manipur',
-    'Meghalaya',
-    'Mizoram',
-    'Nagaland',
-    'Odisha',
-    'Puducherry',
-    'Punjab',
-    'Rajasthan',
-    'Sikkim',
-    'Tamil Nadu',
-    'Telangana',
-    'Tripura',
-    'Uttar Pradesh',
-    'Uttarakhand',
-    'West Bengal'
-  ];
-  Map<String, List<String>> stateDistricts = {
+  /// Expose the same map that used to live in the State class, but as a static field
+  /// so callers (e.g. Past_Advisories) can do:
+  ///   StateBottomSheet.stateDistricts["Punjab"]
+  ///
+  static const Map<String, List<String>> stateDistricts = {
     'Andhra Pradesh': [
       'Anantapur',
       'Chittoor',
@@ -382,7 +350,6 @@ class _StateBottomSheetState extends State<StateBottomSheet> {
       'Katni',
       'Khandwa',
       'Khargone',
-      'Maihar',
       'Mandla',
       'Mandsaur',
       'Morena',
@@ -850,20 +817,64 @@ class _StateBottomSheetState extends State<StateBottomSheet> {
     ],
     'Ladakh': ['Kargil', 'Leh']
   };
+
+  @override
+  _StateBottomSheetState createState() => _StateBottomSheetState();
+}
+
+class _StateBottomSheetState extends State<StateBottomSheet> {
+  TextEditingController searchController = TextEditingController();
+  List<String> indianStates = const [
+    'Andaman and Nicobar Islands',
+    'Andhra Pradesh',
+    'Arunachal Pradesh',
+    'Assam',
+    'Bihar',
+    'Chandigarh',
+    'Chhattisgarh',
+    'Dadra and Nagar Haveli and Daman and Diu',
+    'Delhi',
+    'Goa',
+    'Gujarat',
+    'Haryana',
+    'Himachal Pradesh',
+    'Jammu and Kashmir',
+    'Jharkhand',
+    'Karnataka',
+    'Kerala',
+    'Ladakh',
+    'Lakshadweep',
+    'Madhya Pradesh',
+    'Maharashtra',
+    'Manipur',
+    'Meghalaya',
+    'Mizoram',
+    'Nagaland',
+    'Odisha',
+    'Puducherry',
+    'Punjab',
+    'Rajasthan',
+    'Sikkim',
+    'Tamil Nadu',
+    'Telangana',
+    'Tripura',
+    'Uttar Pradesh',
+    'Uttarakhand',
+    'West Bengal'
+  ];
   List<String> filteredStates = [];
-  List<String> districts = [];
 
   @override
   void initState() {
-    filteredStates.addAll(indianStates);
     super.initState();
+    filteredStates = List.from(indianStates);
   }
 
   void filterStates(String query) {
     query = query.toLowerCase();
     setState(() {
       filteredStates = indianStates
-          .where((state) => state.toLowerCase().contains(query))
+          .where((s) => s.toLowerCase().contains(query))
           .toList();
     });
   }
@@ -871,28 +882,26 @@ class _StateBottomSheetState extends State<StateBottomSheet> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(bottom: 16.0, left: 0, right: 0),
+      padding: const EdgeInsets.only(bottom: 16.0, left: 0, right: 0),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
           Container(
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(20), topRight: Radius.circular(20)),
               color: Color(0xFF2C96D2),
             ),
-            padding: EdgeInsets.all(10),
+            padding: const EdgeInsets.all(10),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Text(
                   'Please Select One'.tr,
-                  style: TextStyle(color: Colors.white, fontSize: 18),
-                  textAlign: TextAlign.center,
+                  style: const TextStyle(color: Colors.white, fontSize: 18),
                 ),
                 IconButton(
-                  icon: Icon(Icons.close, color: Colors.white),
+                  icon: const Icon(Icons.close, color: Colors.white),
                   onPressed: () {
                     Navigator.of(context).pop();
                   },
@@ -900,33 +909,33 @@ class _StateBottomSheetState extends State<StateBottomSheet> {
               ],
             ),
           ),
-          SizedBox(
-            height: 10,
-          ),
-          TextField(
-            controller: searchController,
-            decoration: InputDecoration(
-              hintText: 'Type your State'.tr,
-              prefixIcon: Icon(Icons.search),
-              border: OutlineInputBorder(),
+          const SizedBox(height: 10),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 12.0),
+            child: TextField(
+              controller: searchController,
+              decoration: InputDecoration(
+                hintText: 'Type your State'.tr,
+                prefixIcon: const Icon(Icons.search),
+                border: const OutlineInputBorder(),
+              ),
+              onChanged: filterStates,
             ),
-            onChanged: (value) {
-              filterStates(value);
-            },
           ),
-          SizedBox(height: 16.0),
+          const SizedBox(height: 16.0),
           Expanded(
             child: ListView.builder(
               itemCount: filteredStates.length,
               itemBuilder: (context, index) {
-                final state = filteredStates[index];
+                final stateName = filteredStates[index];
                 return ListTile(
-                  title: Text(state.tr),
+                  title: Text(stateName.tr),
                   onTap: () {
-                    final districts = stateDistricts[state] ?? [];
-                    widget.selected_state(state.tr);
-                    widget.onStateSelected(state, districts);
-                    Navigator.pop(context, state);
+                    final districtsList =
+                        StateBottomSheet.stateDistricts[stateName] ?? [];
+                    widget.selected_state(stateName.tr);
+                    widget.onStateSelected(stateName, districtsList);
+                    Navigator.pop(context, stateName);
                   },
                 );
               },
@@ -938,34 +947,38 @@ class _StateBottomSheetState extends State<StateBottomSheet> {
   }
 }
 
+/// A bottom sheet that lets the user filter among a given list of districts.
 class DistrictBottomSheet extends StatefulWidget {
   final Function(String) selected_district;
   final List<String> districts;
-  const DistrictBottomSheet(
-      {super.key, required this.selected_district, required this.districts});
+
+  const DistrictBottomSheet({
+    super.key,
+    required this.selected_district,
+    required this.districts,
+  });
+
   @override
   _DistrictBottomSheetState createState() => _DistrictBottomSheetState();
 }
 
 class _DistrictBottomSheetState extends State<DistrictBottomSheet> {
   TextEditingController searchController = TextEditingController();
-  List<String> districts_list = [];
-  List<String> filteredDistricts = [];
+  late List<String> districts_list;
+  late List<String> filteredDistricts;
 
   @override
   void initState() {
-    setState(() {
-      districts_list = widget.districts;
-    });
-    filteredDistricts.addAll(districts_list);
     super.initState();
+    districts_list = widget.districts;
+    filteredDistricts = List.from(districts_list);
   }
 
   void filterDistricts(String query) {
     query = query.toLowerCase();
     setState(() {
       filteredDistricts = districts_list
-          .where((district) => district.toLowerCase().contains(query))
+          .where((d) => d.toLowerCase().contains(query))
           .toList();
     });
   }
@@ -973,28 +986,26 @@ class _DistrictBottomSheetState extends State<DistrictBottomSheet> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(bottom: 16.0, left: 0, right: 0),
+      padding: const EdgeInsets.only(bottom: 16.0, left: 0, right: 0),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
           Container(
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(20), topRight: Radius.circular(20)),
               color: Color(0xFF2C96D2),
             ),
-            padding: EdgeInsets.all(10),
+            padding: const EdgeInsets.all(10),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Text(
                   'Please Select One'.tr,
-                  style: TextStyle(color: Colors.white, fontSize: 18),
-                  textAlign: TextAlign.center,
+                  style: const TextStyle(color: Colors.white, fontSize: 18),
                 ),
                 IconButton(
-                  icon: Icon(Icons.close, color: Colors.white),
+                  icon: const Icon(Icons.close, color: Colors.white),
                   onPressed: () {
                     Navigator.of(context).pop();
                   },
@@ -1002,31 +1013,30 @@ class _DistrictBottomSheetState extends State<DistrictBottomSheet> {
               ],
             ),
           ),
-          SizedBox(
-            height: 10,
-          ),
-          TextField(
-            controller: searchController,
-            decoration: InputDecoration(
-              hintText: 'Type your District'.tr,
-              prefixIcon: Icon(Icons.search),
-              border: OutlineInputBorder(),
+          const SizedBox(height: 10),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 12.0),
+            child: TextField(
+              controller: searchController,
+              decoration: InputDecoration(
+                hintText: 'Type your District'.tr,
+                prefixIcon: const Icon(Icons.search),
+                border: const OutlineInputBorder(),
+              ),
+              onChanged: filterDistricts,
             ),
-            onChanged: (value) {
-              filterDistricts(value);
-            },
           ),
-          SizedBox(height: 16.0),
+          const SizedBox(height: 16.0),
           Expanded(
             child: ListView.builder(
               itemCount: filteredDistricts.length,
               itemBuilder: (context, index) {
-                final district = filteredDistricts[index];
+                final districtName = filteredDistricts[index];
                 return ListTile(
-                  title: Text(district.tr),
+                  title: Text(districtName.tr),
                   onTap: () {
-                    widget.selected_district(district.tr);
-                    Navigator.pop(context, district);
+                    widget.selected_district(districtName.tr);
+                    Navigator.pop(context, districtName);
                   },
                 );
               },
@@ -1038,41 +1048,40 @@ class _DistrictBottomSheetState extends State<DistrictBottomSheet> {
   }
 }
 
+/// A bottom sheet for language selection (Hindi, English, Punjabi, Bengali).
 class LanguageBottomSheet extends StatefulWidget {
   final Function(String) selected_language;
 
   const LanguageBottomSheet({super.key, required this.selected_language});
+
   @override
   State<LanguageBottomSheet> createState() => _LanguageBottomSheetState();
 }
 
 class _LanguageBottomSheetState extends State<LanguageBottomSheet> {
-  String lang='';
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(bottom: 16.0,),
+      padding: const EdgeInsets.only(bottom: 16.0),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
           Container(
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(20), topRight: Radius.circular(20)),
               color: Color(0xFF2C96D2),
             ),
-            padding: EdgeInsets.all(10),
+            padding: const EdgeInsets.all(10),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Text(
                   'Please Select One'.tr,
-                  style: TextStyle(color: Colors.white, fontSize: 18),
-                  textAlign: TextAlign.center,
+                  style: const TextStyle(color: Colors.white, fontSize: 18),
                 ),
                 IconButton(
-                  icon: Icon(Icons.close, color: Colors.white,size: 18,),
+                  icon: const Icon(Icons.close, color: Colors.white, size: 18),
                   onPressed: () {
                     Navigator.of(context).pop();
                   },
@@ -1080,47 +1089,40 @@ class _LanguageBottomSheetState extends State<LanguageBottomSheet> {
               ],
             ),
           ),
-          SizedBox(
-            height: 10,
-          ),
+          const SizedBox(height: 10),
           ListTile(
             title: Text('Hindi'.tr),
             onTap: () {
-             
-              var locale = Locale('hi', 'IN');
+              var locale = const Locale('hi', 'IN');
               Get.updateLocale(locale);
               widget.selected_language('Hindi');
-              lang='Hindi';
               Navigator.pop(context, 'Hindi');
             },
           ),
           ListTile(
             title: Text('English'.tr),
             onTap: () {
-              var locale = Locale('en', 'US');
+              var locale = const Locale('en', 'US');
               Get.updateLocale(locale);
               widget.selected_language('English');
-              lang='English';
               Navigator.pop(context, 'English');
             },
           ),
           ListTile(
             title: Text('Punjabi'.tr),
             onTap: () {
-              var locale = Locale('pa', 'IN');
+              var locale = const Locale('pa', 'IN');
               Get.updateLocale(locale);
               widget.selected_language('Punjabi');
-              lang='Punjabi';
               Navigator.pop(context, 'Punjabi');
             },
           ),
           ListTile(
             title: Text('Bengali'.tr),
             onTap: () {
-              var locale = Locale('bn', 'IN');
+              var locale = const Locale('bn', 'IN');
               Get.updateLocale(locale);
               widget.selected_language('Bengali');
-              lang='Bengali';
               Navigator.pop(context, 'Bengali');
             },
           ),
@@ -1130,10 +1132,17 @@ class _LanguageBottomSheetState extends State<LanguageBottomSheet> {
   }
 }
 
+/// A bottom sheet that shows all advisories, letting the user tap one date‐range to filter.
+/// You’ll need to call fetchAdvisory(...) elsewhere to get `allData`.
 class filterDate extends StatefulWidget {
-  final Function(DateTime,DateTime,int) onTapcallback;
+  final Function(DateTime, DateTime, int) onTapcallback;
   final int index;
-  filterDate({super.key, required this.onTapcallback, required this.index,});
+
+  filterDate({
+    super.key,
+    required this.onTapcallback,
+    required this.index,
+  });
 
   @override
   State<filterDate> createState() => _filterDateState();
@@ -1141,37 +1150,36 @@ class filterDate extends StatefulWidget {
 
 class _filterDateState extends State<filterDate> {
   int _selecteDate = 0;
-  bool _selected=false;
-@override
+
+  @override
   void initState() {
-    _selecteDate=widget.index;
     super.initState();
+    _selecteDate = widget.index;
   }
+
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(bottom: 16.0, left: 0, right: 0),
+      padding: const EdgeInsets.only(bottom: 16.0, left: 0, right: 0),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
           Container(
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(20), topRight: Radius.circular(20)),
               color: Color(0xFF2C96D2),
             ),
-            padding: EdgeInsets.all(10),
+            padding: const EdgeInsets.all(10),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Text(
                   'Choose One'.tr,
-                  style: TextStyle(color: Colors.white, fontSize: 18),
-                  textAlign: TextAlign.center,
+                  style: const TextStyle(color: Colors.white, fontSize: 18),
                 ),
                 IconButton(
-                  icon: Icon(Icons.close, color: Colors.white),
+                  icon: const Icon(Icons.close, color: Colors.white),
                   onPressed: () {
                     Navigator.of(context).pop();
                   },
@@ -1179,73 +1187,75 @@ class _filterDateState extends State<filterDate> {
               ],
             ),
           ),
+          const SizedBox(height: 10),
           SizedBox(
-            height: 10,
-          ),
-          Container(
             height: 250,
-            child: FutureBuilder(
-              future: ApiProvider().fetchAdvisory(),
+            child: FutureBuilder<List<Advisory>>(
+              future: ApiProvider().fetchAdvisory(
+                state: '',     // You can pass a default or real state if needed
+                district: '',  // Pass a default or real district if needed
+              ),
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
-                  Container(
+                  return Container(
                     height: MediaQuery.of(context).size.height / 2,
                     alignment: Alignment.center,
-                    child: CircularProgressIndicator.adaptive(),
+                    child: const CircularProgressIndicator.adaptive(),
                   );
                 }
                 if (snapshot.hasData) {
-                  final data = snapshot.data;
-                  List<Advisory> advisory_data = data?.reversed.toList() ?? [];
-                  return Container(
-                    height: MediaQuery.of(context).size.height / 1.22,
-                    child: ListView.builder(
-                      itemCount: advisory_data.length,
-                      itemBuilder: (context, index) {
-                        
-                        Advisory _advisory = advisory_data[index];
-                        return Container(
-                          margin: EdgeInsets.symmetric(horizontal: 10),
-                          padding: const EdgeInsets.symmetric(vertical: 10),
-                          child: RadioListTile(
-                            activeColor: Color(0xFF2C96D2),
-                            shape: RoundedRectangleBorder(side: BorderSide(color: Colors.black26),borderRadius: BorderRadius.circular(12)),
-                            controlAffinity: ListTileControlAffinity.trailing,
-                            title: Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Chip(
-                                  color: WidgetStateProperty.all(_selecteDate==index?Color(0xFF2C96D2):Colors.white),
-                                  label: Text(
-                                    textAlign: TextAlign.center,
-                                     formatDate(inputDate: _advisory.fromDate.toString()) + ' -> ' + formatDate(inputDate: _advisory.toDate.toString()),
-                                    style: TextStyle(
-                                      color: _selecteDate==index?Colors.white:Colors.black,
-                                        fontSize: ResponsiveUtils.wp(2.5), fontWeight: FontWeight.w500),
+                  final advisory_data = snapshot.data!.reversed.toList();
+                  return ListView.builder(
+                    itemCount: advisory_data.length,
+                    itemBuilder: (context, index) {
+                      final adv = advisory_data[index];
+                      return Container(
+                        margin: const EdgeInsets.symmetric(horizontal: 10),
+                        padding: const EdgeInsets.symmetric(vertical: 10),
+                        child: RadioListTile<int>(
+                          activeColor: const Color(0xFF2C96D2),
+                          shape: RoundedRectangleBorder(
+                            side: const BorderSide(color: Colors.black26),
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          controlAffinity: ListTileControlAffinity.trailing,
+                          title: Row(
+                            children: [
+                              Chip(
+                                backgroundColor:
+                                (_selecteDate == index) ? const Color(0xFF2C96D2) : Colors.white,
+                                label: Text(
+                                  formatDate(inputDate: adv.fromDate.toString()) +
+                                      ' → ' +
+                                      formatDate(inputDate: adv.toDate.toString()),
+                                  style: TextStyle(
+                                    color: (_selecteDate == index) ? Colors.white : Colors.black,
+                                    fontSize: ResponsiveUtils.wp(2.5),
+                                    fontWeight: FontWeight.w500,
                                   ),
                                 ),
-                              ],
-                            ),
-                            value: index,
-                            groupValue: _selecteDate,
-                            onChanged: (value) {
-                              setState(() {
-                                _selecteDate = value!;
-                              });
-                              widget.onTapcallback(_advisory.fromDate,_advisory.toDate,_selecteDate);
-                            },
+                              ),
+                            ],
                           ),
-                        );
-                      },
-                    ),
+                          value: index,
+                          groupValue: _selecteDate,
+                          onChanged: (value) {
+                            setState(() {
+                              _selecteDate = value!;
+                            });
+                            widget.onTapcallback(adv.fromDate, adv.toDate, _selecteDate);
+                          },
+                        ),
+                      );
+                    },
                   );
                 }
                 return Container(
                   alignment: Alignment.center,
-                  child: SizedBox(
+                  child: const SizedBox(
                     height: 40,
                     width: 40,
-                    child: CircularProgressIndicator(color: Colors.blueAccent,),
+                    child: CircularProgressIndicator(color: Colors.blueAccent),
                   ),
                 );
               },

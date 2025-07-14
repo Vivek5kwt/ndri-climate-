@@ -1,5 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ndri_climate/material/Reusabledescrip.dart';
 import 'package:ndri_climate/material/custom_drawer.dart';
 import 'package:ndri_climate/material/plugin/responsiveUtils.dart';
@@ -16,6 +17,22 @@ class Healthcare extends StatefulWidget {
 class _HealthcareState extends State<Healthcare> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
+  // Common text styles
+  final TextStyle _tabTextStyle = TextStyle(
+    fontSize: ResponsiveUtils.wp(3),
+    fontWeight: FontWeight.bold,
+  );
+  final TextStyle _sectionTitleStyle = TextStyle(
+    fontSize: ResponsiveUtils.wp(4),
+    fontWeight: FontWeight.bold,
+    color: const Color(0xFF1976D2),
+  );
+  final TextStyle _subtitleTextStyle = TextStyle(
+    fontSize: ResponsiveUtils.wp(3),
+    fontWeight: FontWeight.w500,
+    color: Colors.black87,
+  );
+
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -26,7 +43,7 @@ class _HealthcareState extends State<Healthcare> {
         key: _scaffoldKey,
         drawer: CustomDrawer(),
         appBar: PreferredSize(
-          preferredSize: const Size(60, 60),
+          preferredSize: Size.fromHeight(ResponsiveUtils.hp(7)),
           child: ReuseAppbar(
             scaffoldKey: _scaffoldKey,
             title: 'Health Care Management'.tr,
@@ -38,56 +55,43 @@ class _HealthcareState extends State<Healthcare> {
             Container(
               width: width,
               color: const Color(0xFFC8EBFF),
+              padding: EdgeInsets.symmetric(vertical: ResponsiveUtils.hp(1)),
               child: TabBar(
                 isScrollable: true,
                 physics: const RangeMaintainingScrollPhysics(),
-                labelStyle: TextStyle(color: Colors.blue, fontSize: width * 0.038),
-                indicatorSize: TabBarIndicatorSize.tab,
-                indicatorColor: Colors.blue,
+                labelStyle: _tabTextStyle.copyWith(color: const Color(0xFF1976D2)),
+                unselectedLabelStyle:
+                _tabTextStyle.copyWith(color: Colors.grey.shade600),
+                indicatorColor: const Color(0xFF1976D2),
+                indicatorWeight: 3,
                 dragStartBehavior: DragStartBehavior.start,
                 tabs: [
                   Tab(
                     child: Text(
                       'Foot and Mouth disease'.tr,
-                      style: TextStyle(
-                        fontSize: ResponsiveUtils.wp(1.8),
-                        fontWeight: FontWeight.bold,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                      maxLines: 2,
+                      style: _tabTextStyle,
+                      textAlign: TextAlign.center,
                     ),
                   ),
                   Tab(
                     child: Text(
                       'Hemorrhagic Septicemia'.tr,
-                      style: TextStyle(
-                        fontSize: ResponsiveUtils.wp(1.8),
-                        fontWeight: FontWeight.bold,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                      maxLines: 2,
+                      style: _tabTextStyle,
+                      textAlign: TextAlign.center,
                     ),
                   ),
                   Tab(
                     child: Text(
                       'Mastitis'.tr,
-                      style: TextStyle(
-                        fontSize: ResponsiveUtils.wp(1.8),
-                        fontWeight: FontWeight.bold,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                      maxLines: 2,
+                      style: _tabTextStyle,
+                      textAlign: TextAlign.center,
                     ),
                   ),
                   Tab(
                     child: Text(
                       'Deworming and vaccination schedule'.tr,
-                      style: TextStyle(
-                        fontSize: ResponsiveUtils.wp(1.8),
-                        fontWeight: FontWeight.bold,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                      maxLines: 3,
+                      style: _tabTextStyle,
+                      textAlign: TextAlign.center,
                     ),
                   ),
                 ],
@@ -96,7 +100,6 @@ class _HealthcareState extends State<Healthcare> {
             Expanded(
               child: TabBarView(children: [
                 _healthTab(
-                  context: context,
                   title: 'Foot and Mouth disease in Buffalo'.tr,
                   imagePath: 'assets/images/feeding_summer.webp',
                   symptoms: [
@@ -117,7 +120,6 @@ class _HealthcareState extends State<Healthcare> {
                   ],
                 ),
                 _healthTab(
-                  context: context,
                   title: 'Hemorrhagic Septicemia in Buffalo'.tr,
                   imagePath: 'assets/images/feeding_summer.webp',
                   symptoms: [
@@ -136,7 +138,6 @@ class _HealthcareState extends State<Healthcare> {
                   ],
                 ),
                 _healthTab(
-                  context: context,
                   title: 'Mastitis in Buffalo'.tr,
                   imagePath: 'assets/images/Mastitis-Blk-Cow.webp',
                   symptoms: [
@@ -158,7 +159,7 @@ class _HealthcareState extends State<Healthcare> {
                     'Immediately after detecting clinical signs, it should be consulted with qualified veterinarian for further treatment'.tr,
                   ],
                 ),
-                _scheduleTab(context: context),
+                _scheduleTab(),
               ]),
             ),
           ],
@@ -168,66 +169,84 @@ class _HealthcareState extends State<Healthcare> {
   }
 
   Widget _healthTab({
-    required BuildContext context,
     required String title,
     required String imagePath,
     required List<String> symptoms,
     required List<String> controls,
   }) {
     double width = MediaQuery.of(context).size.width;
-    return Container(
-      width: width,
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: ResponsiveUtils.wp(2)),
       child: Container(
-        width: width,
-        margin: EdgeInsets.all(10),
-        padding: EdgeInsets.all(15),
+        margin: EdgeInsets.only(top: ResponsiveUtils.hp(2)),
+        padding: EdgeInsets.all(ResponsiveUtils.wp(3)),
         decoration: BoxDecoration(
-            color: Colors.white,
-            border: Border.all(color: Colors.grey),
-            borderRadius: BorderRadius.circular(10)),
+          color: Colors.white,
+          border: Border.all(color: Colors.grey.shade300),
+          borderRadius: BorderRadius.circular(10.r),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.shade200,
+              blurRadius: 6,
+              offset: const Offset(0, 3),
+            ),
+          ],
+        ),
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                title,
-                style: TextStyle(
-                  fontSize: ResponsiveUtils.wp(2.8),
-                  fontWeight: FontWeight.w700,
-                ),
-              ),
-              SizedBox(height: 10),
+              Text(title, style: _sectionTitleStyle),
+              SizedBox(height: ResponsiveUtils.hp(1)),
               Container(
                 width: width,
-                height: width * 0.55,
+                height: ResponsiveUtils.hp(25),
                 decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(8.r),
                   image: DecorationImage(
                     image: AssetImage(imagePath),
                     fit: BoxFit.cover,
                   ),
-                  borderRadius: BorderRadius.circular(10),
                 ),
               ),
-              SizedBox(height: 15),
+              SizedBox(height: ResponsiveUtils.hp(2)),
               Text(
                 'Symptoms'.tr,
                 style: TextStyle(
-                  fontSize: ResponsiveUtils.wp(2.5),
+                  fontSize: ResponsiveUtils.wp(3),
                   fontWeight: FontWeight.w700,
+                  color: const Color(0xFF1976D2),
                 ),
               ),
-              SizedBox(height: 8),
-              ...symptoms.map((e) => Reusabledescription(desciption: e)).toList(),
-              SizedBox(height: 15),
+              SizedBox(height: ResponsiveUtils.hp(1)),
+              ...symptoms.map(
+                    (e) => Padding(
+                  padding: EdgeInsets.only(bottom: ResponsiveUtils.hp(0.8)),
+                  child: Reusabledescription(
+                    desciption: "• $e",
+                    textStyle: _subtitleTextStyle,
+                  ),
+                ),
+              ),
+              SizedBox(height: ResponsiveUtils.hp(2)),
               Text(
                 'Control and Prevention'.tr,
                 style: TextStyle(
-                  fontSize: ResponsiveUtils.wp(2.5),
+                  fontSize: ResponsiveUtils.wp(3),
                   fontWeight: FontWeight.w700,
+                  color: const Color(0xFF1976D2),
                 ),
               ),
-              SizedBox(height: 8),
-              ...controls.map((e) => Reusabledescription(desciption: e)).toList(),
+              SizedBox(height: ResponsiveUtils.hp(1)),
+              ...controls.map(
+                    (e) => Padding(
+                  padding: EdgeInsets.only(bottom: ResponsiveUtils.hp(0.8)),
+                  child: Reusabledescription(
+                    desciption: "• $e",
+                    textStyle: _subtitleTextStyle,
+                  ),
+                ),
+              ),
             ],
           ),
         ),
@@ -235,71 +254,100 @@ class _HealthcareState extends State<Healthcare> {
     );
   }
 
-  Widget _scheduleTab({required BuildContext context}) {
+  Widget _scheduleTab() {
     double width = MediaQuery.of(context).size.width;
-    return SingleChildScrollView(
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: ResponsiveUtils.wp(2)),
       child: Container(
-        width: width,
-        margin: EdgeInsets.all(10),
-        padding: EdgeInsets.all(15),
+        margin: EdgeInsets.only(top: ResponsiveUtils.hp(2)),
+        padding: EdgeInsets.all(ResponsiveUtils.wp(3)),
         decoration: BoxDecoration(
-            color: Colors.white,
-            border: Border.all(color: Colors.grey),
-            borderRadius: BorderRadius.circular(10)),
+          color: Colors.white,
+          border: Border.all(color: Colors.grey.shade300),
+          borderRadius: BorderRadius.circular(10.r),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.shade200,
+              blurRadius: 6,
+              offset: const Offset(0, 3),
+            ),
+          ],
+        ),
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
                 'Deworming Schedule for Buffalo'.tr,
-                style: TextStyle(
-                  fontSize: ResponsiveUtils.wp(2.8),
-                  fontWeight: FontWeight.w700,
-                ),
+                style: _sectionTitleStyle,
               ),
-              SizedBox(height: 10),
+              SizedBox(height: ResponsiveUtils.hp(1.5)),
               SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: Table(
-                  defaultColumnWidth: FixedColumnWidth(120.0),
-                  border: TableBorder.all(color: Colors.black, width: 2),
+                  defaultColumnWidth: FixedColumnWidth(ResponsiveUtils.wp(36)),
+                  border: TableBorder.all(color: Colors.black, width: 1.5),
                   children: [
-                    TableRow(children: [
-                      _tableHeader('Age of Buffalo'),
-                      _tableHeader('Anthelmintic'),
-                      _tableHeader('Dose'),
-                      _tableHeader('Schedule'),
+                    TableRow(
+                      decoration: BoxDecoration(color: Colors.blue.shade50),
+                      children: [
+                        _tableHeader('Age of Buffalo'.tr),
+                        _tableHeader('Anthelmintic'.tr),
+                        _tableHeader('Dose'.tr),
+                        _tableHeader('Schedule'.tr),
+                      ],
+                    ),
+                    _tableRow([
+                      '3-7 days'.tr,
+                      'Piparazine'.tr,
+                      '5-10 ml per 10 kg of body weight'.tr,
+                      'Repeat in every 21 days upto 2 months'.tr,
                     ]),
-                    _tableRow(['3-7 days', 'Piparazine', '5-10 ml per 10 kg of body weight', 'Repeat in every 21 days upto 2 months']),
-                    _tableRow(['3-6 months', 'Albendazole', '5 ml per kg of body weight', 'Every month']),
-                    _tableRow(['6-18 months', 'Albendazole or Ivermetic injection', '5 ml per kg of body weight', 'Every 3 months']),
-                    _tableRow(['Adult buffalo', 'Albendazole , Fendendazole or Ivermetic injection', '5 ml per kg of body weight', 'Twice in year preferably before rainy and winter season']),
+                    _tableRow([
+                      '3-6 months'.tr,
+                      'Albendazole'.tr,
+                      '5 ml per kg of body weight'.tr,
+                      'Every month'.tr,
+                    ]),
+                    _tableRow([
+                      '6-18 months'.tr,
+                      'Albendazole or Ivermetic injection'.tr,
+                      '5 ml per kg of body weight'.tr,
+                      'Every 3 months'.tr,
+                    ]),
+                    _tableRow([
+                      'Adult buffalo'.tr,
+                      'Albendazole , Fendendazole or Ivermetic injection'.tr,
+                      '5 ml per kg of body weight'.tr,
+                      'Twice in year preferably before rainy and winter season'.tr,
+                    ]),
                   ],
                 ),
               ),
-              SizedBox(height: 18),
+              SizedBox(height: ResponsiveUtils.hp(2)),
               Text(
                 'Vaccination Schedule'.tr,
-                style: TextStyle(
-                  fontSize: ResponsiveUtils.wp(2.5),
-                  fontWeight: FontWeight.w700,
-                ),
+                style: _sectionTitleStyle,
               ),
-              SizedBox(height: 10),
+              SizedBox(height: ResponsiveUtils.hp(1.5)),
               SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: Table(
-                  defaultColumnWidth: FixedColumnWidth(180.0),
-                  border: TableBorder.all(color: Colors.black, width: 2),
+                  defaultColumnWidth: FixedColumnWidth(ResponsiveUtils.wp(48)),
+                  border: TableBorder.all(color: Colors.black, width: 1.5),
                   children: [
-                    TableRow(children: [
-                      _tableHeader('Disease'),
-                      _tableHeader('Age and time of vaccination'),
-                    ]),
+                    TableRow(
+                      decoration: BoxDecoration(color: Colors.blue.shade50),
+                      children: [
+                        _tableHeader('Disease'.tr),
+                        _tableHeader('Age and time of vaccination'.tr),
+                      ],
+                    ),
                     _tableRow(['FMD', 'First dose at 4 months of age and booster dose at 6 months of age.Repeat every six months interval preferably during March-April and September-October']),
                     _tableRow(['Hemorrhagic Septicemia', 'First dose at 4-6 months of age and booster dose should be repeated every year preferably before rainy season in the months of May-June']),
                     _tableRow(['Black quarter', 'First dose at 6 months of age and booster dose should be repeated every year preferably before rainy season in the months of May-June']),
                     _tableRow(['Brucellosis', 'Single dose for female calf at the age of 4-8 months']),
+
                   ],
                 ),
               ),
@@ -311,12 +359,14 @@ class _HealthcareState extends State<Healthcare> {
   }
 
   Widget _tableHeader(String text) => Padding(
-    padding: const EdgeInsets.symmetric(vertical: 8.0),
+    padding: EdgeInsets.symmetric(vertical: ResponsiveUtils.hp(0.8)),
     child: Text(
       text.tr,
       textAlign: TextAlign.center,
       style: TextStyle(
-          fontWeight: FontWeight.w600, fontSize: ResponsiveUtils.wp(2.5)),
+        fontWeight: FontWeight.w600,
+        fontSize: ResponsiveUtils.wp(2.8),
+      ),
     ),
   );
 
@@ -325,13 +375,17 @@ class _HealthcareState extends State<Healthcare> {
       children: cells
           .map(
             (text) => Padding(
-          padding: const EdgeInsets.symmetric(vertical: 6.0, horizontal: 4),
+          padding: EdgeInsets.symmetric(
+            vertical: ResponsiveUtils.hp(0.8),
+            horizontal: ResponsiveUtils.wp(1),
+          ),
           child: Text(
             text.tr,
             textAlign: TextAlign.center,
             style: TextStyle(
-                fontWeight: FontWeight.w500,
-                fontSize: ResponsiveUtils.wp(2)),
+              fontWeight: FontWeight.w500,
+              fontSize: ResponsiveUtils.wp(2.5),
+            ),
           ),
         ),
       )

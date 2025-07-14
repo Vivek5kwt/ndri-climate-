@@ -192,10 +192,10 @@ class _FeedBackState extends State<FeedBack> {
                       if (_formkey.currentState!.validate()) {
                         await ApiProvider()
                             .storeFeedback(
-                            customer_name: _namecontroller.text,
+                            customerName: _namecontroller.text,
                             district: _districtcontroller.text,
                             message: _messagecontroller.text,
-                            phone_number: _mobilenocontroller.text)
+                            phoneNumber: _mobilenocontroller.text)
                             .then((v) {
                           Navigator.pop(context);
                           Plugin.dialogpopup(

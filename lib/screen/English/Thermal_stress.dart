@@ -16,6 +16,22 @@ class Thermal_Stress extends StatefulWidget {
 class _Thermal_StressState extends State<Thermal_Stress> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
+  // Common text styles
+  final TextStyle _tabTextStyle = TextStyle(
+    fontSize: ResponsiveUtils.wp(3),
+    fontWeight: FontWeight.bold,
+  );
+  final TextStyle _sectionTitleStyle = TextStyle(
+    fontSize: ResponsiveUtils.wp(4),
+    fontWeight: FontWeight.bold,
+    color: const Color(0xFF1976D2),
+  );
+  final TextStyle _subtitleTextStyle = TextStyle(
+    fontSize: ResponsiveUtils.wp(3),
+    fontWeight: FontWeight.w500,
+    color: Colors.black87,
+  );
+
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -24,7 +40,7 @@ class _Thermal_StressState extends State<Thermal_Stress> {
         key: _scaffoldKey,
         drawer: CustomDrawer(),
         appBar: PreferredSize(
-          preferredSize: const Size(60, 60),
+          preferredSize: Size.fromHeight(ResponsiveUtils.hp(7)),
           child: ReuseAppbar(
             scaffoldKey: _scaffoldKey,
             title: 'Thermal Stress Management'.tr,
@@ -34,28 +50,26 @@ class _Thermal_StressState extends State<Thermal_Stress> {
         body: Column(
           children: [
             Container(
-              width: double.infinity,
               color: const Color(0xFFC8EBFF),
+              padding: EdgeInsets.symmetric(vertical: ResponsiveUtils.hp(1)),
               child: SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: TabBar(
                   isScrollable: true,
                   physics: const RangeMaintainingScrollPhysics(),
-                  labelStyle: TextStyle(
-                    color: Colors.blue,
-                    fontSize: ResponsiveUtils.wp(1.7),
-                  ),
-                  indicatorSize: TabBarIndicatorSize.tab,
-                  indicatorColor: Colors.blue,
+                  labelStyle: _tabTextStyle.copyWith(color: const Color(0xFF1976D2)),
+                  unselectedLabelStyle:
+                  _tabTextStyle.copyWith(color: Colors.grey.shade600),
+                  indicatorColor: const Color(0xFF1976D2),
+                  indicatorWeight: 3,
                   dragStartBehavior: DragStartBehavior.start,
                   tabs: [
                     Tab(
                       child: Text(
                         'Symptoms of Heat Stress'.tr,
                         style: TextStyle(
-                          fontSize: ResponsiveUtils.wp(1.8),
+                          fontSize: ResponsiveUtils.wp(3),
                           fontWeight: FontWeight.bold,
-                          overflow: TextOverflow.ellipsis,
                         ),
                         maxLines: 2,
                         textAlign: TextAlign.center,
@@ -63,11 +77,10 @@ class _Thermal_StressState extends State<Thermal_Stress> {
                     ),
                     Tab(
                       child: Text(
-                        'Use of water'.tr,
+                        'Use of Water'.tr,
                         style: TextStyle(
-                          fontSize: ResponsiveUtils.wp(1.8),
+                          fontSize: ResponsiveUtils.wp(3),
                           fontWeight: FontWeight.bold,
-                          overflow: TextOverflow.ellipsis,
                         ),
                         maxLines: 1,
                         textAlign: TextAlign.center,
@@ -77,9 +90,8 @@ class _Thermal_StressState extends State<Thermal_Stress> {
                       child: Text(
                         'Other Heat Stress Management Strategies'.tr,
                         style: TextStyle(
-                          fontSize: ResponsiveUtils.wp(1.8),
+                          fontSize: ResponsiveUtils.wp(3),
                           fontWeight: FontWeight.bold,
-                          overflow: TextOverflow.ellipsis,
                         ),
                         maxLines: 2,
                         textAlign: TextAlign.center,
@@ -89,9 +101,8 @@ class _Thermal_StressState extends State<Thermal_Stress> {
                       child: Text(
                         'Managing Cold Stress'.tr,
                         style: TextStyle(
-                          fontSize: ResponsiveUtils.wp(1.8),
+                          fontSize: ResponsiveUtils.wp(3),
                           fontWeight: FontWeight.bold,
-                          overflow: TextOverflow.ellipsis,
                         ),
                         maxLines: 2,
                         textAlign: TextAlign.center,
@@ -104,172 +115,307 @@ class _Thermal_StressState extends State<Thermal_Stress> {
             Expanded(
               child: TabBarView(
                 children: [
+                  // Symptoms Tab
                   SingleChildScrollView(
-                    child: Container(
-                      width: double.infinity,
-                      margin: EdgeInsets.all(ResponsiveUtils.wp(2)),
-                      padding: EdgeInsets.all(ResponsiveUtils.wp(3)),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        border: Border.all(color: Colors.grey.shade300),
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Symptoms of Heat Stress'.tr,
-                            style: TextStyle(
-                              fontSize: ResponsiveUtils.wp(2.8),
-                              fontWeight: FontWeight.w700,
+                    child: Padding(
+                      padding: EdgeInsets.all(ResponsiveUtils.wp(2)),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          border: Border.all(color: Colors.grey.shade300),
+                          borderRadius: BorderRadius.circular(12),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey.shade200,
+                              blurRadius: 6,
+                              offset: const Offset(0, 3),
                             ),
-                          ),
-                          SizedBox(height: ResponsiveUtils.hp(2)),
-                          Text(
-                            'Thermal stress occurs when the ambient temperature lies above or below thermoneutral zone. Dairy animals have been found to be negatively impacted with increased temperature and humidity'.tr,
-                            style: TextStyle(
-                              fontSize: ResponsiveUtils.wp(2.2),
-                              fontWeight: FontWeight.w500,
+                          ],
+                        ),
+                        padding: EdgeInsets.all(ResponsiveUtils.wp(3)),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Symptoms of Heat Stress'.tr,
+                              style: _sectionTitleStyle,
                             ),
-                          ),
-                          SizedBox(height: ResponsiveUtils.hp(2)),
-                          Reusabledescription(desciption: 'Rapid and weak pulse and Rapid but shallow breathing'.tr),
-                          Reusabledescription(desciption: 'Abnormal vital parameters: Elevated heart rate, respiration rate, rectal temperature etc'.tr),
-                          Reusabledescription(desciption: 'Unusual salivation and Dizziness / unconsciousness'.tr),
-                          Reusabledescription(desciption: 'Skin becomes dull and may be cold'.tr),
-                          Reusabledescription(desciption: 'In case of heat stroke, body temperature is very high sometimes as high as 106 - 108°F'.tr),
-                        ],
+                            SizedBox(height: ResponsiveUtils.hp(2)),
+                            Text(
+                              'Thermal stress occurs when the ambient temperature lies above or below thermoneutral zone. Dairy animals have been found to be negatively impacted with increased temperature and humidity.'
+                                  .tr,
+                              style: _subtitleTextStyle,
+                            ),
+                            SizedBox(height: ResponsiveUtils.hp(2)),
+                            Reusabledescription(
+                              desciption: 'Rapid and weak pulse and rapid but shallow breathing'.tr,
+                              textStyle: TextStyle(fontSize: ResponsiveUtils.wp(2.5)),
+                            ),
+                            Reusabledescription(
+                              desciption: 'Abnormal vital parameters: Elevated heart rate, respiration rate, rectal temperature etc.'.tr,
+                              textStyle: TextStyle(fontSize: ResponsiveUtils.wp(2.5)),
+                            ),
+                            Reusabledescription(
+                              desciption: 'Unusual salivation and dizziness/unconsciousness'.tr,
+                              textStyle: TextStyle(fontSize: ResponsiveUtils.wp(2.5)),
+                            ),
+                            Reusabledescription(
+                              desciption: 'Skin becomes dull and may be cold'.tr,
+                              textStyle: TextStyle(fontSize: ResponsiveUtils.wp(2.5)),
+                            ),
+                            Reusabledescription(
+                              desciption: 'In case of heat stroke, body temperature is very high sometimes as high as 106 - 108°F.'.tr,
+                              textStyle: TextStyle(fontSize: ResponsiveUtils.wp(2.5)),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ),
+
                   SingleChildScrollView(
-                    child: Container(
-                      width: double.infinity,
-                      margin: EdgeInsets.all(ResponsiveUtils.wp(2)),
-                      padding: EdgeInsets.all(ResponsiveUtils.wp(3)),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        border: Border.all(color: Colors.grey.shade300),
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Use of Water to Mitigate Heat Stress'.tr,
-                            style: TextStyle(
-                              fontSize: ResponsiveUtils.wp(2.8),
-                              fontWeight: FontWeight.w700,
+                    child: Padding(
+                      padding: EdgeInsets.all(ResponsiveUtils.wp(2)),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          border: Border.all(color: Colors.grey.shade300),
+                          borderRadius: BorderRadius.circular(12),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey.shade200,
+                              blurRadius: 6,
+                              offset: const Offset(0, 3),
                             ),
-                          ),
-                          SizedBox(height: ResponsiveUtils.hp(2)),
-                          Container(
-                            width: double.infinity,
-                            height: 220,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              image: const DecorationImage(
-                                image: AssetImage('assets/images/management.webp'),
-                                fit: BoxFit.cover,
+                          ],
+                        ),
+                        padding: EdgeInsets.all(ResponsiveUtils.wp(3)),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Use of Water to Mitigate Heat Stress'.tr,
+                              style: _sectionTitleStyle,
+                            ),
+                            SizedBox(height: ResponsiveUtils.hp(2)),
+                            Container(
+                              width: double.infinity,
+                              height: ResponsiveUtils.hp(25),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                image: const DecorationImage(
+                                  image: AssetImage('assets/images/management.webp'),
+                                  fit: BoxFit.cover,
+                                ),
                               ),
                             ),
-                          ),
-                          SizedBox(height: ResponsiveUtils.hp(2)),
-                          Reusabledescription(desciption: 'The most effective way of combating heat stress in buffalo is wallowing in the water pond'.tr),
-                          Reusabledescription(desciption: 'Various cooling systems have been developed for evaporative cooling such as holding-pen cooling, exit-lane cooling, and free-stall cooling. These systems are applicable for the animals maintained in covered pucca sheds. An evaporative system which uses water mist with fan is more effective and economises water use in comparison to repeatedly bathing the animals'.tr),
-                          Reusabledescription(desciption: 'The buffalo needs at least twice a day bath in the summer. Misting/Fogging of water in the microenvironment of the animal at least thrice in an hour along with provision of fan is useful in hot dry weather. Auto Mister/ Fugger with mini pumps and cyclic timers are preferable'.tr),
-                          Reusabledescription(desciption: 'Heat stress can also be managed by spraying/ sprinkling water directly on the body of animals for a period of 1 to 5 minutes at an interval of 10- 30 minutes. Fans/blowers should be used to induce evaporation from the skin of animals'.tr),
-                          Reusabledescription(desciption: 'Ensure adequate round the clock drinking water to animals, which should be provided under shade'.tr),
-                        ],
+                            SizedBox(height: ResponsiveUtils.hp(2)),
+                            Reusabledescription(
+                              desciption: 'The most effective way of combating heat stress in buffalo is wallowing in the water pond.'.tr,
+                              textStyle: TextStyle(fontSize: ResponsiveUtils.wp(2.5)),
+                            ),
+                            Reusabledescription(
+                              desciption:
+                              'Evaporative cooling systems like holding-pen cooling, exit-lane cooling, and free-stall cooling are applicable in covered sheds. An evaporative system using water mist with fans is more efficient and economizes water compared to bathing.'
+                                  .tr,
+                              textStyle: TextStyle(fontSize: ResponsiveUtils.wp(2.5)),
+                            ),
+                            Reusabledescription(
+                              desciption:
+                              'Buffalo need at least two baths per day in summer. Misting/fogging the microenvironment thrice per hour with fans helps in hot-dry weather. Automatic misters with mini pumps and timers are preferable.'
+                                  .tr,
+                              textStyle: TextStyle(fontSize: ResponsiveUtils.wp(2.5)),
+                            ),
+                            Reusabledescription(
+                              desciption:
+                              'Spraying or sprinkling water directly on animals for 1–5 minutes every 10–30 minutes, combined with fans/blowers, increases evaporative heat loss.'
+                                  .tr,
+                              textStyle: TextStyle(fontSize: ResponsiveUtils.wp(2.5)),
+                            ),
+                            Reusabledescription(
+                              desciption: 'Ensure round-the-clock access to drinking water under shade.'.tr,
+                              textStyle: TextStyle(fontSize: ResponsiveUtils.wp(2.5)),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ),
+
+                  // Other Heat Stress Management Strategies Tab
                   SingleChildScrollView(
-                    child: Container(
-                      width: double.infinity,
-                      margin: EdgeInsets.all(ResponsiveUtils.wp(2)),
-                      padding: EdgeInsets.all(ResponsiveUtils.wp(3)),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        border: Border.all(color: Colors.grey.shade300),
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Other Heat Stress Management Strategies'.tr,
-                            style: TextStyle(
-                              fontSize: ResponsiveUtils.wp(2.8),
-                              fontWeight: FontWeight.w700,
+                    child: Padding(
+                      padding: EdgeInsets.all(ResponsiveUtils.wp(2)),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          border: Border.all(color: Colors.grey.shade300),
+                          borderRadius: BorderRadius.circular(12),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey.shade200,
+                              blurRadius: 6,
+                              offset: const Offset(0, 3),
                             ),
-                          ),
-                          SizedBox(height: ResponsiveUtils.hp(2)),
-                          Container(
-                            width: double.infinity,
-                            height: 220,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              image: const DecorationImage(
-                                image: AssetImage('assets/images/other strategies.webp'),
-                                fit: BoxFit.cover,
+                          ],
+                        ),
+                        padding: EdgeInsets.all(ResponsiveUtils.wp(3)),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Other Heat Stress Management Strategies'.tr,
+                              style: _sectionTitleStyle,
+                            ),
+                            SizedBox(height: ResponsiveUtils.hp(2)),
+                            Container(
+                              width: double.infinity,
+                              height: ResponsiveUtils.hp(25),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                image: const DecorationImage(
+                                  image: AssetImage('assets/images/other strategies.webp'),
+                                  fit: BoxFit.cover,
+                                ),
                               ),
                             ),
-                          ),
-                          SizedBox(height: ResponsiveUtils.hp(2)),
-                          Reusabledescription(desciption: 'During heat stress conditions buffaloes should not be allowed to move freely during day hours because they need protection against warm air storms, direct sun exposure and they should be provided with shelter in cool and shady places'.tr),
-                          Reusabledescription(desciption: 'The most effective source of shade is trees. They provide not only protection from sunlight, but also create a cooling effect through the evaporation of moisture from their leaves'.tr),
-                          Reusabledescription(desciption: 'If shade trees are not available, thatched roof of a minimum height of 9 feet should be provided. Agri-nets with 20% perforation are also useful. If facilities are not available with the individual farmers, facilities available at the village shall be used by the community. Materials like paddy straw etc, painting the roof with white paint or, providing a false ceiling insulation will help provide a cooler environment. Create barriers against hot wind using thatched wall or wet gunny cloth/ gunny bags'.tr),
-                          Reusabledescription(desciption: 'The buffalo shed should be well ventilated that the polluted air can directly diffused outside and clean and fresh air can enter into it. Ensure one ventilator of 3 x 1 feet per cow in covered shed. In these sheds heavy duty fan is best option to facilitate ventilation'.tr),
-                          Reusabledescription(desciption: 'The proper plantation should be managed in surroundings so that the environment may be cool and fresh and warm air storm could not enter directly in the shed'.tr),
-                          Reusabledescription(desciption: 'Air movement: Air movement is more important during hot-humid climate for providing cooling and comfort to the animal. Air movement increases the rate of heat loss from animals body surface, only as long as the air temperature is lower than the animals skin temperature'.tr),
-                          Reusabledescription(desciption: 'Feeding should be practiced during early morning, evening and at night'.tr),
-                          Reusabledescription(desciption: 'Prefer grazing during early morning and late evening hours to avoid the heat stress'.tr),
-                          Reusabledescription(desciption: 'Ration density may be increased so as to provide same nutrients at reduced dry matter intake. Diets with low-fibre and high fermentable carbohydrate have lower dietary heat increment compared to high fibre diets'.tr),
-                          Reusabledescription(desciption: 'Ensure increased mineral supplementation during hot weather to meet the increased demand of minerals. Potassium rich mineral mixture should be preferred'.tr),
-                        ],
+                            SizedBox(height: ResponsiveUtils.hp(2)),
+                            Reusabledescription(
+                              desciption:
+                              'During heat stress, buffaloes should not be allowed to move freely during day hours. They need protection from warm air storms and direct sun and should have cool, shady shelters.'
+                                  .tr,
+                              textStyle: TextStyle(fontSize: ResponsiveUtils.wp(2.5)),
+                            ),
+                            Reusabledescription(
+                              desciption:
+                              'Shade trees provide protection and cooling via moisture evaporation from leaves.'
+                                  .tr,
+                              textStyle: TextStyle(fontSize: ResponsiveUtils.wp(2.5)),
+                            ),
+                            Reusabledescription(
+                              desciption:
+                              'If trees are unavailable, a thatched roof of at least 9 feet is useful. Agri-nets (20% perforation), white-painted roofs, false ceiling insulation, or barriers (thatched walls or wet gunny cloth) help create cooler environments.'
+                                  .tr,
+                              textStyle: TextStyle(fontSize: ResponsiveUtils.wp(2.5)),
+                            ),
+                            Reusabledescription(
+                              desciption:
+                              'Sheds should be well-ventilated so polluted air exits and fresh air enters. Provide one 3×1 ft ventilator per cow in covered sheds; heavy-duty fans aid ventilation.'
+                                  .tr,
+                              textStyle: TextStyle(fontSize: ResponsiveUtils.wp(2.5)),
+                            ),
+                            Reusabledescription(
+                              desciption:
+                              'Plant trees around sheds to cool the environment and block warm winds.'
+                                  .tr,
+                              textStyle: TextStyle(fontSize: ResponsiveUtils.wp(2.5)),
+                            ),
+                            Reusabledescription(
+                              desciption:
+                              'Air movement is crucial in hot-humid climates for cooling; it increases heat loss if air temperature is below skin temperature.'
+                                  .tr,
+                              textStyle: TextStyle(fontSize: ResponsiveUtils.wp(2.5)),
+                            ),
+                            Reusabledescription(
+                              desciption:
+                              'Feed during early morning, evening, and night to avoid heat peaks.'
+                                  .tr,
+                              textStyle: TextStyle(fontSize: ResponsiveUtils.wp(2.5)),
+                            ),
+                            Reusabledescription(
+                              desciption:
+                              'Prefer grazing in early morning and late evening when temperatures are lower.'
+                                  .tr,
+                              textStyle: TextStyle(fontSize: ResponsiveUtils.wp(2.5)),
+                            ),
+                            Reusabledescription(
+                              desciption:
+                              'Increase ration density to deliver nutrients with reduced dry matter intake. Low-fibre, high-fermentable carbohydrate diets produce lower dietary heat increment.'
+                                  .tr,
+                              textStyle: TextStyle(fontSize: ResponsiveUtils.wp(2.5)),
+                            ),
+                            Reusabledescription(
+                              desciption:
+                              'Provide increased mineral supplementation during heat; potassium-rich mineral mixtures are preferred.'
+                                  .tr,
+                              textStyle: TextStyle(fontSize: ResponsiveUtils.wp(2.5)),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ),
+
+                  // Managing Cold Stress Tab
                   SingleChildScrollView(
-                    child: Container(
-                      width: double.infinity,
-                      margin: EdgeInsets.all(ResponsiveUtils.wp(2)),
-                      padding: EdgeInsets.all(ResponsiveUtils.wp(3)),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        border: Border.all(color: Colors.grey.shade300),
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Managing Cold Stress'.tr,
-                            style: TextStyle(
-                              fontSize: ResponsiveUtils.wp(2.8),
-                              fontWeight: FontWeight.w700,
+                    child: Padding(
+                      padding: EdgeInsets.all(ResponsiveUtils.wp(2)),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          border: Border.all(color: Colors.grey.shade300),
+                          borderRadius: BorderRadius.circular(12),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey.shade200,
+                              blurRadius: 6,
+                              offset: const Offset(0, 3),
                             ),
-                          ),
-                          SizedBox(height: ResponsiveUtils.hp(2)),
-                          Container(
-                            width: double.infinity,
-                            height: 220,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              image: const DecorationImage(
-                                image: AssetImage('assets/images/other strategies.webp'),
-                                fit: BoxFit.cover,
+                          ],
+                        ),
+                        padding: EdgeInsets.all(ResponsiveUtils.wp(3)),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Managing Cold Stress'.tr,
+                              style: _sectionTitleStyle,
+                            ),
+                            SizedBox(height: ResponsiveUtils.hp(2)),
+                            Container(
+                              width: double.infinity,
+                              height: ResponsiveUtils.hp(25),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                image: const DecorationImage(
+                                  image: AssetImage('assets/images/other strategies.webp'),
+                                  fit: BoxFit.cover,
+                                ),
                               ),
                             ),
-                          ),
-                          SizedBox(height: ResponsiveUtils.hp(2)),
-                          Reusabledescription(desciption: 'Monitor weather conditions and act accordingly. Monitor temperature changes and provide more feed to animals in colder weather conditions'.tr),
-                          Reusabledescription(desciption: 'Ensure there is enough shelter from the wind. Effects of cold stress increase when wind speed increases. Any kind of available protection, whether it is natural (bush, valley bottoms or hillsides) or man-made (such as simple windbreak fences or shelters) can be highly valuable in helping animals cope with extreme temperatures and wind-chill effects'.tr),
-                          Reusabledescription(desciption: 'Provide bedding to help keep animal clean and dry. Bedding, such as barley straw, helps to withstand cold stress'.tr),
-                          Reusabledescription(desciption: 'Provide additional feed. Increase grain and hay for when temperatures drop below the lower critical threshold level'.tr),
-                          Reusabledescription(desciption: 'Provide water. Make sure animals have ample water available at all times. A limit in water available will limit feed intake and make it more difficult for animal to meet their energy requirements. Excessively cold water can severely limit water intake'.tr),
-                        ],
+                            SizedBox(height: ResponsiveUtils.hp(2)),
+                            Reusabledescription(
+                              desciption:
+                              'Monitor weather conditions and provide extra feed during colder temperatures.'
+                                  .tr,
+                              textStyle: TextStyle(fontSize: ResponsiveUtils.wp(2.5)),
+                            ),
+                            Reusabledescription(
+                              desciption:
+                              'Ensure windbreaks or shelters to protect animals from cold winds; natural bushes or simple fences can be effective.'
+                                  .tr,
+                              textStyle: TextStyle(fontSize: ResponsiveUtils.wp(2.5)),
+                            ),
+                            Reusabledescription(
+                              desciption:
+                              'Provide bedding, such as straw, to keep animals clean and dry and help them withstand cold stress.'
+                                  .tr,
+                              textStyle: TextStyle(fontSize: ResponsiveUtils.wp(2.5)),
+                            ),
+                            Reusabledescription(
+                              desciption:
+                              'Increase grain and hay when temperatures drop below the lower critical threshold.'
+                                  .tr,
+                              textStyle: TextStyle(fontSize: ResponsiveUtils.wp(2.5)),
+                            ),
+                            Reusabledescription(
+                              desciption:
+                              'Ensure ample water is available; warm water may be necessary to encourage intake, as cold water can limit consumption.'
+                                  .tr,
+                              textStyle: TextStyle(fontSize: ResponsiveUtils.wp(2.5)),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ),

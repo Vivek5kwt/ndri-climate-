@@ -1202,6 +1202,13 @@ Map<String, String> bengali = {
     "SUN": "রবি",
     "kmps": "কিমি.",
     "mm": "মিমি",
+    "Max Temp": "সর্বোচ্চ টেম্প",
+    "Min Temp": "সর্বনিম্ন টেম্প",
+    "Rainfall": "বৃষ্টিপাত",
+    "Humidity": "আর্দ্রতা",
+    "Wind Speed": "বাতাসের গতি",
+    "Wind Dir": "হাওয়া দির",
+    "Cloud Cover": "মেঘের আচ্ছাদন",
     "(octa)": "(অক্টা)"
   })
   ..addAll({

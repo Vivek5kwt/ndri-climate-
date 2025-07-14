@@ -151,9 +151,9 @@ class _Dialogue_pageState extends State<Dialogue_page> {
               context,
               MaterialPageRoute(
                 builder: (context) => Dashboard(
-                  selectdist: _districtController.text,
-                  selectstate: _stateController.text,
-                  selectlang: _languageController.text,
+                  selectDist: _districtController.text,
+                  selectState: _stateController.text,
+                  selectLang: _languageController.text,
                 ),
               ),
             );

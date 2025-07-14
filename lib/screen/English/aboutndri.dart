@@ -25,39 +25,33 @@ class AboutNdri extends StatelessWidget {
       body: Container(
         width: 1.sw,
         height: 1.sh,
-        padding: EdgeInsets.all(18.w),
+        padding: EdgeInsets.symmetric(horizontal: 18.w, vertical: 12.h),
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(height: 10.h),
-              RichText(
+              Text(
+                'The National Dairy Research Institute, Karnal, India is a Deemed University under the Indian Council of Agricultural Research of the Ministry of Agriculture and Farmers Welfare, Government of India. The premier ‘Research Institute’ of India in the field of dairy, the National Dairy Research Institute has developed considerable expertise over the last five decades in different areas of Dairy Production, Processing, Management and Human Resource Development.'
+                    .tr,
                 textAlign: TextAlign.justify,
-                text: TextSpan(
-                  children: [
-                    TextSpan(
-                      text:
-                      'The National Dairy Research Institute, Karnal, India is a Deemed University under the Indian Council of Agricultural Research of the Ministry of Agriculture and Farmers Welfare, Government of India. The premier ‘Research Institute’ of India in the field of dairy, the National Dairy Research Institute has developed considerable expertise over the last five decades in different areas of Dairy Production, Processing, Management and Human Resource Development.\n\n'
-                          .tr,
-                      style: TextStyle(
-                        fontSize: 16.sp,
-                        fontWeight: FontWeight.w500,
-                        height: 1.7,
-                        color: Colors.black,
-                      ),
-                    ),
-                    TextSpan(
-                      text:
-                      'Being the National Institute, it conducts basic and applied research with the objective to enhance animal productivity and also to develop cost-effective technologies for the benefit of the millions of the farming community. The Institute has had been continuously working to develop its research and developed as well as human resource development programmes to better serve the nation in terms of food security, employment generation, poverty alleviation and economic prosperity.'
-                          .tr,
-                      style: TextStyle(
-                        fontSize: 16.sp,
-                        fontWeight: FontWeight.w500,
-                        height: 1.7,
-                        color: Colors.black,
-                      ),
-                    ),
-                  ],
+                style: TextStyle(
+                  fontSize: 14.sp,
+                  fontWeight: FontWeight.w500,
+                  height: 1.7,
+                  color: Colors.black,
+                ),
+              ),
+              SizedBox(height: 16.h),
+              Text(
+                'Being the National Institute, it conducts basic and applied research with the objective to enhance animal productivity and also to develop cost-effective technologies for the benefit of the millions of the farming community. The Institute has had been continuously working to develop its research and developed as well as human resource development programmes to better serve the nation in terms of food security, employment generation, poverty alleviation and economic prosperity.'
+                    .tr,
+                textAlign: TextAlign.justify,
+                style: TextStyle(
+                  fontSize: 14.sp,
+                  fontWeight: FontWeight.w500,
+                  height: 1.7,
+                  color: Colors.black,
                 ),
               ),
               SizedBox(height: 16.h),
