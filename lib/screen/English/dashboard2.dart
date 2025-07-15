@@ -309,7 +309,7 @@ class _DashboardState extends State<Dashboard> {
                     ),
                     child: Stack(
                       children: [
-                        // Dark gradient overlay for text contrast
+                        // Dark gradien t overlay for text contrast
                         Positioned.fill(
                           child: Container(
                             decoration: BoxDecoration(
