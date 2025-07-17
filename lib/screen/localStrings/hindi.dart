@@ -9,7 +9,7 @@ class LocalString extends Translations {
   Map<String, Map<String, String>> get keys => {
         'en_US': {},
         'pa_IN': pbi,
-        'bn_In': bengali,
+        'bn_IN': bengali,
         'hi_IN': {
           'Dairy Animal and Climate Change': 'डेरी पशु और जलवायु परिवर्तन',
           'NDRI Climate Services':
