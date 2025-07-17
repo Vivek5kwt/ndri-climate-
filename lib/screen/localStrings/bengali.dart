@@ -22,6 +22,8 @@ Map<String, String> bengali = {
   'Daily forecast': 'দৈনিক পূর্বাভাস',
   'Climate Advisory': 'জলবায়ু পরামর্শ',
   'Past advisories': 'পুরাতন পরামর্শ',
+  'No advisories available': 'কোন পরামর্শ পাওয়া যায়নি',
+  'No advisories available for this period.': 'এই সময়কালের জন্য কোন পরামর্শ পাওয়া যায়নি',
   'Location': 'স্থান',
   'Language': 'ভাষা',
   'Distt': 'জেলা ',
@@ -49,6 +51,7 @@ Map<String, String> bengali = {
   'Impact of climate change on dairy animal':
       'ডেইরি প্রাণীর উপর জলবায়ু পরিবর্তনের প্রভাব',
   'Climate services': 'জলবায়ু পরিষেবা',
+  'Climate Services': 'জলবায়ু পরিষেবা',
   'Feedback/Raise Your Question': 'প্রতিক্রিয়া/প্রশ্ন করুন',
   'Name': 'নাম',
   'District': 'জেলা',
@@ -1219,21 +1222,22 @@ Map<String, String> bengali = {
   ..addAll({
     "Management During Thermal Stress": "তাপীয় প্রবাহের সময় ব্যবস্থাপনা",
     "Symptoms of Heat Stress": "তাপ চাপের লক্ষণ",
-    "Thermal stress occurs when the ambient temperature lies above or below thermoneutral zone.Dairy animals have been found to be negatively impacted with increased temperature and humidity":
+    "Thermal stress occurs when the ambient temperature lies above or below thermoneutral zone. Dairy animals have been found to be negatively impacted with increased temperature and humidity.":
         "তাপীয় প্রবাহ ঘটে যখন পারিপার্শ্বিক তাপমাত্রা সহনশীল তাপমাত্রার উপর বা নিচে থাকে। দুধদানকারী পশুদের, তাপমাত্রা এবং আর্দ্রতা বৃদ্ধির কারণে প্রবাহ নেতিবাচকভাবে প্রভাবিত হতে দেখা গেছে।",
-    "Rapid and weak pulse and Rapid but shallow breathing":
+    "Rapid and weak pulse and rapid but shallow breathing":
         "দ্রুত এবং দুর্বল নাড়ি এবং দ্রুত কিন্তু অগভীর শ্বাস",
-    "Abnormal vital parameters: Elevated heart rate, respiration rate, rectal temperature etc":
-        "অস্বাভাবিক গুরুত্বপূর্ণ সঙ্কেত: হৃদস্পন্দনের হার, শ্বাসপ্রশ্বাসের হার, রেকটাল তাপমাত্রা ইত্যাদি বৃদ্ধি পাওয়া।",
-    "Unusual salivation and Dizziness / unconsciousness":
+    "Abnormal vital parameters: Elevated heart rate, respiration rate, rectal temperature etc.":
+        "অস্বাভাবিক গুরুত্বপূর্ণ সঙ্কেত: হৃদস্পন্দনের হার, শ্বাসপ্রশ্বাসের হার, রেকটাল তাপমাত্রা ইত্যাদি বৃদ্ধি পাওয়া।",
+    "Unusual salivation and dizziness/unconsciousness":
         "অস্বাভাবিক লালাস্রাব এবং মাথা ঘোরা/অচেতনতা",
     "Skin becomes dull and may be cold":
         "ত্বক ম্লান হয়ে যায় এবং ঠান্ডা হতে পারে",
-    "In case of heat stroke, body temperature is very high sometimes as high as 106 - 108°F":
+    "In case of heat stroke, body temperature is very high sometimes as high as 106 - 108°F.":
         "তাপীয় প্রবাহের ফলে, শরীরের তাপমাত্রা খুব বেশি হয় – কখনও কখনও তাপমাত্রা ১০৬ – ১০৮°F পর্যন্ত হয়ে যায়।",
     "Use of Water to Mitigate Heat Stress":
         "তাপীয় প্রবাহ কমানোর জন্য জলের ",
     "Use of water": "জল ব্যবহার",
+    "Use of Water": "জল ব্যবহার",
     "The most effective way of combating heat stress in buffalo is wallowing in the water pond":
         "গবাদী পশুর তাপীয় প্রবাহ মোকাবেলার সবচেয়ে কার্যকর উপায় হল পশুকে পুকুরের নিয়ে যাওয়া।",
     "Various cooling systems have been developed for evaporative cooling such as holding-pen cooling,exit-lane cooling, and free-stall cooling. These systems are applicable for the animals maintained in covered pucca sheds. An evaporative system which uses water mist with fan is more effective and economises water use in comparison to repeatedly bathing the animals":

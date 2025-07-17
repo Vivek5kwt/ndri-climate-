@@ -21,6 +21,8 @@ Map<String, String> pbi = {
   'Daily forecast': 'ਰੋਜ਼ਾਨਾ ਭਵਿੱਖਬਾਣੀ',
   'Climate Advisory': 'ਮੌਸਮ ਸਲਾਹ',
   'Past advisories': 'ਪਿਛਲੀਆਂ ਸਲਾਹਾਂ',
+  'No advisories available': 'ਕੋਈ ਸਲਾਹ ਉਪਲਬਧ ਨਹੀਂ',
+  'No advisories available for this period.': 'ਇਸ ਮਿਆਦ ਲਈ ਕੋਈ ਸਲਾਹ ਉਪਲਬਧ ਨਹੀਂ',
   'Location': '',
   'Language': 'ਭਾਸ਼ਾ',
   'Distt': 'ਜ਼ਿਲ੍ਹਾ',
@@ -46,6 +48,7 @@ Map<String, String> pbi = {
   'Impact of climate change on dairy animal':
       'ਡੇਰੀ  ਪਸ਼ੂਆਂ `ਤੇ ਮੌਸਮੀ ਤਬਦੀਲੀ ਦਾ ਅਸਰ',
   'Climate services': 'ਮੌਸਮ ਸੇਵਾਵਾਂ',
+  'Climate Services': 'ਮੌਸਮ ਸੇਵਾਵਾਂ',
   'Feedback/Raise Your Question': 'ਫੀਡਬੈਕ/ਸਵਾਲ ਲਿਖੋ',
   'Name': 'ਨਾਮ',
   'District': 'ਜ਼ਿਲ੍ਹਾ',
@@ -1203,21 +1206,22 @@ Map<String, String> pbi = {
   ..addAll({
     "Management During Thermal Stress": "ਤਾਪਮਾਨ ਤਣਾਅ ਦੌਰਾਨ ਪ੍ਰਬੰਧਨ",
     "Symptoms of Heat Stress": "ਗਰਮੀ ਦੇ ਤਣਾਅ ਦੇ ਲੱਛਣ",
-    "Thermal stress occurs when the ambient temperature lies above or below thermoneutral zone.Dairy animals have been found to be negatively impacted with increased temperature and humidity":
+    "Thermal stress occurs when the ambient temperature lies above or below thermoneutral zone. Dairy animals have been found to be negatively impacted with increased temperature and humidity.":
         "ਤਾਪਮਾਨ ਤਣਾਅ ਤਦ ਹੁੰਦਾ ਹੈ ਜਦੋਂ ਵਾਤਾਵਰਣ ਤਾਪਮਾਨ ਤਾਪਮਾਨ-ਨਿਊਟ੍ਰਲ ਜ਼ੋਨ ਤੋਂ ਉਪਰ ਜਾਂ ਹੇਠਾਂ ਹੁੰਦਾ ਹੈ। ਵਧੇ ਹੋਏ ਤਾਪਮਾਨ ਅਤੇ ਨਮੀ ਨਾਲ ਡੇਰੀ ਜਾਨਵਰਾਂ 'ਤੇ ਮਾੜਾ ਅਸਰ ਪਾਇਆ ਗਿਆ ਹੈ।",
-    "Rapid and weak pulse and Rapid but shallow breathing":
+    "Rapid and weak pulse and rapid but shallow breathing":
         "ਤੇਜ਼ ਅਤੇ ਕਮਜ਼ੋਰ ਨਬਜ਼ ਅਤੇ ਤੇਜ਼ ਪਰ ਘੱਟ ਸਾਹ ਲੈਣਾ।",
-    "Abnormal vital parameters: Elevated heart rate, respiration rate, rectal temperature etc":
+    "Abnormal vital parameters: Elevated heart rate, respiration rate, rectal temperature etc.":
         "ਅਸਧਾਰਨ ਮਹੱਤਵਪੂਰਣ ਮਾਪਦੰਡ: ਉੱਚੀ ਹੋਈ ਦਿਲ ਦੀ ਧੜਕਣ, ਸਾਹ ਦੀ ਦਰ, ਗੁਦੇ ਦਾ ਤਾਪਮਾਨ ਆਦਿ।",
-    "Unusual salivation and Dizziness / unconsciousness":
+    "Unusual salivation and dizziness/unconsciousness":
         "ਅਸਧਾਰਨ ਲਾਰ ਅਤੇ ਚੱਕਰ ਆਉਣੇ / ਬੇਹੋਸ਼ੀ।",
     "Skin becomes dull and may be cold":
         "ਚਮੜੀ ਨੀਰਸ ਹੋ ਜਾਂਦੀ ਹੈ ਅਤੇ ਠੰਡੀ ਹੋ ਸਕਦੀ ਹੈ।",
-    "In case of heat stroke, body temperature is very high sometimes as high as 106 - 108°F":
+    "In case of heat stroke, body temperature is very high sometimes as high as 106 - 108°F.":
         "ਹੀਟ ਸਟ੍ਰੋਕ ਦੇ ਮਾਮਲੇ ਵਿੱਚ, ਸ਼ਰੀਰ ਦਾ ਤਾਪਮਾਨ ਬਹੁਤ ਉੱਚਾ ਹੁੰਦਾ ਹੈ—ਕਦੇ-ਕਦੇ 106-108°F ਤੱਕ।",
     "Use of Water to Mitigate Heat Stress":
         "ਗਰਮੀ ਦੇ ਤਣਾਅ ਨੂੰ ਘਟਾਉਣ ਲਈ ਪਾਣੀ ਦੀ ਵਰਤੋਂ",
     "Use of water": "ਪਾਣੀ ਦੀ ਵਰਤੋਂ",
+    "Use of Water": "ਪਾਣੀ ਦੀ ਵਰਤੋਂ",
     "The most effective way of combating heat stress in buffalo is wallowing in the water pond":
         "ਮੱਝਾਂ ਅਤੇ ਗਾਵਾਂ ਵਿੱਚ ਗਰਮੀ ਦੇ ਤਣਾਅ ਦਾ ਮੁਕਾਬਲਾ ਕਰਨ ਦਾ ਸਭ ਤੋਂ ਪ੍ਰਭਾਵਸ਼ਾਲੀ ਤਰੀਕਾ ਪਾਣੀ ਦੇ ਛੱਪੜ ਵਿੱਚ ਨ੍ਹਾਣਾ ਹੈ।",
     "Various cooling systems have been developed for evaporative cooling such as holding-pen cooling,exit-lane cooling, and free-stall cooling. These systems are applicable for the animals maintained in covered pucca sheds. An evaporative system which uses water mist with fan is more effective and economises water use in comparison to repeatedly bathing the animals":

@@ -9,7 +9,7 @@ class LocalString extends Translations {
   Map<String, Map<String, String>> get keys => {
         'en_US': {},
         'pa_IN': pbi,
-        'bn_In': bengali,
+        'bn_IN': bengali,
         'hi_IN': {
           'Dairy Animal and Climate Change': 'डेरी पशु और जलवायु परिवर्तन',
           'NDRI Climate Services':
@@ -34,6 +34,9 @@ class LocalString extends Translations {
           'Daily forecast': 'दैनिक पूर्वानुमान',
           'Climate Advisory': 'जलवायु सलाह',
           'Past advisories': 'पिछली सलाह',
+          'No advisories available': 'कोई सलाह उपलब्ध नहीं है',
+          'No advisories available for this period.':
+              'इस अवधि के लिए कोई सलाह उपलब्ध नहीं है',
           'Location': '',
           'Language': 'भाषा',
           'Distt': 'ज़िला',
@@ -63,6 +66,7 @@ class LocalString extends Translations {
           'Impact of climate change on dairy animal':
               'डेरी पशुओं पर जलवायु परिवर्तन का प्रभाव',
           'Climate services': 'जलवायु सेवाएं',
+          'Climate Services': 'जलवायु सेवाएं',
           'Feedback/Raise Your Question': 'प्रतिक्रिया/प्रश्न लिखें',
           'Name': 'नाम',
           'District': 'ज़िला',
@@ -1217,21 +1221,22 @@ class LocalString extends Translations {
           ..addAll({
             "Management During Thermal Stress": "थर्मल तनाव के दौरान प्रबंधन",
             "Symptoms of Heat Stress": "गर्मी के तनाव के लक्षण",
-            "Thermal stress occurs when the ambient temperature lies above or below thermoneutral zone.Dairy animals have been found to be negatively impacted with increased temperature and humidity":
+            "Thermal stress occurs when the ambient temperature lies above or below thermoneutral zone. Dairy animals have been found to be negatively impacted with increased temperature and humidity.":
                 "थर्मल तनाव तब होता है जब परिवेश का तापमान थर्मोन्यूट्रल ज़ोन से ऊपर या नीचे होता है। डेरी जानवरों पर बढ़ते तापमान और आर्द्रता का नकारात्मक प्रभाव पड़ता है।",
-            "Rapid and weak pulse and Rapid but shallow breathing":
+            "Rapid and weak pulse and rapid but shallow breathing":
                 "तेज और कमजोर नाड़ी और तेज लेकिन उथली साँस लेना",
-            "Abnormal vital parameters: Elevated heart rate, respiration rate, rectal temperature etc":
+            "Abnormal vital parameters: Elevated heart rate, respiration rate, rectal temperature etc.":
                 "असामान्य महत्वपूर्ण पैरामीटर: बढ़ी हुई हृदय गति, श्वसन दर, मलाशय तापमान आदि।",
-            "Unusual salivation and Dizziness / unconsciousness":
+            "Unusual salivation and dizziness/unconsciousness":
                 "असामान्य लार और चक्कर / बेहोशी",
             "Skin becomes dull and may be cold":
                 "त्वचा सुस्त हो जाती है और ठंडी हो सकती है",
-            "In case of heat stroke, body temperature is very high sometimes as high as 106 - 108°F":
+            "In case of heat stroke, body temperature is very high sometimes as high as 106 - 108°F.":
                 "हीट स्ट्रोक के मामले में, शरीर का तापमान बहुत अधिक होता है - कभी-कभी 106 - 108°F तक।",
             "Use of Water to Mitigate Heat Stress":
                 "गर्मी के तनाव को कम करने के लिए पानी का उपयोग",
             "Use of water": "पानी का उपयोग",
+            "Use of Water": "पानी का उपयोग",
             "The most effective way of combating heat stress in buffalo is wallowing in the water pond":
                 "भैंस में गर्मी के तनाव से निपटने का सबसे प्रभावी तरीका जलाशय में स्नान करना है।",
             "Various cooling systems have been developed for evaporative cooling such as holding-pen cooling,exit-lane cooling, and free-stall cooling. These systems are applicable for the animals maintained in covered pucca sheds. An evaporative system which uses water mist with fan is more effective and economises water use in comparison to repeatedly bathing the animals":
