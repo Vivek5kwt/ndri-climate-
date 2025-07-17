@@ -9,7 +9,7 @@ class LocalString extends Translations {
   Map<String, Map<String, String>> get keys => {
         'en_US': {},
         'pa_IN': pbi,
-        'bn_In': bengali,
+        'bn_IN': bengali,
         'hi_IN': {
           'Dairy Animal and Climate Change': 'डेरी पशु और जलवायु परिवर्तन',
           'NDRI Climate Services':
@@ -34,6 +34,9 @@ class LocalString extends Translations {
           'Daily forecast': 'दैनिक पूर्वानुमान',
           'Climate Advisory': 'जलवायु सलाह',
           'Past advisories': 'पिछली सलाह',
+          'No advisories available': 'कोई सलाह उपलब्ध नहीं है',
+          'No advisories available for this period.':
+              'इस अवधि के लिए कोई सलाह उपलब्ध नहीं है',
           'Location': '',
           'Language': 'भाषा',
           'Distt': 'ज़िला',
@@ -63,6 +66,7 @@ class LocalString extends Translations {
           'Impact of climate change on dairy animal':
               'डेरी पशुओं पर जलवायु परिवर्तन का प्रभाव',
           'Climate services': 'जलवायु सेवाएं',
+          'Climate Services': 'जलवायु सेवाएं',
           'Feedback/Raise Your Question': 'प्रतिक्रिया/प्रश्न लिखें',
           'Name': 'नाम',
           'District': 'ज़िला',
@@ -1217,21 +1221,22 @@ class LocalString extends Translations {
           ..addAll({
             "Management During Thermal Stress": "थर्मल तनाव के दौरान प्रबंधन",
             "Symptoms of Heat Stress": "गर्मी के तनाव के लक्षण",
-            "Thermal stress occurs when the ambient temperature lies above or below thermoneutral zone.Dairy animals have been found to be negatively impacted with increased temperature and humidity":
+            "Thermal stress occurs when the ambient temperature lies above or below thermoneutral zone. Dairy animals have been found to be negatively impacted with increased temperature and humidity.":
                 "थर्मल तनाव तब होता है जब परिवेश का तापमान थर्मोन्यूट्रल ज़ोन से ऊपर या नीचे होता है। डेरी जानवरों पर बढ़ते तापमान और आर्द्रता का नकारात्मक प्रभाव पड़ता है।",
-            "Rapid and weak pulse and Rapid but shallow breathing":
+            "Rapid and weak pulse and rapid but shallow breathing":
                 "तेज और कमजोर नाड़ी और तेज लेकिन उथली साँस लेना",
-            "Abnormal vital parameters: Elevated heart rate, respiration rate, rectal temperature etc":
+            "Abnormal vital parameters: Elevated heart rate, respiration rate, rectal temperature etc.":
                 "असामान्य महत्वपूर्ण पैरामीटर: बढ़ी हुई हृदय गति, श्वसन दर, मलाशय तापमान आदि।",
-            "Unusual salivation and Dizziness / unconsciousness":
+            "Unusual salivation and dizziness/unconsciousness":
                 "असामान्य लार और चक्कर / बेहोशी",
             "Skin becomes dull and may be cold":
                 "त्वचा सुस्त हो जाती है और ठंडी हो सकती है",
-            "In case of heat stroke, body temperature is very high sometimes as high as 106 - 108°F":
+            "In case of heat stroke, body temperature is very high sometimes as high as 106 - 108°F.":
                 "हीट स्ट्रोक के मामले में, शरीर का तापमान बहुत अधिक होता है - कभी-कभी 106 - 108°F तक।",
             "Use of Water to Mitigate Heat Stress":
                 "गर्मी के तनाव को कम करने के लिए पानी का उपयोग",
             "Use of water": "पानी का उपयोग",
+            "Use of Water": "पानी का उपयोग",
             "The most effective way of combating heat stress in buffalo is wallowing in the water pond":
                 "भैंस में गर्मी के तनाव से निपटने का सबसे प्रभावी तरीका जलाशय में स्नान करना है।",
             "Various cooling systems have been developed for evaporative cooling such as holding-pen cooling,exit-lane cooling, and free-stall cooling. These systems are applicable for the animals maintained in covered pucca sheds. An evaporative system which uses water mist with fan is more effective and economises water use in comparison to repeatedly bathing the animals":
@@ -1240,6 +1245,14 @@ class LocalString extends Translations {
                 "गर्मियों में भैंस को दिन में कम से कम दो बार स्नान की जरूरत होती है। पशु के माइक्रोएन्वायरनमेंट में एक घंटे में कम से कम तीन बार पानी का मिस्टिंग/फॉगिंग और पंखे का प्रावधान गर्म शुष्क मौसम में उपयोगी होता है। ऑटो मिस्टर/फगर मिनी पंप और साइकलिक टाइमर के साथ बेहतर होते हैं।",
             "Heat stress can also be managed by spraying/ sprinkling water directly on the body of animals for a period of 1 to 5 minutes at an interval of 10- 30 minutes. Fans/blowers should be used to induce evaporation from the skin of animals":
                 "गर्मी के तनाव को जानवरों के शरीर पर सीधे पानी का छिड़काव/स्प्रे करके 1 से 5 मिनट की अवधि के लिए 10-30 मिनट के अंतराल पर प्रबंधित किया जा सकता है। जानवरों की त्वचा से वाष्पीकरण के लिए पंखे/ब्लोअर का उपयोग किया जाना चाहिए।",
+            "Evaporative cooling systems like holding-pen cooling, exit-lane cooling, and free-stall cooling are applicable in covered sheds. An evaporative system using water mist with fans is more efficient and economizes water compared to bathing.":
+                "वाष्पीकरणीय शीतलन के लिए विभिन्न शीतलन प्रणालियाँ विकसित की गई हैं जैसे होल्डिंग-पेन शीतलन,निकास-लेन शीतलन, और फ्री-स्टाल शीतलन। ये प्रणालियाँ कवर किए गए पक्का शेड में रखे गए जानवरों के लिए लागू होती हैं। एक वाष्पीकरणीय प्रणाली जो पंखे के साथ पानी की मिस्ट का उपयोग करती है, वह अधिक प्रभावी है और जानवरों को बार-बार स्नान कराने की तुलना में पानी के उपयोग को बचाती है।",
+            "Buffalo need at least two baths per day in summer. Misting/fogging the microenvironment thrice per hour with fans helps in hot-dry weather. Automatic misters with mini pumps and timers are preferable.":
+                "गर्मियों में भैंस को दिन में कम से कम दो बार स्नान की जरूरत होती है। पशु के माइक्रोएन्वायरनमेंट में एक घंटे में कम से कम तीन बार पानी का मिस्टिंग/फॉगिंग और पंखे का प्रावधान गर्म शुष्क मौसम में उपयोगी होता है। ऑटो मिस्टर/फगर मिनी पंप और साइकलिक टाइमर के साथ बेहतर होते हैं।",
+            "Spraying or sprinkling water directly on animals for 1–5 minutes every 10–30 minutes, combined with fans/blowers, increases evaporative heat loss.":
+                "गर्मी के तनाव को जानवरों के शरीर पर सीधे पानी का छिड़काव/स्प्रे करके 1 से 5 मिनट की अवधि के लिए 10-30 मिनट के अंतराल पर प्रबंधित किया जा सकता है। जानवरों की त्वचा से वाष्पीकरण के लिए पंखे/ब्लोअर का उपयोग किया जाना चाहिए।",
+            "Ensure round-the-clock access to drinking water under shade.":
+                "जानवरों को चौबीसों घंटे पर्याप्त मात्रा में पीने का पानी सुनिश्चित करें, जो छाया में प्रदान किया जाना चाहिए।",
             "Ensure adequate round the clock drinking water to animals, which should be provided under shade":
                 "जानवरों को चौबीसों घंटे पर्याप्त मात्रा में पीने का पानी सुनिश्चित करें, जो छाया में प्रदान किया जाना चाहिए।",
             "Other Heat Stress Management Strategies":
@@ -1248,22 +1261,40 @@ class LocalString extends Translations {
                 "गर्मी के तनाव की स्थिति में भैंसों को दिन के समय स्वतंत्र रूप से घूमने की अनुमति नहीं दी जानी चाहिए क्योंकि उन्हें गर्म हवा के तूफानों, सीधे सूर्य के संपर्क से बचाने की आवश्यकता होती है और उन्हें ठंडी और छायादार जगहों में आश्रय प्रदान किया जाना चाहिए।",
             "The most effective source of shade is trees. They provide not only protection from sunlight, but also create a cooling effect through the evaporation of moisture from their leaves":
                 "छाया का सबसे प्रभावी स्रोत पेड़ हैं। वे न केवल सूरज की रोशनी से सुरक्षा प्रदान करते हैं, बल्कि अपनी पत्तियों से नमी के वाष्पीकरण के माध्यम से ठंडक का प्रभाव भी पैदा करते हैं।",
+            "Shade trees provide protection and cooling via moisture evaporation from leaves.":
+                "छायादार पेड़ पत्तियों से नमी के वाष्पीकरण के माध्यम से सुरक्षा और ठंडक प्रदान करते हैं।",
             "If shade trees are not available, thatched roof of a minimum height of 9 feet should be provided. Agri-nets with 20% perforation are also useful. If facilities are not available with the individual farmers, facilities available at the village shall be used by the community. Materials like paddy straw etc,painting the roof with white paint or,providing a false ceiling insulation will help provide a cooler environment. Create barriers against hot wind using thatched wall or wet gunny cloth/ gunny bags":
                 "यदि छायादार पेड़ उपलब्ध नहीं हैं, तो कम से कम 9 फीट की ऊँचाई वाली छप्पर वाली छत प्रदान की जानी चाहिए। 20% छिद्रण के साथ कृषि जाल भी उपयोगी हैं। यदि व्यक्तिगत किसानों के पास सुविधाएं उपलब्ध नहीं हैं, तो गांव में उपलब्ध सुविधाओं का उपयोग समुदाय द्वारा किया जाएगा। पुआल आदि जैसे सामग्री का उपयोग करके, छत को सफेद रंग से पेंट करके या, एक झूठी छत का इंसुलेशन प्रदान करके ठंडा वातावरण प्रदान करने में मदद मिलेगी। गर्म हवा के खिलाफ बाधाएँ बनाने के लिए छप्पर की दीवार या गीले बोरे/बोरी का उपयोग करें।",
+            "If trees are unavailable, a thatched roof of at least 9 feet is useful. Agri-nets (20% perforation), white-painted roofs, false ceiling insulation, or barriers (thatched walls or wet gunny cloth) help create cooler environments.":
+                "यदि पेड़ उपलब्ध नहीं हैं, तो कम से कम 9 फुट ऊंची छप्पर की छत उपयोगी होती है। 20% छिद्र वाले एग्री नेट, सफेद रंग की छत, झूठी छत का इन्सुलेशन या छप्पर/गीले बोरे से बनाई गई दीवारें ठंडा वातावरण बनाने में मदद करती हैं।",
             "The buffalo shed should be well ventilated that the polluted air can directly diffused outside and clean and fresh air can enter into it. Ensure one ventilator of 3 x 1 feet per cow in covered shed. In these sheds heavy duty fan is best option to facilitate ventilation":
                 "भैंस के शेड को अच्छी तरह हवादार होना चाहिए ताकि प्रदूषित हवा सीधे बाहर निकल सके और साफ और ताजी हवा उसमें प्रवेश कर सके। कवर किए गए शेड में प्रति गाय 3 x 1 फीट का एक वेंटिलेटर सुनिश्चित करें। इन शेड में वेंटिलेशन की सुविधा के लिए भारी-भरकम पंखा सबसे अच्छा विकल्प है।",
+            "Sheds should be well-ventilated so polluted air exits and fresh air enters. Provide one 3×1 ft ventilator per cow in covered sheds; heavy-duty fans aid ventilation.":
+                "शेड अच्छी तरह हवादार होने चाहिए ताकि प्रदूषित हवा बाहर निकल सके और ताज़ी हवा अंदर आ सके। ढके हुए शेड में प्रति गाय एक 3×1 फीट वेंटिलेटर दें; भारी-शक्ति वाले पंखे वेंटिलेशन में मदद करते हैं।",
             "The proper plantation should be managed in surroundings so that the environment may be cool and fresh and warm air storm could not enter directly in the shed":
                 "आस-पास उचित वृक्षारोपण प्रबंधित किया जाना चाहिए ताकि वातावरण ठंडा और ताज़ा रहे और गर्म हवा का तूफान सीधे शेड में प्रवेश न कर सके।",
+            "Plant trees around sheds to cool the environment and block warm winds.":
+                "शेड के आसपास पेड़ लगाएं ताकि वातावरण ठंडा रहे और गरम हवा को रोका जा सके।",
             "Air movement: Air movement is more important during hot-humid climate for providing cooling and comfort to the animal. Air movement increases the rate of heat loss from animals body surface, only as long as the air temperature is lower than the animals skin temperature":
                 "वायु प्रवाह: गर्म-आर्द्र जलवायु के दौरान जानवर को ठंडक और आराम प्रदान करने के लिए वायु प्रवाह अधिक महत्वपूर्ण है। वायु प्रवाह जानवर की शरीर की सतह से गर्मी के नुकसान की दर को बढ़ाता है, जब तक कि हवा का तापमान जानवर की त्वचा के तापमान से कम हो।",
+            "Air movement is crucial in hot-humid climates for cooling; it increases heat loss if air temperature is below skin temperature.":
+                "गर्म आर्द्र मौसम में ठंडक के लिए हवा का प्रवाह बहुत जरूरी है; यदि हवा का तापमान त्वचा से कम हो तो इससे ऊष्मा हानि बढ़ती है।",
             "Feeding should be practiced during early morning, evening and at night":
                 "खाना खिलाना सुबह जल्दी, शाम और रात में किया जाना चाहिए।",
+            "Feed during early morning, evening, and night to avoid heat peaks.":
+                "गर्मी के चरम से बचने के लिए सुबह जल्दी, शाम और रात में चारा दें।",
             "Prefer grazing during early morning and late evening hours to avoid the heat stress":
                 "गर्मी के तनाव से बचने के लिए सुबह जल्दी और देर शाम के समय चराई को प्राथमिकता दें।",
+            "Prefer grazing in early morning and late evening when temperatures are lower.":
+                "तापमान कम होने पर सुबह जल्दी और देर शाम चराई को प्राथमिकता दें।",
             "Ration density may be increased so as to provide same nutrients at reduced dry matter intake. Diets with low-fibre and high fermentable carbohydrate have lower dietary heat increment compared to high fibre diets":
                 "राशन घनत्व को बढ़ाया जा सकता है ताकि कम सूखे पदार्थ की खपत पर समान पोषक तत्व प्रदान किए जा सकें। कम फाइबर और उच्च किण्वनीय कार्बोहाइड्रेट वाले आहार में उच्च फाइबर आहार की तुलना में आहार गर्मी में वृद्धि कम होती है।",
+            "Increase ration density to deliver nutrients with reduced dry matter intake. Low-fibre, high-fermentable carbohydrate diets produce lower dietary heat increment.":
+                "कम सूखा पदार्थ खिलाकर आवश्यक पोषक तत्व देने के लिए राशन की सघनता बढ़ाएँ। कम रेशेदार, अधिक किण्वनीय कार्बोहाइड्रेट वाला आहार कम ऊष्मा उत्पन्न करता है।",
             "Ensure increased mineral supplementation during hot weather to meet the increased demand of minerals. Potassium rich mineral mixture should be preferred":
                 "गर्म मौसम के दौरान खनिजों की बढ़ी हुई मांग को पूरा करने के लिए बढ़े हुए खनिज पूरकता सुनिश्चित करें। पोटेशियम से भरपूर खनिज मिश्रण को प्राथमिकता दी जानी चाहिए।",
+            "Provide increased mineral supplementation during heat; potassium-rich mineral mixtures are preferred.":
+                "गर्मी में खनिजों का पूरक बढ़ाएँ; पोटैशियम युक्त मिश्रण बेहतर है।",
             "Managing Cold Stress": "ठंड के तनाव का प्रबंधन",
             "Monitor weather conditions and act accordingly. Monitor temperature changes and provide more feed to animals in colder weather conditions":
                 "मौसम की स्थिति की निगरानी करें और तदनुसार कार्य करें। तापमान में परिवर्तन की निगरानी करें और ठंडे मौसम की स्थिति में जानवरों को अधिक चारा प्रदान करें।",
@@ -1271,6 +1302,16 @@ class LocalString extends Translations {
                 "हवा से पर्याप्त आश्रय सुनिश्चित करें। ठंड के तनाव के प्रभाव तब बढ़ जाते हैं जब हवा की गति बढ़ जाती है। कोई भी उपलब्ध सुरक्षा, चाहे वह प्राकृतिक हो (झाड़ी, घाटी के निचले हिस्से या पहाड़ियों की ढलान) या कृत्रिम (जैसे साधारण विंडब्रेक बाड़ या आश्रय) जानवरों को अत्यधिक तापमान और विंड-चिल प्रभावों से निपटने में मदद करने में अत्यधिक मूल्यवान हो सकती है।",
             "Provide bedding to help keep animal clean and dry. Bedding, such as barley straw, helps to withstand cold stress":
                 "जानवरों को साफ और सूखा रखने में मदद करने के लिए बिस्तर प्रदान करें। जौ के बिस्तर जैसे बिस्तर ठंड के तनाव को सहन करने में मदद करता है।",
+            "Monitor weather conditions and provide extra feed during colder temperatures.":
+                "मौसम की स्थिति पर नज़र रखें और ठंड में अतिरिक्त चारा दें।",
+            "Ensure windbreaks or shelters to protect animals from cold winds; natural bushes or simple fences can be effective.":
+                "ठंडी हवाओं से बचाने को विंडब्रेक या शेल्टर सुनिश्चित करें; प्राकृतिक झाड़ियाँ या साधारण बाड़ प्रभावी हो सकती हैं।",
+            "Provide bedding, such as straw, to keep animals clean and dry and help them withstand cold stress.":
+                "जानवरों को साफ और सूखा रखने तथा ठंड के तनाव से बचाने के लिए पुआल आदि बिछाना चाहिए।",
+            "Increase grain and hay when temperatures drop below the lower critical threshold.":
+                "जब तापमान निचली सीमा से नीचे जाए तो अनाज और घास की मात्रा बढ़ाएँ।",
+            "Ensure ample water is available; warm water may be necessary to encourage intake, as cold water can limit consumption.":
+                "पर्याप्त पानी उपलब्ध कराएँ; ठंडा पानी पीने में कमी ला सकता है इसलिए ज़रूरत पड़ने पर गुनगुना पानी दें।",
             "Provide additional feed. Increase grain and hay for when temperatures drop below the lower critical threshold level":
                 "अतिरिक्त चारा प्रदान करें। जब तापमान निचली महत्वपूर्ण सीमा स्तर से नीचे गिर जाता है तो अनाज और घास बढ़ाएं।",
             "Provide water. Make sure animals have ample water available at all times. A limit in water available will limit feed intake and make it more difficult for animal to meet their energy requirements. Excessively cold water can severely limit water intake":
