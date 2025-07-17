@@ -36,7 +36,7 @@ class AboutNdri extends StatelessWidget {
                     .tr,
                 textAlign: TextAlign.justify,
                 style: TextStyle(
-                  fontSize: 14.sp,
+                  fontSize: 12.sp,
                   fontWeight: FontWeight.w500,
                   height: 1.7,
                   color: Colors.black,
@@ -48,7 +48,7 @@ class AboutNdri extends StatelessWidget {
                     .tr,
                 textAlign: TextAlign.justify,
                 style: TextStyle(
-                  fontSize: 14.sp,
+                  fontSize: 12.sp,
                   fontWeight: FontWeight.w500,
                   height: 1.7,
                   color: Colors.black,

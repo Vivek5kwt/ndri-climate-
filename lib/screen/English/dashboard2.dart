@@ -436,7 +436,7 @@ class _DashboardState extends State<Dashboard> {
                   ],
                 ),
                 child: Text(
-                  _currentDist.isEmpty ? 'No city selected'.tr : _currentDist,
+                  _currentDist.isEmpty ? 'No city selected'.tr : _currentDist.tr,
                   style: TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.w500,

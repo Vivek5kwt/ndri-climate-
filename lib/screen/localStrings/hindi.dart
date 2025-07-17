@@ -23,6 +23,7 @@ class LocalString extends Translations {
           'Dairy Animal': 'डेरी पशु ',
           'Home': 'होम',
           'Name': 'नाम',
+          'Choose One': 'एक का चयन',
           'Enter Your Name:': 'अपना नाम दर्ज करें',
           'Phone Number': 'फ़ोन नंबर',
           'Enter Your Phone number': 'अपना फोन नंबर डालें',
@@ -33,7 +34,7 @@ class LocalString extends Translations {
           'Dashboard': 'डैशबोर्ड',
           'Daily forecast': 'दैनिक पूर्वानुमान',
           'Climate Advisory': 'जलवायु सलाह',
-          'Past advisories': 'पिछली सलाह',
+          'Past Advisories': 'पिछली सलाह',
           'No advisories available': 'कोई सलाह उपलब्ध नहीं है',
           'No advisories available for this period.':
               'इस अवधि के लिए कोई सलाह उपलब्ध नहीं है',
@@ -952,24 +953,17 @@ class LocalString extends Translations {
             "The crop is sown in rows of 30cm (single cut) to 45 cm (multi cut) apart with a plant to plant spacing of 15 cm. For sorghum 50-60 kg/ha seed is sufficient,sown at a depth of 2-5 cm.":
                 "फसल को 30 सेमी (एकल कटाई) से 45 सेमी (बहु कटाई) की पंक्तियों में 15 सेमी के पौधे से पौधे की दूरी पर बोया जाता है। ज्वार के लिए 50-60 किग्रा/हेक्टेयर बीज पर्याप्त होता है, जिसे 2-5 सेमी की गहराई पर बोया जाता है।",
             "Sowing Time": "बुवाई का समय",
-            "Summer:20 March to 10 April": "गर्मी: 20 मार्च से 10 अप्रैल",
-            "Kharif:25 June to 10 July": "खरीफ: 25 जून से 10 जुलाई",
-            "Single cut: HC 136, HC171, HC260, HC308":
-                "एकल कटाई: HC 136, HC171, HC260, HC308",
-            "Multicut: Sweet sudan grass 59-3; Dual purpose: HJ 513":
-                "बहु कटाई: स्वीट सूडान घास 59-3; दोहरे उद्देश्य: HJ 513",
+            "Summer: 20 March to 10 April\nKharif: 25 June to 10 July": "गर्मी: 20 मार्च से 10 अप्रैल\nखरीफ: 25 जून से 10 जुलाई",
+            "Single cut: HC 136, HC171, HC260, HC308\nMulticut: Sweet sudan grass 59-3; Dual purpose: HJ 513":
+                "एकल कटाई: HC 136, HC171, HC260, HC308\nबहु कटाई: स्वीट सूडान घास 59-3; दोहरे उद्देश्य: HJ 513",
             "FYM application @ 10 (rainfed) to 25 t/ha (irrigated) before sowing.Crop is fertilized with 80-40-0 (single cut), 120-60-0 (double cut) and 210-60-60 (multi cut)kg/ha of NPK, respectively.":
                 "बुवाई से पहले FYM का प्रयोग @ 10 (वर्षा आधारित) से 25 टन/हेक्टेयर (सिंचित)। फसल को क्रमशः 80-40-0 (एकल कटाई), 120-60-0 (दोहरे कटाई) और 210-60-60 (बहु कटाई) किग्रा/हेक्टेयर NPK से उर्वरित किया जाता है।",
             "One hand weeding 15-20 DAS is necessary. For chemical weed control apply atrazine @ 500g/ha between 7-15 days after sowing using 625 L of water.":
                 "15-20 DAS पर एक हाथ से निराई आवश्यक है। रासायनिक खरपतवार नियंत्रण के लिए बुवाई के 7-15 दिनों के भीतर 625 लीटर पानी का उपयोग करके एट्राज़ीन @ 500 ग्राम/हेक्टेयर का प्रयोग करें।",
-            "Downy mildew: seed treatment with Agrosan GN or Ceresan @ 4 g/ kg seed and spray of Dithane Z 78 (0.2%) to reduce secondary infection;":
-                "डाउनी मिल्ड्यू: बीज उपचार के लिए एग्रोसान GN या सेरेसान @ 4 ग्राम/किलोग्राम बीज और द्वितीयक संक्रमण को कम करने के लिए डिथेन Z 78 (0.2%) का छिड़काव।",
-            "Anthracnose: Seed treatment with Agrosan GN @ 3 g/kg seed followed by spray of Zineb (0.2%) at 10 days interval starting from 35 DAS.":
-                "एन्थ्राक्नोज: एग्रोसान GN @ 3 ग्राम/किलोग्राम बीज से बीज उपचार के बाद 35 DAS से शुरू होकर 10 दिनों के अंतराल पर ज़िनेब (0.2%) का छिड़काव।",
-            "Sorghum shoot fly - Application of Carbaryl 10 G or Phorate 10 G @ 5.0 kg/ha is effective in borer management. Early sowing (1st week of June) may avoid shoot fly attack.":
-                "ज्वार शूट फ्लाई - बोरर प्रबंधन में कार्बेरिल 10 G या फोरेट 10 G @ 5.0 किग्रा/हेक्टेयर का प्रयोग प्रभावी है। अर्ली बुवाई (जून का पहला सप्ताह) शूट फ्लाई के हमले से बच सकती है।",
-            "Stem borer- Foliar spray of Carbaryl 50 WP in 500 litre water per hectare after 20 days of sowing and repeat spray 10 days after spray is effective in borer management.":
-                "तना बोरर- बुवाई के 20 दिनों के बाद 500 लीटर पानी में प्रति हेक्टेयर कार्बेरिल 50 WP का फोलिअर स्प्रे और स्प्रे के 10 दिनों बाद स्प्रे दोहराना बोरर प्रबंधन में प्रभावी है।",
+            "Downy mildew: seed treatment with Agrosan GN or Ceresan @ 4 g/ kg seed and spray of Dithane Z 78 (0.2%) to reduce secondary infection.\nAnthracnose: Seed treatment with Agrosan GN @ 3 g/kg seed followed by spray of Zineb (0.2%) at 10 days interval starting from 35 DAS.":
+                "डाउनी मिल्ड्यू: बीज उपचार के लिए एग्रोसान GN या सेरेसान @ 4 ग्राम/किलोग्राम बीज और द्वितीयक संक्रमण को कम करने के लिए डिथेन Z 78 (0.2%) का छिड़काव।\nएन्थ्राक्नोज: एग्रोसान GN @ 3 ग्राम/किलोग्राम बीज से बीज उपचार के बाद 35 DAS से शुरू होकर 10 दिनों के अंतराल पर ज़िनेब (0.2%) का छिड़काव।",
+            "Sorghum shoot fly - Application of Carbaryl 10 G or Phorate 10 G @ 5.0 kg/ha is effective in borer management. Early sowing (1st week of June) may avoid shoot fly attack.\nStem borer- Foliar spray of Carbaryl 50 WP in 500 litre water per hectare after 20 days of sowing and repeat spray 10 days after spray is effective in borer management.":
+                "ज्वार शूट फ्लाई - बोरर प्रबंधन में कार्बेरिल 10 G या फोरेट 10 G @ 5.0 किग्रा/हेक्टेयर का प्रयोग प्रभावी है। अर्ली बुवाई (जून का पहला सप्ताह) शूट फ्लाई के हमले से बच सकती है।\nतना बोरर- बुवाई के 20 दिनों के बाद 500 लीटर पानी में प्रति हेक्टेयर कार्बेरिल 50 WP का फोलिअर स्प्रे और स्प्रे के 10 दिनों बाद स्प्रे दोहराना बोरर प्रबंधन में प्रभावी है।",
             "Harvesting": "कटाई",
             "Single cut varieties are harvested at 50-100% flowering stage. In multi cut varieties,the first cut is taken 55 DAS and the subsequent at 40 days interval. In multi cut varieties, first cut should be taken 8-10 cm above ground level so as to facilitate profuse tillering.":
                 "एकल कटाई किस्मों को 50-100% फूल आने के चरण में काटा जाता है। बहु कटाई किस्मों में, पहली कटाई 55 DAS पर और उसके बाद 40 दिनों के अंतराल पर की जाती है।बहु कटाई किस्मों में, पहली कटाई जमीन के स्तर से 8-10 सेमी ऊपर से करनी चाहिए ताकि अधिक झाड़ियों का निर्माण हो सके।",
@@ -1009,15 +1003,11 @@ class LocalString extends Translations {
                 "सिंचाई एक महीने के अंतराल पर की जानी चाहिए। पौधों की पुनःवृद्धि को बढ़ावा देने के लिए प्रत्येक कटाई के बाद सिंचाई आवश्यक है।",
             "Weed Management": "खरपतवार प्रबंधन",
             "Weed management": "खरपतवार प्रबंधन",
-            "application of a broadleaf herbicide, such as 2,4-D sodium salt @ 1 kg/ha spray in 500 liter water at 35 DAS.":
+            "Application of a broadleaf herbicide, such as 2,4-D sodium salt @ 1 kg/ha spray in 500 liter water at 35 DAS.":
                 "एक ब्रॉडलीफ खरपतवारनाशी जैसे 2,4-D सोडियम सॉल्ट @ 1 किग्रा/हेक्टेयर को 500 लीटर पानी में 35 DAS पर स्प्रे करें।",
             "Disease and pest management": "रोग और कीट प्रबंधन",
-            "Covered smut: Seed treatment with Emissan @ 2.5g/kg seed":
-                "कवर्ड स्मट: बीज उपचार के लिए एमिसैन @ 2.5 ग्राम/किलोग्राम बीज",
-            "Loose smut: Seed treatment with Vitavex or bavistin @ 2g/kg seed.":
-                "लूज स्मट: बीज उपचार के लिए विटावेक्स या बाविस्टिन @ 2 ग्राम/किलोग्राम बीज",
-            "Aphid: Spray of plain water @ 400 l/ha, Application of malathion or endosulfan @ 0.05% in the patches of aphid colony.":
-                "एफिड: साधारण पानी का छिड़काव @ 400 लीटर/हेक्टेयर, एफिड कॉलोनी के पैच में मेलाथियॉन या एंडोसल्फान @ 0.05% का प्रयोग।",
+            "Covered smut: Seed treatment with Emissan @ 2.5g/kg seed\nLoose smut: Seed treatment with Vitavex or bavistin @ 2g/kg seed.\nAphid: Spray of plain water @ 400 l/ha, Application of malathion or endosulfan @ 0.05% in the patches of aphid colony.":
+                "कवर्ड स्मट: बीज उपचार के लिए एमिसैन @ 2.5 ग्राम/किलोग्राम बीज\nलूज स्मट: बीज उपचार के लिए विटावेक्स या बाविस्टिन @ 2 ग्राम/किलोग्राम बीज\nएफिड: साधारण पानी का छिड़काव @ 400 लीटर/हेक्टेयर, एफिड कॉलोनी के पैच में मेलाथियॉन या एंडोसल्फान @ 0.05% का प्रयोग।",
             "Berseem": "बरसीम",
             "BARSEEM": "बरसीम",
             "End of September to end of October by broadcasting. Seed rate of 20 - 25 kg/ha is recommended. Mix 1 kg of Japani sarson/Chinese cabbage or 25 kg of oat seed for harvesting higher quantity of fodder at first cut.":
