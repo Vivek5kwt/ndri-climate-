@@ -282,7 +282,7 @@ class _Thermal_StressState extends State<Thermal_Stress> {
                             SizedBox(height: ResponsiveUtils.hp(2)),
                             Reusabledescription(
                               desciption:
-                              'During heat stress, buffaloes should not be allowed to move freely during day hours. They need protection from warm air storms and direct sun and should have cool, shady shelters.'
+                              'During heat stress conditions buffaloes should not be allowed to move freely during day hours because they need protection against warm air storms, direct sun exposure and they should be provided with shelter in cool and shady places.'
                                   .tr,
                               textStyle: TextStyle(fontSize: ResponsiveUtils.wp(2.5)),
                             ),

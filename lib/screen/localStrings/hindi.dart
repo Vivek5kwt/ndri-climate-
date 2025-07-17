@@ -1237,7 +1237,7 @@ class LocalString extends Translations {
                 "गर्मी के तनाव को कम करने के लिए पानी का उपयोग",
             "Use of water": "पानी का उपयोग",
             "Use of Water": "पानी का उपयोग",
-            "The most effective way of combating heat stress in buffalo is wallowing in the water pond":
+            "The most effective way of combating heat stress in buffalo is wallowing in the water pond.":
                 "भैंस में गर्मी के तनाव से निपटने का सबसे प्रभावी तरीका जलाशय में स्नान करना है।",
             "Various cooling systems have been developed for evaporative cooling such as holding-pen cooling,exit-lane cooling, and free-stall cooling. These systems are applicable for the animals maintained in covered pucca sheds. An evaporative system which uses water mist with fan is more effective and economises water use in comparison to repeatedly bathing the animals":
                 "वाष्पीकरणीय शीतलन के लिए विभिन्न शीतलन प्रणालियाँ विकसित की गई हैं जैसे होल्डिंग-पेन शीतलन, निकास-लेन शीतलन, और फ्री-स्टाल शीतलन। ये प्रणालियाँ कवर किए गए पक्का शेड में रखे गए जानवरों के लिए लागू होती हैं। एक वाष्पीकरणीय प्रणाली जो पंखे के साथ पानी की मिस्ट का उपयोग करती है, वह अधिक प्रभावी है और जानवरों को बार-बार स्नान कराने की तुलना में पानी के उपयोग को बचाती है।",
@@ -1257,7 +1257,7 @@ class LocalString extends Translations {
                 "जानवरों को चौबीसों घंटे पर्याप्त मात्रा में पीने का पानी सुनिश्चित करें, जो छाया में प्रदान किया जाना चाहिए।",
             "Other Heat Stress Management Strategies":
                 "अन्य गर्मी तनाव प्रबंधन रणनीतियाँ",
-            "During heat stress conditions buffaloes should not be allowed to move freely during day hours because they need protection against warm air storms, direct sun exposure and they should be provided with shelter in cool and shady places":
+            "During heat stress conditions buffaloes should not be allowed to move freely during day hours because they need protection against warm air storms, direct sun exposure and they should be provided with shelter in cool and shady places.":
                 "गर्मी के तनाव की स्थिति में भैंसों को दिन के समय स्वतंत्र रूप से घूमने की अनुमति नहीं दी जानी चाहिए क्योंकि उन्हें गर्म हवा के तूफानों, सीधे सूर्य के संपर्क से बचाने की आवश्यकता होती है और उन्हें ठंडी और छायादार जगहों में आश्रय प्रदान किया जाना चाहिए।",
             "The most effective source of shade is trees. They provide not only protection from sunlight, but also create a cooling effect through the evaporation of moisture from their leaves":
                 "छाया का सबसे प्रभावी स्रोत पेड़ हैं। वे न केवल सूरज की रोशनी से सुरक्षा प्रदान करते हैं, बल्कि अपनी पत्तियों से नमी के वाष्पीकरण के माध्यम से ठंडक का प्रभाव भी पैदा करते हैं।",

@@ -28,13 +28,16 @@ class _FeedBackState extends State<FeedBack> {
   String name = '';
   String mobile = '';
   String district = '';
-
+  String state = '';
+  String language = '';
   void _getdata() async {
     final prefs = await SharedPreferences.getInstance();
     setState(() {
       name = (prefs.getString('name') ?? '');
       mobile = (prefs.getString('mobile') ?? '');
       district = (prefs.getString('district') ?? '');
+      state = (prefs.getString('selected_state') ?? '');
+      language = (prefs.getString('selected_lang') ?? '');
       if (name.isNotEmpty) {
         _namecontroller.text = name;
       }
