@@ -22,6 +22,8 @@ Map<String, String> bengali = {
   'Daily forecast': 'দৈনিক পূর্বাভাস',
   'Climate Advisory': 'জলবায়ু পরামর্শ',
   'Past advisories': 'পুরাতন পরামর্শ',
+  'No advisories available': 'কোন পরামর্শ পাওয়া যায়নি',
+  'No advisories available for this period.': 'এই সময়কালের জন্য কোন পরামর্শ পাওয়া যায়নি',
   'Location': 'স্থান',
   'Language': 'ভাষা',
   'Distt': 'জেলা ',
@@ -49,6 +51,7 @@ Map<String, String> bengali = {
   'Impact of climate change on dairy animal':
       'ডেইরি প্রাণীর উপর জলবায়ু পরিবর্তনের প্রভাব',
   'Climate services': 'জলবায়ু পরিষেবা',
+  'Climate Services': 'জলবায়ু পরিষেবা',
   'Feedback/Raise Your Question': 'প্রতিক্রিয়া/প্রশ্ন করুন',
   'Name': 'নাম',
   'District': 'জেলা',
@@ -1219,21 +1222,22 @@ Map<String, String> bengali = {
   ..addAll({
     "Management During Thermal Stress": "তাপীয় প্রবাহের সময় ব্যবস্থাপনা",
     "Symptoms of Heat Stress": "তাপ চাপের লক্ষণ",
-    "Thermal stress occurs when the ambient temperature lies above or below thermoneutral zone.Dairy animals have been found to be negatively impacted with increased temperature and humidity":
+    "Thermal stress occurs when the ambient temperature lies above or below thermoneutral zone. Dairy animals have been found to be negatively impacted with increased temperature and humidity.":
         "তাপীয় প্রবাহ ঘটে যখন পারিপার্শ্বিক তাপমাত্রা সহনশীল তাপমাত্রার উপর বা নিচে থাকে। দুধদানকারী পশুদের, তাপমাত্রা এবং আর্দ্রতা বৃদ্ধির কারণে প্রবাহ নেতিবাচকভাবে প্রভাবিত হতে দেখা গেছে।",
-    "Rapid and weak pulse and Rapid but shallow breathing":
+    "Rapid and weak pulse and rapid but shallow breathing":
         "দ্রুত এবং দুর্বল নাড়ি এবং দ্রুত কিন্তু অগভীর শ্বাস",
-    "Abnormal vital parameters: Elevated heart rate, respiration rate, rectal temperature etc":
-        "অস্বাভাবিক গুরুত্বপূর্ণ সঙ্কেত: হৃদস্পন্দনের হার, শ্বাসপ্রশ্বাসের হার, রেকটাল তাপমাত্রা ইত্যাদি বৃদ্ধি পাওয়া।",
-    "Unusual salivation and Dizziness / unconsciousness":
+    "Abnormal vital parameters: Elevated heart rate, respiration rate, rectal temperature etc.":
+        "অস্বাভাবিক গুরুত্বপূর্ণ সঙ্কেত: হৃদস্পন্দনের হার, শ্বাসপ্রশ্বাসের হার, রেকটাল তাপমাত্রা ইত্যাদি বৃদ্ধি পাওয়া।",
+    "Unusual salivation and dizziness/unconsciousness":
         "অস্বাভাবিক লালাস্রাব এবং মাথা ঘোরা/অচেতনতা",
     "Skin becomes dull and may be cold":
         "ত্বক ম্লান হয়ে যায় এবং ঠান্ডা হতে পারে",
-    "In case of heat stroke, body temperature is very high sometimes as high as 106 - 108°F":
+    "In case of heat stroke, body temperature is very high sometimes as high as 106 - 108°F.":
         "তাপীয় প্রবাহের ফলে, শরীরের তাপমাত্রা খুব বেশি হয় – কখনও কখনও তাপমাত্রা ১০৬ – ১০৮°F পর্যন্ত হয়ে যায়।",
     "Use of Water to Mitigate Heat Stress":
         "তাপীয় প্রবাহ কমানোর জন্য জলের ",
     "Use of water": "জল ব্যবহার",
+    "Use of Water": "জল ব্যবহার",
     "The most effective way of combating heat stress in buffalo is wallowing in the water pond":
         "গবাদী পশুর তাপীয় প্রবাহ মোকাবেলার সবচেয়ে কার্যকর উপায় হল পশুকে পুকুরের নিয়ে যাওয়া।",
     "Various cooling systems have been developed for evaporative cooling such as holding-pen cooling,exit-lane cooling, and free-stall cooling. These systems are applicable for the animals maintained in covered pucca sheds. An evaporative system which uses water mist with fan is more effective and economises water use in comparison to repeatedly bathing the animals":
@@ -1243,6 +1247,14 @@ Map<String, String> bengali = {
     "Heat stress can also be managed by spraying/ sprinkling water directly on the body of animals for a period of 1 to 5 minutes at an interval of 10- 30 minutes. Fans/blowers should be used to induce evaporation from the skin of animals":
         "তাপীয় প্রবাহের সময় প্রাণীদের শরীরে সরাসরি ১ থেকে ৫ মিনিটের জন্য ১০-৩০ মিনিটের ব্যবধানে জল ছিটানো যেতে পারে। প্রাণীদের ত্বক থেকে বাষ্পীভবন তরান্বিতপ্ররোচিত করতে ফ্যান বা ব্লোয়ার ব্যবহার করা উচিত।",
     "Ensure adequate round the clock drinking water to animals, which should be provided under shade":
+    "Evaporative cooling systems like holding-pen cooling, exit-lane cooling, and free-stall cooling are applicable in covered sheds. An evaporative system using water mist with fans is more efficient and economizes water compared to bathing.":
+        "পশুশালা ঠান্ডা করার জন্য বিভিন্ন শীতলকরণ ব্যবস্থা যেমন হোল্ডিং-পেন কুলিং, এক্সিট-লেন কুলিং এবং ফ্রি-স্টল কুলিং ব্যবহার করা উচিত । এমন একটি বাষ্পীভবনের ব্যবস্থা করতে হবে যা ফ্যান সহ জল মিস্ট ব্যবহার করে তা বারবার প্রাণীকে স্নান করানোর তুলনায় বেশি কার্যকরী হয় এবং এটি জলের ব্যবহার সাশ্রয় করতে সাহায্য করবে।"
+    "Buffalo need at least two baths per day in summer. Misting/fogging the microenvironment thrice per hour with fans helps in hot-dry weather. Automatic misters with mini pumps and timers are preferable.":
+        "গ্রীষ্মকালে পশুকে দিনে কমপক্ষে দু'বার স্নান করানো দরকার। গরম শুষ্ক আবহাওয়ায় পশুশালায় দিনে কমপক্ষে তিনবার জল মিসটিং/ফগিং করা এবং ফ্যানের ব্যবস্থা রাখা দরকার।"
+    "Spraying or sprinkling water directly on animals for 1–5 minutes every 10–30 minutes, combined with fans/blowers, increases evaporative heat loss.":
+        "তাপীয় প্রবাহের সময় প্রাণীদের শরীরে সরাসরি ১ থেকে ৫ মিনিটের জন্য ১০-৩০ মিনিটের ব্যবধানে জল ছিটানো যেতে পারে। প্রাণীদের ত্বক থেকে বাষ্পীভবন তরান্বিতপ্ররোচিত করতে ফ্যান বা ব্লোয়ার ব্যবহার করা উচিত।"
+    "Ensure round-the-clock access to drinking water under shade.":
+        "গোয়ালে পর্যাপ্ত পানীয় জল ২৪ ঘণ্টা নিশ্চিত করা উচিত।"
         "গোয়ালে পর্যাপ্ত পানীয় জল ২৪ ঘণ্টা নিশ্চিত করা উচিত।",
     "Other Heat Stress Management Strategies":
         "অন্যান্য তাপীয় প্রবাহ ব্যবস্থাপনার কৌশলসমূহ",
@@ -1250,15 +1262,31 @@ Map<String, String> bengali = {
         "তাপীয় প্রবাহের সময় গবাদী পশুদের দিনের বেলা মুক্তভাবে চলাফেরা করতে দেওয়া উচিত নয় কারণ তাদের গরম বাতাসের থেকে সুরক্ষা প্রয়োজন, সরাসরি সূর্যালোকের সংস্পর্শে না থাকা এবং শীতল এবং ছায়াময় জায়গায় আশ্রয় দেওয়া উচিত।",
     "The most effective source of shade is trees. They provide not only protection from sunlight, but also create a cooling effect through the evaporation of moisture from their leaves":
         "ছায়ার সবচেয়ে কার্যকর উৎস হল গাছ। তারা কেবল সূর্যালোক থেকে সুরক্ষা প্রদান করে না, তাদের পাতা থেকে আর্দ্রতার বাষ্পীভবনের মাধ্যমে শীতল প্রভাবও তৈরি করে।",
+    "Shade trees provide protection and cooling via moisture evaporation from leaves.":
+        "ছায়াদার গাছ পাতার আর্দ্রতা বাষ্পীভবনের মাধ্যমে সুরক্ষা ও শীতলতা প্রদান করে।"
     "If shade trees are not available, thatched roof of a minimum height of 9 feet should be provided. Agri-nets with 20% perforation are also useful. If facilities are not available with the individual farmers, facilities available at the village shall be used by the community. Materials like paddy straw etc,painting the roof with white paint or,providing a false ceiling insulation will help provide a cooler environment. Create barriers against hot wind using thatched wall or wet gunny cloth/ gunny bags":
         "ছায়া প্রদানকারী গাছ না থাকলে, কমপক্ষে ৯ ফুট উচ্চতার খড়ের ছাদ প্রদান করা উচিত। ২০% ছিদ্রযুক্ত জাল ও খুব কার্যকরী। ছাদে খড়, সাদা রঙ বা কৃত্রিম ছাদের আস্তরণ, গরমের প্রভাব কমাতে সাহায্য করে। গবাদী পশুকে গরম হাওয়া থেকে বাঁচাতে চটের বস্তাকে ভিজিয়ে দেওয়ালে টাঙ্গিয়ে রাখা উচিৎ। ",
+    "If trees are unavailable, a thatched roof of at least 9 feet is useful. Agri-nets (20% perforation), white-painted roofs, false ceiling insulation, or barriers (thatched walls or wet gunny cloth) help create cooler environments.":
+        "যদি গাছ না থাকে, অন্তত ৯ ফুট খড়ের ছাউনি ব্যবহার করতে হবে। ২০% ছিদ্রের এগ্রি-নেট, সাদা রঙ করা ছাদ, নকল সিলিং ইনসুলেশন বা খড়ের দেয়াল/ভেজা বস্তার ব্যারিয়ার শীতল পরিবেশ তৈরিতে সহায়তা করে।"
     "The buffalo shed should be well ventilated that the polluted air can directly diffused outside and clean and fresh air can enter into it. Ensure one ventilator of 3 x 1 feet per cow in covered shed. In these sheds heavy duty fan is best option to facilitate ventilation":
         "পশুশালার ছাউনি ভালোভাবে বাতাস চলাচলের উপযোগী হওয়া উচিৎ, যাতে দূষিত বায়ু সরাসরি বাইরে বেরিয়ে যেতে পারে এবং পরিষ্কার ও তাজা হাওয়া ভিতরে প্রবেশ করতে পারে। গরমকালে বড় বড় ফ্যান চালিয়ে হাওয়া চলাচলের প্রবাহকে তরান্বিত করা যেতে পারে। ",
+    "Sheds should be well-ventilated so polluted air exits and fresh air enters. Provide one 3x1 ft ventilator per cow in covered sheds; heavy-duty fans aid ventilation.":
+        "শেডগুলি ভালোভাবে বায়ুচলাচল হওয়া উচিত যাতে দূষিত বাতাস বের হয়ে যায় এবং টাটকা বাতাস প্রবেশ করতে পারে। ঢাকা শেডে প্রতি গরুর জন্য একটি 3x1 ফুট ভেন্টিলেটর দিন; শক্তিশালী ফ্যান বায়ু চলাচলে সহায়তা করে।"
     "The proper plantation should be managed in surroundings so that the environment may be cool and fresh and warm air storm could not enter directly in the shed":
         "পশুশালার আশেপাশে বেশি পরিমাণে গাছ লাগানো উচিৎ যাতে পরিবেশ ঠাণ্ডা ও তাজা থাকে এবং গরম হাওয়া সরাসরি ভিতরে প্রবেশ না করে। ",
     "Air movement: Air movement is more important during hot-humid climate for providing cooling and comfort to the animal. Air movement increases the rate of heat loss from animals body surface, only as long as the air temperature is lower than the animals skin temperature":
         "গরম আর্দ্র আবহাওয়ায় শীতলতা এবং আরাম প্রদানের জন্য হাওয়া চলাচল খুবই গুরুত্বপূর্ণ, হাওয়া চলাচল গবাদী পশুর শরীরের উপর থেকে তাপ বিকিরণের হারকে ত্বরান্বিত করে। ",
+    "Air movement is crucial in hot-humid climates for cooling; it increases heat loss if air temperature is below skin temperature.":
+        "গরম-আর্দ্র আবহাওয়ায় ঠান্ডার জন্য বাতাসের চলাচল অত্যন্ত গুরুত্বপূর্ণ; যদি বাতাসের তাপমাত্রা ত্বকের নিচে থাকে তবে এটি তাপ ক্ষয় বাড়ায়।"
     "Feeding should be practiced during early morning, evening and at night":
+    "Feed during early morning, evening, and night to avoid heat peaks.":
+        "তাপমাত্রা বাড়ার সময় এড়াতে ভোর, সন্ধ্যা ও রাতে চারা দিন।"
+    "Prefer grazing in early morning and late evening when temperatures are lower.":
+        "তাপমাত্রা কম থাকলে ভোর ও গোধূলিতে চারণে অগ্রাধিকার দিন।"
+    "Increase ration density to deliver nutrients with reduced dry matter intake. Low-fibre, high-fermentable carbohydrate diets produce lower dietary heat increment.":
+        "কম শুষ্ক পদার্থ খাইয়ে প্রয়োজনীয় পুষ্টি দিতে রেশন ঘনত্ব বাড়ান। কম ফাইবার ও বেশি গাঁজনশীল কার্বোহাইড্রেট খাদ্য কম তাপ উত্পাদন করে।"
+    "Provide increased mineral supplementation during heat; potassium-rich mineral mixtures are preferred.":
+        "গরমে খনিজের পরিমাণ বাড়ান; পটাশিয়াম সমৃদ্ধ মিশ্রণই উত্তম।"
         "গরমের প্রবাহ থেকে বাঁচাতে পশুকে ভোরবেলা, সন্ধ্যে ও রাতে খাওয়ানো উচিৎ এবং সকাল ও সন্ধ্যেবেলার দিকে চরাতে নিয়ে যাওয়া উচিৎ। ",
     "Prefer grazing during early morning and late evening hours to avoid the heat stress":
         "তাপের চাপ এড়াতে ভোরবেলা এবং সন্ধ্যার সময় চারণকে পছন্দ করুন",
@@ -1268,14 +1296,24 @@ Map<String, String> bengali = {
         "খনিজগুলির বর্ধিত চাহিদা মেটাতে গরম আবহাওয়ায় খনিজ পরিপূরক বৃদ্ধি নিশ্চিত করুন। গ্রীষ্মকালে পটাশিয়াম যুক্ত খনিজ মিশ্রণ দেওয়া যেতে পারে।  ",
     "Managing Cold Stress": "শীতল প্রবাহ ব্যবস্থাপনা",
     "Monitor weather conditions and act accordingly. Monitor temperature changes and provide more feed to animals in colder weather conditions":
+    "Monitor weather conditions and provide extra feed during colder temperatures.":
+        "আবহাওয়া পর্যবেক্ষণ করুন এবং ঠান্ডায় বাড়তি খাদ্য দিন।"
         "আবহাওয়ার পরিস্থিতি পর্যবেক্ষণ করুন এবং সেই অনুযায়ী কাজ করুন। তাপমাত্রার পরিবর্তনগুলি পর্যবেক্ষণ করুন এবং ঠান্ডা আবহাওয়ার পরিস্থিতিতে প্রাণীদের আরও বেশি খাবার সরবরাহ করুন।",
     "Ensure there is enough shelter from the wind. Effects of cold stress increase when wind speed increases. Any kind of available protection, whether it is natural (bush, valley bottoms or hillsides) or man-made (such as simple windbreak fences or shelters) can be highly valuable in helping animals cope with extreme temperatures and wind-chill effects":
+    "Ensure windbreaks or shelters to protect animals from cold winds; natural bushes or simple fences can be effective.":
+        "ঠান্ডা বাতাস থেকে রক্ষায় উইন্ডব্রেক বা আশ্রয় নিশ্চিত করুন; প্রাকৃতিক ঝোপ বা সাধারণ বেড়া কার্যকর হতে পারে।"
         "ঠাণ্ডা হাওয়া থেকে রক্ষা করার জন্য উপযুক্ত খড়ের ব্যবস্থা করতে হবে। শীতের প্রভাব হাওয়ার গতির সাথে সাথে বাড়তে থাকে। সেইজন্য গরু এবং মহিষকে তীব্র ঠাণ্ডা থেকে বাঁচানোর জন্য উপযুক্ত সুরক্ষা ব্যবস্থা করতে হবে। ",
     "Provide bedding to help keep animal clean and dry. Bedding, such as barley straw, helps to withstand cold stress":
         "গবাদী পশুকে শুষ্ক এবং পরিষ্কার বিছানা দিন। বালি এবং খড়ের মতো বিছানা শীত প্রবাহ কম করতে সাহায্য করে। ",
+    "Provide bedding, such as straw, to keep animals clean and dry and help them withstand cold stress.":
+        "জন্তুদের পরিষ্কার ও শুকনো রাখতে এবং ঠান্ডা চাপ সহ্য করতে খড় ইত্যাদি বিছান দিন।"
+    "Increase grain and hay when temperatures drop below the lower critical threshold.":
+        "তাপমাত্রা নিম্নসীমার নিচে নেমে গেলে শস্য ও ঘাস বাড়ান।"
     "Provide additional feed. Increase grain and hay for when temperatures drop below the lower critical threshold level":
         "যখন নিম্ন তাপমাত্রা সহনশীল তাপমাত্রার নীচে নেমে যায় তখন গরু এবং মহিষকে অতিরিক্ত দানা এবং খড় প্রদান করুন।",
     "Provide water. Make sure animals have ample water available at all times. A limit in water available will limit feed intake and make it more difficult for animal to meet their energy requirements. Excessively cold water can severely limit water intake":
+    "Ensure ample water is available; warm water may be necessary to encourage intake, as cold water can limit consumption.":
+        "পর্যাপ্ত পানি নিশ্চিত করুন; ঠান্ডা পানি খাওয়া কমাতে পারে, তাই প্রয়োজনে গরম পানি দিন।"
         "গবাদী পশুকে পর্যাপ্ত পরিমাণে জল দিন। তীব্র ঠাণ্ডার সময় গবাদী পশু কম জল খায় সেইজন্য হালকা গরম জল দেওয়া যেতে পারে। "
   })
   ..addAll({
@@ -1331,7 +1369,19 @@ Map<String, String> bengali = {
     'Send OTP': 'OTP পাঠান',
     'Skip': 'এড়িয়ে যান',
     'Enter OTP': 'OTP লিখুন',
-    'Please Enter Something': 'অনুগ্রহ করে কিছু লিখুন'
+    'Please Enter Something': 'অনুগ্রহ করে কিছু লিখুন',
+    'FeedBack Submitted Successfully!': 'মতামত সফলভাবে জমা হয়েছে!',
+    'Notification': 'বিজ্ঞপ্তি',
+    'OK': 'ঠিক আছে',
+    'Enter your Mobile Number': 'আপনার মোবাইল নম্বর লিখুন',
+    'Enter your Email Id': 'আপনার ইমেইল আইডি লিখুন',
+    'Select State & District': 'রাজ্য ও জেলা নির্বাচন করুন',
+    'Filter': 'ফিল্টার',
+    'Remove Filter': 'ফিল্টার অপসারণ করুন',
+    'Select Location & Language': 'অবস্থান ও ভাষা নির্বাচন করুন',
+    'Last updated:': 'সর্বশেষ আপডেট:',
+    'State': 'রাজ্য',
+    'Already Have Accounts - ': 'ইতিমধ্যে অ্যাকাউন্ট আছে - '
 })..addAll({
     'Ration Formulation for a lactating buffalo with body weight 450-500 Kg) during heat stress season': 'তাপ চাপের মৌসুমে দুগ্ধবতী মহিষের (শরীরের ওজন 450-500 কেজি) জন্য রেশন ফর্মুলেশন',
     'Ration ingredient': 'রেশন উপাদান',

@@ -3,6 +3,7 @@ import 'package:adaptive_pop_scope/adaptive_pop_scope.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'dart:io';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:http/http.dart' as http;
@@ -154,7 +155,14 @@ class _DashboardState extends State<Dashboard> {
         actionsAlignment: MainAxisAlignment.center,
         actions: [
           TextButton(
-            onPressed: SystemNavigator.pop,
+            onPressed: () {
+              Navigator.of(context).pop(true);
+              if (Platform.isAndroid) {
+                SystemNavigator.pop();
+              } else if (Platform.isIOS) {
+                exit(0);
+              }
+            },
             child: const Text('Yes', style: TextStyle(color: Colors.white)),
           ),
           TextButton(
@@ -461,7 +469,7 @@ class _DashboardState extends State<Dashboard> {
             else ...[
                 Center(
                   child: Text(
-                    'Last updated: ${DateFormat('dd-MM-yyyy HH:mm').format(_forecast!.updatedAt)}',
+                    '${'Last updated:'.tr} ${DateFormat('dd-MM-yyyy HH:mm').format(_forecast!.updatedAt)}',
                     style: TextStyle(
                       fontSize: ResponsiveUtils.wp(2),
                       fontStyle: FontStyle.italic,

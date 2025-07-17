@@ -21,7 +21,9 @@ Map<String, String> pbi = {
   'Daily forecast': 'ਰੋਜ਼ਾਨਾ ਭਵਿੱਖਬਾਣੀ',
   'Climate Advisory': 'ਮੌਸਮ ਸਲਾਹ',
   'Past advisories': 'ਪਿਛਲੀਆਂ ਸਲਾਹਾਂ',
-  'Location': '',
+  'No advisories available': 'ਕੋਈ ਸਲਾਹ ਉਪਲਬਧ ਨਹੀਂ',
+  'No advisories available for this period.': 'ਇਸ ਮਿਆਦ ਲਈ ਕੋਈ ਸਲਾਹ ਉਪਲਬਧ ਨਹੀਂ',
+  'Location': 'ਟਿਕਾਣਾ',
   'Language': 'ਭਾਸ਼ਾ',
   'Distt': 'ਜ਼ਿਲ੍ਹਾ',
   'Weekly Weather Forecast': 'ਸਪਤਾਹਿਕ ਮੌਸਮ ਭਵਿੱਖਬਾਣੀ',
@@ -46,6 +48,7 @@ Map<String, String> pbi = {
   'Impact of climate change on dairy animal':
       'ਡੇਰੀ  ਪਸ਼ੂਆਂ `ਤੇ ਮੌਸਮੀ ਤਬਦੀਲੀ ਦਾ ਅਸਰ',
   'Climate services': 'ਮੌਸਮ ਸੇਵਾਵਾਂ',
+  'Climate Services': 'ਮੌਸਮ ਸੇਵਾਵਾਂ',
   'Feedback/Raise Your Question': 'ਫੀਡਬੈਕ/ਸਵਾਲ ਲਿਖੋ',
   'Name': 'ਨਾਮ',
   'District': 'ਜ਼ਿਲ੍ਹਾ',
@@ -1203,21 +1206,22 @@ Map<String, String> pbi = {
   ..addAll({
     "Management During Thermal Stress": "ਤਾਪਮਾਨ ਤਣਾਅ ਦੌਰਾਨ ਪ੍ਰਬੰਧਨ",
     "Symptoms of Heat Stress": "ਗਰਮੀ ਦੇ ਤਣਾਅ ਦੇ ਲੱਛਣ",
-    "Thermal stress occurs when the ambient temperature lies above or below thermoneutral zone.Dairy animals have been found to be negatively impacted with increased temperature and humidity":
+    "Thermal stress occurs when the ambient temperature lies above or below thermoneutral zone. Dairy animals have been found to be negatively impacted with increased temperature and humidity.":
         "ਤਾਪਮਾਨ ਤਣਾਅ ਤਦ ਹੁੰਦਾ ਹੈ ਜਦੋਂ ਵਾਤਾਵਰਣ ਤਾਪਮਾਨ ਤਾਪਮਾਨ-ਨਿਊਟ੍ਰਲ ਜ਼ੋਨ ਤੋਂ ਉਪਰ ਜਾਂ ਹੇਠਾਂ ਹੁੰਦਾ ਹੈ। ਵਧੇ ਹੋਏ ਤਾਪਮਾਨ ਅਤੇ ਨਮੀ ਨਾਲ ਡੇਰੀ ਜਾਨਵਰਾਂ 'ਤੇ ਮਾੜਾ ਅਸਰ ਪਾਇਆ ਗਿਆ ਹੈ।",
-    "Rapid and weak pulse and Rapid but shallow breathing":
+    "Rapid and weak pulse and rapid but shallow breathing":
         "ਤੇਜ਼ ਅਤੇ ਕਮਜ਼ੋਰ ਨਬਜ਼ ਅਤੇ ਤੇਜ਼ ਪਰ ਘੱਟ ਸਾਹ ਲੈਣਾ।",
-    "Abnormal vital parameters: Elevated heart rate, respiration rate, rectal temperature etc":
+    "Abnormal vital parameters: Elevated heart rate, respiration rate, rectal temperature etc.":
         "ਅਸਧਾਰਨ ਮਹੱਤਵਪੂਰਣ ਮਾਪਦੰਡ: ਉੱਚੀ ਹੋਈ ਦਿਲ ਦੀ ਧੜਕਣ, ਸਾਹ ਦੀ ਦਰ, ਗੁਦੇ ਦਾ ਤਾਪਮਾਨ ਆਦਿ।",
-    "Unusual salivation and Dizziness / unconsciousness":
+    "Unusual salivation and dizziness/unconsciousness":
         "ਅਸਧਾਰਨ ਲਾਰ ਅਤੇ ਚੱਕਰ ਆਉਣੇ / ਬੇਹੋਸ਼ੀ।",
     "Skin becomes dull and may be cold":
         "ਚਮੜੀ ਨੀਰਸ ਹੋ ਜਾਂਦੀ ਹੈ ਅਤੇ ਠੰਡੀ ਹੋ ਸਕਦੀ ਹੈ।",
-    "In case of heat stroke, body temperature is very high sometimes as high as 106 - 108°F":
+    "In case of heat stroke, body temperature is very high sometimes as high as 106 - 108°F.":
         "ਹੀਟ ਸਟ੍ਰੋਕ ਦੇ ਮਾਮਲੇ ਵਿੱਚ, ਸ਼ਰੀਰ ਦਾ ਤਾਪਮਾਨ ਬਹੁਤ ਉੱਚਾ ਹੁੰਦਾ ਹੈ—ਕਦੇ-ਕਦੇ 106-108°F ਤੱਕ।",
     "Use of Water to Mitigate Heat Stress":
         "ਗਰਮੀ ਦੇ ਤਣਾਅ ਨੂੰ ਘਟਾਉਣ ਲਈ ਪਾਣੀ ਦੀ ਵਰਤੋਂ",
     "Use of water": "ਪਾਣੀ ਦੀ ਵਰਤੋਂ",
+    "Use of Water": "ਪਾਣੀ ਦੀ ਵਰਤੋਂ",
     "The most effective way of combating heat stress in buffalo is wallowing in the water pond":
         "ਮੱਝਾਂ ਅਤੇ ਗਾਵਾਂ ਵਿੱਚ ਗਰਮੀ ਦੇ ਤਣਾਅ ਦਾ ਮੁਕਾਬਲਾ ਕਰਨ ਦਾ ਸਭ ਤੋਂ ਪ੍ਰਭਾਵਸ਼ਾਲੀ ਤਰੀਕਾ ਪਾਣੀ ਦੇ ਛੱਪੜ ਵਿੱਚ ਨ੍ਹਾਣਾ ਹੈ।",
     "Various cooling systems have been developed for evaporative cooling such as holding-pen cooling,exit-lane cooling, and free-stall cooling. These systems are applicable for the animals maintained in covered pucca sheds. An evaporative system which uses water mist with fan is more effective and economises water use in comparison to repeatedly bathing the animals":
@@ -1226,6 +1230,14 @@ Map<String, String> pbi = {
         "ਗਰਮੀ ਦੇ ਮੌਸਮ ਵਿੱਚ ਮੱਝਾਂ ਅਤੇ ਗਾਵਾਂ ਨੂੰ ਦਿਨ ਵਿੱਚ ਘੱਟੋ-ਘੱਟ ਦੋ ਵਾਰੀ ਨ੍ਹਾਣਾ ਚਾਹੀਦਾ ਹੈ। ਗਰਮ ਸੁੱਕੇ ਮੌਸਮ ਵਿੱਚ ਪਸ਼ੂ ਦੇ ਸੂਖਮ ਵਾਤਾਵਰਣ ਵਿੱਚ ਪਾਣੀ ਦੀ ਮਿਸਟਿੰਗ/ਫੋਗਿੰਗ ਅਤੇ ਪੱਖੇ ਦੀ ਸਹਾਇਤਾ ਨਾਲ ਤਿੰਨ ਵਾਰੀ ਇੱਕ ਘੰਟੇ ਵਿੱਚ ਪਾਣੀ ਛਿੜਕਣਾ ਲਾਭਕਾਰੀ ਹੈ। ਆਟੋ ਮਿਸਟਰ/ਫੋਗਰ ਦੇ ਨਾਲ ਛੋਟੇ ਪੰਪ ਅਤੇ ਸਾਇਕਲਿਕ ਟਾਈਮਰ ਚੰਗੇ ਰਹਿੰਦੇ ਹਨ।",
     "Heat stress can also be managed by spraying/ sprinkling water directly on the body of animals for a period of 1 to 5 minutes at an interval of 10- 30 minutes. Fans/blowers should be used to induce evaporation from the skin of animals":
         "10-30 ਮਿੰਟਾਂ ਦੇ ਅੰਤਰਾਲ 'ਤੇ 1 ਤੋਂ 5 ਮਿੰਟ ਲਈ ਜਾਨਵਰਾਂ ਦੇ ਸਰੀਰ 'ਤੇ ਸਿੱਧੇ ਪਾਣੀ ਦਾ ਛਿੜਕਾਅ / ਛਿੜਕਾਅ ਕਰਕੇ ਵੀ ਗਰਮੀ ਦੇ ਤਣਾਅ ਦਾ ਪ੍ਰਬੰਧਨ ਕੀਤਾ ਜਾ ਸਕਦਾ ਹੈ। ਜਾਨਵਰਾਂ ਦੀ ਚਮੜੀ ਤੋਂ ਵਾਸ਼ਪੀਕਰਨ ਪੈਦਾ ਕਰਨ ਲਈ ਪੱਖੇ/ਬਲੋਅਰ ਦੀ ਵਰਤੋਂ ਕੀਤੀ ਜਾਣੀ ਚਾਹੀਦੀ ਹੈ",
+    "Evaporative cooling systems like holding-pen cooling, exit-lane cooling, and free-stall cooling are applicable in covered sheds. An evaporative system using water mist with fans is more efficient and economizes water compared to bathing.":
+        "ਵਿਵਿਨ ਕੂਲਿੰਗ ਸਿਸਟਮਾਂ ਦੀ ਵਿਕਾਸ ਕੀਤੀ ਗਈ ਹੈ ਜਿਵੇਂ ਕਿ ਹੋਲਡਿੰਗ-ਪੈਨ ਕੂਲਿੰਗ, ਐਗਜ਼ਿਟ-ਲੇਨ ਕੂਲਿੰਗ ਅਤੇ ਫ੍ਰੀ-ਸਟਾਲ ਕੂਲਿੰਗ। ਇਹ ਸਿਸਟਮ ਉਹਨਾਂ ਪਸ਼ੂਆਂ ਲਈ ਲਾਗੂ ਹੁੰਦੇ ਹਨ ਜੋ ਢਕਿਆ ਹੋਇਆ ਪੱਕਾ ਛਾਂਵੇ ਵਿੱਚ ਰੱਖੇ ਜਾਂਦੇ ਹਨ। ਇੱਕ ਐਵੇਪੋਰੇਟਿਵ ਸਿਸਟਮ ਜੋ ਪੱਖੇ ਨਾਲ ਪਾਣੀ ਦੀ ਮਿਸਟ ਦੀ ਵਰਤੋਂ ਕਰਦਾ ਹੈ, ਬੰਦੀ ਜਾਨਵਰਾਂ ਨੂੰ ਵਾਰੀ-ਵਾਰੀ ਨ੍ਹਾਣਾ ਕਰਨ ਦੇ ਮੁਕਾਬਲੇ ਜ਼ਿਆਦਾ ਪ੍ਰਭਾਵਸ਼ਾਲੀ ਹੈ ਅਤੇ ਪਾਣੀ ਦੀ ਵਰਤੋਂ ਨੂੰ ਘੱਟ ਕਰਦਾ ਹੈ।",
+    "Buffalo need at least two baths per day in summer. Misting/fogging the microenvironment thrice per hour with fans helps in hot-dry weather. Automatic misters with mini pumps and timers are preferable.":
+        "ਗਰਮੀ ਦੇ ਮੌਸਮ ਵਿੱਚ ਮੱਝਾਂ ਅਤੇ ਗਾਵਾਂ ਨੂੰ ਦਿਨ ਵਿੱਚ ਘੱਟੋ-ਘੱਟ ਦੋ ਵਾਰੀ ਨ੍ਹਾਣਾ ਚਾਹੀਦਾ ਹੈ। ਗਰਮ ਸੁੱਕੇ ਮੌਸਮ ਵਿੱਚ ਪਸ਼ੂ ਦੇ ਸੂਖਮ ਵਾਤਾਵਰਣ ਵਿੱਚ ਪਾਣੀ ਦੀ ਮਿਸਟਿੰਗ/ਫੋਗਿੰਗ ਅਤੇ ਪੱਖੇ ਦੀ ਸਹਾਇਤਾ ਨਾਲ ਤਿੰਨ ਵਾਰੀ ਇੱਕ ਘੰਟੇ ਵਿੱਚ ਪਾਣੀ ਛਿੜਕਣਾ ਲਾਭਕਾਰੀ ਹੈ। ਆਟੋ ਮਿਸਟਰ/ਫੋਗਰ ਦੇ ਨਾਲ ਛੋਟੇ ਪੰਪ ਅਤੇ ਸਾਇਕਲਿਕ ਟਾਈਮਰ ਚੰਗੇ ਰਹਿੰਦੇ ਹਨ।",
+    "Spraying or sprinkling water directly on animals for 1–5 minutes every 10–30 minutes, combined with fans/blowers, increases evaporative heat loss.":
+        "10-30 ਮਿੰਟਾਂ ਦੇ ਅੰਤਰਾਲ 'ਤੇ 1 ਤੋਂ 5 ਮਿੰਟ ਲਈ ਜਾਨਵਰਾਂ ਦੇ ਸਰੀਰ 'ਤੇ ਸਿੱਧੇ ਪਾਣੀ ਦਾ ਛਿੜਕਾਅ ਕਰਨ ਨਾਲ ਅਤੇ ਪੱਖੇ/ਬਲੋਅਰ ਨਾਲ ਮਿਲਾ ਕੇ ਵਾਸ਼ਪੀਕਰਨ ਰੁਕਾਵਟ ਘਟਦੀ ਹੈ।",
+    "Ensure round-the-clock access to drinking water under shade.":
+        "ਛਾਂਵੇ ਹੇਠ ਪਾਣੀ ਪੀਣ ਦੀ ਸਹੂਲਤ 24 ਘੰਟੇ ਯਕੀਨੀ ਬਣਾਓ।",
     "Ensure adequate round the clock drinking water to animals, which should be provided under shade":
         "ਪਸ਼ੂਆਂ ਨੂੰ 24 ਘੰਟੇ ਪੀਣ ਵਾਲਾ ਪਾਣੀ ਪ੍ਰਾਪਤ ਹੋਣਾ ਯਕੀਨੀ ਬਣਾਓ, ਜੋ ਛਾਂਵ ਵਿੱਚ ਦਿਤਾ ਜਾਣਾ ਚਾਹੀਦਾ ਹੈ।",
     "Other Heat Stress Management Strategies":
@@ -1234,8 +1246,26 @@ Map<String, String> pbi = {
         "ਤਾਪਮਾਨ ਤਣਾਅ ਦੀਆਂ ਹਾਲਤਾਂ ਵਿੱਚ ਦਿਨ ਦੇ ਸਮੇਂ ਮੱਝਾਂ ਅਤੇ ਗਾਵਾਂ ਨੂੰ ਖੁੱਲ੍ਹਾ ਨਹੀਂ ਜਾਣਾ ਚਾਹੀਦਾ ਕਿਉਂਕਿ ਉਨ੍ਹਾਂ ਨੂੰ ਗਰਮ ਹਵਾ ਦੇ ਤੂਫ਼ਾਨਾਂ, ਸਿੱਧੀ ਧੁੱਪ ਤੋਂ ਬਚਾਅ ਦੀ ਲੋੜ ਹੁੰਦੀ ਹੈ ਅਤੇ ਉਨ੍ਹਾਂ ਨੂੰ ਠੰਢੇ ਅਤੇ ਛਾਂਵੇ ਵਾਲੇ ਸਥਾਨਾਂ ਵਿੱਚ ਆਸਰਾ ਦਿੱਤਾ ਜਾਣਾ ਚਾਹੀਦਾ ਹੈ।",
     "The most effective source of shade is trees. They provide not only protection from sunlight, but also create a cooling effect through the evaporation of moisture from their leaves":
         "ਸਬ ਤੋਂ ਪ੍ਰਭਾਵਸ਼ਾਲੀ ਛਾਂ ਦਾ ਸਰੋਤ ਦਰੱਖਤ ਹਨ। ਇਹ ਸਿਰਫ਼ ਧੁੱਪ ਤੋਂ ਹੀ ਸੁਰੱਖਿਆ ਨਹੀਂ ਪ੍ਰਦਾਨ ਕਰਦੇ, ਬਲਕਿ ਆਪਣੀਆਂ ਪੱਤਿਆਂ ਤੋਂ ਨਮੀ ਦੇ ਬਾਫ਼ ਬਣਨ ਨਾਲ ਠੰਢ ਦਾ ਅਸਰ ਵੀ ਪੈਦਾ ਕਰਦੇ ਹਨ।",
+    "Shade trees provide protection and cooling via moisture evaporation from leaves.":
+        "ਛਾਂਦਾਰ ਦਰੱਖਤ ਪੱਤਿਆਂ ਤੋਂ ਨਮੀ ਬਾਫ਼ ਬਣਕੇ ਸੁਰੱਖਿਆ ਅਤੇ ਠੰਢ ਪ੍ਰਦਾਨ ਕਰਦੇ ਹਨ।",
     "If shade trees are not available, thatched roof of a minimum height of 9 feet should be provided. Agri-nets with 20% perforation are also useful. If facilities are not available with the individual farmers, facilities available at the village shall be used by the community. Materials like paddy straw etc,painting the roof with white paint or,providing a false ceiling insulation will help provide a cooler environment. Create barriers against hot wind using thatched wall or wet gunny cloth/ gunny bags":
         "ਜੇਕਰ ਛਾਂ ਦੇ ਦਰੱਖਤ ਉਪਲਬਧ ਨਹੀਂ ਹਨ, ਤਾਂ ਘੱਟੋ-ਘੱਟ 9 ਫੁੱਟ ਦੀ ਉਚਾਈ ਵਾਲੀ ਝੋਪੜੀ ਦੀ ਛੱਤ ਪ੍ਰਦਾਨ ਕੀਤੀ ਜਾਣੀ ਚਾਹੀਦੀ ਹੈ। 20% ਛੇਦ ਨਾਲ ਐਗਰੀ-ਨੈਟ ਵੀ ਲਾਭਕਾਰੀ ਹੁੰਦੇ ਹਨ। ਜੇਕਰ ਵਿਅਕਤੀਗਤ ਕਿਸਾਨਾਂ ਕੋਲ ਸਹੂਲਤਾਂ ਉਪਲਬਧ ਨਹੀਂ ਹਨ, ਤਾਂ ਪਿੰਡ ਵਿੱਚ ਉਪਲਬਧ ਸਹੂਲਤਾਂ ਦਾ ਵਰਤੋਂ ਸੰਗਠਨ ਦੁਆਰਾ ਕੀਤਾ ਜਾਣਾ ਚਾਹੀਦਾ ਹੈ। ਧਾਨ ਦੀ ਨਾਲ਼ੀ ਆਦਿ ਜਿਵੇਂ ਸਮਾਨ, ਛੱਤ ਨੂੰ ਸਫੈਦ ਰੰਗ ਨਾਲ ਪੇੰਟ ਕਰਨ ਜਾਂ, ਝੂਠੇ ਛੱਤ ਦੇ ਇਨਸੂਲੇਸ਼ਨ ਪ੍ਰਦਾਨ ਕਰਨ ਨਾਲ ਠੰਢਾ ਮਾਹੌਲ ਪ੍ਰਦਾਨ ਕਰਨ ਵਿੱਚ ਮਦਦ ਮਿਲੇਗੀ। ਠੰਢੀ ਹਵਾ ਦੇ ਹੱਲ ਬਣਾਉਣ ਲਈ ਝੋਪੜੀ ਦੀ ਦਿਵਾਰ ਜਾਂ ਭਿੱਜੇ ਜੂਟ ਦੇ ਕੱਪੜੇ/ ਜੂਟ ਦੇ ਬੈਗਾਂ ਦੀ ਵਰਤੋਂ ਕਰੋ।",
+    "If trees are unavailable, a thatched roof of at least 9 feet is useful. Agri-nets (20% perforation), white-painted roofs, false ceiling insulation, or barriers (thatched walls or wet gunny cloth) help create cooler environments.":
+        "ਜੇ ਦਰੱਖਤ ਉਪਲਬਧ ਨਹੀਂ ਹਨ ਤਾਂ ਘੱਟੋ ਘੱਟ 9 ਫੁੱਟ ਉੱਚੀ ਝੋਪੜੀ ਦੀ ਛਤ ਲਾਭਕਾਰੀ ਹੈ। 20% ਛੇਦ ਵਾਲਾ ਐਗਰੀ ਨੈਟ, ਚਿੱਟਾ ਰੰਗਿਆ ਹੋਇਆ ਛਤ, ਝੂਠੀ ਛਤ ਦਾ ਇਨਸੂਲੇਸ਼ਨ ਜਾਂ ਝੋਪੜੀ ਦੀ ਭਿੱਟ/ਗਿੱਲੇ ਬੋਰੇ ਕੰਮ ਆਉਂਦੇ ਹਨ।",
+    "Sheds should be well-ventilated so polluted air exits and fresh air enters. Provide one 31 ft ventilator per cow in covered sheds; heavy-duty fans aid ventilation.":
+        "ਛਪਰੀਆਂ ਚੰਗੀ ਤਰ੍ਹਾਂ ਹवादਾਰ ਹੋਣੀਆਂ ਚਾਹੀਦੀਆਂ ਹਨ ਤਾਂ ਜੋ ਪ੍ਰਦੂਸ਼ਿਤ ਹਵਾ ਬਾਹਰ ਜਾ ਸਕੇ ਅਤੇ ਤਾਜ਼ੀ ਹਵਾ ਅੰਦਰ ਆ ਸਕੇ। ਢੱਕੀਆਂ ਛਪਰੀਆਂ ਵਿੱਚ ਹਰ ਗਾਂ/ਮੱਝ ਲਈ 31 ਫੁੱਟ ਦਾ ਇੱਕ ਵੈਂਟੀਲੇਟਰ ਰੱਖੋ; ਭਾਰੀ ਡਿਊਟੀ ਪੱਖੇ ਹਵਾ ਦੌਰਾਨੀ ਵਿੱਚ ਮਦਦ ਕਰਦੇ ਹਨ।",
+    "Plant trees around sheds to cool the environment and block warm winds.":
+        "ਛਪਰੀਆਂ ਦੇ ਆਲੇ-ਦੁਆਲੇ ਦਰੱਖਤ ਲਗਾਓ ਤਾਂ ਜੋ ਮਹੌਲ ਠੰਢਾ ਰਹੇ ਅਤੇ ਗਰਮ ਹਵਾ ਰੁਕੀ ਰਹੇ।"
+    "Air movement is crucial in hot-humid climates for cooling; it increases heat loss if air temperature is below skin temperature.":
+        "ਗਰਮ-ਨਮੀ ਮੌਸਮ ਵਿੱਚ ਠੰਡਕ ਲਈ ਹਵਾ ਦੀ ਗਤੀ ਬਹੁਤ ਜ਼ਰੂਰੀ ਹੈ; ਜੇ ਹਵਾ ਦਾ ਤਾਪਮਾਨ ਚਮੜੀ ਤੋਂ ਘੱਟ ਹੋਵੇ ਤਾਂ ਇਸ ਨਾਲ ਤਾਪ ਨੁਕਸਾਨ ਵੱਧਦਾ ਹੈ।"
+    "Feed during early morning, evening, and night to avoid heat peaks.":
+        "ਗਰਮੀ ਦੇ ਸਭ ਤੋਂ ਤੇਜ਼ ਸਮੇਂ ਤੋਂ ਬਚਣ ਲਈ ਸਵੇਰੇ ਸਵੇਰੇ, ਸ਼ਾਮ ਅਤੇ ਰਾਤ ਨੂੰ ਚਾਰਾ ਦਿਓ।"
+    "Prefer grazing in early morning and late evening when temperatures are lower.":
+        "ਤਾਪਮਾਨ ਘੱਟ ਹੋਣ 'ਤੇ ਸਵੇਰੇ ਸਵੇਰੇ ਅਤੇ ਦੇਰ ਸ਼ਾਮ ਚਰਾਈ ਨੂੰ ਤਰਜੀਹ ਦਿਓ।"
+    "Increase ration density to deliver nutrients with reduced dry matter intake. Low-fibre, high-fermentable carbohydrate diets produce lower dietary heat increment.":
+        "ਘੱਟ ਸੁੱਕੀ ਖੁਰਾਕ ਨਾਲ ਪੋਸ਼ਕ ਤੱਤ ਦੇਣ ਲਈ ਰੇਸ਼ਨ ਦੀ ਘਣਤਾ ਵਧਾਓ। ਘੱਟ ਫਾਈਬਰ ਅਤੇ ਉੱਚ ਫਰਮੈਂਟੇਬਲ ਕਾਰਬੋਹਾਈਡ੍ਰੇਟ ਵਾਲਾ ਖੁਰਾਕ ਘੱਟ ਗਰਮੀ ਪੈਦਾ ਕਰਦਾ ਹੈ।"
+    "Provide increased mineral supplementation during heat; potassium-rich mineral mixtures are preferred.":
+        "ਗਰਮੀ ਵਿੱਚ ਖਣਿਜ ਸਪਲੀਮੈਂਟ ਵਧਾਓ; ਪੋਟਾਸੀਅਮ ਭਰਪੂਰ ਮਿਸ਼ਰਣ ਚੰਗਾ ਹੈ।"
     "The buffalo shed should be well ventilated that the polluted air can directly diffused outside and clean and fresh air can enter into it. Ensure one ventilator of 3 x 1 feet per cow in covered shed. In these sheds heavy duty fan is best option to facilitate ventilation":
         "ਮੱਝਾਂ ਅਤੇ ਗਾਵਾਂ ਦੀ ਝੋਪੜੀ ਵਧੀਆ ਹਵਾ ਦਾਰ ਹੋਣਾ ਚਾਹੀਦਾ ਹੈ ਤਾਂ ਜੋ ਪ੍ਰਦੂਸ਼ਿਤ ਹਵਾ ਸਿੱਧੇ ਬਾਹਰ ਨਿਕਲੀ ਜਾ ਸਕੇ ਅਤੇ ਸਾਫ਼ ਅਤੇ ਤਾਜ਼ੀ ਹਵਾ ਉਸ ਵਿੱਚ ਪ੍ਰਵੇਸ਼ ਕਰ ਸਕੇ। ਢਕੀ ਹੋਈ ਝੋਪੜੀ ਵਿੱਚ ਹਰ ਮੱਝਾਂ ਅਤੇ ਗਾਵਾਂ ਲਈ 3 x 1 ਫੁੱਟ ਦਾ ਇੱਕ ਹਵਾਦਾਨ ਯਕੀਨੀ ਬਣਾਓ। ਇਨ੍ਹਾਂ ਝੋਪੜੀਆਂ ਵਿੱਚ ਹਵਾ ਪ੍ਰਵਾਹ ਨੂੰ ਸੁਚਾਰੂ ਬਣਾਉਣ ਲਈ ਹੈਵੀ ਡਿਊਟੀ ਪੱਖਾ ਸਭ ਤੋਂ ਵਧੀਆ ਵਿਕਲਪ ਹੈ।",
     "The proper plantation should be managed in surroundings so that the environment may be cool and fresh and warm air storm could not enter directly in the shed":
@@ -1252,14 +1282,24 @@ Map<String, String> pbi = {
         "ਗਰਮ ਮੌਸਮ ਦੌਰਾਨ ਮਿਨਰਲ ਸਪਲੀਮੈਂਟੇਸ਼ਨ ਵਿੱਚ ਵਾਧਾ ਯਕੀਨੀ ਬਣਾਓ ਤਾਂ ਜੋ ਮਿਨਰਲ ਦੀ ਵਧੀਕ ਮੰਗ ਨੂੰ ਪੂਰਾ ਕੀਤਾ ਜਾ ਸਕੇ। ਪੋਟਾਸੀਅਮ ਨਾਲ ਭਰਪੂਰ ਮਿਨਰਲ ਮਿਸ਼ਰਨ ਨੂੰ ਤਰਜੀਹ ਦਿੱਤੀ ਜਾਣੀ ਚਾਹੀਦੀ ਹੈ।",
     "Managing Cold Stress": "ਠੰਢੇ ਤਣਾਅ ਦਾ ਪ੍ਰਬੰਧਨ",
     "Monitor weather conditions and act accordingly. Monitor temperature changes and provide more feed to animals in colder weather conditions":
+    "Monitor weather conditions and provide extra feed during colder temperatures.":
+        "ਮੌਸਮ ਦੀ ਸਥਿਤੀ ਤੇ ਧਿਆਨ ਰੱਖੋ ਅਤੇ ਠੰਡ ਵਿੱਚ ਵਧੇਰੇ ਚਾਰਾ ਦਿਓ।"
         "ਮੌਸਮ ਦੀਆਂ ਹਾਲਤਾਂ ਦੀ ਨਿਗਰਾਨੀ ਕਰੋ ਅਤੇ ਉਸ ਅਨੁਸਾਰ ਕਾਰਵਾਈ ਕਰੋ। ਤਾਪਮਾਨ ਵਿੱਚ ਹੋਣ ਵਾਲੇ ਬਦਲਾਵਾਂ ਦੀ ਨਿਗਰਾਨੀ ਕਰੋ ਅਤੇ ਠੰਢੇ ਮੌਸਮ ਵਿੱਚ ਪਸ਼ੂਆਂ ਨੂੰ ਵਧੇਰੇ ਖੁਰਾਕ ਦਿਓ।",
     "Ensure there is enough shelter from the wind. Effects of cold stress increase when wind speed increases. Any kind of available protection, whether it is natural (bush, valley bottoms or hillsides) or man-made (such as simple windbreak fences or shelters) can be highly valuable in helping animals cope with extreme temperatures and wind-chill effects":
+    "Ensure windbreaks or shelters to protect animals from cold winds; natural bushes or simple fences can be effective.":
+        "ਠੰਢੀਆਂ ਹਵਾਂ ਤੋਂ ਬਚਾਅ ਲਈ ਵਿੰਡਬ੍ਰੇਕ ਜਾਂ ਆੜ ਹੋਣੀ ਚਾਹੀਦੀ ਹੈ; ਕੁਦਰਤੀ ਝਾੜੀਆਂ ਜਾਂ ਸਧਾਰਣ ਵਾੜ ਲਾਭਦਾਇਕ ਹੋ ਸਕਦੇ ਹਨ।"
         "ਹਵਾ ਤੋਂ ਪ੍ਰਣਾਲੀ ਸੁਰੱਖਿਆ ਯਕੀਨੀ ਬਣਾਓ। ਜਦੋਂ ਹਵਾ ਦੀ ਗਤੀ ਵਧਦੀ ਹੈ, ਤਾਂ ਠੰਢੇ ਤਣਾਅ ਦੇ ਪ੍ਰਭਾਵ ਵਧ ਜਾਂਦੇ ਹਨ। ਕਿਸੇ ਵੀ ਕਿਸਮ ਦੀ ਉਪਲਬਧ ਸੁਰੱਖਿਆ, ਚਾਹੇ ਉਹ ਕੁਦਰਤੀ (ਬੂਸ਼, ਘਾਟਾਂ ਜਾਂ ਪਹਾੜੀਆਂ) ਹੋਵੇ ਜਾਂ ਮਨੁੱਖ ਦੁਆਰਾ ਬਣਾਈ ਗਈ (ਜਿਵੇਂ ਕਿ ਸਧਾਰਣ ਹਵਾ ਰੁਕਾਵਟ ਵਾਲੇ ਵਾੜ ਜਾਂ ਝੋਪੜੀਆਂ), ਇਹ ਪਸ਼ੂਆਂ ਨੂੰ ਤਾਪਮਾਨ ਅਤੇ ਹਵਾ ਦੀ ਠੰਢ ਨੂੰ ਬਰਦਾਸ਼ਤ ਕਰਨ ਵਿੱਚ ਬਹੁਤ ਲਾਭਦਾਇਕ ਹੋ ਸਕਦੀ ਹੈ।",
     "Provide bedding to help keep animal clean and dry. Bedding, such as barley straw, helps to withstand cold stress":
+    "Provide bedding, such as straw, to keep animals clean and dry and help them withstand cold stress.":
+        "ਪਸ਼ੂਆਂ ਨੂੰ ਸਾਫ਼ ਅਤੇ ਸੁੱਕਾ ਰੱਖਣ ਲਈ ਤੇ ਠੰਢ ਦੇ ਤਣਾਅ ਨੂੰ ਸਹਿਣ ਲਈ ਤੂੜੀ ਆਦਿ ਬਿਛਾਓ।"
         "ਜਾਨਵਰਾਂ ਨੂੰ ਸਾਫ਼ ਅਤੇ ਸੁੱਕਾ ਰੱਖਣ ਵਿੱਚ ਮਦਦ ਲਈ ਬਿਸਤਰਾ ਪ੍ਰਦਾਨ ਕਰੋ। ਬੈੱਡਿੰਗ, ਜਿਵੇਂ ਕਿ ਜੌਂ ਦੀ ਤੂੜੀ, ਠੰਡੇ ਤਣਾਅ ਨੂੰ ਸਹਿਣ ਵਿੱਚ ਮਦਦ ਕਰਦੀ ਹੈ।",
     "Provide additional feed. Increase grain and hay for when temperatures drop below the lower critical threshold level":
+    "Increase grain and hay when temperatures drop below the lower critical threshold.":
+        "ਜਦੋਂ ਤਾਪਮਾਨ ਘੱਟੋ-ਘੱਟ ਸੀਮਾ ਤੋਂ ਹੇਠਾਂ ਆ ਜਾਵੇ ਤਾਂ ਅਨਾਜ ਤੇ ਘਾਹ ਵਧਾਓ।"
         "ਵਧੀਕ ਖੁਰਾਕ ਪ੍ਰਦਾਨ ਕਰੋ। ਜਦੋਂ ਤਾਪਮਾਨ ਘੱਟੋ-ਘੱਟ ਸੰਵੇਦਨਸ਼ੀਲ ਤਾਪਮਾਨ ਤੋਂ ਹੇਠਾਂ ਗਿਰਦਾ ਹੈ, ਤਾਂ ਅਨਾਜ ਅਤੇ ਘਾਸ ਵਿੱਚ ਵਾਧਾ ਕਰੋ।",
     "Provide water. Make sure animals have ample water available at all times. A limit in water available will limit feed intake and make it more difficult for animal to meet their energy requirements. Excessively cold water can severely limit water intake":
+    "Ensure ample water is available; warm water may be necessary to encourage intake, as cold water can limit consumption.":
+        "ਪਰਯਾਪਤ ਪਾਣੀ ਉਪਲਬਧ ਰੱਖੋ; ਠੰਢਾ ਪਾਣੀ ਪੀਣ 'ਤੇ ਰੋਕ ਲਾ ਸਕਦਾ ਹੈ, ਇਸ ਲਈ ਜੇ ਲੋੜ ਹੋਏ ਤਾਂ ਗੁੜਮੁੰਢਾ ਪਾਣੀ ਦਿਓ।"
         "ਪਾਣੀ ਪ੍ਰਦਾਨ ਕਰੋ। ਇਹ ਯਕੀਨੀ ਬਣਾਓ ਕਿ ਪਸ਼ੂਆਂ ਕੋਲ ਹਰ ਸਮੇਂ ਕਾਫ਼ੀ ਪਾਣੀ ਉਪਲਬਧ ਹੋਵੇ। ਪਾਣੀ ਦੀ ਸੀਮਤ ਉਪਲਬਧਤਾ ਖੁਰਾਕ ਦੀ ਖਪਤ ਨੂੰ ਸੀਮਤ ਕਰੇਗੀ ਅਤੇ ਪਸ਼ੂਆਂ ਲਈ ਆਪਣੀਆਂ ਉਰਜਾ ਦੀ ਜ਼ਰੂਰਤਾਂ ਨੂੰ ਪੂਰਾ ਕਰਨਾ ਜ਼ਿਆਦਾ ਮੁਸ਼ਕਲ ਬਣਾ ਦੇਵੇਗੀ। ਬਹੁਤ ਠੰਢਾ ਪਾਣੀ ਪਾਣੀ ਦੀ ਖਪਤ ਨੂੰ ਬਹੁਤ ਵਧੇਰੇ ਸੀਮਤ ਕਰ ਸਕਦਾ ਹੈ।"
   })
   ..addAll({
@@ -1315,7 +1355,19 @@ Map<String, String> pbi = {
     'Send OTP': 'OTP ਭੇਜੋ',
     'Skip': 'ਛੱਡੋ',
     'Enter OTP': 'OTP ਦਰਜ ਕਰੋ',
-    'Please Enter Something': 'ਕਿਰਪਾ ਕਰਕੇ ਕੁਝ ਦਰਜ ਕਰੋ'
+    'Please Enter Something': 'ਕਿਰਪਾ ਕਰਕੇ ਕੁਝ ਦਰਜ ਕਰੋ',
+    'FeedBack Submitted Successfully!': 'ਫੀਡਬੈਕ ਸਫ਼ਲਤਾਪੂਰਵਕ ਭੇਜਿਆ ਗਿਆ!',
+    'Notification': 'ਸੂਚਨਾ',
+    'OK': 'ਠੀਕ ਹੈ',
+    'Enter your Mobile Number': 'ਆਪਣਾ ਮੋਬਾਈਲ ਨੰਬਰ ਦਰਜ ਕਰੋ',
+    'Enter your Email Id': 'ਆਪਣਾ ਈਮੇਲ ਆਈਡੀ ਦਰਜ ਕਰੋ',
+    'Select State & District': 'ਰਾਜ ਤੇ ਜ਼ਿਲ੍ਹਾ ਚੁਣੋ',
+    'Filter': 'ਛਾਨਬੀਨ',
+    'Remove Filter': 'ਫਿਲਟਰ ਹਟਾਓ',
+    'Select Location & Language': 'ਟਿਕਾਣਾ ਅਤੇ ਭਾਸ਼ਾ ਚੁਣੋ',
+    'Last updated:': 'ਆਖਰੀ ਅੱਪਡੇਟ:',
+    'State': 'ਰਾਜ',
+    'Already Have Accounts - ': 'ਪਹਿਲਾਂ ਤੋਂ ਖਾਤਾ ਹੈ - '
 })..addAll({
     'Ration Formulation for a lactating buffalo with body weight 450-500 Kg) during heat stress season': 'ਗਰਮੀ ਦੇ ਤਣਾਅ ਦੇ ਮੌਸਮ ਦੌਰਾਨ ਦੁੱਧ ਦੇਣ ਵਾਲੀ ਮੱਝ (ਸਰੀਰ ਦਾ ਭਾਰ 450-500 ਕਿਲੋਗ੍ਰਾਮ) ਲਈ ਰਾਸ਼ਨ ਫਾਰਮੂਲੇਸ਼ਨ',
     'Ration ingredient': 'ਰਾਸ਼ਨ ਸਮੱਗਰੀ',
