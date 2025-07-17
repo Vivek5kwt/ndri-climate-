@@ -469,7 +469,7 @@ class _DashboardState extends State<Dashboard> {
             else ...[
                 Center(
                   child: Text(
-                    'Last updated: ${DateFormat('dd-MM-yyyy HH:mm').format(_forecast!.updatedAt)}',
+                    '${'Last updated:'.tr} ${DateFormat('dd-MM-yyyy HH:mm').format(_forecast!.updatedAt)}',
                     style: TextStyle(
                       fontSize: ResponsiveUtils.wp(2),
                       fontStyle: FontStyle.italic,

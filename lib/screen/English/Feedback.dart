@@ -7,6 +7,7 @@ import 'package:ndri_climate/material/custom_drawer.dart';
 import 'package:ndri_climate/material/plugin/plugin.dart';
 import 'package:ndri_climate/material/plugin/responsiveUtils.dart';
 import 'package:ndri_climate/material/reusableappbar.dart';
+import 'package:ndri_climate/screen/English/dashboard2.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -200,10 +201,20 @@ class _FeedBackState extends State<FeedBack> {
                           Navigator.pop(context);
                           Plugin.dialogpopup(
                             context: context,
-                            dialog: 'FeedBack Submitted Successfully!',
+                            dialog: 'FeedBack Submitted Successfully!'.tr,
                             onPressed: () {
                               _messagecontroller.clear();
                               Navigator.pop(context);
+                              Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (_) => Dashboard(
+                                    selectDist: district,
+                                    selectState: state,
+                                    selectLang: language,
+                                  ),
+                                ),
+                              );
                             },
                           );
                         });
