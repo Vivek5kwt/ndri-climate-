@@ -118,9 +118,9 @@ class _Past_AdvisoriesState extends State<Past_Advisories> {
     showModalBottomSheet(
       context: context,
       isScrollControlled: true,
-      builder: (BuildContext ctx) {
+      builder: (BuildContext bsContext) {
         return StatefulBuilder(
-          builder: (context, _) {
+          builder: (context, __) {
             return SizedBox(
               height: MediaQuery.of(context).size.height * 0.75,
               child: Column(
@@ -173,7 +173,7 @@ class _Past_AdvisoriesState extends State<Past_Advisories> {
                             onStateSelected: (state, districtList) {
                               _stateController.text = state;
                               _districtController.clear();
-                              Navigator.pop(_, state);
+                              Navigator.pop(bsContext, state);
                             },
                           ),
                         );

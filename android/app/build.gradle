@@ -52,7 +52,7 @@ android {
         applicationId "com.ndri.icar.ndri"
         minSdkVersion 23
         targetSdkVersion 33
-        versionCode 9
+        versionCode 10
         versionName "1.7.1"
     }
 
