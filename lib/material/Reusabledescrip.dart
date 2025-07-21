@@ -39,7 +39,7 @@ class Reusabledescription extends StatelessWidget {
               desciption.tr,
               style: textStyle ??
                   TextStyle(
-                    fontSize: ResponsiveUtils.wp(2.5),
+                    fontSize: ResponsiveUtils.wp(3),
                   ),
             ),
           ),

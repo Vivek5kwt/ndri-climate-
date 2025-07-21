@@ -149,23 +149,23 @@ class _Thermal_StressState extends State<Thermal_Stress> {
                             SizedBox(height: ResponsiveUtils.hp(2)),
                             Reusabledescription(
                               desciption: 'Rapid and weak pulse and rapid but shallow breathing'.tr,
-                              textStyle: TextStyle(fontSize: ResponsiveUtils.wp(2.5)),
+                              textStyle: _subtitleTextStyle,
                             ),
                             Reusabledescription(
                               desciption: 'Abnormal vital parameters: Elevated heart rate, respiration rate, rectal temperature etc.'.tr,
-                              textStyle: TextStyle(fontSize: ResponsiveUtils.wp(2.5)),
+                              textStyle: _subtitleTextStyle,
                             ),
                             Reusabledescription(
                               desciption: 'Unusual salivation and dizziness/unconsciousness'.tr,
-                              textStyle: TextStyle(fontSize: ResponsiveUtils.wp(2.5)),
+                              textStyle: _subtitleTextStyle,
                             ),
                             Reusabledescription(
                               desciption: 'Skin becomes dull and may be cold'.tr,
-                              textStyle: TextStyle(fontSize: ResponsiveUtils.wp(2.5)),
+                              textStyle: _subtitleTextStyle,
                             ),
                             Reusabledescription(
                               desciption: 'In case of heat stroke, body temperature is very high sometimes as high as 106 - 108°F.'.tr,
-                              textStyle: TextStyle(fontSize: ResponsiveUtils.wp(2.5)),
+                              textStyle: _subtitleTextStyle,
                             ),
                           ],
                         ),
@@ -212,29 +212,29 @@ class _Thermal_StressState extends State<Thermal_Stress> {
                             SizedBox(height: ResponsiveUtils.hp(2)),
                             Reusabledescription(
                               desciption: 'The most effective way of combating heat stress in buffalo is wallowing in the water pond.'.tr,
-                              textStyle: TextStyle(fontSize: ResponsiveUtils.wp(2.5)),
+                              textStyle: _subtitleTextStyle,
                             ),
                             Reusabledescription(
                               desciption:
                               'Evaporative cooling systems like holding-pen cooling, exit-lane cooling, and free-stall cooling are applicable in covered sheds. An evaporative system using water mist with fans is more efficient and economizes water compared to bathing.'
                                   .tr,
-                              textStyle: TextStyle(fontSize: ResponsiveUtils.wp(2.5)),
+                              textStyle: _subtitleTextStyle,
                             ),
                             Reusabledescription(
                               desciption:
                               'Buffalo need at least two baths per day in summer. Misting/fogging the microenvironment thrice per hour with fans helps in hot-dry weather. Automatic misters with mini pumps and timers are preferable.'
                                   .tr,
-                              textStyle: TextStyle(fontSize: ResponsiveUtils.wp(2.5)),
+                              textStyle: _subtitleTextStyle,
                             ),
                             Reusabledescription(
                               desciption:
                               'Spraying or sprinkling water directly on animals for 1–5 minutes every 10–30 minutes, combined with fans/blowers, increases evaporative heat loss.'
                                   .tr,
-                              textStyle: TextStyle(fontSize: ResponsiveUtils.wp(2.5)),
+                              textStyle: _subtitleTextStyle,
                             ),
                             Reusabledescription(
                               desciption: 'Ensure round-the-clock access to drinking water under shade.'.tr,
-                              textStyle: TextStyle(fontSize: ResponsiveUtils.wp(2.5)),
+                              textStyle: _subtitleTextStyle,
                             ),
                           ],
                         ),
@@ -284,61 +284,61 @@ class _Thermal_StressState extends State<Thermal_Stress> {
                               desciption:
                               'During heat stress conditions buffaloes should not be allowed to move freely during day hours because they need protection against warm air storms, direct sun exposure and they should be provided with shelter in cool and shady places.'
                                   .tr,
-                              textStyle: TextStyle(fontSize: ResponsiveUtils.wp(2.5)),
+                              textStyle: _subtitleTextStyle,
                             ),
                             Reusabledescription(
                               desciption:
                               'Shade trees provide protection and cooling via moisture evaporation from leaves.'
                                   .tr,
-                              textStyle: TextStyle(fontSize: ResponsiveUtils.wp(2.5)),
+                              textStyle: _subtitleTextStyle,
                             ),
                             Reusabledescription(
                               desciption:
                               'If trees are unavailable, a thatched roof of at least 9 feet is useful. Agri-nets (20% perforation), white-painted roofs, false ceiling insulation, or barriers (thatched walls or wet gunny cloth) help create cooler environments.'
                                   .tr,
-                              textStyle: TextStyle(fontSize: ResponsiveUtils.wp(2.5)),
+                              textStyle: _subtitleTextStyle,
                             ),
                             Reusabledescription(
                               desciption:
                               'Sheds should be well-ventilated so polluted air exits and fresh air enters. Provide one 3×1 ft ventilator per cow in covered sheds; heavy-duty fans aid ventilation.'
                                   .tr,
-                              textStyle: TextStyle(fontSize: ResponsiveUtils.wp(2.5)),
+                              textStyle: _subtitleTextStyle,
                             ),
                             Reusabledescription(
                               desciption:
                               'Plant trees around sheds to cool the environment and block warm winds.'
                                   .tr,
-                              textStyle: TextStyle(fontSize: ResponsiveUtils.wp(2.5)),
+                              textStyle: _subtitleTextStyle,
                             ),
                             Reusabledescription(
                               desciption:
                               'Air movement is crucial in hot-humid climates for cooling; it increases heat loss if air temperature is below skin temperature.'
                                   .tr,
-                              textStyle: TextStyle(fontSize: ResponsiveUtils.wp(2.5)),
+                              textStyle: _subtitleTextStyle,
                             ),
                             Reusabledescription(
                               desciption:
                               'Feed during early morning, evening, and night to avoid heat peaks.'
                                   .tr,
-                              textStyle: TextStyle(fontSize: ResponsiveUtils.wp(2.5)),
+                              textStyle: _subtitleTextStyle,
                             ),
                             Reusabledescription(
                               desciption:
                               'Prefer grazing in early morning and late evening when temperatures are lower.'
                                   .tr,
-                              textStyle: TextStyle(fontSize: ResponsiveUtils.wp(2.5)),
+                              textStyle: _subtitleTextStyle,
                             ),
                             Reusabledescription(
                               desciption:
                               'Increase ration density to deliver nutrients with reduced dry matter intake. Low-fibre, high-fermentable carbohydrate diets produce lower dietary heat increment.'
                                   .tr,
-                              textStyle: TextStyle(fontSize: ResponsiveUtils.wp(2.5)),
+                              textStyle: _subtitleTextStyle,
                             ),
                             Reusabledescription(
                               desciption:
                               'Provide increased mineral supplementation during heat; potassium-rich mineral mixtures are preferred.'
                                   .tr,
-                              textStyle: TextStyle(fontSize: ResponsiveUtils.wp(2.5)),
+                              textStyle: _subtitleTextStyle,
                             ),
                           ],
                         ),
@@ -388,31 +388,31 @@ class _Thermal_StressState extends State<Thermal_Stress> {
                               desciption:
                               'Monitor weather conditions and provide extra feed during colder temperatures.'
                                   .tr,
-                              textStyle: TextStyle(fontSize: ResponsiveUtils.wp(2.5)),
+                              textStyle: _subtitleTextStyle,
                             ),
                             Reusabledescription(
                               desciption:
                               'Ensure windbreaks or shelters to protect animals from cold winds; natural bushes or simple fences can be effective.'
                                   .tr,
-                              textStyle: TextStyle(fontSize: ResponsiveUtils.wp(2.5)),
+                              textStyle: _subtitleTextStyle,
                             ),
                             Reusabledescription(
                               desciption:
                               'Provide bedding, such as straw, to keep animals clean and dry and help them withstand cold stress.'
                                   .tr,
-                              textStyle: TextStyle(fontSize: ResponsiveUtils.wp(2.5)),
+                              textStyle: _subtitleTextStyle,
                             ),
                             Reusabledescription(
                               desciption:
                               'Increase grain and hay when temperatures drop below the lower critical threshold.'
                                   .tr,
-                              textStyle: TextStyle(fontSize: ResponsiveUtils.wp(2.5)),
+                              textStyle: _subtitleTextStyle,
                             ),
                             Reusabledescription(
                               desciption:
                               'Ensure ample water is available; warm water may be necessary to encourage intake, as cold water can limit consumption.'
                                   .tr,
-                              textStyle: TextStyle(fontSize: ResponsiveUtils.wp(2.5)),
+                              textStyle: _subtitleTextStyle,
                             ),
                           ],
                         ),
