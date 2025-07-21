@@ -6,6 +6,7 @@ import 'package:ndri_climate/material/plugin/responsiveUtils.dart';
 import 'package:ndri_climate/model/Repo.dart';
 import 'package:ndri_climate/model/Weather_Forecast.dart';
 import 'package:ndri_climate/screen/English/dashboard2.dart';
+import '../../material/asset_image_loader.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Dialogue_page extends StatefulWidget {
@@ -282,12 +283,10 @@ class _Dialogue_pageState extends State<Dialogue_page> {
   }
 
   Widget _buildResponsiveImage(String assetPath, double heightPercentage) {
-    return Container(
-      child: Image.asset(
-        assetPath,
-        height: ResponsiveUtils.hp(heightPercentage),
-        fit: BoxFit.contain,
-      ),
+    return AssetImageLoader(
+      assetPath: assetPath,
+      height: ResponsiveUtils.hp(heightPercentage),
+      fit: BoxFit.contain,
     );
   }
 
@@ -335,9 +334,11 @@ class _Dialogue_pageState extends State<Dialogue_page> {
                             ),
                             shape: BoxShape.circle,
                           ),
-                          child: Image.asset(
-                            'assets/icon/logo1.webp',
+                          child: AssetImageLoader(
+                            assetPath: 'assets/icon/logo1.webp',
                             fit: BoxFit.contain,
+                            width: ResponsiveUtils.wp(20),
+                            height: ResponsiveUtils.hp(10),
                           ),
                         ),
                         Container(

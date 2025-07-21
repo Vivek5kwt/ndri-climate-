@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ndri_climate/material/plugin/responsiveUtils.dart';
 import 'package:ndri_climate/screen/English/Dialogue_page.dart';
+import '../../material/asset_image_loader.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -37,8 +38,8 @@ class _HomeState extends State<Home> {
       body: Stack(
         children: [
           Positioned.fill(
-            child: Image.asset(
-              'assets/images/background.webp',
+            child: AssetImageLoader(
+              assetPath: 'assets/images/background.webp',
               fit: BoxFit.cover,
               filterQuality: FilterQuality.high,
               color: Colors.white.withOpacity(0.4),
@@ -63,8 +64,8 @@ class _HomeState extends State<Home> {
                         ),
                       ),
                       alignment: Alignment.center,
-                      child: Image.asset(
-                        'assets/icon/logo1.webp',
+                      child: AssetImageLoader(
+                        assetPath: 'assets/icon/logo1.webp',
                         fit: BoxFit.contain,
                         width: 100.w,
                         height: 100.w,
@@ -129,8 +130,8 @@ class _HomeState extends State<Home> {
                 ),
                 Expanded(
                   child: Center(
-                    child: Image.asset(
-                      'assets/icon/logo2.webp',
+                    child: AssetImageLoader(
+                      assetPath: 'assets/icon/logo2.webp',
                       width: screenWidth * 0.25,
                       fit: BoxFit.contain,
                     ),

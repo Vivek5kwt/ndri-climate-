@@ -3,6 +3,7 @@ import 'package:ndri_climate/material/bottom_sheet.dart';
 import 'package:ndri_climate/material/plugin/responsiveUtils.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'asset_image_loader.dart';
 
 class ReuseAppbar extends StatefulWidget implements PreferredSizeWidget {
   final String title;
@@ -120,8 +121,8 @@ class _ReuseAppbarState extends State<ReuseAppbar> {
               child: SizedBox(
                 width: iconSize,
                 height: iconSize,
-                child: Image.asset(
-                  'assets/icon/translate.webp',
+                child: const AssetImageLoader(
+                  assetPath: 'assets/icon/translate.webp',
                   fit: BoxFit.contain,
                 ),
               ),

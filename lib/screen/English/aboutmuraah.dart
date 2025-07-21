@@ -4,6 +4,7 @@ import 'package:ndri_climate/material/plugin/responsiveUtils.dart';
 import 'package:ndri_climate/material/reusableappbar.dart';
 import 'package:get/get.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../../material/asset_image_loader.dart';
 
 class About_Murrah extends StatefulWidget {
   const About_Murrah({super.key});
@@ -25,10 +26,10 @@ class _About_MurrahState extends State<About_Murrah> {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Image.asset(
-                'assets/icon/tick.webp',
-                width: 18.w,
-                height: 18.w,
+              const AssetImageLoader(
+                assetPath: 'assets/icon/tick.webp',
+                width: 18,
+                height: 18,
                 fit: BoxFit.contain,
               ),
               SizedBox(width: 10.w),
