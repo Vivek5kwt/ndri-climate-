@@ -31,7 +31,7 @@ class _Daily_ForecastState extends State<Daily_Forecast> {
   }
 
   Future<String?> _findIdForDistrict(String district) async {
-    String? next = 'https://ndri.ampleteckdev.com/api/forecasts?page=';
+    String? next = 'https://ndrics.in/api/forecasts?page=';
     final wanted = district.trim().toLowerCase();
     while (next != null) {
       final r = await http.get(Uri.parse(next), headers: {'Accept': 'application/json'});
@@ -48,7 +48,7 @@ class _Daily_ForecastState extends State<Daily_Forecast> {
   }
 
   Future<void> _getDetailById(String id) async {
-    final url = Uri.parse('https://ndri.ampleteckdev.com/api/forecasts/$id');
+    final url = Uri.parse('https://ndrics.in/api/forecasts/$id');
     final res = await http.get(url, headers: {'Accept': 'application/json'});
     if (res.statusCode == 200) {
       final dec = jsonDecode(res.body);

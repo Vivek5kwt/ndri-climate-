@@ -129,7 +129,7 @@ class _DashboardState extends State<Dashboard> {
 
   Future<ForecastDetail?> _getForecastByDistrict(String district) async {
     final uri =
-    Uri.parse('https://ndri.ampleteckdev.com/api/forecasts/$district');
+    Uri.parse('https://ndrics.in/api/forecasts/$district');
     final res = await http.get(uri, headers: {'Accept': 'application/json'});
     if (res.statusCode == 200) {
       final decoded = jsonDecode(res.body);
