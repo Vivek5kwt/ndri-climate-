@@ -7,6 +7,7 @@ import 'package:ndri_climate/material/custom_drawer.dart';
 import 'package:ndri_climate/material/plugin/responsiveUtils.dart';
 import 'package:ndri_climate/material/reusableappbar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:ndri_climate/material/network_image_loader.dart';
 
 class Daily_Forecast extends StatefulWidget {
   final String district;
@@ -99,8 +100,8 @@ class _Daily_ForecastState extends State<Daily_Forecast> {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Image.network(
-              'https://cdn-icons-png.flaticon.com/128/2469/2469994.png',
+            NetworkImageLoader(
+              url: 'https://cdn-icons-png.flaticon.com/128/2469/2469994.png',
               width: 70.w,
               height: 65.h,
               fit: BoxFit.contain,
@@ -140,7 +141,7 @@ class _Daily_ForecastState extends State<Daily_Forecast> {
     child: Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Image.network(img, width: 35.w, height: 30.h, fit: BoxFit.contain),
+        NetworkImageLoader(url: img, width: 35.w, height: 30.h, fit: BoxFit.contain),
         SizedBox(height: 7.h),
         Text('$val $unit', style: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w500))
       ],

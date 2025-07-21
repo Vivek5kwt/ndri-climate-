@@ -12,6 +12,7 @@ import 'package:ndri_climate/screen/English/aboutndri.dart';
 import 'package:ndri_climate/screen/English/dashboard2.dart';
 import 'package:ndri_climate/screen/English/managemental_practices.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'network_icon.dart';
 
 class CustomDrawer extends StatefulWidget {
   @override
@@ -150,10 +151,10 @@ class _CustomDrawerState extends State<CustomDrawer> {
             },
           ),
           _buildDrawerItem(
-            icon: ImageIcon(
-              NetworkImage('https://cdn-icons-png.flaticon.com/128/16686/16686199.png'),
+            icon: NetworkIcon(
+              url: 'https://cdn-icons-png.flaticon.com/128/16686/16686199.png',
               size: ResponsiveUtils.wp(6),
-              color: Color(0xFF2C96D2),
+              color: const Color(0xFF2C96D2),
             ),
             title: 'Feeding Management'.tr,
             onTap: () {
@@ -164,10 +165,10 @@ class _CustomDrawerState extends State<CustomDrawer> {
             },
           ),
           _buildDrawerItem(
-            icon: ImageIcon(
-              NetworkImage('https://cdn-icons-png.flaticon.com/128/16924/16924841.png'),
+            icon: NetworkIcon(
+              url: 'https://cdn-icons-png.flaticon.com/128/16924/16924841.png',
               size: ResponsiveUtils.wp(6),
-              color: Color(0xFF2C96D2),
+              color: const Color(0xFF2C96D2),
             ),
             title: 'Health Care Management'.tr,
             onTap: () {
@@ -178,10 +179,10 @@ class _CustomDrawerState extends State<CustomDrawer> {
             },
           ),
           _buildDrawerItem(
-            icon: ImageIcon(
-              NetworkImage('https://cdn-icons-png.flaticon.com/128/7521/7521598.png'),
+            icon: NetworkIcon(
+              url: 'https://cdn-icons-png.flaticon.com/128/7521/7521598.png',
               size: ResponsiveUtils.wp(6),
-              color: Color(0xFF2C96D2),
+              color: const Color(0xFF2C96D2),
             ),
             title: 'Management Practices'.tr,
             onTap: () {
@@ -192,10 +193,10 @@ class _CustomDrawerState extends State<CustomDrawer> {
             },
           ),
           _buildDrawerItem(
-            icon: ImageIcon(
-              NetworkImage('https://cdn-icons-png.flaticon.com/128/10414/10414431.png'),
+            icon: NetworkIcon(
+              url: 'https://cdn-icons-png.flaticon.com/128/10414/10414431.png',
               size: ResponsiveUtils.wp(6),
-              color: Color(0xFF2C96D2),
+              color: const Color(0xFF2C96D2),
             ),
             title: 'Thermal Stress Management'.tr,
             onTap: () {
@@ -206,10 +207,10 @@ class _CustomDrawerState extends State<CustomDrawer> {
             },
           ),
           _buildDrawerItem(
-            icon: ImageIcon(
-              NetworkImage('https://cdn-icons-png.flaticon.com/128/17276/17276633.png'),
+            icon: NetworkIcon(
+              url: 'https://cdn-icons-png.flaticon.com/128/17276/17276633.png',
               size: ResponsiveUtils.wp(6),
-              color: Color(0xFF2C96D2),
+              color: const Color(0xFF2C96D2),
             ),
             title: 'Feedback'.tr,
             onTap: () {
