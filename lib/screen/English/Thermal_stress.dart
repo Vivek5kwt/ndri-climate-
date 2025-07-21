@@ -18,16 +18,16 @@ class _Thermal_StressState extends State<Thermal_Stress> {
 
   // Common text styles
   final TextStyle _tabTextStyle = TextStyle(
-    fontSize: ResponsiveUtils.wp(3),
+    fontSize: ResponsiveUtils.wp(4),
     fontWeight: FontWeight.bold,
   );
   final TextStyle _sectionTitleStyle = TextStyle(
-    fontSize: ResponsiveUtils.wp(4),
+    fontSize: ResponsiveUtils.wp(5),
     fontWeight: FontWeight.bold,
     color: const Color(0xFF1976D2),
   );
   final TextStyle _subtitleTextStyle = TextStyle(
-    fontSize: ResponsiveUtils.wp(3),
+    fontSize: ResponsiveUtils.wp(3.5),
     fontWeight: FontWeight.w500,
     color: Colors.black87,
   );
@@ -68,7 +68,7 @@ class _Thermal_StressState extends State<Thermal_Stress> {
                       child: Text(
                         'Symptoms of Heat Stress'.tr,
                         style: TextStyle(
-                          fontSize: ResponsiveUtils.wp(3),
+                          fontSize: ResponsiveUtils.wp(4),
                           fontWeight: FontWeight.bold,
                         ),
                         maxLines: 2,
@@ -79,7 +79,7 @@ class _Thermal_StressState extends State<Thermal_Stress> {
                       child: Text(
                         'Use of Water'.tr,
                         style: TextStyle(
-                          fontSize: ResponsiveUtils.wp(3),
+                          fontSize: ResponsiveUtils.wp(4),
                           fontWeight: FontWeight.bold,
                         ),
                         maxLines: 1,
@@ -90,7 +90,7 @@ class _Thermal_StressState extends State<Thermal_Stress> {
                       child: Text(
                         'Other Heat Stress Management Strategies'.tr,
                         style: TextStyle(
-                          fontSize: ResponsiveUtils.wp(3),
+                          fontSize: ResponsiveUtils.wp(4),
                           fontWeight: FontWeight.bold,
                         ),
                         maxLines: 2,
@@ -101,7 +101,7 @@ class _Thermal_StressState extends State<Thermal_Stress> {
                       child: Text(
                         'Managing Cold Stress'.tr,
                         style: TextStyle(
-                          fontSize: ResponsiveUtils.wp(3),
+                          fontSize: ResponsiveUtils.wp(4),
                           fontWeight: FontWeight.bold,
                         ),
                         maxLines: 2,

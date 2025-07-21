@@ -19,16 +19,16 @@ class _HealthcareState extends State<Healthcare> {
 
   // Common text styles
   final TextStyle _tabTextStyle = TextStyle(
-    fontSize: ResponsiveUtils.wp(3),
+    fontSize: ResponsiveUtils.wp(4),
     fontWeight: FontWeight.bold,
   );
   final TextStyle _sectionTitleStyle = TextStyle(
-    fontSize: ResponsiveUtils.wp(4),
+    fontSize: ResponsiveUtils.wp(5),
     fontWeight: FontWeight.bold,
     color: const Color(0xFF1976D2),
   );
   final TextStyle _subtitleTextStyle = TextStyle(
-    fontSize: ResponsiveUtils.wp(3),
+    fontSize: ResponsiveUtils.wp(3.5),
     fontWeight: FontWeight.w500,
     color: Colors.black87,
   );
@@ -213,7 +213,7 @@ class _HealthcareState extends State<Healthcare> {
               Text(
                 'Symptoms'.tr,
                 style: TextStyle(
-                  fontSize: ResponsiveUtils.wp(3),
+                  fontSize: ResponsiveUtils.wp(4),
                   fontWeight: FontWeight.w700,
                   color: const Color(0xFF1976D2),
                 ),
@@ -232,7 +232,7 @@ class _HealthcareState extends State<Healthcare> {
               Text(
                 'Control and Prevention'.tr,
                 style: TextStyle(
-                  fontSize: ResponsiveUtils.wp(3),
+                  fontSize: ResponsiveUtils.wp(4),
                   fontWeight: FontWeight.w700,
                   color: const Color(0xFF1976D2),
                 ),
@@ -365,7 +365,7 @@ class _HealthcareState extends State<Healthcare> {
       textAlign: TextAlign.center,
       style: TextStyle(
         fontWeight: FontWeight.w600,
-        fontSize: ResponsiveUtils.wp(3.2),
+        fontSize: ResponsiveUtils.wp(4),
       ),
     ),
   );
@@ -384,7 +384,7 @@ class _HealthcareState extends State<Healthcare> {
             textAlign: TextAlign.center,
             style: TextStyle(
               fontWeight: FontWeight.w500,
-              fontSize: ResponsiveUtils.wp(3),
+              fontSize: ResponsiveUtils.wp(3.5),
             ),
           ),
         ),
