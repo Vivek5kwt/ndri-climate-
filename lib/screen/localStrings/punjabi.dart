@@ -84,7 +84,7 @@ Map<String, String> pbi = {
   "Bengali": "ਬੰਗਾਲੀ",
   "Type your District": "ਆਪਣਾ ਜ਼ਿਲ੍ਹਾ ਟਾਈਪ ਕਰੋ",
   "Type your State": "ਆਪਣਾ ਰਾਜ ਟਾਈਪ ਕਰੋ",
-  "Necess of feeding Management in Summer and Winter": "ਗਰਮੀ ਅਤੇ ਸਰਦੀ ਵਿੱਚ ਖੁਰਾਕ ਪ੍ਰਬੰਧ ਦੀ ਲੋੜ",
+  "Necessity of Feeding Management in Summer and Winter": "ਗਰਮੀ ਅਤੇ ਸਰਦੀ ਵਿੱਚ ਖੁਰਾਕ ਪ੍ਰਬੰਧ ਦੀ ਲੋੜ",
   "In Winters": "ਸਰਦੀ ਦੇ ਮੌਸਮ ਵਿੱਚ",
   "In Summers": "ਗਰਮੀ ਦੇ ਮੌਸਮ ਵਿੱਚ",
   "Necessity": "ਲੋੜ",

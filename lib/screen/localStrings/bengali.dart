@@ -84,7 +84,7 @@ const Map<String, String> bengali = <String, String>{
   'Type your District': 'আপনার জেলা টাইপ করুন',
   'Type your State': 'আপনার রাজ্য টাইপ করুন',
   'Necessity of feeding Management in Summer and Winter': 'গ্রীষ্ম এবং শীতকালে খাদ্য ব্যবস্থাপনার প্রয়োজনীয়তা',
-  'Necess of feeding Management in Summer and Winter': 'গ্রীষ্ম এবং শীতকালে খাদ্য ব্যবস্থাপনার প্রয়োজনীয়তা',
+  'Necessity of Feeding Management in Summer and Winter': 'গ্রীষ্ম এবং শীতকালে খাদ্য ব্যবস্থাপনার প্রয়োজনীয়তা',
   'In Winters': 'শীতকালে',
   'In Summers': 'গ্রীষ্মকালে',
   'Necessity': 'প্রয়োজনীয়তা',

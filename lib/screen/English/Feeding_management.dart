@@ -121,7 +121,7 @@ class _Feeding_managementState extends State<Feeding_management> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'Necess of feeding Management in Summer and Winter'.tr,
+                            'Necessity of Feeding Management in Summer and Winter'.tr,
                             style: _sectionTitleStyle,
                           ),
                           SizedBox(height: ResponsiveUtils.hp(1)),

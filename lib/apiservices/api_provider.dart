@@ -27,7 +27,7 @@ class ApiProvider {
     required int tempHumidityIndexLow,
   }) async {
     final prefs = await SharedPreferences.getInstance();
-    final url = Uri.parse('\$headUrl/api/forecasts');
+    final url = Uri.parse('$headUrl/api/forecasts');
     final headers = {'Content-Type': 'application/json', 'Accept': 'application/json'};
     final body = jsonEncode({
       'district': district,
@@ -67,7 +67,8 @@ class ApiProvider {
 
   /// Get weather data by ID
   Future<dynamic> getWeatherData({required String id}) async {
-    final url = Uri.parse('\$headUrl/api/forecasts/\$id');
+    final url = Uri.parse('$headUrl/api/forecasts/$id');
+    print('gegetet $url');
     final headers = {'Content-Type': 'application/json', 'Accept': 'application/json'};
     try {
       final response = await http.get(url, headers: headers);
@@ -90,7 +91,7 @@ class ApiProvider {
     required String district,
     required String message,
   }) async {
-    final url = Uri.parse('\$headUrl/api/feedback');
+    final url = Uri.parse('$headUrl/api/feedback');
     final headers = {'Content-Type': 'application/json', 'Accept': 'application/json'};
     final body = jsonEncode({
       'phone_number': phoneNumber,

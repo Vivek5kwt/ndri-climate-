@@ -106,7 +106,7 @@ class LocalString extends Translations {
   'Bengali':'बंगाली',
           'Type your District': 'अपना जिला टाइप करें',
           'Type your State': 'अपना राज्य टाइप करें',
-          'Necess of feeding Management in Summer and Winter':
+          'Necessity of Feeding Management in Summer and Winter':
               'ग्रीष्म एवं शीत ऋतु में आहार प्रबंधन की आवश्यकता',
           'In Winters': 'सर्दियों में',
           'In Summers': 'गर्मियों में',
