@@ -19,7 +19,8 @@ class Feeding_management extends StatefulWidget {
 class _Feeding_managementState extends State<Feeding_management> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
-
+  // Common text styles
+  final TextStyle _tabTextStyle = AppStyles.tabTextStyle;
   final TextStyle _sectionTitleStyle = AppStyles.sectionTitleStyle;
   final TextStyle _subtitleTextStyle = AppStyles.subtitleTextStyle;
 
@@ -49,18 +50,12 @@ class _Feeding_managementState extends State<Feeding_management> {
               padding: EdgeInsets.symmetric(vertical: ResponsiveUtils.hp(1)),
               child: TabBar(
                 isScrollable: true,
-                labelColor: const Color(0xFF1976D2),
-                unselectedLabelColor: Colors.grey.shade600,
+                labelStyle:
+                    _tabTextStyle.copyWith(color: const Color(0xFF1976D2)),
+                unselectedLabelStyle:
+                    _tabTextStyle.copyWith(color: Colors.grey.shade600),
                 indicatorColor: const Color(0xFF1976D2),
                 indicatorWeight: 3,
-                labelStyle: TextStyle(
-                  fontSize: ResponsiveUtils.wp(5),
-                  fontWeight: FontWeight.bold,
-                ),
-                unselectedLabelStyle: TextStyle(
-                  fontSize: ResponsiveUtils.wp(3.2),
-                  fontWeight: FontWeight.w500,
-                ),
                 dragStartBehavior: DragStartBehavior.start,
                 tabs: [
                   Tab(
@@ -119,19 +114,29 @@ class _Feeding_managementState extends State<Feeding_management> {
                           ),
                           SizedBox(height: ResponsiveUtils.hp(1)),
                           Reusabledescription(
-                            desciption: 'Temperature and humidity during April to middle of September cause heat stress in livestock, as animals cannot dissipate enough heat to maintain body temperature.'.tr,
+                            desciption:
+                                'Temperature and humidity during April to middle of September cause heat stress in livestock, as animals cannot dissipate enough heat to maintain body temperature.'.tr,
+                            textStyle: _subtitleTextStyle,
                           ),
                           Reusabledescription(
-                            desciption: 'High ambient temperature, relative humidity and radiant energy compromise the ability of animals to dissipate heat.'.tr,
+                            desciption:
+                                'High ambient temperature, relative humidity and radiant energy compromise the ability of animals to dissipate heat.'.tr,
+                            textStyle: _subtitleTextStyle,
                           ),
                           Reusabledescription(
-                            desciption: 'Therefore, it increases in body temperature and reduces in productive performance particularly in milk production. This decrease can be either transitory or long term depending on the length and severity of heat stress.'.tr,
+                            desciption:
+                                'Therefore, it increases in body temperature and reduces in productive performance particularly in milk production. This decrease can be either transitory or long term depending on the length and severity of heat stress.'.tr,
+                            textStyle: _subtitleTextStyle,
                           ),
                           Reusabledescription(
-                            desciption: 'The decrease in milk production may ranges from 10 to 25%. Therefore, it is utmost necessary to manage feeding practices during summer to alleviate heat stress of the dairy animals.'.tr,
+                            desciption:
+                                'The decrease in milk production may ranges from 10 to 25%. Therefore, it is utmost necessary to manage feeding practices during summer to alleviate heat stress of the dairy animals.'.tr,
+                            textStyle: _subtitleTextStyle,
                           ),
                           Reusabledescription(
-                            desciption: 'During winter season many animals often refuse to eat, become feverish and pneumonitic which in turn affects the milk production, health and reproduction of the animal. Severe cold surroundings result in increased energy loss, which has to be compensated by giving extra calorie-rich feed and special care.'.tr,
+                            desciption:
+                                'During winter season many animals often refuse to eat, become feverish and pneumonitic which in turn affects the milk production, health and reproduction of the animal. Severe cold surroundings result in increased energy loss, which has to be compensated by giving extra calorie-rich feed and special care.'.tr,
+                            textStyle: _subtitleTextStyle,
                           ),
                         ],
                       ),
@@ -175,22 +180,33 @@ class _Feeding_managementState extends State<Feeding_management> {
                           ),
                           SizedBox(height: ResponsiveUtils.hp(2)),
                           Reusabledescription(
-                            desciption: 'Provision of or fresh tap water or at least normal drinking water to the livestock as per requirement throughout day and night'.tr,
+                            desciption:
+                                'Provision of or fresh tap water or at least normal drinking water to the livestock as per requirement throughout day and night'.tr,
+                            textStyle: _subtitleTextStyle,
                           ),
                           Reusabledescription(
-                            desciption: 'Prefer to feed the animal during night time or early morning'.tr,
+                            desciption:
+                                'Prefer to feed the animal during nighttime or early morning'.tr,
+                            textStyle: _subtitleTextStyle,
                           ),
                           Reusabledescription(
-                            desciption: 'Prefer grazing during early morning and late evening'.tr,
+                            desciption:
+                                'Prefer grazing during early morning and late evening'.tr,
+                            textStyle: _subtitleTextStyle,
                           ),
                           Reusabledescription(
-                            desciption: 'Ration especially energy density of the ration must be increased by decreasing straw and increasing concentrate mixture'.tr,
+                            desciption:
+                                'Ration especially energy density of the ration must be increased by decreasing straw and increasing concentrate mixture'.tr,
+                            textStyle: _subtitleTextStyle,
                           ),
                           Reusabledescription(
-                            desciption: 'Provide diet with low fiber and high soluble carbohydrate'.tr,
+                            desciption:
+                                'Provide diet with low fiber and high soluble carbohydrate'.tr,
+                            textStyle: _subtitleTextStyle,
                           ),
                           Reusabledescription(
                             desciption: 'Provide potassium rich mineral mixture'.tr,
+                            textStyle: _subtitleTextStyle,
                           ),
                         ],
                       ),
@@ -235,31 +251,49 @@ class _Feeding_managementState extends State<Feeding_management> {
                           ),
                           SizedBox(height: ResponsiveUtils.hp(2)),
                           Reusabledescription(
-                            desciption: 'Nutrition, especially balanced rations, fortified and supplemented with protein ingredients like whole cotton seed or cakes, becomes important'.tr,
+                            desciption:
+                                'Nutrition, especially balanced rations, fortified and supplemented with protein ingredients like whole cotton seed or cakes, becomes important'.tr,
+                            textStyle: _subtitleTextStyle,
                           ),
                           Reusabledescription(
-                            desciption: 'Rations containing about 17 per cent fibre in the animal feed are also helpful to increase fat percentage in milk. Concentrate mixture should comprise grains (40 percent), oil cakes (32 per cent), brans (25 per cent), mineral mixture (2 per cent) and common salt (1 per cent)'.tr,
+                            desciption:
+                                'Rations containing about 17 per cent fibre in the animal feed are also helpful to increase fat percentage in milk. Concentrate mixture should comprise grains (40 percent), oil cakes (32 per cent), brans (25 per cent), mineral mixture (2 per cent) and common salt (1 per cent)'.tr,
+                            textStyle: _subtitleTextStyle,
                           ),
                           Reusabledescription(
-                            desciption: 'Milch animals should be fed with a mixture of oil cakes and jiggery to maintain the body temperature'.tr,
+                            desciption:
+                                'Milch animals should be fed with a mixture of oil cakes and jiggery to maintain the body temperature'.tr,
+                            textStyle: _subtitleTextStyle,
                           ),
                           Reusabledescription(
-                            desciption: 'Essential salts / mineral mixture in appropriate quantities must be mixed with feed and given to the animals'.tr,
+                            desciption:
+                                'Essential salts / mineral mixture in appropriate quantities must be mixed with feed and given to the animals'.tr,
+                            textStyle: _subtitleTextStyle,
                           ),
                           Reusabledescription(
-                            desciption: 'Apart from this the extra energy-rich grains at approximately 0.8 per cent of body weight should be fed to counter the stress of cold for maintaining normal milk production and other activities'.tr,
+                            desciption:
+                                'Apart from this the extra energy-rich grains at approximately 0.8 per cent of body weight should be fed to counter the stress of cold for maintaining normal milk production and other activities'.tr,
+                            textStyle: _subtitleTextStyle,
                           ),
                           Reusabledescription(
-                            desciption: 'To prevent bloat in animals, mix berseem with dry fodder like wheat straw. Never feed rice straw alone.'.tr,
+                            desciption:
+                                'To prevent bloat in animals, mix berseem with dry fodder like wheat straw. Never feed rice straw alone.'.tr,
+                            textStyle: _subtitleTextStyle,
                           ),
                           Reusabledescription(
-                            desciption: 'Water, possibly lukewarm, should be clean and available four times a day at their drinking time'.tr,
+                            desciption:
+                                'Water, possibly lukewarm, should be clean and available four times a day at their drinking time'.tr,
+                            textStyle: _subtitleTextStyle,
                           ),
                           Reusabledescription(
-                            desciption: 'The quantity of green fodder must be kept in limited quantities in the animal feed, as it increases the chances of occurrence of diarrhea.Most of the time green fodder are to be mixed with straw to prevent diarrhea. Addition of straw will be useful in chewing activity which is essential for increasing body temperature.'.tr,
+                            desciption:
+                                'The quantity of green fodder must be kept in limited quantities in the animal feed, as it increases the chances of occurrence of diarrhea.Most of the time green fodder are to be mixed with straw to prevent diarrhea. Addition of straw will be useful in chewing activity which is essential for increasing body temperature.'.tr,
+                            textStyle: _subtitleTextStyle,
                           ),
                           Reusabledescription(
-                            desciption: 'If there is an adequate quantity of green fodder still available after feeding the animals, this must be dried in the sun and stored for periods of shortage'.tr,
+                            desciption:
+                                'If there is an adequate quantity of green fodder still available after feeding the animals, this must be dried in the sun and stored for periods of shortage'.tr,
+                            textStyle: _subtitleTextStyle,
                           ),
                         ],
                       ),
@@ -303,22 +337,34 @@ class _Feeding_managementState extends State<Feeding_management> {
                           ),
                           SizedBox(height: ResponsiveUtils.hp(2)),
                           Reusabledescription(
-                            desciption: 'Providing balanced ration with concentrate mixture having buffer (Sodium bi-carbonate or cation based mineral supplement) for high producing buffalo during heat stress period.'.tr,
+                            desciption:
+                                'Providing balanced ration with concentrate mixture having buffer (Sodium bi-carbonate or cation based mineral supplement) for high producing buffalo during heat stress period.'.tr,
+                            textStyle: _subtitleTextStyle,
                           ),
                           Reusabledescription(
-                            desciption: 'Mineral mixture supplementation with feed @ 50-100 gm per milch buffalo perday depending upon body weight and production performance.'.tr,
+                            desciption:
+                                'Mineral mixture supplementation with feed @ 50-100 gm per milch buffalo perday depending upon body weight and production performance.'.tr,
+                            textStyle: _subtitleTextStyle,
                           ),
                           Reusabledescription(
-                            desciption: 'Prefer grazing during early morning and late evening'.tr,
+                            desciption:
+                                'Prefer grazing during early morning and late evening'.tr,
+                            textStyle: _subtitleTextStyle,
                           ),
                           Reusabledescription(
-                            desciption: 'Supplementation of dietary soluble carbohydrate may compensate the heat stress related reduction in milch buffalo without affecting chewing activity.'.tr,
+                            desciption:
+                                'Supplementation of dietary soluble carbohydrate may compensate the heat stress related reduction in milch buffalo without affecting chewing activity.'.tr,
+                            textStyle: _subtitleTextStyle,
                           ),
                           Reusabledescription(
-                            desciption: 'Supplementation of ‘Prill Fat’ (saturated fat) of 50-75 gm per lactating Murrah buffalo per day during heat stress may compensate reduced milk production.'.tr,
+                            desciption:
+                                'Supplementation of ‘Prill Fat’ (saturated fat) of 50-75 gm per lactating Murrah buffalo per day during heat stress may compensate reduced milk production.'.tr,
+                            textStyle: _subtitleTextStyle,
                           ),
                           Reusabledescription(
-                            desciption: 'Vitamin A, C, E and Zinc supplementation showed positive effects towards ameliorating environmental heat stress'.tr,
+                            desciption:
+                                'Vitamin A, C, E and Zinc supplementation showed positive effects towards ameliorating environmental heat stress'.tr,
+                            textStyle: _subtitleTextStyle,
                           ),
                           SizedBox(height: ResponsiveUtils.hp(2)),
                           Text(
@@ -340,9 +386,18 @@ class _Feeding_managementState extends State<Feeding_management> {
                             style: _sectionTitleStyle.copyWith(fontSize: ResponsiveUtils.wp(4)),
                           ),
                           SizedBox(height: ResponsiveUtils.hp(1)),
-                          Reusabledescription(desciption: 'Provide additional 1.5 – 2 kg concentrate mixture during heat stress season'.tr),
-                          Reusabledescription(desciption: 'Provide additional 1 kg of concentrate mixture per 2.5 litre of milk production beyond 10/15 kg of milk production'.tr),
-                          Reusabledescription(desciption: 'Provide 500 gm of grain or 2.5 Kg cereal fodder for every 50 Kg increase in body weight beyond 500 Kg'.tr),
+                          Reusabledescription(
+                              desciption:
+                                  'Provide additional 1.5 – 2 kg concentrate mixture during heat stress season'.tr,
+                              textStyle: _subtitleTextStyle),
+                          Reusabledescription(
+                              desciption:
+                                  'Provide additional 1 kg of concentrate mixture per 2.5 litre of milk production beyond 10/15 kg of milk production'.tr,
+                              textStyle: _subtitleTextStyle),
+                          Reusabledescription(
+                              desciption:
+                                  'Provide 500 gm of grain or 2.5 Kg cereal fodder for every 50 Kg increase in body weight beyond 500 Kg'.tr,
+                              textStyle: _subtitleTextStyle),
 
                         ],
                       ),
