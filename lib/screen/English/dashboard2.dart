@@ -54,6 +54,11 @@ class _DashboardState extends State<Dashboard> {
       _loadForecast();
     });
   }
+  @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
+  }
 
   @override
   void didUpdateWidget(covariant Dashboard oldWidget) {
@@ -231,7 +236,7 @@ class _DashboardState extends State<Dashboard> {
               ),
               const SizedBox(height: 10),
               SizedBox(
-                height: ResponsiveUtils.hp(14),
+                height: ResponsiveUtils.hp(18),
                 child: PageView(
                   controller: _pageController,
                   onPageChanged: (i) => setState(() => _currentPage = i),
@@ -622,8 +627,8 @@ class _DashboardState extends State<Dashboard> {
   Widget topContainer(String title, String asset, VoidCallback onTap) {
     return Container(
       margin: const EdgeInsets.only(left: 10),
-      width: ResponsiveUtils.wp(38),
-      height: ResponsiveUtils.hp(14),
+      width: ResponsiveUtils.wp(40),
+      height: ResponsiveUtils.hp(18),
       decoration: BoxDecoration(
         border: Border.all(width: 1, color: const Color(0xFFABABAB)),
         borderRadius: BorderRadius.circular(10),
@@ -652,7 +657,7 @@ class _DashboardState extends State<Dashboard> {
             child: AutoSizeText(
               title.tr,
               style: TextStyle(
-                fontSize: ResponsiveUtils.wp(2.4),
+                fontSize: ResponsiveUtils.wp(3),
                 fontWeight: FontWeight.w700,
                 color: Colors.white,
                 shadows: [
@@ -937,11 +942,7 @@ class _Dialogue_pageState extends State<Dialogue_page> {
     );
   }
 
-  @override
-  void dispose() {
-    _pageController.dispose();
-    super.dispose();
-  }
+
 
   Widget _buildTextFormField({
     required TextEditingController controller,
