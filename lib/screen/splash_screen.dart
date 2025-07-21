@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'English/homescreen.dart';
+import '../material/asset_image_loader.dart';
 
 class SplashScreen extends StatefulWidget {
   @override
@@ -60,8 +61,8 @@ class _SplashScreenState extends State<SplashScreen>
           scale: _scaleAnimation,
           child: FadeTransition(
             opacity: _fadeAnimation,
-            child: Image.asset(
-              'assets/images/app_logo.webp',
+            child: AssetImageLoader(
+              assetPath: 'assets/images/app_logo.webp',
               width: 200.w,
             ),
           ),

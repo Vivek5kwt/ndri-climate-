@@ -4,6 +4,7 @@ import 'package:ndri_climate/material/resuseabelButton.dart';
 import 'package:ndri_climate/material/reuseablefeild.dart';
 import 'package:ndri_climate/screen/English/Feedback.dart';
 import 'package:get/get.dart';
+import '../material/asset_image_loader.dart';
 class LoginScreen extends StatefulWidget {
   
   const LoginScreen({super.key,
@@ -70,9 +71,11 @@ class _LoginScreenState extends State<LoginScreen> {
                               end: Alignment.topRight,
                               colors: [Colors.white70, Colors.white]),
                           shape: BoxShape.circle),
-                      child: Image.asset(
-                        'assets/icon/logo1.webp',
-                        scale: 1.25,
+                      child: const AssetImageLoader(
+                        assetPath: 'assets/icon/logo1.webp',
+                        width: 100,
+                        height: 100,
+                        fit: BoxFit.contain,
                       ),
                     ),
                     Container(
@@ -110,23 +113,27 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     Container(
                       margin: EdgeInsets.only(top: 50),
-                      child: Image.asset(
-                        'assets/icon/logo2.webp',
-                        scale: 1.3,
+                      child: const AssetImageLoader(
+                        assetPath: 'assets/icon/logo2.webp',
+                        width: 120,
+                        height: 120,
+                        fit: BoxFit.contain,
                       ),
                     ),
                     Container(
                       margin: EdgeInsets.only(top: 30),
-                      child: Image.asset(
-                        'assets/images/text1.webp',
-                        scale: 1,
+                      child: const AssetImageLoader(
+                        assetPath: 'assets/images/text1.webp',
+                        width: 200,
+                        fit: BoxFit.contain,
                       ),
                     ),
                     Container(
                       margin: EdgeInsets.only(top: 15),
-                      child: Image.asset(
-                        'assets/images/text2.webp',
-                        scale: 1.1,
+                      child: const AssetImageLoader(
+                        assetPath: 'assets/images/text2.webp',
+                        width: 220,
+                        fit: BoxFit.contain,
                       ),
                     )
                   ],
