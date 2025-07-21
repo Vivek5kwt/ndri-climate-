@@ -4,6 +4,7 @@ import 'package:ndri_climate/material/custom_drawer.dart';
 import 'package:ndri_climate/material/plugin/responsiveUtils.dart';
 import 'package:ndri_climate/material/reusableappbar.dart';
 import 'package:get/get.dart';
+import 'package:ndri_climate/material/app_styles.dart';
 
 class Fodder extends StatefulWidget {
   const Fodder({super.key});
@@ -14,6 +15,11 @@ class Fodder extends StatefulWidget {
 
 class _FodderState extends State<Fodder> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+
+  // Common text styles
+  final TextStyle _tabTextStyle = AppStyles.tabTextStyle;
+  final TextStyle _sectionTitleStyle = AppStyles.sectionTitleStyle;
+  final TextStyle _subtitleTextStyle = AppStyles.subtitleTextStyle;
 
   @override
   Widget build(BuildContext context) {
@@ -39,10 +45,10 @@ class _FodderState extends State<Fodder> {
               color: const Color(0xFFC8EBFF),
               child: TabBar(
                 isScrollable: true,
-                labelStyle: TextStyle(
-                  fontSize: ResponsiveUtils.wp(3.2),
-                  fontWeight: FontWeight.bold,
-                ),
+                labelStyle:
+                    _tabTextStyle.copyWith(color: const Color(0xFF1976D2)),
+                unselectedLabelStyle:
+                    _tabTextStyle.copyWith(color: Colors.grey.shade600),
                 indicatorSize: TabBarIndicatorSize.tab,
                 indicatorColor: Colors.blue,
                 dragStartBehavior: DragStartBehavior.start,
@@ -50,45 +56,33 @@ class _FodderState extends State<Fodder> {
                   Tab(
                     child: Text(
                       'Sorghum'.tr,
-                      style: TextStyle(
-                        fontSize: ResponsiveUtils.wp(3.2),
-                        fontWeight: FontWeight.bold,
-                        overflow: TextOverflow.ellipsis,
-                      ),
+                      style: _tabTextStyle,
                       maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
                     ),
                   ),
                   Tab(
                     child: Text(
                       'Maize'.tr,
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: ResponsiveUtils.wp(3.2),
-                        overflow: TextOverflow.ellipsis,
-                      ),
+                      style: _tabTextStyle,
                       maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
                     ),
                   ),
                   Tab(
                     child: Text(
                       'Oats'.tr,
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: ResponsiveUtils.wp(3.2),
-                        overflow: TextOverflow.ellipsis,
-                      ),
+                      style: _tabTextStyle,
                       maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
                     ),
                   ),
                   Tab(
                     child: Text(
                       'Berseem'.tr,
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: ResponsiveUtils.wp(3.2),
-                        overflow: TextOverflow.ellipsis,
-                      ),
+                      style: _tabTextStyle,
                       maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
                     ),
                   ),
                 ],
@@ -206,10 +200,7 @@ class _FodderState extends State<Fodder> {
           children: [
             Text(
               title,
-              style: TextStyle(
-                fontSize: ResponsiveUtils.wp(4),
-                fontWeight: FontWeight.w700,
-              ),
+              style: _sectionTitleStyle,
             ),
             SizedBox(height: ResponsiveUtils.hp(2)),
             Container(
@@ -239,16 +230,12 @@ class _FodderState extends State<Fodder> {
         children: [
           Text(
             heading,
-            style: TextStyle(
-              fontSize: ResponsiveUtils.wp(3.5),
-              fontWeight: FontWeight.w600,
-            ),
+            style:
+                _subtitleTextStyle.copyWith(fontWeight: FontWeight.w600),
           ),
           Text(
             content.tr,
-            style: TextStyle(
-              fontSize: ResponsiveUtils.wp(3),
-            ),
+            style: _subtitleTextStyle,
             softWrap: true,
           ),
         ],
