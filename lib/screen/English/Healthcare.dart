@@ -365,7 +365,7 @@ class _HealthcareState extends State<Healthcare> {
       textAlign: TextAlign.center,
       style: TextStyle(
         fontWeight: FontWeight.w600,
-        fontSize: ResponsiveUtils.wp(2.8),
+        fontSize: ResponsiveUtils.wp(3.2),
       ),
     ),
   );
@@ -384,7 +384,7 @@ class _HealthcareState extends State<Healthcare> {
             textAlign: TextAlign.center,
             style: TextStyle(
               fontWeight: FontWeight.w500,
-              fontSize: ResponsiveUtils.wp(2.5),
+              fontSize: ResponsiveUtils.wp(3),
             ),
           ),
         ),
