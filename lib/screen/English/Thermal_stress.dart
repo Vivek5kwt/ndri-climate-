@@ -6,6 +6,7 @@ import 'package:ndri_climate/material/custom_drawer.dart';
 import 'package:ndri_climate/material/plugin/responsiveUtils.dart';
 import 'package:ndri_climate/material/reusableappbar.dart';
 
+import 'package:ndri_climate/material/app_styles.dart';
 class Thermal_Stress extends StatefulWidget {
   const Thermal_Stress({super.key});
 
@@ -17,20 +18,9 @@ class _Thermal_StressState extends State<Thermal_Stress> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   // Common text styles
-  final TextStyle _tabTextStyle = TextStyle(
-    fontSize: ResponsiveUtils.wp(4),
-    fontWeight: FontWeight.bold,
-  );
-  final TextStyle _sectionTitleStyle = TextStyle(
-    fontSize: ResponsiveUtils.wp(5),
-    fontWeight: FontWeight.bold,
-    color: const Color(0xFF1976D2),
-  );
-  final TextStyle _subtitleTextStyle = TextStyle(
-    fontSize: ResponsiveUtils.wp(3.5),
-    fontWeight: FontWeight.w500,
-    color: Colors.black87,
-  );
+  final TextStyle _tabTextStyle = AppStyles.tabTextStyle;
+  final TextStyle _sectionTitleStyle = AppStyles.sectionTitleStyle;
+  final TextStyle _subtitleTextStyle = AppStyles.subtitleTextStyle;
 
   @override
   Widget build(BuildContext context) {
