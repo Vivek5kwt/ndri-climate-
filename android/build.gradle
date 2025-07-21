@@ -1,3 +1,10 @@
+// 👇 ADD THIS BLOCK AT THE VERY TOP
+def keystoreProperties = new Properties()
+def keystorePropertiesFile = rootProject.file("key.properties")
+if (keystorePropertiesFile.exists()) {
+    keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+}
+
 allprojects {
     repositories {
         google()
