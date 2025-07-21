@@ -292,7 +292,7 @@ class _Past_AdvisoriesState extends State<Past_Advisories> {
                     child: Text(
                       'Confirm'.tr,
                       style: TextStyle(
-                        fontSize: ResponsiveUtils.wp(2.5),
+                        fontSize: ResponsiveUtils.wp(3),
                         color: Colors.white,
                         fontWeight: FontWeight.bold,
                       ),
@@ -379,7 +379,13 @@ class _Past_AdvisoriesState extends State<Past_Advisories> {
             Container(
               width: double.infinity,
               padding: EdgeInsets.symmetric(horizontal: sidePad, vertical: 16),
-              color: const Color(0xFF9BDBFF),
+              decoration: const BoxDecoration(
+                gradient: LinearGradient(
+                  colors: [Color(0xFF9BDBFF), Color(0xFFE8F6FF)],
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                ),
+              ),
               child: Wrap(
                 alignment: WrapAlignment.spaceBetween,
                 crossAxisAlignment: WrapCrossAlignment.center,
@@ -395,7 +401,7 @@ class _Past_AdvisoriesState extends State<Past_Advisories> {
                       Text(
                         '$firstDate  -  $secondDate',
                         style: TextStyle(
-                          fontSize: ResponsiveUtils.wp(2.3),
+                          fontSize: ResponsiveUtils.wp(3),
                           color: const Color(0xFF1B3A69),
                           fontWeight: FontWeight.bold,
                         ),
@@ -414,7 +420,7 @@ class _Past_AdvisoriesState extends State<Past_Advisories> {
                         Text(
                           _stateController.text.tr,
                           style: TextStyle(
-                            fontSize: ResponsiveUtils.wp(2.3),
+                            fontSize: ResponsiveUtils.wp(3),
                             color: const Color(0xFF1B3A69),
                             fontWeight: FontWeight.bold,
                           ),
@@ -434,7 +440,7 @@ class _Past_AdvisoriesState extends State<Past_Advisories> {
                         Text(
                           _districtController.text.tr,
                           style: TextStyle(
-                            fontSize: ResponsiveUtils.wp(2.3),
+                            fontSize: ResponsiveUtils.wp(3),
                             color: const Color(0xFF1B3A69),
                             fontWeight: FontWeight.bold,
                           ),
@@ -454,7 +460,7 @@ class _Past_AdvisoriesState extends State<Past_Advisories> {
                         Text(
                           _languageController.text.tr,
                           style: TextStyle(
-                            fontSize: ResponsiveUtils.wp(2.3),
+                            fontSize: ResponsiveUtils.wp(3),
                             color: const Color(0xFF1B3A69),
                             fontWeight: FontWeight.bold,
                           ),
@@ -478,7 +484,7 @@ class _Past_AdvisoriesState extends State<Past_Advisories> {
                   child: Text(
                     'Error fetching data'.tr,
                     style: TextStyle(
-                      fontSize: ResponsiveUtils.wp(2.8),
+                      fontSize: ResponsiveUtils.wp(3),
                       color: Colors.red,
                     ),
                   ),
@@ -504,7 +510,7 @@ class _Past_AdvisoriesState extends State<Past_Advisories> {
                           label: Text(
                             'Remove Filter'.tr,
                             style: TextStyle(
-                              fontSize: ResponsiveUtils.wp(2.3),
+                              fontSize: ResponsiveUtils.wp(2.9),
                               fontWeight: FontWeight.w400,
                               color: Colors.black,
                             ),
@@ -519,7 +525,7 @@ class _Past_AdvisoriesState extends State<Past_Advisories> {
                             Text(
                               'Filter'.tr,
                               style: TextStyle(
-                                fontSize: ResponsiveUtils.wp(2.5),
+                                fontSize: ResponsiveUtils.wp(3),
                                 fontWeight: FontWeight.w500,
                                 color: Colors.black,
                               ),
@@ -557,7 +563,7 @@ class _Past_AdvisoriesState extends State<Past_Advisories> {
           child: Text(
             'No advisories available for this period.'.tr,
             style: TextStyle(
-              fontSize: ResponsiveUtils.wp(2.4),
+              fontSize: ResponsiveUtils.wp(2.9),
               color: Colors.grey.shade600,
             ),
           ),
@@ -628,7 +634,7 @@ class _Past_AdvisoriesState extends State<Past_Advisories> {
                   Text(
                     advisory.title,
                     style: TextStyle(
-                      fontSize: ResponsiveUtils.wp(2.7),
+                      fontSize: ResponsiveUtils.wp(3.2),
                       fontWeight: FontWeight.w700,
                     ),
                   ),
@@ -636,7 +642,7 @@ class _Past_AdvisoriesState extends State<Past_Advisories> {
                   Text(
                     description,
                     style: TextStyle(
-                      fontSize: ResponsiveUtils.wp(2.2),
+                      fontSize: ResponsiveUtils.wp(2.7),
                       fontWeight: FontWeight.w500,
                       color: Colors.black87,
                     ),
@@ -668,7 +674,7 @@ class _Past_AdvisoriesState extends State<Past_Advisories> {
                       child: Text(
                         'Feedback'.tr,
                         style: TextStyle(
-                          fontSize: ResponsiveUtils.wp(2.4),
+                          fontSize: ResponsiveUtils.wp(3),
                           fontWeight: FontWeight.bold,
                           color: Colors.white,
                           letterSpacing: 0.2,
