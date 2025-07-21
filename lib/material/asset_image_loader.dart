@@ -30,20 +30,6 @@ class AssetImageLoader extends StatelessWidget {
       filterQuality: filterQuality,
       color: color,
       colorBlendMode: colorBlendMode,
-      loadingBuilder: (context, child, loadingProgress) {
-        if (loadingProgress == null) return child;
-        return SizedBox(
-          width: width,
-          height: height,
-          child: Center(
-            child: SizedBox(
-              width: (width ?? 24) * 0.5,
-              height: (height ?? 24) * 0.5,
-              child: const CircularProgressIndicator(strokeWidth: 2),
-            ),
-          ),
-        );
-      },
       errorBuilder: (context, error, stackTrace) => SizedBox(
         width: width,
         height: height,
