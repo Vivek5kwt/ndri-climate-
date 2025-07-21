@@ -118,9 +118,9 @@ class _Past_AdvisoriesState extends State<Past_Advisories> {
     showModalBottomSheet(
       context: context,
       isScrollControlled: true,
-      builder: (BuildContext ctx) {
+      builder: (BuildContext bsContext) {
         return StatefulBuilder(
-          builder: (context, setModalState) {
+          builder: (context, __) {
             return SizedBox(
               height: MediaQuery.of(context).size.height * 0.75,
               child: Column(
@@ -168,16 +168,12 @@ class _Past_AdvisoriesState extends State<Past_Advisories> {
                           isScrollControlled: true,
                           builder: (_) => StateBottomSheet(
                             selected_state: (state) {
-                              setModalState(() {
-                                _stateController.text = state;
-                              });
+                              _stateController.text = state;
                             },
                             onStateSelected: (state, districtList) {
-                              setModalState(() {
-                                _stateController.text = state;
-                                _districtController.clear();
-                              });
-                              Navigator.pop(_, state);
+                              _stateController.text = state;
+                              _districtController.clear();
+                              Navigator.pop(bsContext, state);
                             },
                           ),
                         );
@@ -191,17 +187,13 @@ class _Past_AdvisoriesState extends State<Past_Advisories> {
                               isScrollControlled: true,
                               builder: (_) => DistrictBottomSheet(
                                 selected_district: (district) {
-                                  setModalState(() {
-                                    _districtController.text = district;
-                                  });
+                                  _districtController.text = district;
                                 },
                                 districts: districtsList,
                               ),
                             );
                             if (chosenDistrict != null) {
-                              setModalState(() {
-                                _districtController.text = chosenDistrict;
-                              });
+                              _districtController.text = chosenDistrict;
                             }
                           }
                         }
@@ -240,17 +232,13 @@ class _Past_AdvisoriesState extends State<Past_Advisories> {
                             isScrollControlled: true,
                             builder: (_) => DistrictBottomSheet(
                               selected_district: (district) {
-                                setModalState(() {
-                                  _districtController.text = district;
-                                });
+                                _districtController.text = district;
                               },
                               districts: districtsList,
                             ),
                           );
                           if (chosenDistrict != null) {
-                            setModalState(() {
-                              _districtController.text = chosenDistrict;
-                            });
+                            _districtController.text = chosenDistrict;
                           }
                         }
                       },
