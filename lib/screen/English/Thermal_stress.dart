@@ -18,16 +18,16 @@ class _Thermal_StressState extends State<Thermal_Stress> {
 
   // Common text styles
   final TextStyle _tabTextStyle = TextStyle(
-    fontSize: ResponsiveUtils.wp(3),
+    fontSize: ResponsiveUtils.wp(4),
     fontWeight: FontWeight.bold,
   );
   final TextStyle _sectionTitleStyle = TextStyle(
-    fontSize: ResponsiveUtils.wp(4),
+    fontSize: ResponsiveUtils.wp(5),
     fontWeight: FontWeight.bold,
     color: const Color(0xFF1976D2),
   );
   final TextStyle _subtitleTextStyle = TextStyle(
-    fontSize: ResponsiveUtils.wp(3),
+    fontSize: ResponsiveUtils.wp(3.5),
     fontWeight: FontWeight.w500,
     color: Colors.black87,
   );
@@ -52,23 +52,20 @@ class _Thermal_StressState extends State<Thermal_Stress> {
             Container(
               color: const Color(0xFFC8EBFF),
               padding: EdgeInsets.symmetric(vertical: ResponsiveUtils.hp(1)),
-              child: SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: TabBar(
-                  isScrollable: true,
-                  physics: const RangeMaintainingScrollPhysics(),
-                  labelStyle: _tabTextStyle.copyWith(color: const Color(0xFF1976D2)),
-                  unselectedLabelStyle:
-                  _tabTextStyle.copyWith(color: Colors.grey.shade600),
-                  indicatorColor: const Color(0xFF1976D2),
-                  indicatorWeight: 3,
-                  dragStartBehavior: DragStartBehavior.start,
-                  tabs: [
+              child: TabBar(
+                isScrollable: true,
+                labelStyle: _tabTextStyle.copyWith(color: const Color(0xFF1976D2)),
+                unselectedLabelStyle:
+                    _tabTextStyle.copyWith(color: Colors.grey.shade600),
+                indicatorColor: const Color(0xFF1976D2),
+                indicatorWeight: 3,
+                dragStartBehavior: DragStartBehavior.start,
+                tabs: [
                     Tab(
                       child: Text(
                         'Symptoms of Heat Stress'.tr,
                         style: TextStyle(
-                          fontSize: ResponsiveUtils.wp(3),
+                          fontSize: ResponsiveUtils.wp(4),
                           fontWeight: FontWeight.bold,
                         ),
                         maxLines: 2,
@@ -79,7 +76,7 @@ class _Thermal_StressState extends State<Thermal_Stress> {
                       child: Text(
                         'Use of Water'.tr,
                         style: TextStyle(
-                          fontSize: ResponsiveUtils.wp(3),
+                          fontSize: ResponsiveUtils.wp(4),
                           fontWeight: FontWeight.bold,
                         ),
                         maxLines: 1,
@@ -90,7 +87,7 @@ class _Thermal_StressState extends State<Thermal_Stress> {
                       child: Text(
                         'Other Heat Stress Management Strategies'.tr,
                         style: TextStyle(
-                          fontSize: ResponsiveUtils.wp(3),
+                          fontSize: ResponsiveUtils.wp(4),
                           fontWeight: FontWeight.bold,
                         ),
                         maxLines: 2,
@@ -101,7 +98,7 @@ class _Thermal_StressState extends State<Thermal_Stress> {
                       child: Text(
                         'Managing Cold Stress'.tr,
                         style: TextStyle(
-                          fontSize: ResponsiveUtils.wp(3),
+                          fontSize: ResponsiveUtils.wp(4),
                           fontWeight: FontWeight.bold,
                         ),
                         maxLines: 2,

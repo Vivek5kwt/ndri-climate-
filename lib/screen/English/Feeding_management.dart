@@ -20,12 +20,12 @@ class _Feeding_managementState extends State<Feeding_management> {
 
 
   final TextStyle _sectionTitleStyle = TextStyle(
-    fontSize: ResponsiveUtils.wp(4),
+    fontSize: ResponsiveUtils.wp(5),
     fontWeight: FontWeight.bold,
     color: const Color(0xFF1976D2),
   );
   final TextStyle _subtitleTextStyle = TextStyle(
-    fontSize: ResponsiveUtils.wp(3),
+    fontSize: ResponsiveUtils.wp(3.5),
     fontWeight: FontWeight.w500,
     color: Colors.black87,
   );
@@ -61,11 +61,11 @@ class _Feeding_managementState extends State<Feeding_management> {
                 indicatorColor: const Color(0xFF1976D2),
                 indicatorWeight: 3,
                 labelStyle: TextStyle(
-                  fontSize: ResponsiveUtils.wp(4),
+                  fontSize: ResponsiveUtils.wp(5),
                   fontWeight: FontWeight.bold,
                 ),
                 unselectedLabelStyle: TextStyle(
-                  fontSize: ResponsiveUtils.wp(2.8),
+                  fontSize: ResponsiveUtils.wp(3.2),
                   fontWeight: FontWeight.w500,
                 ),
                 dragStartBehavior: DragStartBehavior.start,
@@ -330,21 +330,21 @@ class _Feeding_managementState extends State<Feeding_management> {
                           SizedBox(height: ResponsiveUtils.hp(2)),
                           Text(
                             'Ration Formulation for a lactating buffalo with body weight 450-500 Kg) during heat stress season'.tr,
-                            style: _sectionTitleStyle.copyWith(fontSize: ResponsiveUtils.wp(3.5)),
+                            style: _sectionTitleStyle.copyWith(fontSize: ResponsiveUtils.wp(4)),
                           ),
                           SizedBox(height: ResponsiveUtils.hp(1)),
                           MilkYieldTable(),
                           SizedBox(height: ResponsiveUtils.hp(2)),
                           Text(
                             '*Concentrate Mixture Formulation'.tr,
-                            style: _sectionTitleStyle.copyWith(fontSize: ResponsiveUtils.wp(3.5)),
+                            style: _sectionTitleStyle.copyWith(fontSize: ResponsiveUtils.wp(4)),
                           ),
                           SizedBox(height: ResponsiveUtils.hp(1)),
                           FormulationTable(),
                           SizedBox(height: ResponsiveUtils.hp(2)),
                           Text(
                             'Note'.tr,
-                            style: _sectionTitleStyle.copyWith(fontSize: ResponsiveUtils.wp(3.5)),
+                            style: _sectionTitleStyle.copyWith(fontSize: ResponsiveUtils.wp(4)),
                           ),
                           SizedBox(height: ResponsiveUtils.hp(1)),
                           Reusabledescription(desciption: 'Provide additional 1.5 – 2 kg concentrate mixture during heat stress season'.tr),
