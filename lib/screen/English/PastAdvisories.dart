@@ -88,8 +88,8 @@ class _Past_AdvisoriesState extends State<Past_Advisories> {
     });
 
     try {
-      // Now passing both state and district to the API:
-      final response = await ApiProvider().fetchAdvisory(
+      // Fetch past advisories for the selected state and district
+      final response = await ApiProvider().fetchPastAdvisory(
         state: selectedState,
         district: selectedDistrict,
       );
