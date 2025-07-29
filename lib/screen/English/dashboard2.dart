@@ -45,8 +45,6 @@ class _DashboardState extends State<Dashboard> {
   String _currentLang = '';
   DateTime selectedDate1 = DateTime.now();
   DateTime selectedDate2 = DateTime.now().add(const Duration(days: 7));
-  final PageController _pageController = PageController(viewportFraction: 0.8);
-  int _currentPage = 0;
   @override
   void initState() {
     super.initState();
@@ -56,7 +54,6 @@ class _DashboardState extends State<Dashboard> {
   }
   @override
   void dispose() {
-    _pageController.dispose();
     super.dispose();
   }
 
@@ -236,10 +233,9 @@ class _DashboardState extends State<Dashboard> {
               ),
               const SizedBox(height: 10),
               SizedBox(
-                height: ResponsiveUtils.hp(16),
-                child: PageView(
-                  controller: _pageController,
-                  onPageChanged: (i) => setState(() => _currentPage = i),
+                height: ResponsiveUtils.hp(14),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     topContainer(
                       'Dairy Animal and Climate Change',
@@ -285,21 +281,6 @@ class _DashboardState extends State<Dashboard> {
                     ),
                   ],
                 ),
-              ),
-              const SizedBox(height: 8),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: List.generate(3, (index) => Container(
-                  width: 8,
-                  height: 8,
-                  margin: const EdgeInsets.symmetric(horizontal: 3),
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: _currentPage == index
-                        ? const Color(0xFF1976D2)
-                        : Colors.grey.shade400,
-                  ),
-                )),
               ),
               const SizedBox(height: 10),
               _buildForecastSection(),
@@ -626,9 +607,9 @@ class _DashboardState extends State<Dashboard> {
 
   Widget topContainer(String title, String asset, VoidCallback onTap) {
     return Container(
-      margin: const EdgeInsets.only(left: 10),
-      width: ResponsiveUtils.wp(40),
-      height: ResponsiveUtils.hp(16),
+      margin: const EdgeInsets.symmetric(horizontal: 4),
+      width: ResponsiveUtils.wp(30),
+      height: ResponsiveUtils.hp(14),
       decoration: BoxDecoration(
         border: Border.all(width: 1, color: const Color(0xFFABABAB)),
         borderRadius: BorderRadius.circular(10),
@@ -636,7 +617,7 @@ class _DashboardState extends State<Dashboard> {
           image: AssetImage(asset),
           fit: BoxFit.cover,
           colorFilter: ColorFilter.mode(
-            Colors.black.withOpacity(0.6),
+            Colors.black.withOpacity(0.5),
             BlendMode.dstATop,
           ),
         ),
@@ -661,7 +642,7 @@ class _DashboardState extends State<Dashboard> {
                     borderRadius: BorderRadius.circular(10),
                     gradient: LinearGradient(
                       colors: [
-                        Colors.black.withOpacity(0.5),
+                        Colors.black.withOpacity(0.6),
                         Colors.transparent,
                       ],
                       begin: Alignment.bottomCenter,
