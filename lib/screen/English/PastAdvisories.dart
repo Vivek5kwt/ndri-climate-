@@ -88,14 +88,14 @@ class _Past_AdvisoriesState extends State<Past_Advisories> {
     });
 
     try {
-      // Now passing both state and district to the API:
-      final response = await ApiProvider().fetchAdvisory(
+      // Fetch past advisories for the selected state and district
+      final response = await ApiProvider().fetchPastAdvisory(
         state: selectedState,
         district: selectedDistrict,
       );
-      allData = response;
 
-      // Filter advisories that exactly match firstDate and secondDate
+      allData = response;
+      // Show all advisories when none match the selected dates
       List<Advisory> currentWeekAdvisories = allData.where((advisory) {
         final from = formatDate(inputDate: advisory.fromDate.toString());
         final to = formatDate(inputDate: advisory.toDate.toString());
@@ -103,7 +103,9 @@ class _Past_AdvisoriesState extends State<Past_Advisories> {
       }).toList();
 
       setState(() {
-        advisoryData = currentWeekAdvisories;
+        advisoryData = currentWeekAdvisories.isNotEmpty
+            ? currentWeekAdvisories
+            : allData;
         isLoading = false;
       });
     } catch (error) {
