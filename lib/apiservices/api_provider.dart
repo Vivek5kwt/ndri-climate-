@@ -1,3 +1,4 @@
+
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:ndri_climate/apiservices/advisory.dart';
@@ -128,6 +129,22 @@ class ApiProvider {
     } else {
       return [];
     }
+  }
+
+  /// Fetch past advisories for a state and district
+  Future<List<Advisory>> fetchPastAdvisory({
+    required String state,
+    required String district,
+  }) async {
+    final encS = Uri.encodeComponent(state);
+    final encD = Uri.encodeComponent(district);
+    final url = Uri.parse('$headUrl/api/past-advisories/$encS/$encD');
+    final resp = await http.get(url);
+    if (resp.statusCode == 200) {
+      final list = json.decode(resp.body) as List;
+      return list.map((e) => Advisory.fromJson(e)).toList();
+    }
+    return [];
   }
 
   Future<List<dynamic>> getStates() async {
