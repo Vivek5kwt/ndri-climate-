@@ -236,7 +236,7 @@ class _DashboardState extends State<Dashboard> {
               ),
               const SizedBox(height: 10),
               SizedBox(
-                height: ResponsiveUtils.hp(18),
+                height: ResponsiveUtils.hp(16),
                 child: PageView(
                   controller: _pageController,
                   onPageChanged: (i) => setState(() => _currentPage = i),
@@ -320,7 +320,7 @@ class _DashboardState extends State<Dashboard> {
                     ),
                   ),
                   child: Container(
-                    height: ResponsiveUtils.hp(18),
+                    height: ResponsiveUtils.hp(16),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(16),
                       image:  DecorationImage(
@@ -628,7 +628,7 @@ class _DashboardState extends State<Dashboard> {
     return Container(
       margin: const EdgeInsets.only(left: 10),
       width: ResponsiveUtils.wp(40),
-      height: ResponsiveUtils.hp(18),
+      height: ResponsiveUtils.hp(16),
       decoration: BoxDecoration(
         border: Border.all(width: 1, color: const Color(0xFFABABAB)),
         borderRadius: BorderRadius.circular(10),
@@ -636,7 +636,7 @@ class _DashboardState extends State<Dashboard> {
           image: AssetImage(asset),
           fit: BoxFit.cover,
           colorFilter: ColorFilter.mode(
-            Colors.black.withOpacity(0.45),
+            Colors.black.withOpacity(0.6),
             BlendMode.dstATop,
           ),
         ),
@@ -653,24 +653,43 @@ class _DashboardState extends State<Dashboard> {
         child: InkWell(
           borderRadius: BorderRadius.circular(10),
           onTap: onTap,
-          child: Center(
-            child: AutoSizeText(
-              title.tr,
-              style: TextStyle(
-                fontSize: ResponsiveUtils.wp(3),
-                fontWeight: FontWeight.w700,
-                color: Colors.white,
-                shadows: [
-                  Shadow(
-                    color: Colors.black54,
-                    blurRadius: 4,
-                    offset: Offset(0, 1),
+          child: Stack(
+            children: [
+              Positioned.fill(
+                child: Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    gradient: LinearGradient(
+                      colors: [
+                        Colors.black.withOpacity(0.5),
+                        Colors.transparent,
+                      ],
+                      begin: Alignment.bottomCenter,
+                      end: Alignment.topCenter,
+                    ),
                   ),
-                ],
+                ),
               ),
-              maxLines: 2,
-              textAlign: TextAlign.center,
-            ),
+              Center(
+                child: AutoSizeText(
+                  title.tr,
+                  style: TextStyle(
+                    fontSize: ResponsiveUtils.wp(3),
+                    fontWeight: FontWeight.w700,
+                    color: Colors.white,
+                    shadows: [
+                      Shadow(
+                        color: Colors.black54,
+                        blurRadius: 4,
+                        offset: Offset(0, 1),
+                      ),
+                    ],
+                  ),
+                  maxLines: 2,
+                  textAlign: TextAlign.center,
+                ),
+              ),
+            ],
           ),
         ),
       ),
