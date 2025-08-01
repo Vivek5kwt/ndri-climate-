@@ -201,6 +201,8 @@ class _DashboardState extends State<Dashboard> {
 
   @override
   Widget build(BuildContext context) {
+    // Refresh responsive values for the current screen dimensions
+    ResponsiveUtils().init(context);
     return AdaptivePopScope(
       onWillPop: _confirmExit,
       child: Scaffold(
@@ -872,6 +874,8 @@ class _Dialogue_pageState extends State<Dialogue_page> {
 
   @override
   Widget build(BuildContext context) {
+    // Ensure responsive dimensions are updated for the dialog
+    ResponsiveUtils().init(context);
     return AlertDialog(
       title: Text(
         'Select Location & Language'.tr,
