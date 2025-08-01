@@ -49,6 +49,9 @@ class _CustomDrawerState extends State<CustomDrawer> {
 
   @override
   Widget build(BuildContext context) {
+    // Initialize responsive metrics with the current context to ensure
+    // the drawer adapts correctly on different screen sizes
+    ResponsiveUtils().init(context);
     final sidePadding = ResponsiveUtils.wp(3);
 
     return Drawer(
