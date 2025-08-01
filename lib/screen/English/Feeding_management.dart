@@ -186,7 +186,7 @@ class _Feeding_managementState extends State<Feeding_management> {
                           ),
                           Reusabledescription(
                             desciption:
-                                'Prefer to feed the animal during nighttime or early morning'.tr,
+                                'Prefer to feed the animal during night time or early morning'.tr,
                             textStyle: _subtitleTextStyle,
                           ),
                           Reusabledescription(

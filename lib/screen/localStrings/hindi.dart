@@ -1456,7 +1456,7 @@ class LocalString extends Translations {
     'Dry fodder (straw/Maize Stover)': 'सूखा चारा (भूसा/मक्का का डंठल)',
     'Grain (Maize/Jowar)': 'अनाज (मक्का/ज्वार)',
     'Concentrate mixture*': 'सांद्र मिश्रण*',
-    '*Concentrate mixture formulation': '*सांद्र मिश्रण फॉर्मूलेशन',
+    '*Concentrate Mixture Formulation': '*सांद्र मिश्रण फॉर्मूलेशन',
     'Ingredients': 'सामग्री',
     'Formulation': 'फॉर्मूलेशन',
     'Maize/Jowar/ wheat/ rice/oats admixture': 'मक्का/ज्वार/गेहूं/चावल/जई मिश्रण',
