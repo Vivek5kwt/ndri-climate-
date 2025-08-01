@@ -70,6 +70,7 @@ Map<String, String> pbi = {
   "About NDRI, Karnal": "ਰਾਸ਼ਟਰੀ ਡੇਰੀ  ਰਿਸਰਚ ਇੰਸਟੀਚਿਊਟ, ਕਰਨਾਲ ਬਾਰੇ",
   "NDRI, Karnal": "ਰਾਸ਼ਟਰੀ ਡੇਰੀ  ਰਿਸਰਚ ਇੰਸਟੀਚਿਊਟ, ਕਰਨਾਲ",
   "About App": "ਐਪ ਬਾਰੇ",
+  'About NDRI': 'NDRI ਬਾਰੇ',
   "Climate Resilient Practices": "ਜਲਵਾਯੂ ਲਚੀਲਾ ਅਭਿਆਸ",
   "Climate Resillient Murrah Buffalo Rearing practices": "ਜਲਵਾਯੂ ਲਚੀਲਾ ਮੁਰਰਾ ਮੱਝ ਪਾਲਣ ਅਭਿਆਸ",
   "Climate Resillient Cattle Rearing practices": "ਜਲਵਾਯੂ ਲਚੀਲਾ ਪਸ਼ੂ ਪਾਲਣ ਅਭਿਆਸ",
@@ -82,6 +83,7 @@ Map<String, String> pbi = {
   "Hindi": "ਹਿੰਦੀ",
   "Punjabi": "ਪੰਜਾਬੀ",
   "Bengali": "ਬੰਗਾਲੀ",
+  "Cancel": "ਰੱਦ ਕਰੋ",
   "Type your District": "ਆਪਣਾ ਜ਼ਿਲ੍ਹਾ ਟਾਈਪ ਕਰੋ",
   "Type your State": "ਆਪਣਾ ਰਾਜ ਟਾਈਪ ਕਰੋ",
   "Necessity of Feeding Management in Summer and Winter": "ਗਰਮੀ ਅਤੇ ਸਰਦੀ ਵਿੱਚ ਖੁਰਾਕ ਪ੍ਰਬੰਧ ਦੀ ਲੋੜ",
@@ -1083,7 +1085,7 @@ Map<String, String> pbi = {
   "Ensure round-the-clock access to drinking water under shade.": "ਛਾਂਵੇ ਹੇਠ ਪਾਣੀ ਪੀਣ ਦੀ ਸਹੂਲਤ 24 ਘੰਟੇ ਯਕੀਨੀ ਬਣਾਓ।",
   "Ensure adequate round the clock drinking water to animals, which should be provided under shade": "ਪਸ਼ੂਆਂ ਨੂੰ 24 ਘੰਟੇ ਪੀਣ ਵਾਲਾ ਪਾਣੀ ਪ੍ਰਾਪਤ ਹੋਣਾ ਯਕੀਨੀ ਬਣਾਓ, ਜੋ ਛਾਂਵ ਵਿੱਚ ਦਿਤਾ ਜਾਣਾ ਚਾਹੀਦਾ ਹੈ।",
   "Other Heat Stress Management Strategies": "ਹੋਰ ਤਾਪਮਾਨ ਤਣਾਅ ਪ੍ਰਬੰਧਨ ਰਣਨੀਤੀਆਂ",
-  "During heat stress conditions buffaloes should not be allowed to move freely during day hours because they need protection against warm air storms, direct sun exposure and they should be provided with shelter in cool and shady places": "ਤਾਪਮਾਨ ਤਣਾਅ ਦੀਆਂ ਹਾਲਤਾਂ ਵਿੱਚ ਦਿਨ ਦੇ ਸਮੇਂ ਮੱਝਾਂ ਅਤੇ ਗਾਵਾਂ ਨੂੰ ਖੁੱਲ੍ਹਾ ਨਹੀਂ ਜਾਣਾ ਚਾਹੀਦਾ ਕਿਉਂਕਿ ਉਨ੍ਹਾਂ ਨੂੰ ਗਰਮ ਹਵਾ ਦੇ ਤੂਫ਼ਾਨਾਂ, ਸਿੱਧੀ ਧੁੱਪ ਤੋਂ ਬਚਾਅ ਦੀ ਲੋੜ ਹੁੰਦੀ ਹੈ ਅਤੇ ਉਨ੍ਹਾਂ ਨੂੰ ਠੰਢੇ ਅਤੇ ਛਾਂਵੇ ਵਾਲੇ ਸਥਾਨਾਂ ਵਿੱਚ ਆਸਰਾ ਦਿੱਤਾ ਜਾਣਾ ਚਾਹੀਦਾ ਹੈ।",
+  "During heat stress conditions buffaloes should not be allowed to move freely during day hours because they need protection against warm air storms, direct sun exposure and they should be provided with shelter in cool and shady places.": "ਤਾਪਮਾਨ ਤਣਾਅ ਦੀਆਂ ਹਾਲਤਾਂ ਵਿੱਚ ਦਿਨ ਦੇ ਸਮੇਂ ਮੱਝਾਂ ਅਤੇ ਗਾਵਾਂ ਨੂੰ ਖੁੱਲ੍ਹਾ ਨਹੀਂ ਜਾਣਾ ਚਾਹੀਦਾ ਕਿਉਂਕਿ ਉਨ੍ਹਾਂ ਨੂੰ ਗਰਮ ਹਵਾ ਦੇ ਤੂਫ਼ਾਨਾਂ, ਸਿੱਧੀ ਧੁੱਪ ਤੋਂ ਬਚਾਅ ਦੀ ਲੋੜ ਹੁੰਦੀ ਹੈ ਅਤੇ ਉਨ੍ਹਾਂ ਨੂੰ ਠੰਢੇ ਅਤੇ ਛਾਂਵੇ ਵਾਲੇ ਸਥਾਨਾਂ ਵਿੱਚ ਆਸਰਾ ਦਿੱਤਾ ਜਾਣਾ ਚਾਹੀਦਾ ਹੈ।",
   "The most effective source of shade is trees. They provide not only protection from sunlight, but also create a cooling effect through the evaporation of moisture from their leaves": "ਸਬ ਤੋਂ ਪ੍ਰਭਾਵਸ਼ਾਲੀ ਛਾਂ ਦਾ ਸਰੋਤ ਦਰੱਖਤ ਹਨ। ਇਹ ਸਿਰਫ਼ ਧੁੱਪ ਤੋਂ ਹੀ ਸੁਰੱਖਿਆ ਨਹੀਂ ਪ੍ਰਦਾਨ ਕਰਦੇ, ਬਲਕਿ ਆਪਣੀਆਂ ਪੱਤਿਆਂ ਤੋਂ ਨਮੀ ਦੇ ਬਾਫ਼ ਬਣਨ ਨਾਲ ਠੰਢ ਦਾ ਅਸਰ ਵੀ ਪੈਦਾ ਕਰਦੇ ਹਨ।",
   "Shade trees provide protection and cooling via moisture evaporation from leaves.": "ਛਾਂਦਾਰ ਦਰੱਖਤ ਪੱਤਿਆਂ ਤੋਂ ਨਮੀ ਬਾਫ਼ ਬਣਕੇ ਸੁਰੱਖਿਆ ਅਤੇ ਠੰਢ ਪ੍ਰਦਾਨ ਕਰਦੇ ਹਨ।",
   "If shade trees are not available, thatched roof of a minimum height of 9 feet should be provided. Agri-nets with 20% perforation are also useful. If facilities are not available with the individual farmers, facilities available at the village shall be used by the community. Materials like paddy straw etc,painting the roof with white paint or,providing a false ceiling insulation will help provide a cooler environment. Create barriers against hot wind using thatched wall or wet gunny cloth/ gunny bags": "ਜੇਕਰ ਛਾਂ ਦੇ ਦਰੱਖਤ ਉਪਲਬਧ ਨਹੀਂ ਹਨ, ਤਾਂ ਘੱਟੋ-ਘੱਟ 9 ਫੁੱਟ ਦੀ ਉਚਾਈ ਵਾਲੀ ਝੋਪੜੀ ਦੀ ਛੱਤ ਪ੍ਰਦਾਨ ਕੀਤੀ ਜਾਣੀ ਚਾਹੀਦੀ ਹੈ। 20% ਛੇਦ ਨਾਲ ਐਗਰੀ-ਨੈਟ ਵੀ ਲਾਭਕਾਰੀ ਹੁੰਦੇ ਹਨ। ਜੇਕਰ ਵਿਅਕਤੀਗਤ ਕਿਸਾਨਾਂ ਕੋਲ ਸਹੂਲਤਾਂ ਉਪਲਬਧ ਨਹੀਂ ਹਨ, ਤਾਂ ਪਿੰਡ ਵਿੱਚ ਉਪਲਬਧ ਸਹੂਲਤਾਂ ਦਾ ਵਰਤੋਂ ਸੰਗਠਨ ਦੁਆਰਾ ਕੀਤਾ ਜਾਣਾ ਚਾਹੀਦਾ ਹੈ। ਧਾਨ ਦੀ ਨਾਲ਼ੀ ਆਦਿ ਜਿਵੇਂ ਸਮਾਨ, ਛੱਤ ਨੂੰ ਸਫੈਦ ਰੰਗ ਨਾਲ ਪੇੰਟ ਕਰਨ ਜਾਂ, ਝੂਠੇ ਛੱਤ ਦੇ ਇਨਸੂਲੇਸ਼ਨ ਪ੍ਰਦਾਨ ਕਰਨ ਨਾਲ ਠੰਢਾ ਮਾਹੌਲ ਪ੍ਰਦਾਨ ਕਰਨ ਵਿੱਚ ਮਦਦ ਮਿਲੇਗੀ। ਠੰਢੀ ਹਵਾ ਦੇ ਹੱਲ ਬਣਾਉਣ ਲਈ ਝੋਪੜੀ ਦੀ ਦਿਵਾਰ ਜਾਂ ਭਿੱਜੇ ਜੂਟ ਦੇ ਕੱਪੜੇ/ ਜੂਟ ਦੇ ਬੈਗਾਂ ਦੀ ਵਰਤੋਂ ਕਰੋ।",
@@ -1109,6 +1111,16 @@ Map<String, String> pbi = {
   "ਠੰਢੀਆਂ ਹਵਾਂ ਤੋਂ ਬਚਾਅ ਲਈ ਵਿੰਡਬ੍ਰੇਕ ਜਾਂ ਆੜ ਹੋਣੀ ਚਾਹੀਦੀ ਹੈ; ਕੁਦਰਤੀ ਝਾੜੀਆਂ ਜਾਂ ਸਧਾਰਣ ਵਾੜ ਲਾਭਦਾਇਕ ਹੋ ਸਕਦੇ ਹਨ।": "ਹਵਾ ਤੋਂ ਪ੍ਰਣਾਲੀ ਸੁਰੱਖਿਆ ਯਕੀਨੀ ਬਣਾਓ। ਜਦੋਂ ਹਵਾ ਦੀ ਗਤੀ ਵਧਦੀ ਹੈ, ਤਾਂ ਠੰਢੇ ਤਣਾਅ ਦੇ ਪ੍ਰਭਾਵ ਵਧ ਜਾਂਦੇ ਹਨ। ਕਿਸੇ ਵੀ ਕਿਸਮ ਦੀ ਉਪਲਬਧ ਸੁਰੱਖਿਆ, ਚਾਹੇ ਉਹ ਕੁਦਰਤੀ (ਬੂਸ਼, ਘਾਟਾਂ ਜਾਂ ਪਹਾੜੀਆਂ) ਹੋਵੇ ਜਾਂ ਮਨੁੱਖ ਦੁਆਰਾ ਬਣਾਈ ਗਈ (ਜਿਵੇਂ ਕਿ ਸਧਾਰਣ ਹਵਾ ਰੁਕਾਵਟ ਵਾਲੇ ਵਾੜ ਜਾਂ ਝੋਪੜੀਆਂ), ਇਹ ਪਸ਼ੂਆਂ ਨੂੰ ਤਾਪਮਾਨ ਅਤੇ ਹਵਾ ਦੀ ਠੰਢ ਨੂੰ ਬਰਦਾਸ਼ਤ ਕਰਨ ਵਿੱਚ ਬਹੁਤ ਲਾਭਦਾਇਕ ਹੋ ਸਕਦੀ ਹੈ।",
   "Provide bedding to help keep animal clean and dry. Bedding, such as barley straw, helps to withstand cold stress": "Provide bedding, such as straw, to keep animals clean and dry and help them withstand cold stress.",
   "ਪਸ਼ੂਆਂ ਨੂੰ ਸਾਫ਼ ਅਤੇ ਸੁੱਕਾ ਰੱਖਣ ਲਈ ਤੇ ਠੰਢ ਦੇ ਤਣਾਅ ਨੂੰ ਸਹਿਣ ਲਈ ਤੂੜੀ ਆਦਿ ਬਿਛਾਓ।": "ਜਾਨਵਰਾਂ ਨੂੰ ਸਾਫ਼ ਅਤੇ ਸੁੱਕਾ ਰੱਖਣ ਵਿੱਚ ਮਦਦ ਲਈ ਬਿਸਤਰਾ ਪ੍ਰਦਾਨ ਕਰੋ। ਬੈੱਡਿੰਗ, ਜਿਵੇਂ ਕਿ ਜੌਂ ਦੀ ਤੂੜੀ, ਠੰਡੇ ਤਣਾਅ ਨੂੰ ਸਹਿਣ ਵਿੱਚ ਮਦਦ ਕਰਦੀ ਹੈ।",
+  "Monitor weather conditions and provide extra feed during colder temperatures.":
+  "ਮੌਸਮ ਦੀ ਸਥਿਤੀ ਦੀ ਨਿਗਰਾਨੀ ਕਰੋ ਅਤੇ ਠੰਡੇ ਤਾਪਮਾਨ ਦੌਰਾਨ ਵਾਧੂ ਖੁਰਾਕ ਪ੍ਰਦਾਨ ਕਰੋ।",
+  "Ensure windbreaks or shelters to protect animals from cold winds; natural bushes or simple fences can be effective.":
+  "ਜਾਨਵਰਾਂ ਨੂੰ ਠੰਡੀਆਂ ਹਵਾਵਾਂ ਤੋਂ ਬਚਾਉਣ ਲਈ ਹਵਾ ਰੋਕੂ ਥਾਂਵਾਂ ਜਾਂ ਆਸਰਾ ਯਕੀਨੀ ਬਣਾਓ; ਕੁਦਰਤੀ ਝਾੜੀਆਂ ਜਾਂ ਸਧਾਰਨ ਵਾੜ ਪ੍ਰਭਾਵਸ਼ਾਲੀ ਹੋ ਸਕਦੀਆਂ ਹਨ।",
+  "Provide bedding, such as straw, to keep animals clean and dry and help them withstand cold stress.":
+  "ਜਾਨਵਰਾਂ ਨੂੰ ਸਾਫ਼ ਅਤੇ ਸੁੱਕਾ ਰੱਖਣ ਅਤੇ ਠੰਡੇ ਤਣਾਅ ਦਾ ਸਾਹਮਣਾ ਕਰਨ ਵਿੱਚ ਮਦਦ ਕਰਨ ਲਈ ਬਿਸਤਰੇ, ਜਿਵੇਂ ਕਿ ਤੂੜੀ, ਪ੍ਰਦਾਨ ਕਰੋ।",
+  "Increase grain and hay when temperatures drop below the lower critical threshold.":
+  "ਜਦੋਂ ਤਾਪਮਾਨ ਹੇਠਲੇ ਮਹੱਤਵਪੂਰਨ ਥ੍ਰੈਸ਼ਹੋਲਡ ਤੋਂ ਹੇਠਾਂ ਆ ਜਾਵੇ ਤਾਂ ਅਨਾਜ ਅਤੇ ਘਾਹ ਵਧਾਓ।",
+  "Ensure ample water is available; warm water may be necessary to encourage intake, as cold water can limit consumption.":
+  "ਯਕੀਨੀ ਬਣਾਓ ਕਿ ਕਾਫ਼ੀ ਪਾਣੀ ਉਪਲਬਧ ਹੋਵੇ; ਸੇਵਨ ਨੂੰ ਉਤਸ਼ਾਹਿਤ ਕਰਨ ਲਈ ਗਰਮ ਪਾਣੀ ਦੀ ਲੋੜ ਹੋ ਸਕਦੀ ਹੈ, ਕਿਉਂਕਿ ਠੰਡਾ ਪਾਣੀ ਖਪਤ ਨੂੰ ਸੀਮਤ ਕਰ ਸਕਦਾ ਹੈ।",
   "Provide additional feed. Increase grain and hay for when temperatures drop below the lower critical threshold level": "Increase grain and hay when temperatures drop below the lower critical threshold.",
   "ਜਦੋਂ ਤਾਪਮਾਨ ਘੱਟੋ-ਘੱਟ ਸੀਮਾ ਤੋਂ ਹੇਠਾਂ ਆ ਜਾਵੇ ਤਾਂ ਅਨਾਜ ਤੇ ਘਾਹ ਵਧਾਓ।": "ਵਧੀਕ ਖੁਰਾਕ ਪ੍ਰਦਾਨ ਕਰੋ। ਜਦੋਂ ਤਾਪਮਾਨ ਘੱਟੋ-ਘੱਟ ਸੰਵੇਦਨਸ਼ੀਲ ਤਾਪਮਾਨ ਤੋਂ ਹੇਠਾਂ ਗਿਰਦਾ ਹੈ, ਤਾਂ ਅਨਾਜ ਅਤੇ ਘਾਸ ਵਿੱਚ ਵਾਧਾ ਕਰੋ।",
   "Provide water. Make sure animals have ample water available at all times. A limit in water available will limit feed intake and make it more difficult for animal to meet their energy requirements. Excessively cold water can severely limit water intake": "Ensure ample water is available; warm water may be necessary to encourage intake, as cold water can limit consumption.",
