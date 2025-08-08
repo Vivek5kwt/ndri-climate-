@@ -25,6 +25,7 @@ class _Dialogue_pageState extends State<Dialogue_page> {
   Map<String, dynamic> ranges = {};
   final Repo _repo = Repo();
   final WeatherMetrics weatherMetrics = WeatherMetrics();
+  bool _isDialogVisible = true;
 
   void calculateRanges(List<Map<String, dynamic>> dailyData) {
     if (dailyData.isEmpty || dailyData[0].isEmpty) return;
@@ -183,7 +184,9 @@ class _Dialogue_pageState extends State<Dialogue_page> {
             IconButton(
               icon: Icon(Icons.close, color: Colors.white),
               onPressed: () {
-                Navigator.pop(context);
+                setState(() {
+                  _isDialogVisible = false;
+                });
               },
             ),
           ],
@@ -369,7 +372,9 @@ class _Dialogue_pageState extends State<Dialogue_page> {
                           ),
                         ),
                         SizedBox(height: ResponsiveUtils.hp(2)),
-                        _buildStateSelectionDialog(),
+                        _isDialogVisible
+                            ? _buildStateSelectionDialog()
+                            : const SizedBox.shrink(),
                         _buildResponsiveImage('assets/icon/logo2.webp', 16),
                         SizedBox(
                           height: 10,
