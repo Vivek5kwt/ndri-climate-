@@ -271,8 +271,6 @@ class _DashboardState extends State<Dashboard> {
                         context,
                         MaterialPageRoute(
                           builder: (_) => Past_Advisories(
-                            Date1: DateFormat('dd-MM-yyyy').format(_startDate),
-                            Date2: DateFormat('dd-MM-yyyy').format(_endDate),
                             initialDistrict: _currentDist,
                             initialState: _currentState,
                             title: 'Past Advisories'.tr,

@@ -13,8 +13,6 @@ import 'package:ndri_climate/model/utils.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Past_Advisories extends StatefulWidget {
-  final String Date1;
-  final String Date2;
   final String initialState;
   final String initialDistrict;
   final String Language;
@@ -22,8 +20,6 @@ class Past_Advisories extends StatefulWidget {
 
   const Past_Advisories({
     super.key,
-    required this.Date1,
-    required this.Date2,
     required this.initialState,
     required this.initialDistrict,
     required this.title,
@@ -36,8 +32,6 @@ class Past_Advisories extends StatefulWidget {
 
 class _Past_AdvisoriesState extends State<Past_Advisories> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-  late String firstDate;
-  late String secondDate;
   late String selectedState;
   late String selectedDistrict;
   late String language;
@@ -50,7 +44,7 @@ class _Past_AdvisoriesState extends State<Past_Advisories> {
   bool _filterApplied = false;
   int _dateIndex = 0;
 
-  // Controllers to display selected state/district in real time
+  // Controllers to display selected state/district/language in real time
   final TextEditingController _stateController = TextEditingController();
   final TextEditingController _districtController = TextEditingController();
   final TextEditingController _languageController = TextEditingController();
@@ -58,8 +52,6 @@ class _Past_AdvisoriesState extends State<Past_Advisories> {
   @override
   void initState() {
     super.initState();
-    firstDate = widget.Date1;
-    secondDate = widget.Date2;
     selectedState = widget.initialState;
     selectedDistrict = widget.initialDistrict;
     language = widget.Language;
@@ -95,17 +87,9 @@ class _Past_AdvisoriesState extends State<Past_Advisories> {
       );
 
       allData = response;
-      // Show all advisories when none match the selected dates
-      List<Advisory> currentWeekAdvisories = allData.where((advisory) {
-        final from = formatDate(inputDate: advisory.fromDate.toString());
-        final to = formatDate(inputDate: advisory.toDate.toString());
-        return from == firstDate && to == secondDate;
-      }).toList();
 
       setState(() {
-        advisoryData = currentWeekAdvisories.isNotEmpty
-            ? currentWeekAdvisories
-            : allData;
+        advisoryData = allData;
         isLoading = false;
       });
     } catch (error) {
@@ -340,6 +324,29 @@ class _Past_AdvisoriesState extends State<Past_Advisories> {
     );
   }
 
+  /// Returns a formatted date range string based on the currently visible list.
+  /// Uses earliest `fromDate` and latest `toDate`. If none, returns '-'.
+  String _visibleDateRange() {
+    final listToShow = _filterApplied ? filterData : advisoryData;
+    if (listToShow.isEmpty) return '-';
+
+    // Parse/compare as strings, but if your model has DateTime, adjust accordingly.
+    // We will compare as strings assuming yyyymmdd or similar; if not, consider parsing.
+    String minFrom = listToShow.first.fromDate.toString();
+    String maxTo = listToShow.first.toDate.toString();
+
+    for (final a in listToShow) {
+      final from = a.fromDate.toString();
+      final to = a.toDate.toString();
+      if (from.compareTo(minFrom) < 0) minFrom = from;
+      if (to.compareTo(maxTo) > 0) maxTo = to;
+    }
+
+    final minFromFmt = formatDate(inputDate: minFrom);
+    final maxToFmt = formatDate(inputDate: maxTo);
+    return '$minFromFmt  -  $maxToFmt';
+  }
+
   @override
   Widget build(BuildContext context) {
     double sidePad = ResponsiveUtils.wp(3);
@@ -365,7 +372,7 @@ class _Past_AdvisoriesState extends State<Past_Advisories> {
         physics: const AlwaysScrollableScrollPhysics(),
         child: Column(
           children: [
-            // Top container: dates, state, district, language
+            // Top container: dates(from advisories), state, district, language
             Container(
               width: double.infinity,
               padding: EdgeInsets.symmetric(horizontal: sidePad, vertical: 16),
@@ -382,14 +389,14 @@ class _Past_AdvisoriesState extends State<Past_Advisories> {
                 spacing: ResponsiveUtils.wp(3),
                 runSpacing: ResponsiveUtils.hp(1),
                 children: [
-                  // Dates
+                  // Visible date range from advisories themselves
                   Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       const Icon(Icons.calendar_month, color: Color(0xFF1B3A69), size: 20),
                       SizedBox(width: ResponsiveUtils.wp(1)),
                       Text(
-                        '$firstDate  -  $secondDate',
+                        _visibleDateRange(),
                         style: TextStyle(
                           fontSize: ResponsiveUtils.wp(3),
                           color: const Color(0xFF1B3A69),
@@ -628,23 +635,7 @@ class _Past_AdvisoriesState extends State<Past_Advisories> {
                       fontWeight: FontWeight.w700,
                     ),
                   ),
-                  const SizedBox(height: 8),
-                  Row(
-                    children: [
-                      const Icon(Icons.calendar_month,
-                          size: 16, color: Colors.black54),
-                      SizedBox(width: ResponsiveUtils.wp(1)),
-                      Text(
-                        '${formatDate(inputDate: advisory.fromDate.toString())} - '
-                        '${formatDate(inputDate: advisory.toDate.toString())}',
-                        style: TextStyle(
-                          fontSize: ResponsiveUtils.wp(2.7),
-                          fontWeight: FontWeight.w500,
-                          color: Colors.black54,
-                        ),
-                      ),
-                    ],
-                  ),
+
                   const SizedBox(height: 8),
                   Text(
                     description,
