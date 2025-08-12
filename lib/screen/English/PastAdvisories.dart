@@ -629,6 +629,23 @@ class _Past_AdvisoriesState extends State<Past_Advisories> {
                     ),
                   ),
                   const SizedBox(height: 8),
+                  Row(
+                    children: [
+                      const Icon(Icons.calendar_month,
+                          size: 16, color: Colors.black54),
+                      SizedBox(width: ResponsiveUtils.wp(1)),
+                      Text(
+                        '${formatDate(inputDate: advisory.fromDate.toString())} - '
+                        '${formatDate(inputDate: advisory.toDate.toString())}',
+                        style: TextStyle(
+                          fontSize: ResponsiveUtils.wp(2.7),
+                          fontWeight: FontWeight.w500,
+                          color: Colors.black54,
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 8),
                   Text(
                     description,
                     style: TextStyle(
