@@ -1,245 +1,281 @@
 import 'package:flutter/material.dart';
-import 'package:ndri_climate/auth/otp_screen.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:ndri_climate/material/Validation/validation_services.dart';
 import 'package:ndri_climate/material/resuseabelButton.dart';
 import 'package:ndri_climate/material/reuseablefeild.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:get/get.dart';
-import '../material/asset_image_loader.dart';
 
+import '../material/asset_image_loader.dart';
 import '../screen/English/Feedback.dart';
 
 class RegisterScreen extends StatefulWidget {
   final String district;
-  RegisterScreen({super.key, required this.district});
+
+  const RegisterScreen({super.key, required this.district});
 
   @override
   State<RegisterScreen> createState() => _RegisterScreenState();
 }
 
 class _RegisterScreenState extends State<RegisterScreen> {
-  GlobalKey<FormState> _formkey = GlobalKey<FormState>();
-  TextEditingController _namecontroller = TextEditingController();
-  TextEditingController _emailcontroller = TextEditingController();
-  TextEditingController _mobilenocontroller = TextEditingController();
-   String name = '';
-   String mobile = '';
-  String district = '';
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _mobileNoController = TextEditingController();
 
-  Valid _valid = Valid();
-  bool canpop = false;
+  final Valid _valid = Valid();
 
-  Future<void> StoreData(BuildContext context) async {
-    SharedPreferences _prefs = await SharedPreferences.getInstance();
-    setState(() {
-      _prefs.setString('name', _namecontroller.text);
-      _prefs.setString('mobile', _mobilenocontroller.text);
-      _prefs.setString('district', widget.district);
-      print('name: $name');
-    });
+  @override
+  void initState() {
+    super.initState();
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
+    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+      statusBarColor: Colors.transparent,
+      systemNavigationBarColor: Colors.transparent,
+      systemNavigationBarDividerColor: Colors.transparent,
+      statusBarIconBrightness: Brightness.dark,
+      systemNavigationBarIconBrightness: Brightness.dark,
+      systemStatusBarContrastEnforced: false,
+      systemNavigationBarContrastEnforced: false,
+    ));
+  }
+
+  Future<void> _storeData() async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString('name', _nameController.text.trim());
+    await prefs.setString('mobile', _mobileNoController.text.trim());
+    await prefs.setString('district', widget.district);
   }
 
   @override
   void dispose() {
+    _mobileNoController.dispose();
+    _emailController.dispose();
+    _nameController.dispose();
     super.dispose();
-    _mobilenocontroller.dispose();
-    _emailcontroller.dispose();
-    _namecontroller.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      resizeToAvoidBottomInset: true,
-      extendBodyBehindAppBar: true,
-      body: Stack(
-        fit: StackFit.passthrough,
-        children: [
-          Container(
-            height: MediaQuery.of(context).size.height,
-            width: MediaQuery.of(context).size.width,
-            decoration: ShapeDecoration(
-              shape: RoundedRectangleBorder(),
-              image: DecorationImage(
-                  filterQuality: FilterQuality.high,
-                  opacity: 0.4,
-                  image: AssetImage('assets/images/background.webp'),
-                  fit: BoxFit.cover),
+    final double screenWidth = 1.sw;
+
+    return AnnotatedRegion<SystemUiOverlayStyle>(
+      value: const SystemUiOverlayStyle(
+        statusBarColor: Colors.transparent,
+        systemNavigationBarColor: Colors.transparent,
+        systemNavigationBarDividerColor: Colors.transparent,
+        statusBarIconBrightness: Brightness.dark,
+        systemNavigationBarIconBrightness: Brightness.dark,
+      ),
+      child: Container(
+        constraints: const BoxConstraints.expand(),
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: const AssetImage('assets/images/background.webp'),
+            fit: BoxFit.cover,
+            filterQuality: FilterQuality.high,
+            colorFilter: ColorFilter.mode(
+              Colors.white.withOpacity(0.4),
+              BlendMode.srcOver,
             ),
           ),
-          Container(
-            height: MediaQuery.of(context).size.height,
-            margin: EdgeInsets.symmetric(vertical: 35),
-            child: SingleChildScrollView(
-              // physics: NeverScrollableScrollPhysics(),
-              child: Form(
-                key: _formkey,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Container(
-                      margin: EdgeInsets.only(top: 10),
-                      alignment: Alignment.center,
-                      height: 140,
-                      width: 140,
-                      decoration: BoxDecoration(
+        ),
+        child: Scaffold(
+          extendBodyBehindAppBar: true,
+          extendBody: true,
+          backgroundColor: Colors.transparent,
+          resizeToAvoidBottomInset: true,
+          body: SafeArea(
+            top: true,
+            bottom: false,
+            child: ScrollConfiguration(
+              behavior:
+                  ScrollConfiguration.of(context).copyWith(scrollbars: false),
+              child: SingleChildScrollView(
+                keyboardDismissBehavior:
+                    ScrollViewKeyboardDismissBehavior.onDrag,
+                padding: EdgeInsets.only(top: 16.h, bottom: 24.h),
+                child: ConstrainedBox(
+                  constraints: BoxConstraints(minHeight: 1.sh),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      SizedBox(height: 10.h),
+                      Container(
+                        height: 140.w,
+                        width: 140.w,
+                        decoration: const BoxDecoration(
+                          shape: BoxShape.circle,
                           gradient: LinearGradient(
-                              begin: Alignment.bottomCenter,
-                              end: Alignment.topRight,
-                              colors: [Colors.white70, Colors.white]),
-                          shape: BoxShape.circle),
-                      child: const AssetImageLoader(
-                        assetPath: 'assets/icon/logo1.webp',
-                        width: 100,
-                        height: 100,
-                        fit: BoxFit.contain,
+                            begin: Alignment.bottomCenter,
+                            end: Alignment.topRight,
+                            colors: [Colors.white70, Colors.white],
+                          ),
+                        ),
+                        alignment: Alignment.center,
+                        child: const AssetImageLoader(
+                          assetPath: 'assets/icon/logo1.webp',
+                          width: 100,
+                          height: 100,
+                          fit: BoxFit.contain,
+                        ),
                       ),
-                    ),
-                    Column(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Container(
-                          margin: EdgeInsets.only(left: 30, top: 30, right: 30),
-                          child: ReuseableFeild(
-                              validator: _valid.formvaild,
-                              controller: _namecontroller,
-                              lable: 'Full Name'.tr,
-                              hinttext: 'Enter your Full Name'.tr,
-                              fillcolor: Colors.white,
-                              textInputType: TextInputType.text,
-                              color: true,
-                              hinttextcolor: Colors.black),
-                        ),
-                        Container(
-                          margin: EdgeInsets.symmetric(
-                              horizontal: 30, vertical: 20),
-                          child: ReuseableFeild(
-                              controller: _emailcontroller,
-                              validator: _valid.formvaild,
-                              lable: 'Email ID'.tr,
-                              hinttext: 'Enter your Email Id'.tr,
-                              fillcolor: Colors.white,
-                              textInputType: TextInputType.emailAddress,
-                              color: true,
-                              hinttextcolor: Colors.black),
-                        ),
-                        Container(
-                          margin: EdgeInsets.symmetric(horizontal: 30),
-                          child: ReuseableFeild(
-                              maxlength: 10,
-                              controller: _mobilenocontroller,
-                              validator: _valid.formvaild,
-                              lable: 'Mobile Number'.tr,
-                              hinttext: 'Enter your Mobile Number'.tr,
-                              fillcolor: Colors.white,
-                              textInputType: TextInputType.number,
-                              color: true,
-                              hinttextcolor: Colors.black),
-                        )
-                      ],
-                    ),
-                    Container(
-                      margin: EdgeInsets.only(top: 10),
-                      child: ReuseableContainerButton(
-                          onTap: ()async {
-                            if (_formkey.currentState!.validate()) {
-                             await StoreData(context);
-                             /* Navigator.pushReplacement(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => OTPScreen(mob_no: _mobilenocontroller.text,),
-                                ),
-                              );*/
-                             if (_formkey.currentState!.validate()) {
-                               Navigator.pushReplacement(
-                                 context,
-                                 MaterialPageRoute(
-                                   builder: (context) => FeedBack(),
-                                 ),
-                               );
-                             }
-                            }
-                          },
-                          text: 'Register'.tr,
-                          textcolor: Colors.white,
-                          colors: [Colors.green, Colors.green],
-                          alignment: Alignment.center,
-                          height: 50,
-                          width: MediaQuery.of(context).size.width / 1.26),
-                    ),
-                    Container(
-                      margin: EdgeInsets.only(top: 5),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            'Already Have Accounts - '.tr,
-                            style: TextStyle(
-                                fontWeight: FontWeight.w600, fontSize: 14),
+                      SizedBox(height: 24.h),
+                      Center(
+                        child: Container(
+                          width: screenWidth * 0.9,
+                          padding: EdgeInsets.symmetric(
+                              horizontal: 20.w, vertical: 20.h),
+                          decoration: BoxDecoration(
+                            color: Colors.white.withOpacity(0.88),
+                            borderRadius: BorderRadius.circular(20.r),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black.withOpacity(0.08),
+                                blurRadius: 20.r,
+                                offset: Offset(0, 10.h),
+                              ),
+                            ],
                           ),
-                          SizedBox(
-                            width: 10,
-                          ),
-                          InkWell(
-                            onTap: () async{
-                             /* Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => OTPScreen(mob_no: _mobilenocontroller.text,),
+                          child: Form(
+                            key: _formKey,
+                            child: Column(
+                              children: [
+                                ReuseableFeild(
+                                  validator: _valid.formvaild,
+                                  controller: _nameController,
+                                  lable: 'Full Name'.tr,
+                                  hinttext: 'Enter your Full Name'.tr,
+                                  fillcolor: Colors.white,
+                                  textInputType: TextInputType.text,
+                                  color: true,
+                                  hinttextcolor: Colors.black,
                                 ),
-                              );*/
-                              if (_formkey.currentState!.validate()) {
-                                Navigator.pushReplacement(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => FeedBack(),
-                                  ),
-                                );
-                              }
-                            },
-                            child: Text(
-                              'Login'.tr,
-                              style: TextStyle(
-                                  color: Colors.green.shade800,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 16),
+                                SizedBox(height: 16.h),
+                                ReuseableFeild(
+                                  controller: _emailController,
+                                  validator: _valid.formvaild,
+                                  lable: 'Email ID'.tr,
+                                  hinttext: 'Enter your Email Id'.tr,
+                                  fillcolor: Colors.white,
+                                  textInputType: TextInputType.emailAddress,
+                                  color: true,
+                                  hinttextcolor: Colors.black,
+                                ),
+                                SizedBox(height: 16.h),
+                                ReuseableFeild(
+                                  maxlength: 10,
+                                  controller: _mobileNoController,
+                                  validator: _valid.formvaild,
+                                  lable: 'Mobile Number'.tr,
+                                  hinttext: 'Enter your Mobile Number'.tr,
+                                  fillcolor: Colors.white,
+                                  textInputType: TextInputType.number,
+                                  color: true,
+                                  hinttextcolor: Colors.black,
+                                ),
+                                SizedBox(height: 20.h),
+                                ReuseableContainerButton(
+                                  onTap: () async {
+                                    if (_formKey.currentState!.validate()) {
+                                      await _storeData();
+                                      Navigator.pushReplacement(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) => FeedBack(),
+                                        ),
+                                      );
+                                    }
+                                  },
+                                  text: 'Register'.tr,
+                                  textcolor: Colors.white,
+                                  colors: const [Colors.green, Colors.green],
+                                  alignment: Alignment.center,
+                                  height: 50.h,
+                                  width: screenWidth * 0.74,
+                                ),
+                                SizedBox(height: 12.h),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      'Already Have Accounts - '.tr,
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: 14.sp,
+                                      ),
+                                    ),
+                                    SizedBox(width: 8.w),
+                                    InkWell(
+                                      onTap: () async {
+                                        if (_formKey.currentState!.validate()) {
+                                          Navigator.pushReplacement(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (context) => FeedBack(),
+                                            ),
+                                          );
+                                        }
+                                      },
+                                      child: Text(
+                                        'Login'.tr,
+                                        style: TextStyle(
+                                          color: Colors.green.shade800,
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 16.sp,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
                             ),
-                          )
-                        ],
+                          ),
+                        ),
                       ),
-                    ),
-                    Container(
-                      margin: EdgeInsets.only(top: 30),
-                      child: const AssetImageLoader(
+                      SizedBox(height: 24.h),
+                      AssetImageLoader(
                         assetPath: 'assets/icon/logo2.webp',
-                        width: 120,
-                        height: 120,
+                        width: screenWidth * 0.25,
                         fit: BoxFit.contain,
                       ),
-                    ),
-                    Container(
-                      margin: EdgeInsets.only(top: 30),
-                      child: const AssetImageLoader(
-                        assetPath: 'assets/images/text1.webp',
-                        width: 200,
-                        fit: BoxFit.contain,
+                      SizedBox(height: 16.h),
+                      Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 24.w),
+                        child: Text(
+                          'भा कृ अनु प-राष्ट्रीय डेरी अनुसंधान संस्थान\nकरनाल-132001, हरियाणा',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontSize: 15.sp,
+                            fontWeight: FontWeight.w700,
+                            height: 1.3,
+                            color: Colors.black,
+                          ),
+                        ),
                       ),
-                    ),
-                    Container(
-                      margin: EdgeInsets.only(top: 15),
-                      child: const AssetImageLoader(
-                        assetPath: 'assets/images/text2.webp',
-                        width: 220,
-                        fit: BoxFit.contain,
+                      SizedBox(height: 12.h),
+                      Text(
+                        'ICAR-National Dairy Research Institute\nKarnal – 132001, Haryana',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 15.sp,
+                          fontWeight: FontWeight.w700,
+                          height: 1.3,
+                          color: Colors.black,
+                        ),
                       ),
-                    )
-                  ],
+                      SizedBox(
+                          height:
+                              MediaQuery.of(context).viewPadding.bottom + 24.h),
+                    ],
+                  ),
                 ),
               ),
             ),
           ),
-        ],
+        ),
       ),
     );
   }
