@@ -7,10 +7,9 @@ import 'package:ndri_climate/material/reusableappbar.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:intl/intl.dart';
 
 class ClimateServices extends StatefulWidget {
-  final String date1;
-  final String date2;
   final String initialState;
   final String initialDistrict;
   final String initialLanguage;
@@ -18,8 +17,6 @@ class ClimateServices extends StatefulWidget {
 
   const ClimateServices({
     Key? key,
-    required this.date1,
-    required this.date2,
     required this.initialState,
     required this.initialDistrict,
     required this.title,
@@ -32,8 +29,8 @@ class ClimateServices extends StatefulWidget {
 
 class _ClimateServicesState extends State<ClimateServices> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-  late String firstDate;
-  late String secondDate;
+  String firstDate = '';
+  String secondDate = '';
   late String state;
   late String district;
   late String language;
@@ -44,8 +41,6 @@ class _ClimateServicesState extends State<ClimateServices> {
   @override
   void initState() {
     super.initState();
-    firstDate = widget.date1.trim();
-    secondDate = widget.date2.trim();
     state = widget.initialState.trim();
     district = widget.initialDistrict.trim();
     language = widget.initialLanguage;
@@ -71,6 +66,10 @@ class _ClimateServicesState extends State<ClimateServices> {
       );
       setState(() {
         advisoryData = data.reversed.toList();
+        if (advisoryData.isNotEmpty) {
+          firstDate = DateFormat('yyyy-MM-dd').format(advisoryData.first.fromDate);
+          secondDate = DateFormat('yyyy-MM-dd').format(advisoryData.first.toDate);
+        }
         isLoading = false;
       });
     } catch (_) {
