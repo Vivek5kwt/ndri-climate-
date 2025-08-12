@@ -253,14 +253,12 @@ class _DashboardState extends State<Dashboard> {
                           () => Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (_) => ClimateServices(
-                            date1:
-                            '${DateFormat('dd-MM-yyyy').format(_startDate)} - ',
-                            date2: DateFormat('dd-MM-yyyy').format(_endDate),
-                            initialDistrict: _currentDist,
-                            title: 'Climate Advisory'.tr,
-                            initialLanguage: _currentLang, initialState: _currentState,
-                          ),
+                            builder: (_) => ClimateServices(
+                              initialDistrict: _currentDist,
+                              title: 'Climate Advisory'.tr,
+                              initialLanguage: _currentLang,
+                              initialState: _currentState,
+                            ),
                         ),
                       ),
                     ),

@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:ndri_climate/auth/register_screen.dart';
 import 'package:ndri_climate/material/plugin/responsiveUtils.dart';
 import 'package:ndri_climate/screen/English/Climate_Services.dart';
@@ -23,8 +22,6 @@ class _CustomDrawerState extends State<CustomDrawer> {
   String? district = '';
   String? state = '';
   String? language = '';
-  DateTime selectedDate1 = DateTime.now();
-  DateTime selectedDate2 = DateTime.now().add(Duration(days: 7));
 
   @override
   void initState() {
@@ -143,11 +140,10 @@ class _CustomDrawerState extends State<CustomDrawer> {
                 context,
                 MaterialPageRoute(
                   builder: (context) => ClimateServices(
-                    date1: '${DateFormat('dd-MM-yyyy').format(selectedDate1)} - ',
-                    date2: '${DateFormat('dd-MM-yyyy').format(selectedDate2)}',
                     initialDistrict: district.toString(),
                     title: 'Climate Services'.tr,
-                    initialLanguage: language!, initialState: state.toString(),
+                    initialLanguage: language!,
+                    initialState: state.toString(),
                   ),
                 ),
               );
