@@ -46,6 +46,7 @@ class _ClimateServicesState extends State<ClimateServices> {
     language = widget.initialLanguage;
 
     SharedPreferences.getInstance().then((prefs) {
+      if (!mounted) return;
       setState(() {
         language = prefs.getString('selected_lang') ?? widget.initialLanguage;
       });
@@ -64,15 +65,20 @@ class _ClimateServicesState extends State<ClimateServices> {
         state: state,
         district: district,
       );
+      if (!mounted) return;
       setState(() {
         advisoryData = data.reversed.toList();
         if (advisoryData.isNotEmpty) {
           firstDate = DateFormat('yyyy-MM-dd').format(advisoryData.first.fromDate);
           secondDate = DateFormat('yyyy-MM-dd').format(advisoryData.first.toDate);
+        } else {
+          firstDate = '';
+          secondDate = '';
         }
         isLoading = false;
       });
     } catch (_) {
+      if (!mounted) return;
       setState(() {
         isLoading = false;
         hasError = true;
@@ -97,6 +103,13 @@ class _ClimateServicesState extends State<ClimateServices> {
     }
   }
 
+  void _openFeedback() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (_) => RegisterScreen(district: district)),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -108,13 +121,34 @@ class _ClimateServicesState extends State<ClimateServices> {
         title: widget.title.tr,
         onselected: (lang) => setState(() => language = lang),
       ),
+      bottomNavigationBar: SafeArea(
+        child: Padding(
+          padding: EdgeInsets.fromLTRB(16.w, 8.h, 16.w, 16.h),
+          child: SizedBox(
+            width: double.infinity,
+            height: 48.h,
+            child: ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12.r),
+                ),
+              ),
+              onPressed: _openFeedback,
+              child: Text(
+                'Feedback'.tr,
+                style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w600),
+              ),
+            ),
+          ),
+        ),
+      ),
       body: Column(
         children: [
           Container(
             width: double.infinity,
             padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
             decoration: BoxDecoration(
-              color: Color(0xFF9BDBFF),
+              color: const Color(0xFF9BDBFF),
               borderRadius: BorderRadius.vertical(bottom: Radius.circular(12.r)),
             ),
             child: Column(
@@ -122,12 +156,14 @@ class _ClimateServicesState extends State<ClimateServices> {
               children: [
                 Row(
                   children: [
-                    Icon(Icons.calendar_today, size: 20.sp, color: Color(0xFF1B3A69)),
+                    Icon(Icons.calendar_today, size: 20.sp, color: const Color(0xFF1B3A69)),
                     SizedBox(width: 8.w),
                     Text(
-                      '$firstDate - $secondDate',
+                      (firstDate.isNotEmpty && secondDate.isNotEmpty)
+                          ? '$firstDate - $secondDate'
+                          : '—',
                       style: TextStyle(
-                        color: Color(0xFF1B3A69),
+                        color: const Color(0xFF1B3A69),
                         fontWeight: FontWeight.bold,
                         fontSize: 14.sp,
                       ),
@@ -140,19 +176,19 @@ class _ClimateServicesState extends State<ClimateServices> {
                   child: Row(
                     children: [
                       Chip(
-                        label: Text(state.tr, style: TextStyle(color: Colors.white)),
+                        label: Text(state.tr, style: const TextStyle(color: Colors.white)),
                         avatar: Icon(Icons.map, color: Colors.white, size: 18.sp),
-                        backgroundColor: Color(0xFF2C96D2),
+                        backgroundColor: const Color(0xFF2C96D2),
                       ),
                       SizedBox(width: 8.w),
                       Chip(
-                        label: Text(district.tr, style: TextStyle(color: Colors.white)),
+                        label: Text(district.tr, style: const TextStyle(color: Colors.white)),
                         avatar: Icon(Icons.location_on, color: Colors.white, size: 18.sp),
-                        backgroundColor: Color(0xFF1976D2),
+                        backgroundColor: const Color(0xFF1976D2),
                       ),
                       SizedBox(width: 8.w),
                       IconButton(
-                        icon: Icon(Icons.edit, color: Color(0xFF1B3A69), size: 20.sp),
+                        icon: Icon(Icons.edit, color: const Color(0xFF1B3A69), size: 20.sp),
                         onPressed: _showLocationDialog,
                         tooltip: 'Change'.tr,
                       ),
@@ -166,19 +202,39 @@ class _ClimateServicesState extends State<ClimateServices> {
             child: RefreshIndicator(
               onRefresh: _fetchAdvisoryData,
               child: isLoading
-                  ? Center(child: CircularProgressIndicator())
+                  ? const Center(child: CircularProgressIndicator())
                   : hasError
-                  ? Center(child: Text('Error loading advisories'.tr, style: TextStyle(color: Colors.red, fontSize: 16.sp)))
+                  ? ListView(
+                physics: const AlwaysScrollableScrollPhysics(),
+                children: [
+                  SizedBox(height: 120.h),
+                  Center(
+                    child: Text(
+                      'Error loading advisories'.tr,
+                      style: TextStyle(color: Colors.red, fontSize: 16.sp),
+                    ),
+                  ),
+                ],
+              )
                   : advisoryData.isEmpty
-                  ? Center(
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Icon(Icons.info_outline, size: 48.sp, color: Colors.grey),
-                    SizedBox(height: 12.h),
-                    Text('No advisories available'.tr, style: TextStyle(fontSize: 16.sp, color: Colors.grey)),
-                  ],
-                ),
+                  ? ListView(
+                physics: const AlwaysScrollableScrollPhysics(),
+                children: [
+                  SizedBox(height: 120.h),
+                  Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Icon(Icons.info_outline, size: 48.sp, color: Colors.grey),
+                      SizedBox(height: 12.h),
+                      Center(
+                        child: Text(
+                          'No advisories available'.tr,
+                          style: TextStyle(fontSize: 16.sp, color: Colors.grey),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
               )
                   : ListView.builder(
                 padding: EdgeInsets.all(8.w),
@@ -195,26 +251,23 @@ class _ClimateServicesState extends State<ClimateServices> {
                   return Card(
                     margin: EdgeInsets.symmetric(vertical: 6.h),
                     elevation: 2,
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.r)),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10.r),
+                    ),
                     child: Padding(
                       padding: EdgeInsets.all(12.w),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(adv.title.tr, style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.bold)),
+                          Text(
+                            adv.title.tr,
+                            style: TextStyle(
+                              fontSize: 18.sp,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
                           SizedBox(height: 8.h),
                           Text(desc, style: TextStyle(fontSize: 14.sp)),
-                          if (i == advisoryData.length - 1)
-                            Align(
-                              alignment: Alignment.centerRight,
-                              child: TextButton(
-                                onPressed: () => Navigator.push(
-                                  context,
-                                  MaterialPageRoute(builder: (_) => RegisterScreen(district: district)),
-                                ),
-                                child: Text('Feedback'.tr),
-                              ),
-                            ),
                         ],
                       ),
                     ),
@@ -258,12 +311,21 @@ class __LocationDialogState extends State<_LocationDialog> {
     setState(() => loadingStates = true);
     final raw = await ApiProvider().getStates();
     setState(() {
-      _states = raw.map((e) => e['state_name'] as String).toList()..sort();
-      for (var e in raw) _stateIds[e['state_name']] = e['state_id'].toString();
-      selectedState = _states.contains(selectedState) ? selectedState : _states.first;
+      _states = raw.map<String>((e) => e['state_name'] as String).toList()..sort();
+      for (var e in raw) {
+        _stateIds[e['state_name']] = e['state_id'].toString();
+      }
+      selectedState = _states.contains(selectedState) ? selectedState : (_states.isNotEmpty ? _states.first : '');
       loadingStates = false;
     });
-    _loadDistricts();
+    if (selectedState.isNotEmpty) {
+      _loadDistricts();
+    } else {
+      setState(() {
+        _districts = [];
+        selectedDistrict = '';
+      });
+    }
   }
 
   void _loadDistricts() async {
@@ -302,7 +364,7 @@ class __LocationDialogState extends State<_LocationDialog> {
           ),
           SizedBox(height: 12.h),
           loadingDistricts
-              ? CircularProgressIndicator()
+              ? const CircularProgressIndicator()
               : DropdownButtonFormField<String>(
             isExpanded: true,
             value: selectedDistrict.isNotEmpty ? selectedDistrict : null,
@@ -316,7 +378,13 @@ class __LocationDialogState extends State<_LocationDialog> {
       ),
       actions: [
         TextButton(onPressed: () => Navigator.pop(context), child: Text('Cancel'.tr)),
-        TextButton(onPressed: () => Navigator.pop(context, _LocationResult(state: selectedState, district: selectedDistrict)), child: Text('OK'.tr)),
+        TextButton(
+          onPressed: () => Navigator.pop(
+            context,
+            _LocationResult(state: selectedState, district: selectedDistrict),
+          ),
+          child: Text('OK'.tr),
+        ),
       ],
     );
   }
